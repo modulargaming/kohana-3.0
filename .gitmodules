@@ -10,3 +10,6 @@
 [submodule "modules/A2"]
 	path = modules/A2
 	url = git://github.com/Wouterrr/A2.git
+[submodule "modules/ACL"]
+	path = modules/ACL
+	url = git://github.com/Wouterrr/ACL.git
