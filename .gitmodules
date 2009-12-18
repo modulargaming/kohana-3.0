@@ -13,6 +13,3 @@
 [submodule "modules/ACL"]
 	path = modules/ACL
 	url = git://github.com/Wouterrr/ACL.git
-[submodule "modules/A1"]
-	path = modules/A1
-	url = http://github.com/copy112/A1.git
