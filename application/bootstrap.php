@@ -74,9 +74,9 @@ Kohana::modules(array(
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	
 	'sprig' => MODPATH.'sprig',
-	'a1'    => MODPATH.'a1',
-	'a2'    => MODPATH.'a2',
-	'acl'   => MODPATH.'acl',
+	'a1'    => MODPATH.'A1',
+	'a2'    => MODPATH.'A2',
+	'acl'   => MODPATH.'ACL',
 	));
 
 /**
