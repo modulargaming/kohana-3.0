@@ -16,7 +16,7 @@ class Controller_Battle extends Controller_Frontend {
 	{
 		parent::before();
 		
-		// Check so the user got a character
+		// Check if the user has a character
 		if ( !$this->user->character )
 			$this->request->redirect( 'character' );
 	}

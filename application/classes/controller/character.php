@@ -16,7 +16,7 @@ class Controller_Character extends Controller_Frontend {
 	
 	public function action_index()
 	{
-		// Check if the user haven't got a character.
+		// Check if the user has a character already.
 		if ( !$this->user->character->name )
 			$this->request->redirect( 'character/create' );
 		
@@ -33,7 +33,7 @@ class Controller_Character extends Controller_Frontend {
 	
 	public function action_heal()
 	{
-		// Check if the user haven't got a character.
+		// Check if the user has a character already.
 		if ( !$this->user->character->name )
 			$this->request->redirect( 'character/create' );
 		
@@ -126,7 +126,7 @@ class Controller_Character extends Controller_Frontend {
 			$this->errors = $post->errors('character/create');
 		}
 		
-		// Get the races the user can chose from.
+		// Get the races the user can choose from.
 		$races = $this->getRaces();
 		
 		$this->template->content = View::factory('character/create')
@@ -134,7 +134,7 @@ class Controller_Character extends Controller_Frontend {
 			->set( 'races', $races );
 	}
 	
-	// Function to verify if its a valid race and the player can use it.
+	// Function to verify if it is a valid race and that the player can use it.
 	function valid_race( $form, $field )
 	{
 		
@@ -149,7 +149,7 @@ class Controller_Character extends Controller_Frontend {
 
 	}
 	
-	// Retrive all races from the database, and assign them to an array
+	// Retrieve all races from the database and assign them to an array
 	function getRaces()
 	{
 		$races = Sprig::factory( 'race' )->load(NULL, NULL);

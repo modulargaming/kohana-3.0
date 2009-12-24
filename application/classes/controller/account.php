@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * 
+ * Controller for managing the basic user actions (register, login, logout)
  *
  * @package    Modular Gaming
  * @author     Copy112
@@ -20,7 +20,7 @@ class Controller_Account extends Controller_Frontend {
 	
 	public function action_login()
 	{
-		// If the user is alredy logged in, send him to his UCP (User controll panel)
+		// If the user is already logged in, send them to their UCP (User control panel)
 		if ( $this->user )
 			$this->request->redirect( 'account' );
 		
@@ -32,7 +32,7 @@ class Controller_Account extends Controller_Frontend {
 			->rule('username', 'max_length', array(20))
 			->rule('password', 'not_empty');
 		
-		// Check if the validate success, and try to log him in.
+		// Check if the validation passed and try to log them in.
 		if($post->check())
 		{
 			if ($this->a1->login($post['username'],$post['password'], isset($_POST['remember']) ? (bool) $_POST['remember'] : FALSE))
@@ -52,7 +52,7 @@ class Controller_Account extends Controller_Frontend {
 		
 		$sprig = Sprig::factory('user');
 		
-		// Check if we got a post request
+		// Check if we have a post request
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
 			->rules('username',         $sprig->field('username')->rules)
