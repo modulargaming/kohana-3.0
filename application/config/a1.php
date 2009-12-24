@@ -43,5 +43,5 @@ return array(
 	/**
 	 * Session type - native or database
 	 */
-	'session_type' => 'database'
+	'session_type' => 'native'
 );
