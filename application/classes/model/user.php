@@ -27,11 +27,8 @@ class Model_User extends Sprig implements Acl_Role_Interface {
 			'email' => new Sprig_Field_Email(array(
 				'empty' => FALSE,
 			)),
-			'password' => new Sprig_Field_Password(array(
+			'password' => new Sprig_Field_Char(array(
 				'empty' => FALSE,
-				'hash_with' => array(A1::instance(), 'hash_password'),
-				'min_length' => 6,
-				'max_length' => 20,
 			)),
 			'token' => new Sprig_Field_Char(array(
 				'empty' => TRUE,

@@ -45,6 +45,9 @@ abstract class Controller_Frontend extends Controller {
 		
 		$this->a2 = A2::instance();
 		$this->a1 = $this->a2->a1;
+		
+		//echo $this->a1->hash_password('falcon');
+		
 		$this->user = $this->a2->get_user();
 		
 		//$this->a1->logout();

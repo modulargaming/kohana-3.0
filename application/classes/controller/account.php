@@ -35,7 +35,7 @@ class Controller_Account extends Controller_Frontend {
 		// Check if the validate success, and try to log him in.
 		if($post->check())
 		{
-			if($this->a1->login($post['username'],$post['password'], isset($_POST['remember']) ? (bool) $_POST['remember'] : FALSE))
+			if ($this->a1->login($post['username'],$post['password'], isset($_POST['remember']) ? (bool) $_POST['remember'] : FALSE))
 			{
 				$this->request->redirect( '' );
 			}
@@ -58,31 +58,32 @@ class Controller_Account extends Controller_Frontend {
 			->rules('username',         $sprig->field('username')->rules)
 			->rules('email',            $sprig->field('email')->rules)
 			->rule ('email_confirm',    'matches', array('email'))
-			->rules('password',         $sprig->field('password')->rules)
+			->rule ('password',         'min_length', array ( 6 ) )
+			->rule ('password',         'max_length', array( 20 ) )
 			->rule ('password_confirm', 'matches', array('password'))
 			->rule ('tos',              'not_empty');
 		
 		if ($post->check())
 		{
 			
+			// Assign the validated data to the sprig object
 			$sprig->values( $post->as_array());
+			
+			// Hash the password
+			$sprig->password = $this->a1->hash_password( $post['password'] );
 			
 			try
 			{
-				// Create a new blog post
+				// Create the new user
 				$sprig->create();
 				
+				// Redirect the user to the login page
 				$this->request->redirect( 'account/login' );
 			}
 			catch (Validate_Exception $e)
 			{
 				// Get the errors using the Validate::errors() method
 				$this->errors = $e->array->errors('register');
-			}
-			
-			// Check if the user registered correctly
-			if ( empty( $this->errors ) ) {
-				// $this->request->redirect( 'account/login' );
 			}
 			
 		}
