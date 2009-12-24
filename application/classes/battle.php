@@ -19,7 +19,7 @@ class Battle {
 	 */
 	public static function new_battle( $char, $monster_id )
 	{
-		// Retrive the monsters db info, so we can set hp, and some other stuffs.
+		// Retrieve the monsters db info, so we can set hp etc.
 		$monster = Sprig::factory( 'monster', array( 'id' => $monster_id ) )->load();
 		
 		// Assign the data we need for the new battle row.
@@ -118,6 +118,5 @@ class Battle {
 		}
 		
 	}
-	
 	
 }
