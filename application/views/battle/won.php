@@ -1,5 +1,5 @@
 <h2>Monster slayed</h2>
-<p>Congratulation, you managed to kill the evil monster.</p>
+<p>Congratulations, you managed to kill the evil monster.</p>
 
 <h4>Reward:</h4>
 <ul>

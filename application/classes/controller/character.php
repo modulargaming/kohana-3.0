@@ -44,9 +44,9 @@ class Controller_Character extends Controller_Frontend {
 		
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
-			->rule( 'ammount', 'not_empty' )
-			->rule( 'ammount', 'digit' )
-			->callback( 'ammount', array( $this, 'can_heal' ));
+			->rule( 'amount', 'not_empty' )
+			->rule( 'amount', 'digit' )
+			->callback( 'amount', array( $this, 'can_heal' ));
 		
 		if ($post->check())
 		{
@@ -54,8 +54,8 @@ class Controller_Character extends Controller_Frontend {
 			try
 			{
 				
-				$character->hp = $character->hp + $post['ammount'];
-				$character->money = $character->money - ( $post['ammount'] * $this->heal_cost );
+				$character->hp = $character->hp + $post['amount'];
+				$character->money = $character->money - ( $post['amount'] * $this->heal_cost );
 				
 				$character->update();
 				$this->request->redirect( 'character' );

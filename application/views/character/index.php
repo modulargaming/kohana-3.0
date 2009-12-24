@@ -24,5 +24,5 @@
 </div>
 
 <div class="right">
-	<p>Welcome to the character info, this will give you a basic overlook of your chracters stats.</p>
+	<p>Welcome to the character info, this will give you a basic overview of your character stats.</p>
 </div>
