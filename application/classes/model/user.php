@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * 
+ * Model for managing the user table
  *
  * @package    Modular Gaming
  * @author     Copy112
@@ -36,7 +36,7 @@ class Model_User extends Sprig implements Acl_Role_Interface {
 			'last_login' => new Sprig_Field_Timestamp(array(
 				'empty' => TRUE,
 			)),
-			// Dont remove the rule, its a junk value i needed to avoide an error.
+			// Do not remove this rule, it is a junk value I needed to avoid an error.
 			'logins' => new Sprig_Field_Float(array(
 				 'empty' => TRUE,
 				 'rules' => array(
