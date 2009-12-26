@@ -16,9 +16,12 @@ class Controller_Battle extends Controller_Frontend {
 	{
 		parent::before();
 		
-		// Check if the user has a character
-		if ( !$this->user->character->name )
-			$this->request->redirect( 'character' );
+		// Load the character
+		$this->user->character->load();
+		
+		// Check if the user has a character already.
+		if ( !$this->user->character->loaded() )
+			$this->request->redirect( 'character/create' );
 	}
 	
 	
