@@ -68,7 +68,7 @@ class Character {
 			$hp = $this->char->hp;
 		
 		if ( !isset ( $maxhp ) )
-			$maxhp = $this->char->maxhp;
+			$maxhp = $this->char->max_hp;
 		
 		return round( ( $hp / $maxhp ) * 100 );
 		

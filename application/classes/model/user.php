@@ -47,7 +47,6 @@ class Model_User extends Sprig implements Acl_Role_Interface {
 				 'empty' => TRUE,
 			)),
 			
-			
 			'character' => new Sprig_Field_HasOne(array(
                 'model' => 'Character',
 			)),

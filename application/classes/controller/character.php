@@ -16,8 +16,11 @@ class Controller_Character extends Controller_Frontend {
 	
 	public function action_index()
 	{
+		// Load the character
+		$this->user->character->load();
+		
 		// Check if the user has a character already.
-		if ( !$this->user->character->name )
+		if ( !$this->user->character->loaded() )
 			$this->request->redirect( 'character/create' );
 		
 		$character = $this->user->character;
@@ -33,8 +36,11 @@ class Controller_Character extends Controller_Frontend {
 	
 	public function action_heal()
 	{
+		// Load the character
+		$this->user->character->load();
+		
 		// Check if the user has a character already.
-		if ( !$this->user->character->name )
+		if ( !$this->user->character->loaded() )
 			$this->request->redirect( 'character/create' );
 		
 		$character = $this->user->character;
@@ -84,11 +90,13 @@ class Controller_Character extends Controller_Frontend {
 	
 	public function action_create()
 	{
-		// Check if the user alredy got a character
-		if ( $this->user->character->name )
-			$this->request->redirect( 'character' );
+		// Load the character
+		$this->user->character->load();
 		
-		
+		// Check if the user has a character already.
+		if ( $this->user->character->loaded() )
+			$this->request->redirect( 'character/create' );
+				
 		$sprig = Sprig::factory('character');
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
@@ -107,6 +115,12 @@ class Controller_Character extends Controller_Frontend {
 				
 				// Default starting money
 				$sprig->money = 1000;
+				$sprig->hp = 100;
+				$sprig->max_hp = 100;
+				
+				$sprig->level = 1;
+				$sprig->strength = 10;
+				$sprig->alignment = 5000;
 				
 				$sprig->create();
 				
@@ -173,8 +187,8 @@ class Controller_Character extends Controller_Frontend {
 		if ( $ammount * $this->heal_cost >= $this->user->character->money )
 			$form->error($field, 'not_enought_money');
 		
-		if ( $ammount >= ( $this->user->character->maxhp - $this->user->character->hp ) )
-			$form[$field] = $this->user->character->maxhp - $this->user->character->hp;
+		if ( $ammount >= ( $this->user->character->max_hp - $this->user->character->hp ) )
+			$form[$field] = $this->user->character->max_hp - $this->user->character->hp;
 		
 	}
 	

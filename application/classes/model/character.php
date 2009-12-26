@@ -38,7 +38,7 @@ class Model_Character extends Sprig {
 				 	'numeric' => array(),
 				 )
 			)),
-			'maxhp' => new Sprig_Field_Integer(array(
+			'max_hp' => new Sprig_Field_Integer(array(
 				'empty' => FALSE,
 			)),
 			'money' => new Sprig_Field_Integer(array(

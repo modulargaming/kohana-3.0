@@ -5,7 +5,7 @@
 
 	<span class="bar hp">
 		<?php echo '<span style="width: ' . $char->percent_hp() . '%"></span>'; ?>
-		<p><?php echo $character->hp . ' / '. $character->maxhp; ?></p>
+		<p><?php echo $character->hp . ' / '. $character->max_hp; ?></p>
 	</span>
 	
 	<ul class="left">
