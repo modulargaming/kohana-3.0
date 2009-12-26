@@ -22,6 +22,9 @@ class Controller_Battle extends Controller_Frontend {
 		// Check if the user has a character already.
 		if ( !$this->user->character->loaded() )
 			$this->request->redirect( 'character/create' );
+			
+		$this->user->character->battle->load();
+		$this->user->character->battle->monster->load();
 	}
 	
 	
