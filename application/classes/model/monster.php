@@ -22,6 +22,9 @@ class Model_Monster extends Sprig {
 			'max_dmg' => new Sprig_Field_integer(),
 			'money'   => new Sprig_Field_integer(),
 			'xp'      => new Sprig_Field_integer(),
+			'image'   => new Sprig_Field_image(array(
+				'path' => 'assets/images/monsters/',
+			)),
 		);
 	}	
 	
