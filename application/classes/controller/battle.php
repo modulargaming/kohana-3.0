@@ -112,4 +112,4 @@ class Controller_Battle extends Controller_Frontend {
 		
 	}
 	
-}
+} // End Battle

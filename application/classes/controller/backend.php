@@ -8,9 +8,9 @@
  * @license    http://copy112.com/mg/license
  */
 
-abstract class Controller_Frontend extends Controller {
+abstract class Controller_Backend extends Controller {
 	
-	public $template = 'template/main';
+	public $template = 'template/admin';
 	public $protected = FALSE;
 	public $title = 'Undefined';
 	public $auto_render = TRUE;
@@ -36,7 +36,7 @@ abstract class Controller_Frontend extends Controller {
 	public function before()
 	{
 		
-		$this->add_css('assets/css/main.css');
+		$this->add_css('assets/css/admin.css');
 		
 		$this->add_js('assets/js/jquery-1.3.2.min.js');
 		$this->add_js('assets/js/jquery-ui-1.7.2.custom.min.js');

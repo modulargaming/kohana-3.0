@@ -16,3 +16,6 @@
 [submodule "modules/A1"]
 	path = modules/A1
 	url = git://github.com/copy112/A1.git
+[submodule "modules/blog"]
+	path = modules/blog
+	url = git@github.com:copy112/mg-blog.git

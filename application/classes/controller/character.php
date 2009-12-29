@@ -192,4 +192,4 @@ class Controller_Character extends Controller_Frontend {
 		
 	}
 	
-}
+} // End Character

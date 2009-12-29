@@ -77,12 +77,22 @@ Kohana::modules(array(
 	'a1'    => MODPATH.'A1',
 	'a2'    => MODPATH.'A2',
 	'acl'   => MODPATH.'ACL',
+	
+	'blog'  => MODPATH.'blog', // Blog
 	));
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+
+Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
+	->defaults(array(
+		'directory'  => 'admin',
+		'controller' => 'welcome',
+		'action'     => 'index',
+));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',
