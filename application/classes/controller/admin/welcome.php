@@ -12,7 +12,19 @@ class Controller_Admin_Welcome extends Controller_Backend {
 
 	public function action_index()
 	{
-		$this->template->content = View::factory('admin/index');
+		
+		$users = Sprig::factory( 'user' )->load( NULL, NULL )->count();
+		
+		// Check the active users by taking todays time, and substract 1 week
+		$sql = new Database_Query_Builder_Select();
+		$sql->where( 'last_login', '>', time() - ( 7 * 24 * 60 * 60 ) );
+		
+		$active_users = Sprig::factory( 'user' )->load( $sql, NULL )->count();
+		
+		
+		$this->template->content = View::factory('admin/index')
+			->set( 'users', $users )
+			->set( 'active_users', $active_users );
 	}
 
 } // End Welcome
