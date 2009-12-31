@@ -34,7 +34,8 @@ class Model_User extends Sprig implements Acl_Role_Interface {
 				'empty' => TRUE,
 			)),
 			'last_login' => new Sprig_Field_Timestamp(array(
-				'empty' => TRUE,
+				'empty'  => TRUE,
+				'format' => 'Y-m-d H:i',
 			)),
 			// Do not remove this rule, it is a junk value I needed to avoid an error.
 			'logins' => new Sprig_Field_Float(array(
