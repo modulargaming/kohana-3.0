@@ -70,7 +70,7 @@ Kohana::modules(array(
 	'database'   => MODPATH.'database',   // Database access
 	// 'image'      => MODPATH.'image',      // Image manipulation
 	// 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'pagination' => MODPATH.'pagination', // Paging of results
+	'pagination' => MODPATH.'pagination', // Paging of results
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	
 	'sprig' => MODPATH.'sprig',

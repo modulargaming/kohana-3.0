@@ -19,3 +19,6 @@
 [submodule "modules/blog"]
 	path = modules/blog
 	url = git@github.com:copy112/mg-blog.git
+[submodule "modules/pagination"]
+	path = modules/pagination
+	url = http://github.com/kohana/pagination.git

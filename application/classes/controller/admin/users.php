@@ -9,14 +9,32 @@
  */
 
 class Controller_Admin_Users extends Controller_Backend {
-
-	public function action_index()
+	
+	public function before()
+	{
+		$this->request->action = 'index';
+		parent::before();
+	}
+	
+	
+	public function action_index( $page = 1 )
 	{
 		
+		if ( !is_numeric( $page ) )
+			die( 'Not numeric' );
+		
+		$numb = 20;
+		
+		// Count the ammount of users
+		$t_users = Sprig::factory( 'user' )->count();
+		
 		// Load all users
-		$users = Sprig::factory( 'user' )->load( NULL, NULL );
+		$sql = new Database_Query_Builder_Select();
+		$sql->offset( $page * $numb - $numb);
+		$users = Sprig::factory( 'user' )->load( $sql, $numb );
 		
 		$this->template->content = View::factory('admin/users/index')
+			->set( 't_users', $t_users )
 			->set( 'users', $users );
 	}
 

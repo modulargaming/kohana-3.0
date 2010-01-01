@@ -38,3 +38,13 @@
 		<?php endforeach; ?>
 	</tbody>
 </table>
+<?php
+$pag_data = array
+(
+	'current_page'    => array('source' => 'route', 'key' => 'id'),
+	'total_items'     => $t_users,
+	'items_per_page'  => 20,
+);
+ 
+echo Pagination::factory($pag_data)->render();
+?>
