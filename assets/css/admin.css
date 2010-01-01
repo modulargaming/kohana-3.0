@@ -233,3 +233,38 @@ input[type="submit"]:hover {
 div .right {
 	float: right;
 }
+
+
+/*
+ * Table
+ */
+
+table {
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 1px;
+	font-size: 0.85em;
+}
+
+th {
+	padding: 3px 5px;
+	color: #fff;
+	background: #627177;
+	border-bottom: 1px solid #c3c3c3;
+	font-weight: normal;
+	margin: 1px;
+}
+
+td {
+	text-align: left;
+	padding: 5px;
+	line-height: 1.20em;
+}
+
+.rtl th, .rtl td {
+	text-align: right;
+}
+
+tr.zebra {
+	background: #eee;
+}
