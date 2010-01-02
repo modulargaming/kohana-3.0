@@ -19,6 +19,12 @@ date_default_timezone_set('Europe/London');
 setlocale(LC_ALL, 'en_US.utf-8');
 
 /**
+ * Set the production status by the ip address.
+ */
+//define('IN_PRODUCTION', $_SERVER['SERVER_ADDR'] !== '127.0.0.1');
+define('IN_PRODUCTION', TRUE);
+
+/**
  * Enable the Kohana auto-loader.
  *
  * @see  http://docs.kohanaphp.com/about.autoloading
@@ -91,7 +97,7 @@ Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
 		'directory'  => 'admin',
 		'controller' => 'welcome',
 		'action'     => 'index',
-));
+	));
 
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
@@ -103,7 +109,30 @@ Route::set('default', '(<controller>(/<action>(/<id>)))')
  * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
  * If no source is specified, the URI will be automatically detected.
  */
-echo Request::instance()
-	->execute()
-	->send_headers()
-	->response;
+$request = Request::instance();
+
+try
+{
+	// Attempt to execute the response
+	$request->execute();
+}
+catch (Exception $e)
+{
+	
+	if ( ! IN_PRODUCTION)
+	{
+		throw $e;
+	}
+	
+	// Log the error
+	Kohana::$log->add(Kohana::ERROR, Kohana::exception_text($e));
+	
+	$request->status = 404;
+	$request->respons = Request::factory('errors/404')->execute();
+
+}
+
+/**
+* Display the request response.
+*/
+echo $request->send_headers()->response;
