@@ -11,7 +11,7 @@
 abstract class Controller_Backend extends Controller {
 	
 	public $template = 'template/admin';
-	public $protected = FALSE;
+	public $protected = TRUE; // All admin pages requires the user to be loged in.
 	public $title = 'Undefined';
 	public $auto_render = TRUE;
 	public $js = array('files' => array(), 'scripts' => array());

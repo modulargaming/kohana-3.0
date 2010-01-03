@@ -19,11 +19,15 @@ class Controller_Admin_Users extends Controller_Backend {
 	
 	public function action_index( $page = 1 )
 	{
+		// Check if the user got permission to view all users
+		if ( !$this->a2->allowed( 'admin', 'users_view' ) )
+			$this->request->redirect( '' );
 		
+		// Make sure page is numeric, if not it might be a hacking attempt
 		if ( !is_numeric( $page ) )
 			die( 'Not numeric' );
 		
-		$numb = 20;
+		$numb = 20; // Number of results on the page
 		
 		// Count the ammount of users
 		$t_users = Sprig::factory( 'user' )->count();
@@ -35,7 +39,7 @@ class Controller_Admin_Users extends Controller_Backend {
 		
 		$this->template->content = View::factory('admin/users/index')
 			->set( 't_users', $t_users )
-			->set( 'users', $users );
+			->set( 'users',   $users   );
 	}
 
-} // End Welcome
+} // End Admin_Users

@@ -28,7 +28,10 @@ return array(
 	'roles' => array
 	(
 		// ADD YOUR OWN ROLES HERE
-		'user'	=>	'guest'
+		'validation' => 'guest', // Unvalidated user
+		'user'	     =>	'guest', // Normal user
+		'admin'      => 'user',  // Limited admin access
+		'root'       => 'admin', // Full access
 	),
 
 	/*
@@ -44,7 +47,8 @@ return array(
 	'resources' => array
 	(
 		// ADD YOUR OWN RESOURCES HERE
-		'blog'	=>	NULL
+		'blog'	=> NULL,
+		'admin' => NULL,
 	),
 
 	/*
@@ -61,8 +65,6 @@ return array(
 		'allow' => array
 		(
 			/*
-			 * ADD YOUR OWN ALLOW RULES HERE 
-			 */
 			'ruleName1' => array(
 				'role'      => 'guest',
 				'resource'  => 'blog',
@@ -75,12 +77,18 @@ return array(
 				'role'      => array('user','manager'),
 				'resource'  => 'blog',
 				'privilege' => array('delete','edit')
-			)
+			),
+			*/
+			'admin_users_view' => array(
+				'role'      => 'admin',
+				'resource'  => 'admin',
+				'privilege' => 'users_view'
+			),
 			 
 		),
 		'deny' => array
 		(
-			// ADD YOUR OWN DENY RULES HERE
+			
 		)
 	)
 );
