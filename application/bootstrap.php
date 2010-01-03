@@ -127,11 +127,10 @@ catch (Exception $e)
 	// Log the error
 	Kohana::$log->add(Kohana::ERROR, Kohana::exception_text($e));
 	
-	$request->status = 404;
-	$request->respons = Request::factory('errors/404')->execute();
+	//$request->status = 404;
+	$request = Request::factory('errors/404')->execute();
 
 }
-
 /**
 * Display the request response.
 */
