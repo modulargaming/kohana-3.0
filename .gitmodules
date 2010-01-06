@@ -18,7 +18,7 @@
 	url = git://github.com/copy112/A1.git
 [submodule "modules/pagination"]
 	path = modules/pagination
-	url = http://github.com/kohana/pagination.git
+	url = git://github.com/kohana/pagination.git
 [submodule "modules/blog"]
 	path = modules/blog
 	url = git://github.com/copy112/mg-blog.git

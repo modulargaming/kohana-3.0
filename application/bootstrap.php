@@ -16,13 +16,13 @@ date_default_timezone_set('Europe/London');
  * @see  http://docs.kohanaphp.com/about.configuration
  * @see  http://php.net/setlocale
  */
-setlocale(LC_ALL, 'en_US.utf-8');
+setlocale(LC_ALL, 'en_GB.utf-8');
 
 /**
  * Set the production status by the ip address.
  */
 //define('IN_PRODUCTION', $_SERVER['SERVER_ADDR'] !== '127.0.0.1');
-define('IN_PRODUCTION', TRUE);
+define('IN_PRODUCTION', FALSE);
 
 /**
  * Enable the Kohana auto-loader.
@@ -55,7 +55,13 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array('base_url' => '/modulargaming/', 'index_file' => ''));
+Kohana::init(array(
+		    'base_url' => '/modulargaming/',
+		    'index_file' => ''
+		    'profiling' => !IN_PRODUCTION,
+		    'caching' => IN_PRODUCTION
+
+));
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
