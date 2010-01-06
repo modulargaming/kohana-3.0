@@ -57,7 +57,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  */
 Kohana::init(array(
 		    'base_url' => '/modulargaming/',
-		    'index_file' => ''
+		    'index_file' => '',
 		    'profiling' => !IN_PRODUCTION,
 		    'caching' => IN_PRODUCTION
 
