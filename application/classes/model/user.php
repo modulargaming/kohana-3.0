@@ -12,7 +12,7 @@ class Model_User extends Sprig implements Acl_Role_Interface {
 	 
 	protected $_title_key = 'username';
 
-	protected $_sorting = array('username' => 'asc');
+	protected $_sorting = array('id' => 'asc');
 
 	protected function _init()
 	{

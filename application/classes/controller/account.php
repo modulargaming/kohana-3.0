@@ -93,8 +93,8 @@ class Controller_Account extends Controller_Frontend {
 		}
 		
 		$this->template->content = View::factory('account/register')
-			->set('errors', $this->errors)
-			->set('post', $post->as_array());
+			->set( 'errors', $this->errors     )
+			->set( 'post',   $post->as_array() );
 	}
 	
 	public function action_logout()
