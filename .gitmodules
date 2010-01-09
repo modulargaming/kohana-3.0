@@ -22,3 +22,6 @@
 [submodule "modules/blog"]
 	path = modules/blog
 	url = git://github.com/copy112/mg-blog.git
+[submodule "modules/captcha"]
+	path = modules/captcha
+	url = git://github.com/modulargaming/captcha.git
