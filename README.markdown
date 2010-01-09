@@ -39,10 +39,6 @@ Step 3: Configuration of Database
 
 Edit `application/config/database.php` with the correct information.
 
-> `$development` variable is development environment in local.
-
-> `$production` variable is production environment online.
-
 Step 4: Import SQL
 
 Run migration module on the models.
