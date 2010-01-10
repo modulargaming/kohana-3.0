@@ -84,6 +84,11 @@ return array(
 				'resource'  => 'admin',
 				'privilege' => 'users_view'
 			),
+			'admin_users_edit' => array(
+				'role'      => 'admin',
+				'resource'  => 'admin',
+				'privilege' => 'users_edit'
+			),
 			 
 		),
 		'deny' => array

@@ -22,7 +22,7 @@
 				<td><?php echo $v->email; ?></td>
 				<td><?php echo $v->verbose( 'last_login' ); ?></td>
 				<td><?php echo $v->role; ?></td>
-				<td>Edit Delete</td>
+				<td><?php echo html::anchor( 'admin/users/edit/' . $v->id, 'Edit'); ?> Delete</td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
