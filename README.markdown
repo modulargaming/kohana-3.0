@@ -8,8 +8,8 @@ A modular web game framework.
 
 * PHP 5.2+
 * Mysql 5.0+
-* [Kohana v3.0](http://github.com/kohana/kohana)
-* Kohana Modules: [Database](http://github.com/kohana/database), [Sprig](http://github.com/kohana/sprig), [Auth](http://github.com/copy112/A1), [Pagination](http://github.com/kohana/pagination) [Blog] (http://github.com/copy112/mg-blog) and [Captcha](http://github.com/modulargaming/captcha)  . (**They are all included**)
+* [Kohana v3.0](http://github.com/modulargaming/core)
+* Kohana Modules: [A1](http://github.com/modulargaming/A1), [A2] (http://github.com/modulargaming/A2, [ACL] (http://github.com/modulargaming/acl), [Blog] (http://github.com/copy112/mg-blog), [Captcha](http://github.com/modulargaming/captcha), [Database] (http://github.com/modulargaming/database) [Pagination](http://github.com/modulargaming/pagination) and [Sprig] (http://github.com/modulargaming/sprig (**They are all included**)
 
 ## Installation
 
@@ -48,8 +48,6 @@ Step 5: Configuration of modulargaming
 Open `application/bootstrap.php` and make the following changes: 
 
 * Set the default [timezone](http://php.net/timezones) for your application
-
-* Set the base_url 
 
 Make sure the `application/cache` and `application/logs` directories are world writable with `chmod application/{cache,logs} 0777`
 
