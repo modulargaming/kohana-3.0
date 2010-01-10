@@ -20,7 +20,7 @@
 		
 		<ul class="nav">
 			<?php
-				echo '<li class="first">' . html::anchor( '', 'Dashboard' )    . '</li>';
+				echo '<li class="first">' . html::anchor( 'admin', 'Dashboard' )    . '</li>';
 				echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
 				echo '<li>' . html::anchor( 'character', 'Character' ) . '</li>';
 			?>

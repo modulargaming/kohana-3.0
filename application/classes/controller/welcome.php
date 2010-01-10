@@ -9,7 +9,9 @@
  */
 
 class Controller_Welcome extends Controller_Frontend {
-
+	
+	public $title = 'Welcome';
+	
 	public function action_index()
 	{
 		$this->template->content = View::factory('index');

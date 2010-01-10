@@ -1,3 +1,4 @@
+<?php echo html::anchor( 'admin/users', 'Go back' ); ?>
 <?php echo form::open(); ?>
 
 <fieldset>

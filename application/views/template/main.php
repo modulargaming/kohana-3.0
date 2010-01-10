@@ -11,7 +11,7 @@
 		path = "<?php echo url::base(); ?>";
 	</script>
 	
-	<title>Modular Gaming</title>
+	<title>Modular Gaming - <?php echo $title; ?></title>
 </head>
 <body>
 

@@ -48,8 +48,9 @@ abstract class Controller_Frontend extends Controller {
 		
 		$this->user = $this->a2->get_user();
 		
-		View::set_global( 'user', $this->user );
+		View::set_global(  'user',   $this->user   );
 		View::bind_global( 'errors', $this->errors );
+		View::bind_global( 'title',  $this->title  );
 		
 		if ($this->auto_render === TRUE && !Request::$is_ajax )
 		{

@@ -53,6 +53,9 @@ class Controller_Admin_Users extends Controller_Backend {
 	
 	public function action_add()
 	{
+		// Check if the user got permission to add new users
+		if ( !$this->a2->allowed( 'admin', 'users_add' ) )
+			$this->request->redirect( '' );		
 		
 		$sprig = Sprig::factory('user');
 		

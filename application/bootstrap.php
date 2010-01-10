@@ -21,8 +21,7 @@ setlocale(LC_ALL, 'en_GB.utf-8');
 /**
  * Set the production status by the ip address.
  */
-//define('IN_PRODUCTION', $_SERVER['SERVER_ADDR'] !== '127.0.0.1');
-define('IN_PRODUCTION', FALSE);
+define('IN_PRODUCTION', $_SERVER['SERVER_ADDR'] !== '127.0.0.1');
 
 /**
  * Enable the Kohana auto-loader.
@@ -133,7 +132,6 @@ catch (Exception $e)
 	// Log the error
 	Kohana::$log->add(Kohana::ERROR, Kohana::exception_text($e));
 	
-	//$request->status = 404;
 	$request = Request::factory('errors/404')->execute();
 
 }

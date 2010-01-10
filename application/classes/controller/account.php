@@ -10,10 +10,15 @@
 
 class Controller_Account extends Controller_Frontend {
 	
+	public $title = 'Account';
+	
 	public function action_index()
-	{
+	{		
 		if ( !$this->user )
 			$this->request->redirect( 'account/login' );
+		
+		
+		$this->title = 'Settings';
 		
 		$this->template->content = View::factory('account/index');
 	}
@@ -23,6 +28,8 @@ class Controller_Account extends Controller_Frontend {
 		// If the user is already logged in, send them to their UCP (User control panel)
 		if ( $this->user )
 			$this->request->redirect( 'account' );
+		
+		$this->title = 'Login';
 		
 		// Validate the form input
 		$post = Validate::factory($_POST)
@@ -49,6 +56,8 @@ class Controller_Account extends Controller_Frontend {
 	{
 		if ( $this->user )
 			$this->request->redirect( 'account' );
+		
+		$this->title = 'Register';
 		
 		$sprig = Sprig::factory('user');
 		
