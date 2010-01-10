@@ -125,23 +125,21 @@ class Controller_Admin_Users extends Controller_Backend {
 			die('Error, not integer');
 		}
 		
+		$sprig = Sprig::factory( 'user', array( 'id' => $id ) )->load();
+		
 		// Check if no post request was made, and load the user
 		if ( $_POST == array() )
 		{
-			$user = Sprig::factory( 'user', array( 'id' => $id ) )->load();
-			$post = $user;
+			$post = $sprig;
 		}
 		else
 		{
-		/*
-			$sprig = Sprig::factory('user');
 			
 			// Check if we have a post request
 			$post = Validate::factory( $_POST )
 				->filter( TRUE, 'trim' )
 				->rules( 'username',         $sprig->field('username')->rules )
 				->rules( 'email',            $sprig->field('email')->rules    )
-				->rule ( 'password',         'min_length', array( 6  )        )
 				->rule ( 'password',         'max_length', array( 20 )        )
 				->rule ( 'password_confirm', 'matches', array('password')     )
 				->rule ( 'role',             'not_empty'                      );
@@ -155,11 +153,15 @@ class Controller_Admin_Users extends Controller_Backend {
 				$sprig->values( $post->as_array());
 				
 				// Hash the password
-				$sprig->password = $this->a1->hash_password( $post['password'] );
+				if ( $post['password'] != '' )
+				{
+					$sprig->password = $this->a1->hash_password( $post['password'] );
+				}
+				
 				try
 				{
 					// Create the new user
-					$sprig->create();
+					$sprig->update();
 					
 					// Redirect the user to the login page
 					$this->request->redirect( 'admin/users' );
@@ -175,7 +177,7 @@ class Controller_Admin_Users extends Controller_Backend {
 			{
 				$this->errors = $post->errors('register');
 			}
-			*/
+			
 		}
 		
 		$t = Kohana::config('a2');
