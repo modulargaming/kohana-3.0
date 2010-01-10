@@ -18,11 +18,11 @@
 	</dl>
 	
 	<dl>
-		<dt><?php echo form::label('email', 'E-mail adress:'); ?></dt>
+		<dt><?php echo form::label('email', 'E-mail address:'); ?></dt>
 		<dd><?php echo form::input( 'email', $post['email'] ); ?></dd>
 	</dl>
 	<dl>
-		<dt><?php echo form::label( 'email_confirm', 'Confirm e-mail adress:' ); ?></dt>
+		<dt><?php echo form::label( 'email_confirm', 'Confirm e-mail address:' ); ?></dt>
 		<dd><?php echo form::input( 'email_confirm', $post['email_confirm'] ); ?></dd>
 	</dl>
 	
