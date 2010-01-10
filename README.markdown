@@ -9,7 +9,7 @@ A modular web game framework.
 * PHP 5.2+
 * Mysql 5.0+
 * [Kohana v3.0](http://github.com/kohana/kohana)
-* Kohana Modules: [Database](http://github.com/kohana/database), [Sprig](http://github.com/kohana/sprig), [Auth](http://github.com/copy112/A1), [Pagination](http://github.com/kohana/pagination) and [Blog] (http://github.com/copy112/mg-blog), [Captcha](http://github.com/modulargaming/captcha)  . (**They are all included**)
+* Kohana Modules: [Database](http://github.com/kohana/database), [Sprig](http://github.com/kohana/sprig), [Auth](http://github.com/copy112/A1), [Pagination](http://github.com/kohana/pagination) [Blog] (http://github.com/copy112/mg-blog) and [Captcha](http://github.com/modulargaming/captcha)  . (**They are all included**)
 
 ## Installation
 
