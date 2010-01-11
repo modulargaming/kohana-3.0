@@ -39,6 +39,11 @@
 		<dt><?php echo form::label('password_confirm', 'Confirm Password:'); ?></dt>
 		<dd><?php echo form::password( 'password_confirm', $post['password_confirm'] ); ?></dd>
 	</dl>
+
+        <dl>
+                <dt><?php $captcha = Captcha::instance(); echo $captcha->render(); ?></dt>
+                <dd><?php echo form::input( 'captcha', $post['captcha'] ); ?><br />Type the characters you see in the picture.</dd>
+        </dl>
 	
 	<dl>
 		<dt>&nbsp;</dt>

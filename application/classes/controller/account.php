@@ -12,6 +12,11 @@ class Controller_Account extends Controller_Frontend {
 	
 	public $title = 'Account';
 	
+        public function captcha_valid(Validate $array, $field)
+        {
+                if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
+        }
+
 	public function action_index()
 	{		
 		if ( !$this->user )
@@ -70,6 +75,7 @@ class Controller_Account extends Controller_Frontend {
 			->rule ('password',         'min_length', array ( 6 ) )
 			->rule ('password',         'max_length', array( 20 ) )
 			->rule ('password_confirm', 'matches', array('password'))
+			->callback('captcha', array($this, 'captcha_valid'))
 			->rule ('tos',              'not_empty');
 		
 		if ($post->check())
