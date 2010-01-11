@@ -85,6 +85,8 @@ Kohana::modules(array(
 	'pagination' => MODPATH.'pagination', // Paging of results
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	
+	'captcha' => MODPATH.'captcha',
+	
 	'sprig' => MODPATH.'sprig',
 	'a1'    => MODPATH.'A1',
 	'a2'    => MODPATH.'A2',
