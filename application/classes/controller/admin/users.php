@@ -195,5 +195,12 @@ class Controller_Admin_Users extends Controller_Backend {
 			->set( 'roles',  $roles            );
 		
 	}
+	
+	public function action_delete( $id = '' )
+	{
+		
+		
+		
+	}
 
 } // End Admin_Users

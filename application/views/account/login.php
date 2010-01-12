@@ -1,5 +1,11 @@
 <h2>Login</h2>
 
+<?php foreach ($errors as $v): ?>
+
+	<?php echo $v; ?><br />
+
+<?php endforeach; ?>
+
 <?php echo form::open(); ?>
 
 <fieldset>
