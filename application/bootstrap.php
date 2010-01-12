@@ -55,12 +55,10 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 Kohana::init(array(
-'base_url' => str_replace(
-		basename($_SERVER['SCRIPT_NAME']),'',$_SERVER['SCRIPT_NAME']),
-'index_file' => '',
-'profiling' => !IN_PRODUCTION,
-'caching' => IN_PRODUCTION
-
+	'base_url' => str_replace( basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME'] ),
+	'index_file' => '',
+	'profiling' => !IN_PRODUCTION,
+	'caching' => IN_PRODUCTION
 ));
 
 /**
@@ -138,6 +136,7 @@ catch (Exception $e)
 	$request = Request::factory('errors/404')->execute();
 
 }
+
 /**
 * Display the request response.
 */

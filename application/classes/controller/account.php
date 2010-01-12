@@ -11,11 +11,6 @@
 class Controller_Account extends Controller_Frontend {
 	
 	public $title = 'Account';
-	
-        public function captcha_valid(Validate $array, $field)
-        {
-                if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
-        }
 
 	public function action_index()
 	{		
@@ -50,7 +45,11 @@ class Controller_Account extends Controller_Frontend {
 			if ($this->a1->login($post['username'],$post['password'], isset($_POST['remember']) ? (bool) $_POST['remember'] : FALSE))
 			{
 				$this->request->redirect( '' );
+			} else {
+				$this->errors[] = 'Invalid Login';
 			}
+		} else {
+			$this->errors = $post->errors('register');
 		}
 		
 		$this->template->content = View::factory('account/login');
@@ -75,7 +74,7 @@ class Controller_Account extends Controller_Frontend {
 			->rule ('password',         'min_length', array ( 6 ) )
 			->rule ('password',         'max_length', array( 20 ) )
 			->rule ('password_confirm', 'matches', array('password'))
-			->callback('captcha', array($this, 'captcha_valid'))
+			->callback('captcha',       array($this, 'captcha_valid'))
 			->rule ('tos',              'not_empty');
 		
 		if ($post->check())
@@ -104,7 +103,7 @@ class Controller_Account extends Controller_Frontend {
 		}
 		else
 		{
-			$this->errors = $post->errors('register');
+			$this->errors = $post->errors('account/register');
 		}
 		
 		$this->template->content = View::factory('account/register')
@@ -118,6 +117,11 @@ class Controller_Account extends Controller_Frontend {
 			$this->a1->logout();
 		
 		$this->request->redirect( '' );
+	}
+	
+	public function captcha_valid(Validate $array, $field)
+	{
+		if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
 	}
 	
 	public function action_confirm($key)
