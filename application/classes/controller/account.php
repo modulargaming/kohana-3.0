@@ -12,11 +12,6 @@ class Controller_Account extends Controller_Frontend {
 	
 	public $title = 'Account';
 	
-        public function captcha_valid(Validate $array, $field)
-        {
-                if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
-        }
-
 	public function action_index()
 	{		
 		if ( !$this->user )
