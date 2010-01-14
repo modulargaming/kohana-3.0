@@ -41,7 +41,7 @@ Edit `application/config/database.php` with the correct information.
 
 Step 4: Import SQL
 
-Run the installer and it will automatically build the tables.
+Run the installer and it will automatically build the tables. (TODO)
 
 Step 5: Configuration of modulargaming
 
