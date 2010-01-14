@@ -1,4 +1,4 @@
-Copyright (c) 2010, Copy112
+Copyright (c) 2010, Modular Gaming
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

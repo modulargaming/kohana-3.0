@@ -3,9 +3,9 @@
  * 
  *
  * @package    Modular Gaming
- * @author     Lewis
- * @copyright  (c) 2010 Lewis
- * @license    BSD
+ * @author     Lewis Delicata
+ * @copyright  (c) 2010 Lewis Delicata
+ * @license    http://modulargaming.com/projects/modulargaming/wiki/License
  */
 
 class Controller_Inventory extends Controller_Frontend {
