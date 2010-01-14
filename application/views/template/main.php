@@ -24,8 +24,9 @@
 				
 				if ( $user ) {
 					
-					echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
+					echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
 					echo '<li>' . html::anchor( 'character', 'Character' ) . '</li>';
+					echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
 					echo '<li class="last">' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
 					
 				} else {
