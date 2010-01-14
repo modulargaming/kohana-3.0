@@ -51,7 +51,12 @@ class Model_User extends Sprig implements Acl_Role_Interface {
 			'character' => new Sprig_Field_HasOne(array(
                 'model' => 'Character',
 			)),
-			
+			'inventory' => new Sprig_Field_HasMany(array(
+                'model' => 'Inventory',
+			)),
+			'farm' => new Sprig_Field_HasMany(array(
+                'model' => 'Farm',
+			)),
 		);
 	}
 	
