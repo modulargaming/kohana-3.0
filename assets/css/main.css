@@ -156,9 +156,13 @@ input[type="submit"]:hover {
 .nav {
 	float: right;
 	height: 32px;
-	width: 300px;
-	background: url('../images/nav.png');
+	width: auto;
+	background: #006388;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 	margin: 65px 0 0 0;
+	padding-right: 10px;
 }
 
 .nav li {
