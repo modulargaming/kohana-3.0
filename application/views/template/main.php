@@ -45,7 +45,7 @@
 	
 	<div class="footer">
 		<div class="wrapper">
-			<p class="copyright">© 2010 the Modular Gaming Team.</p>
+			<p class="copyright">&copy;2010 Modular Gaming.</p>
 		</div>
 	</div>
 <?php if(!IN_PRODUCTION) echo View::factory('profiler/stats') ?>
