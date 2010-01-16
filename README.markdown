@@ -9,7 +9,7 @@ A modular web game framework.
 * PHP 5.2+
 * Mysql 5.0+
 * [Kohana v3.0](http://github.com/modulargaming/core)
-* Kohana Modules: [A1](http://github.com/modulargaming/A1), [A2] (http://github.com/modulargaming/A2, [ACL] (http://github.com/modulargaming/acl), [Blog] (http://github.com/copy112/mg-blog), [Captcha](http://github.com/modulargaming/captcha), [Database] (http://github.com/modulargaming/database) [Pagination](http://github.com/modulargaming/pagination) and [Sprig] (http://github.com/modulargaming/sprig (**They are all included**)
+* Kohana Modules: [A1](http://github.com/modulargaming/A1), [A2] (http://github.com/modulargaming/A2), [ACL] (http://github.com/modulargaming/acl), [Blog] (http://github.com/copy112/mg-blog), [Captcha](http://github.com/modulargaming/captcha), [Database] (http://github.com/modulargaming/database) [Pagination](http://github.com/modulargaming/pagination) and [Sprig] (http://github.com/modulargaming/sprig (**They are all included**)
 
 ## Installation
 
@@ -41,7 +41,7 @@ Edit `application/config/database.php` with the correct information.
 
 Step 4: Import SQL
 
-Run migration module on the models.
+Run the installer and it will automatically build the tables. (TODO)
 
 Step 5: Configuration of modulargaming
 

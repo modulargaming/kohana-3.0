@@ -10,44 +10,19 @@
 
 class Controller_Inventory extends Controller_Frontend {
 	public $protected = TRUE;
-	// Retrieve all races from the database and assign them to an array
+	public $title = 'Inventory';
 	public function action_index()
 	{
-		$items = $this->getItems();
-		$inventory = $this->getUserItems();
+		$inventory = $this->user->inventory->as_array();
+		$pag_data = array
+		(
+		'current_page' => array('source' => 'route', 'key' => 'id'),
+		'total_items' => count($inventory),
+		'items_per_page' => 20,
+		);
+		$pagination = Pagination::factory($pag_data)->render();
 		$this->template->content = View::factory('inventory/index')
 		->set( 'inventory', $inventory )
-		->set( 'items', $items );
-	}
-
-	function getUserItems()
-	{
-		$items = Sprig::factory('inventory', array('user_id' => $this->user->id))
-		 ->load(NULL, NULL);
-		$t = array();
-  		$i=1;
-		foreach ($items as $v)
-		{
-			$t[$i]['item_id'] = $v->item_id;
-			$t[$i]['amount'] = $v->amount;
-			$i++;
-		}
- 
-		return $t;
-	}
-	function getItems()
-	{
-		$items = Sprig::factory( 'item' )->load(NULL, NULL);
- 
-		$t = array();
-		foreach ($items as $v)
-		{
-			$t[$v->id]['name'] = $v->name;
-			$t[$v->id]['class'] = $v->class;
-			$t[$v->id]['image'] = $v->image;
-			$t[$v->id]['description'] = $v->description;
-		}
- 
-		return $t;
+		->set( 'pagination', $pagination );
 	}
 } // End Inventory
