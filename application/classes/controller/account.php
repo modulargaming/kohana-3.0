@@ -63,6 +63,8 @@ class Controller_Account extends Controller_Frontend {
 		
 		$this->title = 'Register';
 		
+		$this->add_js('assets/js/register.js'); // Register
+		
 		$sprig = Sprig::factory('user');
 		
 		// Check if we have a post request

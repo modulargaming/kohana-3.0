@@ -48,6 +48,18 @@
 			<p class="copyright">&copy;2010 Modular Gaming.</p>
 		</div>
 	</div>
+<<<<<<< HEAD
 <?php if(!IN_PRODUCTION) echo View::factory('profiler/stats') ?>
+=======
+<?php echo View::factory('profiler/stats') ?>
+<?php
+	foreach ($js['files'] as $script):
+		echo html::script($script);
+	endforeach;
+	foreach ($js['scripts'] as $script):
+		echo '<script type="text/javascript">'.$script.'</script>';
+	endforeach;
+?>
+>>>>>>> cf9e2217b11a817628b6deedf923d26ceaa3847c
 </body>
 </html>

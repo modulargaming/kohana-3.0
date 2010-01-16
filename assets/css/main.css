@@ -88,7 +88,7 @@ dl:hover input, input:focus, dl:hover select, select:focus {
 
 dt {
 	float: left;
-	width: 150px;
+	width: 160px;
 }
 
 dt span {
@@ -136,6 +136,13 @@ input[type="submit"] {
 input[type="submit"]:hover {
 	border: 1px solid #bc2a4d;
 	color: #bc2a4d;
+}
+
+label.error {
+	float: none;
+	color: red;
+	padding-left: .5em;
+	vertical-align: top;
 }
 
 .header {

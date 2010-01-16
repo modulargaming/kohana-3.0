@@ -6,7 +6,7 @@
 
 <?php endforeach; ?>
 
-<?php echo form::open(); ?>
+<?php echo form::open( NULL, array( 'class' => 'register' ) ); ?>
 
 <fieldset>
 	<dl>
@@ -14,7 +14,7 @@
 			<?php echo form::label('username', 'Username:'); ?><br />
 			<span>Length must be between 3 and 20 characters.</span>
 		</dt>
-		<dd><?php echo form::input( 'username', $post['username'] ); ?></dd>
+		<dd><?php echo form::input( 'username', $post['username'], array( 'maxlength' => 20 ) ); ?></dd>
 	</dl>
 	
 	<dl>
@@ -32,12 +32,12 @@
 			<span>Must be between 6 and 20 characters.</span>
 		</dt>
 		<dd>
-			<?php echo form::password( 'password', $post['password'] ); ?>
+			<?php echo form::password( 'password', $post['password'], array( 'maxlength' => 20 ) ); ?>
 		</dd>
 	</dl>
 	<dl>
 		<dt><?php echo form::label('password_confirm', 'Confirm Password:'); ?></dt>
-		<dd><?php echo form::password( 'password_confirm', $post['password_confirm'] ); ?></dd>
+		<dd><?php echo form::password( 'password_confirm', $post['password_confirm'], array( 'maxlength' => 20 ) ); ?></dd>
 	</dl>
 
         <dl>
