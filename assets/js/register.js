@@ -14,7 +14,7 @@ $(document).ready(function(){
 			},
 			email_confirm: {
 				required: true,
-				equalTo: 'email'
+				equalTo: "input[name$='email']"
 			},
 			
 			password: {
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			},
 			password_confirm: {
 				required: true,
-				equalTo: 'password'
+				equalTo: "input[name$='password']"
 			},
 			
 			captcha: {
@@ -37,6 +37,9 @@ $(document).ready(function(){
 				required: "Please enter a username",
 				minlength: "Your username must consist of at least 3 characters",
 				maxlength: "Your username must consist of less then 20 characters"
+			},
+			email: {
+				required: "Please enter an email",
 			}
 		}
 
