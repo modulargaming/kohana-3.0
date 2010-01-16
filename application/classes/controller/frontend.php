@@ -38,9 +38,10 @@ abstract class Controller_Frontend extends Controller {
 		
 		$this->add_css('assets/css/main.css');
 		
-		$this->add_js('assets/js/jquery-1.3.2.min.js');
-		$this->add_js('assets/js/jquery-ui-1.7.2.custom.min.js');
-		$this->add_js('assets/js/main.js');
+		$this->add_js('assets/js/jquery.js'); // Jquery 1.4
+		$this->add_js('assets/js/jquery.validate.js'); // Form Validation
+		// $this->add_js('assets/js/jquery-ui-1.7.2.custom.min.js');
+		// $this->add_js('assets/js/main.js');
 		
 		
 		$this->a2 = A2::instance();

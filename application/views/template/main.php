@@ -48,5 +48,13 @@
 		</div>
 	</div>
 <?php echo View::factory('profiler/stats') ?>
+<?php
+	foreach ($js['files'] as $script):
+		echo html::script($script);
+	endforeach;
+	foreach ($js['scripts'] as $script):
+		echo '<script type="text/javascript">'.$script.'</script>';
+	endforeach;
+?>
 </body>
 </html>
