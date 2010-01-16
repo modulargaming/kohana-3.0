@@ -25,8 +25,4 @@ class Controller_Inventory extends Controller_Frontend {
 		->set( 'inventory', $inventory )
 		->set( 'pagination', $pagination );
 	}
-<<<<<<< HEAD
 } // End Inventory
-=======
-} // End Inventory
->>>>>>> cf9e2217b11a817628b6deedf923d26ceaa3847c
