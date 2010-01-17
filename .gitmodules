@@ -28,3 +28,6 @@
 [submodule "system"]
 	path = system
 	url = git://github.com/modulargaming/core.git
+[submodule "modules/forum"]
+	path = modules/forum
+	url = git://github.com/modulargaming/forum.git
