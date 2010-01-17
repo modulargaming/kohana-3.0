@@ -11,6 +11,7 @@
 class Controller_Battle extends Controller_Frontend {
 	
 	public $protected = TRUE;
+	public $title = 'Battle';
 	
 	public function before()
 	{

@@ -10,6 +10,8 @@
 
 class Controller_Admin_Users extends Controller_Backend {
 	
+	public $title = 'Admin - Users';
+
 	public function before()
 	{
 		//$this->request->action = 'index';

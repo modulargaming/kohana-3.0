@@ -10,6 +10,8 @@
 
 class Controller_Errors extends Controller_Frontend {
 
+	public $title = 'Error';
+
 	public function action_index()
 	{
 		$this->template->content = View::factory('index');

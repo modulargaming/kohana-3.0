@@ -10,6 +10,8 @@
 
 class Controller_Admin_Welcome extends Controller_Backend {
 
+	public $title = 'Admin - Index';
+
 	public function action_index()
 	{
 		

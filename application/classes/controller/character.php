@@ -10,7 +10,9 @@
 
 class Controller_Character extends Controller_Frontend {
 	
+	
 	public $protected = TRUE;
+	public $title = 'Character';
 	public $heal_cost = 2;
 	
 	
