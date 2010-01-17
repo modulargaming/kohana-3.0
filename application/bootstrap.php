@@ -93,6 +93,7 @@ Kohana::modules(array(
 	'inventory' => MODPATH.'inventory', // Inventory
 	'blog'  => MODPATH.'blog', // Blog
 	'forum' => MODPATH.'forum', // Forum
+	'battle' => MODPATH.'battle', // Battle
 	));
 
 /**
