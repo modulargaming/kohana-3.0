@@ -71,6 +71,7 @@ class Controller_Account extends Controller_Frontend {
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
 			->rules('username',         $sprig->field('username')->rules)
+			->rule ('username',         'alpha_numeric')
 			->rules('email',            $sprig->field('email')->rules)
 			->rule ('email_confirm',    'matches', array('email'))
 			->rule ('password',         'min_length', array ( 6 ) )
