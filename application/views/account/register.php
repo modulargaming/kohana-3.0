@@ -39,15 +39,15 @@
 		<dt><?php echo form::label('password_confirm', 'Confirm Password:'); ?></dt>
 		<dd><?php echo form::password( 'password_confirm', $post['password_confirm'], array( 'maxlength' => 20 ) ); ?></dd>
 	</dl>
-
-        <dl>
-                <dt><?php $captcha = Captcha::instance(); echo $captcha->render(); ?></dt>
-                <dd><?php echo form::input( 'captcha', $post['captcha'] ); ?><br />Type the characters you see in the picture.</dd>
-        </dl>
+	
+	<dl>
+		<dt><?php echo Captcha::instance()->render(); ?></dt>
+		<dd><?php echo form::input( 'captcha', $post['captcha'] ); ?><br />Type the characters you see in the picture.</dd>
+	</dl>
 	
 	<dl>
 		<dt>&nbsp;</dt>
-		<dd><?php echo form::label('tos', form::checkbox('tos', 'yes').'I have read and agrees to the '.html::anchor('tos', 'Terms of Service')); ?></dd>
+		<dd><?php echo form::label('tos', form::checkbox('tos', 'yes').'I have read and agrees to the '.html::anchor('tos', 'Terms of Service', array( 'target' => '_blank'))); ?></dd>
 	</dl>
 	
 	<?php echo form::submit('register', 'Register'); ?>
