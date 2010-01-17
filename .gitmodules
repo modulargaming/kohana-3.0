@@ -31,3 +31,6 @@
 [submodule "modules/forum"]
 	path = modules/forum
 	url = git://github.com/modulargaming/forum.git
+[submodule "modules/battle"]
+	path = modules/battle
+	url = git://github.com/modulargaming/battle.git
