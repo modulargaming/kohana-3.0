@@ -1,31 +1,30 @@
-[submodule "system"]
-	path = system
-	url = git://github.com/modulargaming/core.git
-[submodule "modules/database"]
-	path = modules/database
-	url = git://github.com/modulargaming/database.git
-[submodule "modules/sprig"]
-	path = modules/sprig
-	url = git://github.com/modulargaming/sprig.git
+[submodule "modules/A1"]
+	path = modules/A1
+	url = git://github.com/modulargaming/A1.git
 [submodule "modules/A2"]
 	path = modules/A2
 	url = git://github.com/modulargaming/A2.git
 [submodule "modules/ACL"]
 	path = modules/ACL
 	url = git://github.com/modulargaming/ACL.git
-[submodule "modules/A1"]
-	path = modules/A1
-	url = git://github.com/modulargaming/A1.git
-[submodule "modules/pagination"]
-	path = modules/pagination
-	url = git://github.com/modulargaming/pagination.git
 [submodule "modules/blog"]
 	path = modules/blog
 	url = git://github.com/modulargaming/blog.git
 [submodule "modules/captcha"]
         path = modules/captcha
         url = git://github.com/modulargaming/captcha.git
-
+[submodule "modules/database"]
+	path = modules/database
+	url = git://github.com/modulargaming/database.git
 [submodule "modules/inventory"]
 	path = modules/inventory
 	url = git://github.com/modulargaming/inventory.git
+[submodule "modules/pagination"]
+	path = modules/pagination
+	url = git://github.com/modulargaming/pagination.git
+[submodule "modules/sprig"]
+	path = modules/sprig
+	url = git://github.com/modulargaming/sprig.git
+[submodule "system"]
+	path = system
+	url = git://github.com/modulargaming/core.git
