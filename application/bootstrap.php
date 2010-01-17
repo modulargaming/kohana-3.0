@@ -90,7 +90,9 @@ Kohana::modules(array(
 	'a2'    => MODPATH.'A2',
 	'acl'   => MODPATH.'ACL',
 	
+	'inventory' => MODPATH.'inventory', // Inventory
 	'blog'  => MODPATH.'blog', // Blog
+	'forum' => MODPATH.'forum', // Forum
 	));
 
 /**
