@@ -23,7 +23,7 @@
 				echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
 				
 				if ( $user ) {
-					
+					echo '<li>' . html::anchor( 'forum', 'Forum' ) . '</li>';
 					echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
 					echo '<li>' . html::anchor( 'character', 'Character' ) . '</li>';
 					echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
