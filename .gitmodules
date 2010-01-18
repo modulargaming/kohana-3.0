@@ -34,3 +34,6 @@
 [submodule "modules/sprig"]
 	path = modules/sprig
 	url = git://github.com/modulargaming/sprig.git
+[submodule "modules/image"]
+	path = modules/image
+	url = git://github.com/modulargaming/image.git
