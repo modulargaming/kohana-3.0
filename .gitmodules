@@ -10,9 +10,6 @@
 [submodule "modules/ACL"]
 	path = modules/ACL
 	url = git://github.com/modulargaming/ACL.git
-[submodule "modules/battle"]
-	path = modules/battle
-	url = git://github.com/modulargaming/battle.git
 [submodule "modules/captcha"]
 	path = modules/captcha
 	url = git://github.com/modulargaming/captcha.git
@@ -37,3 +34,6 @@
 [submodule "modules/image"]
 	path = modules/image
 	url = git://github.com/modulargaming/image.git
+[submodule "modules/battle"]
+	path = modules/battle
+	url = git://github.com/modulargaming/battle.git
