@@ -20,7 +20,7 @@
 <?php echo html::anchor( 'character/heal', 'Heal' ); ?><br />
 <?php echo html::anchor( 'travel', 'Travel' ); ?><br />
 <?php else: ?>
-<p>Whops seems like you don't have a character yet, <?php echo html::anchor( 'character', 'create one' ) ?>.</p>
+<p>Seems like you don't have a character yet, <?php echo html::anchor( 'character', 'create one' ) ?>.</p>
 <?php endif ?>
 </div>
  
