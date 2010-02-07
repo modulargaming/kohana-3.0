@@ -108,6 +108,16 @@ Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
 		'action'     => 'index',
 	));
 
+Route::set('shop', 'shop(/<shop>(/<action>(/<item>)))')
+
+  ->defaults(array(
+
+    'controller' => 'shop',
+
+    'action'     => 'index',
+
+  ));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',

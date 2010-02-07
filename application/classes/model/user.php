@@ -1,68 +1,78 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Model for managing the user table
- *
- * @package    Modular Gaming
- * @author     Copy112
- * @copyright  (c) 2009 Copy112
- * @license    http://copy112.com/mg/license
- */
-
+* Model for managing the user table
+*
+* @package Modular Gaming
+* @author Copy112
+* @copyright (c) 2009 Copy112
+* @license http://copy112.com/mg/license
+*/
+ 
 class Model_User extends Sprig implements Acl_Role_Interface {
-	 
-	protected $_title_key = 'username';
-
-	protected $_sorting = array('id' => 'asc');
-
-	protected function _init()
-	{
-		$this->_fields += array(
-			'id' => new Sprig_Field_Auto,
-			'username' => new Sprig_Field_Char(array(
-				'empty'  => FALSE,
-				'unique' => TRUE,
-				'min_length' => 3,
-				'max_length' => 20,
-			)),
-			'email' => new Sprig_Field_Email(array(
-				'empty' => FALSE,
-			)),
-			'password' => new Sprig_Field_Char(array(
-				'empty' => FALSE,
-			)),
-			'token' => new Sprig_Field_Char(array(
-				'empty' => TRUE,
-			)),
-			'last_login' => new Sprig_Field_Timestamp(array(
-				'empty'  => TRUE,
-				'format' => 'Y-m-d H:i',
-			)),
-			// Do not remove this rule, it is a junk value I needed to avoid an error.
-			'logins' => new Sprig_Field_Float(array(
-				 'empty' => TRUE,
-				 'rules' => array(
-				 	'numeric' => array(),
-				 )
-			)),
-			'role' => new Sprig_Field_Char(array(
-				 'empty' => TRUE,
-			)),
-			
-			'character' => new Sprig_Field_HasOne(array(
+ 
+protected $_title_key = 'username';
+ 
+protected $_sorting = array('id' => 'asc');
+ 
+protected function _init()
+{
+$this->_fields += array(
+'id' => new Sprig_Field_Auto,
+'username' => new Sprig_Field_Char(array(
+'empty' => FALSE,
+'unique' => TRUE,
+'min_length' => 3,
+'max_length' => 20,
+)),
+'email' => new Sprig_Field_Email(array(
+'empty' => FALSE,
+)),
+'password' => new Sprig_Field_Char(array(
+'empty' => FALSE,
+)),
+'token' => new Sprig_Field_Char(array(
+'empty' => TRUE,
+)),
+'last_login' => new Sprig_Field_Timestamp(array(
+'empty' => TRUE,
+'format' => 'Y-m-d H:i',
+)),
+// Do not remove this rule, it is a junk value I needed to avoid an error.
+'logins' => new Sprig_Field_Float(array(
+'empty' => TRUE,
+'rules' => array(
+'numeric' => array(),
+)
+)),
+'role' => new Sprig_Field_Char(array(
+'empty' => TRUE,
+)),
+ 
+'character' => new Sprig_Field_HasOne(array(
                 'model' => 'Character',
-			)),
-			'inventory' => new Sprig_Field_HasMany(array(
-                'model' => 'Inventory',
-			)),
-			'farm' => new Sprig_Field_HasMany(array(
-                'model' => 'Farm',
-			)),
-		);
-	}
-	
-	function get_role_id()
-	{
-		return $this->role;
-	}
-	
+)),
+'history' => new Sprig_Field_HasMany(array(
+                'model' => 'user_history',
+)),
+);
+}
+ 
+function get_role_id()
+{
+return $this->role;
+}
+ 
+static public function get_items( $id )
+{
+ 
+$db = DB::select()
+->from( 'items' )
+->join( 'user_items' )
+->on( 'items.id', '=', 'user_items.item_id' )
+->where( 'user_items.user_id', '=', $id );
+ 
+return $db->as_object()->execute();
+ 
+}
+ 
 }
