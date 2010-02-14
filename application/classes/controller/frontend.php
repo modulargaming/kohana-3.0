@@ -56,7 +56,7 @@ View::bind_global( 'errors', $this->errors );
 View::bind_global( 'title', $this->title );
  
  
-$this->MG = new MG( $this->user );
+$this->ModularGaming = new ModularGaming( $this->user );
  
 if ($this->auto_render === TRUE && !Request::$is_ajax )
 {
