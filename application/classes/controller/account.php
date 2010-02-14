@@ -122,7 +122,7 @@ class Controller_Account extends Controller_Frontend {
 		$this->request->redirect( '' );
 	}
 	
-	private function captcha_valid(Validate $array, $field)
+	public function captcha_valid(Validate $array, $field)
 	{
 		if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
 	}
@@ -134,7 +134,6 @@ class Controller_Account extends Controller_Frontend {
 	
 	public function action_tos()
 	{
-		
 		$this->template->content = View::factory( 'account/tos' );
 	}
 
