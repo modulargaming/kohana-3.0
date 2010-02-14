@@ -37,3 +37,9 @@
 [submodule "modules/battle"]
 	path = modules/battle
 	url = git://github.com/modulargaming/battle.git
+[submodule "modules/migration"]
+	path = modules/migration
+	url = git://github.com/modulargaming/migration.git
+[submodule "modules/dbforge"]
+	path = modules/dbforge
+	url = git://github.com/modulargaming/dbforge.git
