@@ -348,3 +348,7 @@ textarea.content {
 	padding: 5px;
 	font-family: Tahoma, sans-serif;
 }
+
+ul.no-bullets {
+list-style: none;
+}
