@@ -1,5 +1,5 @@
 <div class="stats">
-<?php if ( $character ): ?>
+<?php if ( $character->loaded() ): ?>
  
 <h2><?php echo $character->name; ?></h2>
 <p style="margin-top: -8px;">Level 1 <?php echo $character->race->name; ?> Warrior</p>
@@ -16,18 +16,20 @@
 <li>Energy <span><?php echo $character->energy; ?></span></li>
 <li>Gold <span>2135</span></li>
 </ul>
+<h2 style="text-align: left">Actions</h2>
 <?php echo html::anchor( 'battle', 'Attack a Monster' ); ?><br />
 <?php echo html::anchor( 'character/heal', 'Heal' ); ?><br />
 <?php echo html::anchor( 'travel', 'Travel' ); ?><br />
 <?php else: ?>
-<p>Seems like you don't have a character yet, <?php echo html::anchor( 'character', 'create one' ) ?>.</p>
+<p>Whops seems like you don't have a character yet, <?php echo html::anchor( 'character', 'create one' ) ?>.</p>
 <?php endif ?>
 </div>
  
 <div class="right">
-<ul>
+<h2>History</h2>
+<ul class="no-bullets">
 <?php foreach ( $history as $h ): ?>
-<li><span><?php echo $h->verbose( 'time' ) ?></span> <?php echo $h->history ?> </li>
+<li><span><?php echo MG::Ago( $h->time ) ?>:</span> <?php echo $h->history ?> </li>
 <?php endforeach;?>
 </ul>
 </div>
