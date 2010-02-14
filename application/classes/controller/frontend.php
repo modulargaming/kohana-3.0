@@ -4,7 +4,7 @@
 *
 * @package Modular Gaming
 * @author Copy112
-* @copyright (c) 2009 Copy112
+* @copyright (c) 2010 Copy112
 * @license http://copy112.com/mg/license
 */
  
@@ -46,15 +46,17 @@ $this->add_js('assets/js/jquery.validate.js'); // Form Validation
 // $this->add_js('assets/js/jquery-ui-1.7.2.custom.min.js');
 // $this->add_js('assets/js/main.js');
  
- 
+// Initialize the Auth System
 $this->a2 = A2::instance();
 $this->a1 = $this->a2->a1;
- 
 $this->user = $this->a2->get_user();
  
 View::set_global( 'user', $this->user );
 View::bind_global( 'errors', $this->errors );
 View::bind_global( 'title', $this->title );
+ 
+ 
+$this->MG = new MG( $this->user );
  
 if ($this->auto_render === TRUE && !Request::$is_ajax )
 {
@@ -73,15 +75,14 @@ if ($this->protected && !$this->user) {
 Request::instance()->redirect('account/login');
 }
  
+// Make sure the user got a character if characters is required in the controller
 if ( $this->character ) {
-$this->char = $this->user->character;
-$this->char->load();
  
-if ( !$this->char->loaded() ) {
-die();
+if ( !$this->user->character->loaded() ) {
+Request::instance()->redirect('character');
+}
 }
  
-}
 }
  
 public function after()

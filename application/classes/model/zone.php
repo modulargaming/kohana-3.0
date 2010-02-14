@@ -16,14 +16,11 @@ $this->_fields += array(
 'id' => new Sprig_Field_Auto,
 'name' => new Sprig_Field_Char(),
 'description' => new Sprig_Field_Text(),
- 
 'energy' => new Sprig_Field_Integer(),
- 
 'monsters' => new Sprig_Field_ManyToMany(array(
 'model' => 'Monster',
 'through' => 'zone_monster',
 )),
- 
 'shops' => new Sprig_Field_HasMany(array(
 'model' => 'Shop',
 )),

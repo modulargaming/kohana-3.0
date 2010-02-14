@@ -10,17 +10,22 @@
  
 class Model_User_History extends Sprig {
  
+protected $_sorting = array('time' => 'desc');
+ 
 protected function _init()
 {
 $this->_fields += array(
 'user' => new Sprig_Field_BelongsTo(array(
 'model' => 'user',
+'primary' => true,
 )),
 'time' => new Sprig_Field_Timestamp(array(
 'empty' => TRUE,
 'format' => 'Y-m-d H:i',
+'auto_now_create' => true,
 )),
 'history' => new Sprig_Field_Char(),
 );
 }
+ 
 }
