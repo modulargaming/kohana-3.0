@@ -341,14 +341,10 @@ div .right {
 	width: 300px;
 }
 
-textarea.content {
-	width: 500px;
-	height: 120px;
-	border: 3px solid #cccccc;
-	padding: 5px;
-	font-family: Tahoma, sans-serif;
+ul.no-bullets {
+	list-style: none;
 }
 
-ul.no-bullets {
-list-style: none;
+ul.history {
+	font-size: 12px;
 }
