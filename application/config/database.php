@@ -17,7 +17,7 @@ return array
 			 * boolean  persistent
 			 * string   database
 			 */
-			'hostname'   => 'localhost',
+			'hostname'   => '192.168.0.199',
 			'username'   => 'root',
 			'password'   => FALSE,
 			'persistent' => FALSE,

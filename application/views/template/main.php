@@ -23,7 +23,7 @@
 				echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
 				
 				if ( $user ) {
-					echo '<li>' . html::anchor( 'forum', 'Forum' ) . '</li>';
+					
 					echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
 					echo '<li>' . html::anchor( 'character', 'Character' ) . '</li>';
 					echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
@@ -45,10 +45,10 @@
 	
 	<div class="footer">
 		<div class="wrapper">
-			<p class="copyright">&copy;2010 Modular Gaming.</p>
+			<p class="copyright">© 2010 the Modular Gaming Team.</p>
 		</div>
 	</div>
-<?php if(!IN_PRODUCTION) echo View::factory('profiler/stats') ?>
+<?php if( !IN_PRODUCTION ) { echo View::factory('profiler/stats'); } ?>
 <?php
 	foreach ($js['files'] as $script):
 		echo html::script($script);

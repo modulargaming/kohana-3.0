@@ -4,14 +4,14 @@
  *
  * @package    Modular Gaming
  * @author     Copy112
- * @copyright  (c) 2009 Copy112
+ * @copyright  (c) 2010 Copy112
  * @license    http://copy112.com/mg/license
  */
 
 class Controller_Account extends Controller_Frontend {
 	
 	public $title = 'Account';
-	
+
 	public function action_index()
 	{		
 		if ( !$this->user )
@@ -88,6 +88,9 @@ class Controller_Account extends Controller_Frontend {
 			
 			// Hash the password
 			$sprig->password = $this->a1->hash_password( $post['password'] );
+			
+			// Set the default role for registered user.
+			$sprig->role = 'user';
 			
 			try
 			{

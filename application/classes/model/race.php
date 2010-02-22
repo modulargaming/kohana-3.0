@@ -8,15 +8,13 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Alignment extends Sprig {
+class Model_Race extends Sprig {
 	
 	protected function _init()
 	{
 		$this->_fields += array(
 			'id' => new Sprig_Field_Auto,
 			'name' => new Sprig_Field_Char(),
-			'min' => new Sprig_Field_Integer(),
-			'max' => new Sprig_Field_Integer(),
 		);
 	}	
 	

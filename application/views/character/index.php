@@ -1,5 +1,4 @@
 <div class="stats">
-	<?php if ( $character->loaded() ): ?>
 
 	<h2><?php echo $character->name; ?></h2>
 	<p style="margin-top: -8px;">Level 1 <?php echo $character->race->name; ?> Warrior</p>
@@ -19,27 +18,13 @@
 		<li>Gold <span>2135</span></li>
 	</ul>
 	
-	<h2 style="text-align: left">Actions</h2>
-	
 	<?php echo html::anchor( 'battle', 'Attack a Monster' ); ?><br />
 	<?php echo html::anchor( 'character/heal', 'Heal' ); ?><br />
 	<?php echo html::anchor( 'travel', 'Travel' ); ?><br />
-	<?php echo html::anchor( 'zone', 'Zone info' ); ?><br />
 	
-	<?php else: ?>
 	
-	<p>Whops seems like you don't have a character yet, <?php echo html::anchor( 'character', 'create one' ) ?>.</p>
-	
-	<?php endif ?>
 </div>
 
 <div class="right">
-	<h2>History</h2>
-	<ul class="no-bullets history">
-		<?php foreach ( $history as $h ): ?>
-		
-		<li><span><?php echo MG::Ago( $h->time ) ?>:</span> <?php echo $h->history ?> </li>
-		
-		<?php endforeach;?>
-	</ul>
+	<p>Welcome to the character info, this will give you a basic overview of your character stats.</p>
 </div>
