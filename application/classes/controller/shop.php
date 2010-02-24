@@ -96,10 +96,12 @@ class Controller_Shop extends Controller_Frontend {
 			
 			$item->amount = $item->amount - $post['amount'];
 			
+			Message::set( Message::SUCCESS, 'You bought ' . $post['amount'] . ' ' . $item->name );
+			
 		}
 		else
 		{
-			$this->errors = $post->errors('shop');
+			Message::set( Message::ERROR, $post->errors('shop') );
 		}	
 		
 		$this->template->content = View::factory( 'shop/view' )

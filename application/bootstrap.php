@@ -22,6 +22,8 @@ setlocale(LC_ALL, 'en_GB.utf-8');
  * Set the production status by the ip address.
  */
 define('IN_PRODUCTION', $_SERVER['SERVER_ADDR'] !== '127.0.0.1');
+Kohana::$environment = 'development';
+Kohana::$environment = 'deploy';
 
 /**
  * Enable the Kohana auto-loader.
@@ -55,10 +57,10 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 Kohana::init(array(
-	'base_url' => str_replace( basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME'] ),
+	'base_url'   => str_replace( basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME'] ),
 	'index_file' => '',
-	'profiling' => !IN_PRODUCTION,
-	'caching' => IN_PRODUCTION
+	'profiling'  => !IN_PRODUCTION,
+	'caching'    => IN_PRODUCTION
 ));
 
 /**
@@ -76,10 +78,6 @@ Kohana::$config->attach(new Kohana_Config_File);
  */
 Kohana::modules(array(
 	
-	// Database Migeration Tools
-	'migration'	=> MODPATH.'migration',
-	'dbforge'   => MODPATH.'dbforge',
-	
 	// Database
 	'sprig'    => MODPATH.'sprig',
 	'database' => MODPATH.'database',   // Database access
@@ -95,6 +93,8 @@ Kohana::modules(array(
 	'image'      => MODPATH.'image',	
 
 	'blog'  => MODPATH.'blog', // Blog
+	
+	'message' => MODPATH.'message',
 		
 ));
 

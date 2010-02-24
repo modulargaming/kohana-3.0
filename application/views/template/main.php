@@ -15,40 +15,43 @@
 </head>
 <body>
 
-	<div class="header">
-		<?php echo html::anchor('', 'ModularGaming', array('class' => 'logo')); ?>
-		
-		<ul class="nav">
-			<?php
-				echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
-				
-				if ( $user ) {
-					
-					echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
-					echo '<li>' . html::anchor( 'character', 'Character' ) . '</li>';
-					echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
-					echo '<li class="last">' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
-					
-				} else {
-				
-					echo '<li>' . html::anchor( 'account/login', 'Login' ) . '</li>';
-					echo '<li class="last">' . html::anchor( 'account/register', 'Register' ) . '</li>';
-					
-				}
-			?>
-		</ul>
-	</div>
+<div class="header">
+	<?php echo html::anchor('', 'ModularGaming', array('class' => 'logo')); ?>
 	
-	<div class="content">
-		<?php echo $content; ?>
+	<ul class="nav">
+		<?php
+			echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
+			
+			if ( $user ) {
+				
+				echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
+				echo '<li>' . html::anchor( 'character', 'Character' ) . '</li>';
+				echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
+				echo '<li class="last">' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
+				
+			} else {
+			
+				echo '<li>' . html::anchor( 'account/login', 'Login' ) . '</li>';
+				echo '<li class="last">' . html::anchor( 'account/register', 'Register' ) . '</li>';
+				
+			}
+		?>
+	</ul>
+</div>
+
+<div class="content">
+	<?php echo $content; ?>
+</div>
+
+<div class="footer">
+	<div class="wrapper">
+		<p class="copyright">© 2010 the Modular Gaming Team.</p>
 	</div>
-	
-	<div class="footer">
-		<div class="wrapper">
-			<p class="copyright">© 2010 the Modular Gaming Team.</p>
-		</div>
-	</div>
-<?php if( !IN_PRODUCTION ) { echo View::factory('profiler/stats'); } ?>
+</div>
+<?php
+	if( Kohana::$environment == 'development' )
+		echo View::factory('profiler/stats');
+?>
 <?php
 	foreach ($js['files'] as $script):
 		echo html::script($script);

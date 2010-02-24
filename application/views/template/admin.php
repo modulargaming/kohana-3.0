@@ -36,6 +36,9 @@
 			<p class="copyright">© 2010 the Modular Gaming Team.</p>
 		</div>
 	</div>
-<?php echo View::factory('profiler/stats') ?>
+<?php
+	if( Kohana::$environment == 'development' )
+		echo View::factory('profiler/stats');
+?>
 </body>
 </html>

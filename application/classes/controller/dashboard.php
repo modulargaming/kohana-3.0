@@ -22,8 +22,7 @@ class Controller_Dashboard extends Controller_Frontend {
 		// Initialize the character class, and set the players character as the default.
 		$char = new Character( $character );
 		
-		//$this->MG->add_history( 'hi' );
-		
+		// Load the users history, limit with 10
 		$history = Sprig::factory( 'user_history', array( 'user' => $this->user->id ) )->load( NULL, 10 );
 		
 		$this->template->content = View::factory('dashboard/index')

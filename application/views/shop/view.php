@@ -3,16 +3,12 @@
 
 <p><?php echo $item->description?></p>
 
+<?php echo Message::render(); ?>
+
 <ul>
 	<li>Price: <?php echo $item->price ?></li>
 	<li>Ammount in store: <?php echo $item->amount ?></li>
 </ul>
-
-<?php foreach ($errors as $v): ?>
-
-	<?php echo $v; ?><br />
-
-<?php endforeach; ?>
 
 <?php echo form::open(); ?>
 <fieldset>

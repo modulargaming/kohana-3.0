@@ -81,22 +81,24 @@ class Controller_Battle extends Controller_Frontend {
 	{
 		
 		$character = $this->user->character;
-		$monster = $character->battle;
+		$battle = $character->battle;
+		$monster = $battle->monster;
 		
-		if ( !$monster->id ) {
+		if ( !$battle->id ) {
 			$this->request->redirect( 'battle' );
 		}
 		
-		if ( Battle::can_fight( $character ) and Battle::can_fight( $monster ) )
+		if ( Battle::can_fight( $character ) and Battle::can_fight( $battle ) )
 			$this->request->redirect( 'battle' );
 		
 		$char = new Character( $character );
 		
-		if ( $monster->hp <= 0 )
+		if ( $battle->hp <= 0 )
 		{
 			$view = 'won';
 			
-			$character->money = $character->money + $monster->monster->money;
+			$character->money = $character->money + $battle->monster->money;
+			$character->xp = $character-xp + $monster->xp;
 			
 			$character->update();
 		}
@@ -106,10 +108,10 @@ class Controller_Battle extends Controller_Frontend {
 		}
 		
 		$this->template->content = View::factory( 'battle/' . $view )
-			->set( 'money', $monster->monster->money )
-			->set( 'xp', $monster->monster->xp );
+			->set( 'money', $monster->money )
+			->set( 'xp', $monster->xp );
 		
-		$monster->delete();
+		$battle->delete();
 		
 	}
 	

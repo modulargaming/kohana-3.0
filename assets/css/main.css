@@ -348,3 +348,24 @@ ul.no-bullets {
 ul.history {
 	font-size: 12px;
 }
+
+
+
+#message {
+	list-style: none;
+	border: 1px solid;
+	padding: 5px;
+	width: 400px;
+	background: #ccc;
+	font-style: italic;
+}
+
+#message.success {
+	border-color: #92b967;
+	background: #d6eac1;
+}
+
+#message.error {
+	border-color: #d8a59f;
+	background: #f6dcd9;
+}

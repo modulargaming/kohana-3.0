@@ -26,9 +26,7 @@ class ModularGaming {
 		
 		try
 		{
-			
 			$sprig->create();
-			
 		}
 		catch (Validate_Exception $e)
 		{
@@ -38,7 +36,7 @@ class ModularGaming {
 	}
 	
 	
-/**
+	/**
 	 * Initializes a new battle for the character using the monsters id as enemy.
 	 *
 	 * @param   object   Character

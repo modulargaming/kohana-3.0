@@ -14,6 +14,7 @@
 		</dt>
 		<dd><?php echo form::input('email_confirm'); ?></dd>
 	</dl>
+	<dl></dl>
 	<dl>
 		<dt><?php echo form::label('password', 'New Password:'); ?></dt>
 		<dd>
@@ -27,6 +28,16 @@
 		</dt>
 		<dd>
 			<?php echo form::password('password_confirm'); ?>
+		</dd>
+	</dl>
+	<dl></dl>
+	<dl>
+		<dt>
+			<?php echo form::label('old_password', 'Current Password:'); ?><br />
+			<span>Required for making sure you are you.</span>
+		</dt>
+		<dd>
+			<?php echo form::password('old_password'); ?>
 		</dd>
 	</dl>
 	

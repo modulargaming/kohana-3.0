@@ -21,4 +21,12 @@ class Controller_Inventory extends Controller_Frontend {
 			->set( 'items', $items );
 		
 	}
+	
+	public function action_view()
+	{
+		
+		
+		
+	}
+	
 } // End Inventory
