@@ -60,8 +60,7 @@ class Controller_Shop extends Controller_Frontend {
 			->rule( 'amount', 'digit' )
 			->callback('amount', array($this, 'shop_got_item'));
 		
-
-			
+		
 		if ($post->check())
 		{
 			
@@ -83,7 +82,6 @@ class Controller_Shop extends Controller_Frontend {
 				DB::insert( 'user_items', array( 'user_id', 'item_id', 'amount') )
 					->values( array( $this->user->id, $id, $post['amount'] ) )
 					->execute();
-					
 			
 			}
 			
@@ -101,7 +99,8 @@ class Controller_Shop extends Controller_Frontend {
 		}
 		else
 		{
-			Message::set( Message::ERROR, $post->errors('shop') );
+			if ( $post->errors() )
+				Message::set( Message::ERROR, $post->errors('shop') );
 		}	
 		
 		$this->template->content = View::factory( 'shop/view' )
