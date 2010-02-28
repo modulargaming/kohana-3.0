@@ -10,23 +10,26 @@
 
 class Controller_Dashboard extends Controller_Frontend {
 	
-	
-	public $protected = TRUE;
 	public $title = 'Dashboard';
+	public $protected = TRUE;
+	public $load_character = true;
 	
 	public function action_index()
 	{
-		$character = $this->user->character;
-		$character->load();
+		
+		
 		
 		// Initialize the character class, and set the players character as the default.
-		$char = new Character( $character );
+		$char = new Character( $this->character );
 		
 		// Load the users history, limit with 10
-		$history = Sprig::factory( 'user_history', array( 'user' => $this->user->id ) )->load( NULL, 10 );
+		$history = Jelly::select( 'user_history' )
+			->where(':primary_key', '=', $this->user->id)
+			->limit( 10 )
+			->execute();
 		
 		$this->template->content = View::factory('dashboard/index')
-			->set( 'character', $character )
+			->set( 'character', $this->character )
 			->set( 'char', $char )
 			->set( 'history', $history );
 		

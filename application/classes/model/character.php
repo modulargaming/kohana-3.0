@@ -8,7 +8,29 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Character extends Sprig {
+class Model_Character extends Jelly_Model {
+	
+	public static function initialize(Jelly_Meta $meta)
+	{
+		$meta->fields += array(
+			'id' => new Field_Primary,
+			'user' => new Field_BelongsTo( 'user_id' ),
+			
+			'race' => new Field_BelongsTo(array(
+				'model' => 'race',
+			)),
+			
+			'name' => new Field_String,
+			
+			'alignment' => new Field_Integer,
+			
+			'hp' => new Field_Integer,
+			'max_hp' => new Field_Integer,
+			
+			'money'  => new Field_Integer,
+			'energy' => new Field_Integer,
+		);
+	}
 	
 	protected function _init()
 	{

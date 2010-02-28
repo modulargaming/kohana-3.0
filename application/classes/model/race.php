@@ -8,14 +8,14 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Race extends Sprig {
+class Model_Race extends Jelly_Model {
 	
-	protected function _init()
+	public static function initialize(Jelly_Meta $meta)
 	{
-		$this->_fields += array(
-			'id' => new Sprig_Field_Auto,
-			'name' => new Sprig_Field_Char(),
+		$meta->fields += array(
+			'id' => new Field_Primary,
+			'name' => new Field_String,
 		);
-	}	
+	}
 	
 }
