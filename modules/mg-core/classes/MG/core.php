@@ -7,26 +7,30 @@
  * @copyright  (c) 2010 Copy112
  * @license    http://copy112.com/mg/license
  */
-
-class ModularGaming {
+class MG_Core {
 	
 	public function __construct( $user )
 	{
 		$this->user = $user;
 	}
 	
-	
+	/**
+	 * Ads a history item
+	 * 
+	 * @param string $history
+	 * @return 
+	 */
 	public function add_history( $history )
 	{
 		
-		$sprig = Sprig::factory( 'user_history' );
+		$jelly = Jelly::factory( 'user_history' );
 		
-		$sprig->user = $this->user->id;
-		$sprig->history = $history;
+		$jelly->user = $this->user->id;
+		$jelly->history = $history;
 		
 		try
 		{
-			$sprig->create();
+			$jelly->save();
 		}
 		catch (Validate_Exception $e)
 		{
@@ -40,7 +44,6 @@ class ModularGaming {
 	 * Initializes a new battle for the character using the monsters id as enemy.
 	 *
 	 * @param   object   Character
-	 * @param   integer  Monster Id
 	 * @return  boolean
 	 */
 	public function new_battle( $char )

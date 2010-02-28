@@ -8,52 +8,53 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_User extends Sprig implements Acl_Role_Interface {
+class Model_User extends Jelly_Model implements Acl_Role_Interface {
 	 
 	protected $_title_key = 'username';
 
 	protected $_sorting = array('id' => 'asc');
 
-	protected function _init()
+	public static function initialize(Jelly_Meta $meta)
 	{
-		$this->_fields += array(
-			'id' => new Sprig_Field_Auto,
-			'username' => new Sprig_Field_Char(array(
+		$meta->fields += array(
+			'id' => new Field_Primary,
+			
+			'username' => new Field_String(array(
 				'empty'  => FALSE,
 				'unique' => TRUE,
 				'min_length' => 3,
 				'max_length' => 20,
 			)),
-			'email' => new Sprig_Field_Email(array(
+			
+			'email' => new Field_Email(array(
 				'empty' => FALSE,
 			)),
-			'password' => new Sprig_Field_Char(array(
+			
+			'password' => new Field_String(array(
 				'empty' => FALSE,
 			)),
-			'token' => new Sprig_Field_Char(array(
+			
+			'token' => new Field_String(array(
 				'empty' => TRUE,
 			)),
-			'last_login' => new Sprig_Field_Timestamp(array(
+			
+			'last_login' => new Field_Timestamp(array(
 				'empty'  => TRUE,
-				'format' => 'Y-m-d H:i',
+				'pretty_format' => 'Y-m-d H:i',
 			)),
+			
 			// Do not remove this rule, it is a junk value I needed to avoid an error.
-			'logins' => new Sprig_Field_Float(array(
+			'logins' => new Field_Float(array(
 				 'empty' => TRUE,
 				 'rules' => array(
 				 	'numeric' => array(),
 				 )
 			)),
-			'role' => new Sprig_Field_Char(array(
+			
+			'role' => new Field_String(array(
 				 'empty' => TRUE,
 			)),
 			
-			'character' => new Sprig_Field_HasOne(array(
-                'model' => 'Character',
-			)),
-			'history' => new Sprig_Field_HasMany(array(
-                'model' => 'user_history',
-			)),
 		);
 	}
 	

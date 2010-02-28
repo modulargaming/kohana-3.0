@@ -12,8 +12,8 @@ abstract class Controller_Frontend extends Controller {
 	
 	public $template = 'template/main';
 	
-	public $protected = FALSE; // Require the user to be logged in
-	public $character = FALSE; // Require the user to have a character
+	public $protected = FALSE;
+	public $load_character = FALSE;
 	
 	public $title = 'Undefined';
 	public $auto_render = TRUE;
@@ -76,11 +76,13 @@ abstract class Controller_Frontend extends Controller {
 		}
 		
 		// Make sure the user got a character if characters is required in the controller
-		if ( $this->character ) {
-			$this->user->character->load();
-			if ( !$this->user->character->loaded() ) {
-				Request::instance()->redirect('character');
-			}
+		if ( $this->load_character ) {
+			
+			$this->character = Jelly::select( 'character' )
+				->where( 'user', '=', $this->user->id )
+				->limit( 1 )
+				->execute();
+			
 		}
 		
 	}

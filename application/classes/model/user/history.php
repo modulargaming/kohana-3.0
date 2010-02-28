@@ -8,24 +8,22 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_User_History extends Sprig {
+class Model_User_History extends Jelly_Model {
 	
-	protected $_sorting = array('time' => 'desc');
-	
-	protected function _init()
+	public static function initialize(Jelly_Meta $meta)
 	{
-		$this->_fields += array(
-			'user'  => new Sprig_Field_BelongsTo(array(
-				'model' => 'user',
-				'primary' => true,
+		$meta->sorting = array('time' => 'desc');
+		$meta->primary_key = 'user_id';
+		$meta->fields( array(
+			'user' => new Field_BelongsTo(array(
+				'column' => 'user_id',
 			)),
-			'time'    => new Sprig_Field_Timestamp(array(
+			'time' => new Field_Timestamp(array(
 				'empty'  => TRUE,
-				'format' => 'Y-m-d H:i',
 				'auto_now_create' => true,
 			)),
-			'history' => new Sprig_Field_Char(),
-		);
+			'history' => new Field_String,
+		));
 	}
 	
 }

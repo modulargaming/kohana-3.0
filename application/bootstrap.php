@@ -23,7 +23,7 @@ setlocale(LC_ALL, 'en_GB.utf-8');
  */
 define('IN_PRODUCTION', $_SERVER['SERVER_ADDR'] !== '127.0.0.1');
 Kohana::$environment = 'development';
-Kohana::$environment = 'deploy';
+//Kohana::$environment = 'deploy';
 
 /**
  * Enable the Kohana auto-loader.
@@ -78,7 +78,10 @@ Kohana::$config->attach(new Kohana_Config_File);
  */
 Kohana::modules(array(
 	
+	'mg-core' => MODPATH.'mg-core',
+	
 	// Database
+	'jelly'    => MODPATH.'jelly',
 	'sprig'    => MODPATH.'sprig',
 	'database' => MODPATH.'database',   // Database access
 	
@@ -95,7 +98,7 @@ Kohana::modules(array(
 	'blog'  => MODPATH.'blog', // Blog
 	
 	'message' => MODPATH.'message',
-		
+	
 ));
 
 /**
