@@ -56,7 +56,7 @@ abstract class Controller_Frontend extends Controller {
 		View::bind_global( 'title',  $this->title  );
 		
 		
-		$this->MG = new MG( $this->user );
+		$this->modulargaming = new modulargaming( $this->user );
 		
 		if ($this->auto_render === TRUE && !Request::$is_ajax )
 		{

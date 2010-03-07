@@ -7,7 +7,7 @@
  * @copyright  (c) 2010 Copy112
  * @license    http://copy112.com/mg/license
  */
-class MG_Core {
+class Modulargaming_Core {
 	
 	public function __construct( $user )
 	{
