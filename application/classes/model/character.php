@@ -22,6 +22,10 @@ class Model_Character extends Jelly_Model {
 			
 			'name' => new Field_String,
 			
+			'gender' => new Field_Enum(array(
+				'choices' => array('male' => 'Male', 'female' => 'Female'),
+			)),
+			
 			'alignment' => new Field_Integer,
 			
 			'hp' => new Field_Integer,
