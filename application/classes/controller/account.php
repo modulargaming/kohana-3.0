@@ -84,8 +84,14 @@ class Controller_Account extends Controller_Frontend {
 		if ($post->check())
 		{
 			
+			$values = array(
+				'username' => $post['username'],
+				'email'    => $post['email'],
+				'password' => $post['password'],
+			);
+			
 			// Assign the validated data to the sprig object
-			$user->values( $post->as_array());
+			$user->set( $values );
 			
 			// Hash the password
 			$user->password = $this->a1->hash_password( $post['password'] );
@@ -96,7 +102,7 @@ class Controller_Account extends Controller_Frontend {
 			try
 			{
 				// Create the new user
-				$user->create();
+				$user->save();
 				
 				// Redirect the user to the login page
 				$this->request->redirect( 'account/login' );
