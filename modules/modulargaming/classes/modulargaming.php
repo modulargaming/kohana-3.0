@@ -5,3 +5,9 @@ class Modulargaming extends Modulargaming_Core
 
 
 }
+
+class MG extends Modulargaming 
+{ 
+
+
+}
