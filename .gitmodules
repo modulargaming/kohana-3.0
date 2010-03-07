@@ -22,3 +22,6 @@
 [submodule "modules/jelly"]
 	path = modules/jelly
 	url = git://github.com/jonathangeiger/kohana-jelly.git
+[submodule "modules/captcha"]
+	path = modules/captcha
+	url = git://github.com/kolanos/kohana-captcha.git
