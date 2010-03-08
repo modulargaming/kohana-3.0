@@ -78,7 +78,7 @@ Kohana::$config->attach(new Kohana_Config_File);
  */
 Kohana::modules(array(
 	
-	'mg-core' => MODPATH.'mg-core',
+	'modulargaming' => MODPATH.'modulargaming',
 	
 	// Database
 	'jelly'    => MODPATH.'jelly',

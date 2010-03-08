@@ -65,14 +65,15 @@ class Controller_Account extends Controller_Frontend {
 		
 		$this->add_js('assets/js/register.js'); // Register
 		
-		$sprig = Sprig::factory('user');
+		$user = Jelly::factory('user');
 		
 		// Check if we have a post request
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
-			->rules('username',         $sprig->field('username')->rules)
+			->rule ('username',         'not_empty')
 			->rule ('username',         'alpha_numeric')
-			->rules('email',            $sprig->field('email')->rules)
+			->rule ('email',            'not_empty')
+			->rule ('email',            'email')
 			->rule ('email_confirm',    'matches', array('email'))
 			->rule ('password',         'min_length', array ( 6 ) )
 			->rule ('password',         'max_length', array( 20 ) )
@@ -83,19 +84,25 @@ class Controller_Account extends Controller_Frontend {
 		if ($post->check())
 		{
 			
+			$values = array(
+				'username' => $post['username'],
+				'email'    => $post['email'],
+				'password' => $post['password'],
+			);
+			
 			// Assign the validated data to the sprig object
-			$sprig->values( $post->as_array());
+			$user->set( $values );
 			
 			// Hash the password
-			$sprig->password = $this->a1->hash_password( $post['password'] );
+			$user->password = $this->a1->hash_password( $post['password'] );
 			
 			// Set the default role for registered user.
-			$sprig->role = 'user';
+			$user->role = 'user';
 			
 			try
 			{
 				// Create the new user
-				$sprig->create();
+				$user->save();
 				
 				// Redirect the user to the login page
 				$this->request->redirect( 'account/login' );

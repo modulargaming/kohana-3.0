@@ -45,7 +45,7 @@ class Model_User extends Jelly_Model implements Acl_Role_Interface {
 			
 			// Do not remove this rule, it is a junk value I needed to avoid an error.
 			'logins' => new Field_Float(array(
-				 'empty' => TRUE,
+				 'default' => 0,
 				 'rules' => array(
 				 	'numeric' => array(),
 				 )
