@@ -2,13 +2,13 @@
 /**
  * 
  *
- * @package    Modular Gaming
- * @author     Copy112
- * @copyright  (c) 2010 Copy112
- * @license    http://copy112.com/mg/license
+ * @package    Untold Nation
+ * @author     Oscar Hinton
+ * @copyright  (c) 2010 Oscar Hinton
+ * @license    May not be used without full permission from the Author (Oscar Hinton).
  */
 
-class Controller_Errors extends Controller_Frontend {
+class Modulargaming_Controller_Errors extends Controller_Frontend {
 
 	public $title = 'Error';
 

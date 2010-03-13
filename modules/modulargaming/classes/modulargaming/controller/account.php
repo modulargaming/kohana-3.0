@@ -3,29 +3,37 @@
  * Controller for managing the basic user actions (register, login, logout)
  *
  * @package    Modular Gaming
- * @author     Copy112
- * @copyright  (c) 2010 Copy112
- * @license    http://copy112.com/mg/license
+ * @subpackage Core
+ * @author     Oscar Hinton
+ * @copyright  (c) 2010 Oscar Hinton
+ * @license    May not be used without full permission from the Author (Oscar Hinton).
  */
 
-class Controller_Account extends Controller_Frontend {
+class Modulargaming_Controller_Account extends Controller_Frontend {
 	
 	public $title = 'Account';
 
+	/**
+	 * Settings page, for logged in users.
+	 */
 	public function action_index()
-	{		
+	{
+		// Make sure the user is logged in.
 		if ( !$this->user )
 			$this->request->redirect( 'account/login' );
 		
 		
 		$this->title = 'Settings';
-		
 		$this->template->content = View::factory('account/index');
+		
 	}
 	
+	/**
+	 * Login page, verifies submited data.
+	 */
 	public function action_login()
 	{
-		// If the user is already logged in, send them to their UCP (User control panel)
+		// If the user is already logged in, send them to their settings.
 		if ( $this->user )
 			$this->request->redirect( 'account' );
 		
@@ -40,34 +48,44 @@ class Controller_Account extends Controller_Frontend {
 			->rule('password', 'not_empty');
 		
 		// Check if the validation passed and try to log them in.
-		if($post->check())
+		if ( $post->check() )
 		{
 			if ($this->a1->login($post['username'],$post['password'], isset($_POST['remember']) ? (bool) $_POST['remember'] : FALSE))
 			{
 				$this->request->redirect( '' );
-			} else {
-				$this->errors[] = 'Invalid Login';
 			}
-		} else {
+			else
+			{
+				$this->errors[] = 'Incorrect username or password';
+			}
+		}
+		else
+		{
 			$this->errors = $post->errors('register');
 		}
+		
+		if ( !empty($this->errors) )
+			Message::set( Message::ERROR, $this->errors );
 		
 		$this->template->content = View::factory('account/login');
 		
 	}
 	
+	/**
+	 * Register page, verifies submited data.
+	 */
 	public function action_register()
 	{
+		// If the user is already logged in, send them to their settings.
 		if ( $this->user )
 			$this->request->redirect( 'account' );
 		
 		$this->title = 'Register';
-		
-		$this->add_js('assets/js/register.js'); // Register
+		$this->add_js('assets/js/register.js');
 		
 		$user = Jelly::factory('user');
 		
-		// Check if we have a post request
+		// Validate the form input
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
 			->rule ('username',         'not_empty')
@@ -119,8 +137,10 @@ class Controller_Account extends Controller_Frontend {
 			$this->errors = $post->errors('account/register');
 		}
 		
+		if ( !empty($this->errors) )
+			Message::set( Message::ERROR, $this->errors );
+		
 		$this->template->content = View::factory('account/register')
-			->set( 'errors', $this->errors     )
 			->set( 'post',   $post->as_array() );
 	}
 	

@@ -10,19 +10,31 @@
 
 class Controller_Travel extends Controller_Frontend {
 	
-	public $protected = true;
+	public $protected = TRUE;
+	public $load_character = TRUE;
+	public $require_character = TRUE;
+	
 	public $title = 'Travel';
-
+	
+	/**
+	 * Finds all zones and displays them throught a view.
+	 */
 	public function action_index()
 	{
 		
-		$zones = Sprig::factory( 'zone' )->load( NULL, NULL );
+		$zones = Jelly::select('zone')
+			->where( 'id', '!=', $this->character->zone->id )
+			->execute();
 		
 		$this->template->content = View::factory('travel/index')
 			->set( 'zones', $zones );
 	}
 	
-	
+	/**
+	 * Displays detailed info about a specified zone
+	 * 
+	 * @param  integer  $id
+	 */
 	public function action_view( $id )
 	{
 		
@@ -30,26 +42,43 @@ class Controller_Travel extends Controller_Frontend {
 			die('Error, not integer');
 		}
 		
-		$zone = Sprig::factory( 'zone', array( 'id' => $id ) )->load();
+		if ( $id == $this->character->zone->id ) {
+			die( 'You can\'t move to the same zone as you currently is in');
+		}
+		
+		$zone = Jelly::select('zone')
+			->where( 'id', '=', $id )
+			->load();
 		
 		$this->template->content = View::factory('travel/view')
 			->set( 'zone', $zone );
 		
 	}
 	
+	/**
+	 * Moves the character to a new zone
+	 * 
+	 * @param  integer  $id
+	 */
 	public function action_travel( $id )
 	{
 		
+		// Make sure id is an integer.
 		if ( !is_numeric( $id ) ) {
 			die('Error, not integer');
 		}
 		
-		$zone = Sprig::factory( 'zone', array( 'id' => $id ) )->load();
+		if ( $id == $this->character->zone->id ) {
+			die( 'You can\'t move to the same zone as you currently is in');
+		}
+		
+		// Load the zone
+		$zone = Jelly::select('zone')
+			->where( 'id', '=', $id )
+			->load();
 	
 		
-		$character = $this->user->character;
-		
-		$character->load();
+		$character = $this->character;
 		
 		// Make sure the character got enough of engery
 		if ( $character->energy < $zone->energy )
@@ -58,7 +87,7 @@ class Controller_Travel extends Controller_Frontend {
 		// Set the new zone, and energy
 		$character->zone = $zone->id;
 		$character->energy = $character->energy - $zone->energy;
-		$character->update();
+		$character->save();
 		
 		$this->request->redirect( 'character' );
 		

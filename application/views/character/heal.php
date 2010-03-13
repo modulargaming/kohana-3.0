@@ -1,5 +1,7 @@
 <h2>Heal your Character</h2>
 
+<?php echo Message::display() ?>
+
 Welcome to the magical healing centre, for a small fee we can give you some magical herbs that will refill your health.<br /><br />
 
 <span class="bar hp">

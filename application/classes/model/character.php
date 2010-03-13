@@ -12,13 +12,14 @@ class Model_Character extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
+		
+		$meta->load_with = array('zone');
+		
 		$meta->fields += array(
 			'id' => new Field_Primary,
 			'user' => new Field_BelongsTo( 'user_id' ),
 			
-			'race' => new Field_BelongsTo(array(
-				'model' => 'race',
-			)),
+			'race' => new Field_BelongsTo,
 			
 			'name' => new Field_String,
 			
@@ -28,14 +29,16 @@ class Model_Character extends Jelly_Model {
 			
 			'alignment' => new Field_Integer,
 			
-			'hp' => new Field_Integer,
+			'hp'     => new Field_Integer,
 			'max_hp' => new Field_Integer,
 			
 			'money'  => new Field_Integer,
 			'energy' => new Field_Integer,
+			
+			'zone'   => new Field_BelongsTo,
 		);
 	}
-	
+	/*
 	protected function _init()
 	{
 		$this->_fields += array(
@@ -89,6 +92,6 @@ class Model_Character extends Jelly_Model {
 			)),
 		);
 	}
-	
+	*/
 	
 }

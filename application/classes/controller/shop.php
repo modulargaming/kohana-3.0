@@ -10,6 +10,10 @@
 
 class Controller_Shop extends Controller_Frontend {
 	
+	public $protected = TRUE;
+	public $load_character = TRUE;
+	public $require_character = TRUE;
+	
 	public function before()
 	{
 		
@@ -24,7 +28,10 @@ class Controller_Shop extends Controller_Frontend {
 		}
 		
 		// Retrive the shop with matching id
-		$this->shop = Sprig::factory( 'shop' )->load();		
+		$this->shop = Jelly::select( 'shop' )
+			->where( 'id', '=', $this->shop_id )
+			->load();
+		
 	}
 	
 	public function action_index( )
@@ -78,11 +85,10 @@ class Controller_Shop extends Controller_Frontend {
 			}
 			else
 			{
-			
+				
 				DB::insert( 'user_items', array( 'user_id', 'item_id', 'amount') )
 					->values( array( $this->user->id, $id, $post['amount'] ) )
 					->execute();
-			
 			}
 			
 			
@@ -122,9 +128,8 @@ class Controller_Shop extends Controller_Frontend {
 			return false;
 		}
 		
-		$this->user->character->load();
 		// Check if user can afford it
-		if ( $this->user->character->money < $cost ){
+		if ( $this->character->money < $cost ){
 			$array->error($field, 'expensive');
 			return false;
 		}

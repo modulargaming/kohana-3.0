@@ -8,23 +8,25 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Zone extends Sprig {
+class Model_Zone extends Jelly_Model {
 	
-	protected function _init()
+	public static function initialize(Jelly_Meta $meta)
 	{
-		$this->_fields += array(
-			'id'          => new Sprig_Field_Auto,
-			'name'        => new Sprig_Field_Char(),
-			'description' => new Sprig_Field_Text(),
-			'energy'      => new Sprig_Field_Integer(),
-			'monsters'    => new Sprig_Field_ManyToMany(array(
-				'model'   => 'Monster',
-				'through' => 'zone_monster',
-			)),
-			'shops'       => new Sprig_Field_HasMany(array(
-				'model'   => 'Shop',
-			)),
+		
+		$meta->fields += array(
+			'id' => new Field_Primary,
+			'name' => new Field_String,
+			'description' => new Field_Text,
+			'energy' => new Field_Integer,
+		
+			'monster' => new Field_ManyToMany(array(
+                'model' => 'monster',
+                'through' => 'zone_monster'
+            )),
+            
+            'shops' => new Field_HasMany,
 		);
-	}	
+		
+	}
 	
 }
