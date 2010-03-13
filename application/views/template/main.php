@@ -20,17 +20,17 @@
 	
 	<ul class="nav">
 		<?php
-			echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
 			
 			if ( $user ) {
 				
+				echo '<li class="first">' . html::anchor( 'dashboard', 'Dashboard' )    . '</li>';
 				echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
-				echo '<li>' . html::anchor( 'character', 'Character' ) . '</li>';
 				echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
 				echo '<li class="last">' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
 				
 			} else {
-			
+				
+				echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
 				echo '<li>' . html::anchor( 'account/login', 'Login' ) . '</li>';
 				echo '<li class="last">' . html::anchor( 'account/register', 'Register' ) . '</li>';
 				
