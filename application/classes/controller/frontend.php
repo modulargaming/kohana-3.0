@@ -11,6 +11,7 @@
 abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 	
 	public $load_character = FALSE;
+	public $require_character = FALSE;
 	
 	public function before()
 	{
@@ -23,6 +24,14 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			$this->character = Jelly::select( 'character' )
 				->where( 'user', '=', $this->user->id )
 				->load();
+			
+		}
+		
+		if ( $this->load_character && $this->require_character )
+		{
+			
+			if ( !$this->character->loaded() )
+				Request::instance()->redirect('character/create');
 			
 		}
 		
