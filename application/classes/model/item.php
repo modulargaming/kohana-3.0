@@ -3,8 +3,8 @@
  * 
  *
  * @package    Modular Gaming
- * @author     Lewis & Copy112
- * @copyright  (c) 2010 Lewis & Copy112
+ * @author     Copy112
+ * @copyright  (c) 2010 Copy112
  * @license    http://copy112.com/mg/license
  */
 
@@ -18,22 +18,15 @@ class Model_Item extends Jelly_Model {
 		$meta->fields += array(
 			'id' => new Field_Primary,
 			'name' => new Field_String,
+			'class' => new Field_String,
+			
+			'image' => new Field_Image(array(
+				'directory' => 'assets/images/monsters/',
+			)),
+			
 			'description' => new Field_Text,
 		);
 		
 	}
-	
-	protected function _init()
-	{
-		$this->_fields += array(
-			'id'    => new Sprig_Field_Auto,
-			'name'  => new Sprig_Field_Char(),
-			'class' => new Sprig_Field_Char(),
-			'image' => new Sprig_Field_Image(array(
-				'directory' => 'assets/images/monsters/',
-			)),
-			'description' => new Sprig_Field_Char(),
-		);
-	}	
 	
 }
