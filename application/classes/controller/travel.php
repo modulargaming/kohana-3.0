@@ -42,6 +42,10 @@ class Controller_Travel extends Controller_Frontend {
 			die('Error, not integer');
 		}
 		
+		if ( $id == $this->character->zone->id ) {
+			die( 'You can\'t move to the same zone as you currently is in');
+		}
+		
 		$zone = Jelly::select('zone')
 			->where( 'id', '=', $id )
 			->load();
@@ -62,6 +66,10 @@ class Controller_Travel extends Controller_Frontend {
 		// Make sure id is an integer.
 		if ( !is_numeric( $id ) ) {
 			die('Error, not integer');
+		}
+		
+		if ( $id == $this->character->zone->id ) {
+			die( 'You can\'t move to the same zone as you currently is in');
 		}
 		
 		// Load the zone
