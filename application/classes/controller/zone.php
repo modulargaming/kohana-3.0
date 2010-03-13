@@ -11,15 +11,14 @@
 class Controller_Zone extends Controller_Frontend {
 	
 	public $title = 'Zone';
-	public $character = true;
+	public $load_character = TRUE;
 	
 	public function action_index()
 	{
 		
-		$zone = $this->user->character->zone;
-		$zone->load();
+		$zone = $this->character->zone;
 		
-		$shops = $zone->shops;
+		$shops = $zone->get('shops')->execute();
 		
 		$this->template->content = View::factory( 'zone/index' )
 			->set( 'zone', $zone )

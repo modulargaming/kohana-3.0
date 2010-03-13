@@ -24,7 +24,10 @@ class Controller_Shop extends Controller_Frontend {
 		}
 		
 		// Retrive the shop with matching id
-		$this->shop = Sprig::factory( 'shop' )->load();		
+		$this->shop = Jelly::select( 'shop' )
+			->where( 'id', '=', $this->shop_id )
+			->load();
+		
 	}
 	
 	public function action_index( )
