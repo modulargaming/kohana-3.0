@@ -19,10 +19,12 @@ class Controller_Zone extends Controller_Frontend {
 		$zone = $this->character->zone;
 		
 		$shops = $zone->get('shops')->execute();
+		$npcs = $zone->get('npcs')->execute();
 		
 		$this->template->content = View::factory( 'zone/index' )
 			->set( 'zone', $zone )
-			->set( 'shops', $shops );
+			->set( 'shops', $shops )
+			->set( 'npcs', $npcs );
 		
 		
 	}
