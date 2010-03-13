@@ -12,17 +12,15 @@ class Controller_Character extends Controller_Frontend {
 	
 	
 	public $protected = TRUE;
+	public $load_character = TRUE;
 	public $title = 'Character';
 	public $heal_cost = 2;
 	
 	
 	public function action_index()
 	{
-		// Load the character
-		$this->user->character->load();
-		
 		// Check if the user has a character already.
-		if ( !$this->user->character->loaded() )
+		if ( !$this->character->loaded() )
 			$this->request->redirect( 'character/create' );
 		
 		$this->request->redirect( 'dashboard' );
@@ -31,14 +29,11 @@ class Controller_Character extends Controller_Frontend {
 	
 	public function action_heal()
 	{
-		// Load the character
-		$this->user->character->load();
-		
 		// Check if the user has a character already.
-		if ( !$this->user->character->loaded() )
+		if ( !$this->character->loaded() )
 			$this->request->redirect( 'character/create' );
 		
-		$character = $this->user->character;
+		$character = $this->character;
 		
 		// Initialize the character class, and set the players character as the default.
 		$char = new Character( $character );
@@ -58,7 +53,7 @@ class Controller_Character extends Controller_Frontend {
 				$character->hp = $character->hp + $post['amount'];
 				$character->money = $character->money - ( $post['amount'] * $this->heal_cost );
 				
-				$character->update();
+				$character->save();
 				$this->request->redirect( 'character' );
 				
 				
@@ -75,6 +70,9 @@ class Controller_Character extends Controller_Frontend {
 		{
 			$this->errors = $post->errors('character/create');
 		}
+		
+		if ( !empty($this->errors) )
+			Message::set( Message::ERROR, $this->errors );
 		
 		$this->template->content = View::factory('character/heal')
 			->set( 'character', $character )
@@ -185,11 +183,11 @@ class Controller_Character extends Controller_Frontend {
 		
 		$ammount = $form[$field];
 		
-		if ( $ammount * $this->heal_cost >= $this->user->character->money )
+		if ( $ammount * $this->heal_cost > $this->character->money )
 			$form->error($field, 'not_enought_money');
 		
-		if ( $ammount >= ( $this->user->character->max_hp - $this->user->character->hp ) )
-			$form[$field] = $this->user->character->max_hp - $this->user->character->hp;
+		if ( $ammount >= ( $this->character->max_hp - $this->character->hp ) )
+			$form[$field] = $this->character->max_hp - $this->character->hp;
 		
 	}
 	

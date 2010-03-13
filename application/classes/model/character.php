@@ -35,7 +35,7 @@ class Model_Character extends Jelly_Model {
 			'energy' => new Field_Integer,
 		);
 	}
-	
+	/*
 	protected function _init()
 	{
 		$this->_fields += array(
@@ -89,6 +89,6 @@ class Model_Character extends Jelly_Model {
 			)),
 		);
 	}
-	
+	*/
 	
 }

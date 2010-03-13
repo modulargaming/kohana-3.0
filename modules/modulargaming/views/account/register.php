@@ -1,10 +1,6 @@
 <h2>Register</h2>
 
-<?php foreach ($errors as $v): ?>
-
-	<?php echo $v; ?><br />
-
-<?php endforeach; ?>
+<?php echo Message::display() ?>
 
 <?php echo form::open( NULL, array( 'class' => 'register' ) ); ?>
 

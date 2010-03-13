@@ -12,7 +12,7 @@ class Controller_Dashboard extends Controller_Frontend {
 	
 	public $title = 'Dashboard';
 	public $protected = TRUE;
-	public $load_character = true;
+	public $load_character = TRUE;
 	
 	public function action_index()
 	{
