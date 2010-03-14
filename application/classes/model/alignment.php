@@ -8,7 +8,7 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Alignment extends Sprig {
+class Model_Alignment extends Jelly_Model {
 	
 	protected function _init()
 	{
@@ -18,6 +18,18 @@ class Model_Alignment extends Sprig {
 			'min' => new Sprig_Field_Integer(),
 			'max' => new Sprig_Field_Integer(),
 		);
-	}	
+	}
+	
+	public static function initialize(Jelly_Meta $meta)
+	{
+		
+		$meta->fields += array(
+			'id' => new Field_Primary,
+			'name' => new Field_String,
+			'min' => new Field_Integer,
+			'max' => new Field_Integer,
+		);
+		
+	}
 	
 }

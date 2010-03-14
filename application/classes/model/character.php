@@ -17,14 +17,14 @@ class Model_Character extends Jelly_Model {
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
-			'user' => new Field_BelongsTo( 'user_id' ),
+			'user' => new Field_BelongsTo,
 			
 			'race' => new Field_BelongsTo,
 			
 			'name' => new Field_String,
 			
 			'gender' => new Field_Enum(array(
-				'choices' => array('male' => 'Male', 'female' => 'Female'),
+				'choices' => array('Male' => 'male', 'female' => 'Female'),
 			)),
 			
 			'alignment' => new Field_Integer,
@@ -33,9 +33,15 @@ class Model_Character extends Jelly_Model {
 			'max_hp' => new Field_Integer,
 			
 			'money'  => new Field_Integer,
+			
+			'level' => new Field_Integer,
+			'xp' => new Field_Integer,
+			
 			'energy' => new Field_Integer,
 			
 			'zone'   => new Field_BelongsTo,
+			
+			'battle' => new Field_HasOne,
 		);
 	}
 	/*

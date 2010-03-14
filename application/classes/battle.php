@@ -52,7 +52,7 @@ class Battle {
 		
 		try
 		{
-			$char->update();
+			$char->save();
 		}
 		catch (Validate_Exception $e)
 		{
@@ -69,7 +69,7 @@ class Battle {
 		
 		try
 		{
-			$monster->update();
+			$monster->save();
 		}
 		catch (Validate_Exception $e)
 		{

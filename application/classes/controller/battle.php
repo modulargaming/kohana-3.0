@@ -11,30 +11,26 @@
 class Controller_Battle extends Controller_Frontend {
 	
 	public $protected = TRUE;
+	public $load_character = TRUE;
 	public $title = 'Battle';
 	
 	public function before()
 	{
 		parent::before();
 		
-		// Load the character
-		$this->user->character->load();
-		
 		// Check if the user has a character already.
-		if ( !$this->user->character->loaded() )
+		if ( !$this->character->loaded() )
 			$this->request->redirect( 'character/create' );
-			
-		$this->user->character->battle->load();
-		$this->user->character->battle->monster->load();
+		
 	}
 	
 	
 	public function action_index()
 	{
-		$character = $this->user->character;
+		$character = $this->character;
 		$monster = $character->battle;
 		
-		$char = new Character( $this->user->character );
+		$char = new Character( $character );
 		
 		if ( !$monster->id )
 			$this->request->redirect( 'battle/new' );
@@ -51,7 +47,7 @@ class Controller_Battle extends Controller_Frontend {
 	public function action_attack()
 	{
 		
-		$char = $this->user->character;
+		$char = $this->character;
 		$monster = $char->battle;
 		
 		if ( !Battle::can_fight( $char ) or !Battle::can_fight( $monster ) )
@@ -66,7 +62,7 @@ class Controller_Battle extends Controller_Frontend {
 	public function action_new()
 	{
 		
-		$char = $this->user->character;
+		$char = $this->character;
 		$monster = $char->battle;
 		
 		if ( $monster->id )
@@ -80,7 +76,7 @@ class Controller_Battle extends Controller_Frontend {
 	public function action_end()
 	{
 		
-		$character = $this->user->character;
+		$character = $this->character;
 		$battle = $character->battle;
 		$monster = $battle->monster;
 		
@@ -100,7 +96,7 @@ class Controller_Battle extends Controller_Frontend {
 			$character->money = $character->money + $battle->monster->money;
 			$character->xp = $character-xp + $monster->xp;
 			
-			$character->update();
+			$character->save();
 		}
 		else
 		{
@@ -112,18 +108,6 @@ class Controller_Battle extends Controller_Frontend {
 			->set( 'xp', $monster->xp );
 		
 		$battle->delete();
-		
-	}
-	
-	public function action_test()
-	{
-		
-		$character = $this->user->character;
-		$zone      = $character->zone;
-		$monsters  = $zone->monsters;
-		$offset    = rand( 1, $monsters->count() );
-		
-		
 		
 	}
 	

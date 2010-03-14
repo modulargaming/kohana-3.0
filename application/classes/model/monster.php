@@ -8,24 +8,28 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Monster extends Sprig {
+class Model_Monster extends Jelly_Model {
 	
-	protected function _init()
+	public static function initialize(Jelly_Meta $meta)
 	{
-		$this->_fields += array(
-			'id'      => new Sprig_Field_Auto,
-			'name'    => new Sprig_Field_Char(),
-			'max_hp'  => new Sprig_Field_Integer(),
-			'defence' => new Sprig_Field_integer(),
+		
+		$meta->fields += array(
+			'id' => new Field_Primary,
+			'name' => new Field_String,
+			'max_hp'  => new Field_Integer(),
+			'defence' => new Field_integer(),
 			
-			'min_dmg' => new Sprig_Field_Integer(),
-			'max_dmg' => new Sprig_Field_Integer(),
-			'money'   => new Sprig_Field_Integer(),
-			'xp'      => new Sprig_Field_Integer(),
-			'image'   => new Sprig_Field_Image(array(
-				'directory' => 'assets/images/monsters/',
+			'min_dmg' => new Field_Integer(),
+			'max_dmg' => new Field_Integer(),
+			'money'   => new Field_Integer(),
+			'xp'      => new Field_Integer(),
+			
+			'image'   => new Field_String(array(
+				'path' => 'assets/images/monsters/',
 			)),
+			
 		);
-	}	
-	
+		
+	}
+
 }
