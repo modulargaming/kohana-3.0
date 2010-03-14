@@ -67,8 +67,7 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 			$this->template = View::factory($this->template)
 				->bind('js',  $this->js)
 				->bind('css', $this->css);
-			
-			$this->template->errors = array();
+
 		}
 		
 		// Check if the page is protected and if the user is not logged in

@@ -8,24 +8,18 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Zone extends Jelly_Model {
+
+class Model_Npc extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
+			'zone' => new Field_BelongsTo,
 			'name' => new Field_String,
-			'description' => new Field_Text,
-			'energy' => new Field_Integer,
-		
-			'monster' => new Field_ManyToMany(array(
-				'model' => 'monster',
-				'through' => 'zone_monster'
-			)),
 			
-			'shops' => new Field_HasMany,
-			'npcs' => new Field_HasMany,
+			'message' => new Field_Text,
 		);
 		
 	}

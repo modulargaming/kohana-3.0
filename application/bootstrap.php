@@ -98,6 +98,8 @@ Kohana::modules(array(
 	'blog'  => MODPATH.'blog', // Blog
 	
 	'message' => MODPATH.'message',
+
+	'facebook' => MODPATH.'facebook',
 	
 ));
 
