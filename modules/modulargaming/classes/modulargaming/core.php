@@ -56,9 +56,10 @@ class Modulargaming_Core {
 		$monsters = $zone->get( 'monster' )
 			->execute();
 		
-		$id        = rand( 1, $monsters->count() );
+		$id      = rand( 1, $monsters->count() );
 		$monster = $monsters;
 		$monster = $monster[$id - 1];
+		
 		// Assign the data we need for the new battle row.
 		$t = array(
 			'character' => $char->id,
