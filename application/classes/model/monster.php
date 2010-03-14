@@ -24,7 +24,7 @@ class Model_Monster extends Jelly_Model {
 			'money'   => new Field_Integer(),
 			'xp'      => new Field_Integer(),
 			
-			'image'   => new Field_Image(array(
+			'image'   => new Field_String(array(
 				'path' => 'assets/images/monsters/',
 			)),
 			
