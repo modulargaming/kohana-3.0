@@ -44,6 +44,7 @@ class Controller_Facebook extends Controller_Frontend {
 		{
 			
 			$this->a1->force_login( $user_facebook->user->username );
+			$_SESSION['facebook'] = 'TRUE'; // Used for verifying if logged in using facebook.
 			
 			Request::instance()->redirect('');
 		}
@@ -92,6 +93,7 @@ class Controller_Facebook extends Controller_Frontend {
 				$ufb->save();
 				
 				$this->a1->force_login( $values['username'] );
+				$_SESSION['facebook'] = 'TRUE'; // Used for verifying if logged in using facebook.
 				
 				// Redirect the user to the login page
 				$this->request->redirect( '' );

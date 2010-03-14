@@ -38,35 +38,26 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			
 		}
 		
-		/*
-		
-		// Experimental facebook connection
-		$this->facebook = new Fb;
-		
-		// User accessed from facebook!
-		if ( $this->facebook->validate_fb_params() )
+		if ( isset( $_SESSION['facebook'] ) )
 		{
-		
-			$this->facebook->require_frame();
 			
-			// Gets the ID of the user.
-			$_SESSION['fb_uid'] = $this->facebook->require_login();
+			if ($this->auto_render === TRUE && !Request::$is_ajax )
+			{
+				
+				// Load the template
+				$this->template = View::factory('template/facebook')
+					->bind('js',  $this->js)
+					->bind('css', $this->css);
+					
+				$this->css = array();
+				$this->add_css('assets/css/facebook.css');
+	
+			}
 			
-		}
-		
-		if ( isset( $_SESSION['fb_uid'] ) )
-		{
-			echo 'Logged in: ' . $_SESSION['fb_uid'];
-			$this->is_facebook = true;
+			
+			$this->facebook = new Fb;
 			
 		}
-		
-		if ( $this->require_facebook && !$this->is_facebook )
-		{
-			Request::instance()->redirect('');
-		}
-		
-		*/
 		
 	}
 	

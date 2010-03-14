@@ -39,6 +39,7 @@
 </div>
 
 <div class="content">
+	<fb:bookmark type="off-facebook"></fb:bookmark>
 	<?php echo $content; ?>
 </div>
 
@@ -59,5 +60,8 @@
 		echo '<script type="text/javascript">'.$script.'</script>';
 	endforeach;
 ?>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"> </script>
+<script type="text/javascript">  FB.init("feaa2c76df6a162bd9174b99fff1be1a ", "/modulargaming/xd_receiver.htm"); </script>
+
 </body>
 </html>
