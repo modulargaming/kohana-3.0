@@ -45,7 +45,7 @@
 
 <div class="footer">
 	<div class="wrapper">
-		<p class="copyright">© 2010 the Modular Gaming Team.</p>
+		<p class="copyright">Â© 2010 the Modular Gaming Team.</p>
 	</div>
 </div>
 <?php
@@ -60,8 +60,15 @@
 		echo '<script type="text/javascript">'.$script.'</script>';
 	endforeach;
 ?>
+<div id="FB_HiddenIFrameContainer" style="display:none; position:absolute; left:-100px; top:-100px; width:0px; height: 0px;"></div> 
 <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"> </script>
-<script type="text/javascript">  FB.init("feaa2c76df6a162bd9174b99fff1be1a ", "/modulargaming/xd_receiver.htm"); </script>
+<script type="text/javascript">
+	FB.init("feaa2c76df6a162bd9174b99fff1be1a ", "/modulargaming/xd_receiver.htm");
+	FB_RequireFeatures(["CanvasUtil"], function(){
+		FB.XdComm.Server.init('/modulargaming');
+		FB.CanvasClient.startTimerToSizeToContent();
+	});
+</script>
 
 </body>
 </html>

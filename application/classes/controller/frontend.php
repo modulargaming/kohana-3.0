@@ -18,7 +18,10 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 	
 	public function before()
 	{
-		
+		if ( isset( $_SESSION['facebook'] ) )
+		{
+			$this->template = 'template/facebook';
+		}
 		parent::before();
 		
 		// Make sure the user got a character if characters is required in the controller
@@ -45,9 +48,9 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			{
 				
 				// Load the template
-				$this->template = View::factory('template/facebook')
-					->bind('js',  $this->js)
-					->bind('css', $this->css);
+				//$this->template = View::factory('template/facebook')
+				//	->bind('js',  $this->js)
+				//	->bind('css', $this->css);
 					
 				$this->css = array();
 				$this->add_css('assets/css/facebook.css');
@@ -56,6 +59,9 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			
 			
 			$this->facebook = new Fb;
+			$this->facebook->api_client->set_user = $_SESSION['fb_uid'];
+			
+			//$facebook->api_client->users_getInfo($uid, 'last_name, first_name'); 			
 			
 		}
 		
