@@ -51,7 +51,8 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			$this->fb_uid = $this->facebook->require_login();
 			
 			$this->is_facebook = true;
-			/*
+			
+/*
 			if ( $this->fb_uid )
 				echo 'Logged in: ' . $this->fb_uid;
 			*/
