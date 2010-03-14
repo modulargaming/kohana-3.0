@@ -13,7 +13,7 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 	public $load_character = FALSE;
 	public $require_character = FALSE;
 	
-	public $requre_facebook = FALSE;
+	public $require_facebook = FALSE;
 	public $is_facebook = FALSE;
 	
 	public function before()
