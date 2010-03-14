@@ -52,12 +52,13 @@ class Modulargaming_Core {
 		//$monster = Sprig::factory( 'monster', array( 'id' => $monster_id ) )->load();
 		
 		// TODO: Rewrite this to use mysql, Rand() and limit to 1.
-		$zone      = $char->zone;
-		$monsters  = $zone->monsters;
-		$id        = rand( 1, $monsters->count() );
-		$monster = $monsters->as_array();
-		$monster = $monster[$id - 1];
+		$zone = $char->zone;
+		$monsters = $zone->get( 'monster' )
+			->execute();
 		
+		$id        = rand( 1, $monsters->count() );
+		$monster = $monsters;
+		$monster = $monster[$id - 1];
 		// Assign the data we need for the new battle row.
 		$t = array(
 			'character' => $char->id,
@@ -66,12 +67,12 @@ class Modulargaming_Core {
 		);
 		
 		// Add the row to the db.
-		$sprig = Sprig::factory('battle');
-		$sprig->values($t);
+		$sprig = Jelly::factory('battle');
+		$sprig->set($t);
 		
 		try
 		{
-		    $sprig->create();
+		    $sprig->save();
 		    
 		    $this->add_history( 'Started a new battle agains ' . $monster->name );
 		    
