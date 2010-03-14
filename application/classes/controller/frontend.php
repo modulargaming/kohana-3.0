@@ -35,6 +35,13 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			
 		}
 		
+		// Experimental facebook connection
+		$this->FB = new Fb;
+		$this->FB->require_frame();
+		
+		// Gets the ID of the user.
+		$test = $this->FB->require_login();
+		
 	}
 	
 } // End Frontend
