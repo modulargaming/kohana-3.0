@@ -94,7 +94,7 @@ class Controller_Battle extends Controller_Frontend {
 			$view = 'won';
 			
 			$character->money = $character->money + $battle->monster->money;
-			$character->xp = $character-xp + $monster->xp;
+			$character->xp = $character->xp + $monster->xp;
 			
 			$character->save();
 		}
