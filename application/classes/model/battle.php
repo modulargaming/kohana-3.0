@@ -8,27 +8,20 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Battle extends Sprig {
+class Model_Battle extends Jelly_Model {
 	
-	protected function _init()
+	
+	public static function initialize(Jelly_Meta $meta)
 	{
-		$this->_fields += array(
-			'id' => new Sprig_Field_Auto,
-			'character' => new Sprig_Field_BelongsTo(array(
-                'model' => 'Character',
-			)),
-			'monster' => new Sprig_Field_BelongsTo(array(
-                'model' => 'Monster',
-			)),
+		
+		$meta->fields += array(
+			'id' => new Field_Primary,
+			'character' => new Field_BelongsTo,
+			'monster' => new Field_BelongsTo,
 			
-			'hp' => new Sprig_Field_Integer(array(
-				'empty'  => TRUE,
-				'rules' => array(
-				 	'numeric' => array(),
-				 )
-			)),
-			
+			'hp' => new Field_Integer,
 		);
-	}	
+		
+	}
 	
 }

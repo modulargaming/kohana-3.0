@@ -12,7 +12,7 @@
 	
 	<div class="right">
 			
-		<?php echo html::image( $monster->monster->verbose('image'), array( 'class' => 'npc' ) ); ?>
+		<?php echo html::image( 'assets/images/monsters/' . $monster->monster->image, array( 'class' => 'npc' ) ) ?>
 		<?php
 			$m_per = $char->percent_hp($monster->hp, $monster->monster->max_hp);
 		?>

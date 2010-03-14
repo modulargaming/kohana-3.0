@@ -220,7 +220,7 @@ label.error {
 }
 
 .content .right {
-	width: 300px;
+	width: 250px;
 	float: left;
 }
 
@@ -291,9 +291,9 @@ div .right {
 
 
 .stats {
-	width: 300px;
+	width: 400px;
 	float: left;
-	margin-right: 40px;
+	margin-right: 10px;
 }
 
 .stats h2, .stats p {

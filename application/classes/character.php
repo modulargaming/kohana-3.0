@@ -23,7 +23,8 @@ class Character {
 	public function get_alignments()
 	{
 		
-		$alignments = Sprig::factory( 'alignment' )->load(  NULL, NULL );
+		$alignments = Jelly::select( 'alignment' )
+			->execute( );
 		
 		return $alignments;
 		

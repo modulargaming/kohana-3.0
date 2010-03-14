@@ -55,10 +55,12 @@ class Controller_Facebook extends Controller_Frontend {
 		// Validate the form input
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
-			->rule ('username',         'not_empty')
-			->rule ('username',         'alpha_numeric')
-			->rule ('email',            'email')
-			->rule ('tos',              'not_empty');
+			->rule ('username', 'not_empty')
+			->rule ('username', 'min_length', array(3))
+			->rule ('username', 'max_length', array(20))
+			->rule ('username', 'alpha_numeric')
+			->rule ('email',    'email')
+			->rule ('tos',      'not_empty');
 		
 		if ($post->check())
 		{
