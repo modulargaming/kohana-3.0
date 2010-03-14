@@ -31,8 +31,7 @@
 			} else {
 				
 				echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
-				echo '<li>' . html::anchor( 'account/login', 'Login' ) . '</li>';
-				echo '<li class="last">' . html::anchor( 'account/register', 'Register' ) . '</li>';
+				echo '<li class="last">' . html::anchor( 'facebook/register', 'Register' ) . '</li>';
 				
 			}
 		?>

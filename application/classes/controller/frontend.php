@@ -13,7 +13,7 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 	public $load_character = FALSE;
 	public $require_character = FALSE;
 	
-	public $requre_facebook = FALSE;
+	public $require_facebook = FALSE;
 	public $is_facebook = FALSE;
 	
 	public function before()
@@ -48,13 +48,25 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			$this->facebook->require_frame();
 			
 			// Gets the ID of the user.
-			$this->fb_uid = $this->facebook->require_login();
+			$_SESSION['fb_uid'] = $this->facebook->require_login();
 			
+		}
+		
+		if ( isset( $_SESSION['fb_uid'] ) )
+		{
+			echo 'Logged in: ' . $_SESSION['fb_uid'];
 			$this->is_facebook = true;
-			/*
-			if ( $this->fb_uid )
-				echo 'Logged in: ' . $this->fb_uid;
-			*/
+			
+			if ($this->auto_render === TRUE && !Request::$is_ajax )
+			{
+				
+				// Load the template
+				$this->template = View::factory('template/facebook')
+					->bind('js',  $this->js)
+					->bind('css', $this->css);
+	
+			}
+			
 		}
 		
 		if ( $this->require_facebook && !$this->is_facebook )
