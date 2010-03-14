@@ -83,18 +83,19 @@ class Controller_Character extends Controller_Frontend {
 	
 	public function action_create()
 	{
-		// Load the character
-		$this->user->character->load();
 		
 		// Check if the user has a character already.
-		if ( $this->user->character->loaded() )
+		if ( $this->character->loaded() )
 			$this->request->redirect( 'character/create' );
 				
-		$sprig = Sprig::factory('character');
+		$character = Jelly::factory('character');
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
-			->rules( 'name',     $sprig->field('name')->rules )
-			->rules( 'gender',   $sprig->field('gender')->rules )
+			->rule( 'name',   'not_empty' )
+			->rule( 'name',   'min_length', array(3) )
+			->rule( 'name',   'max_length', array(20) )
+			->rule( 'gender', 'not_empty' )
+			->rule( 'race',   'not_empty' )
 			->callback( 'race', array( $this, 'valid_race' ));
 		
 		if ($post->check())
@@ -103,23 +104,26 @@ class Controller_Character extends Controller_Frontend {
 			try
 			{
 				
-				$sprig->values( $post->as_array() );
-				$sprig->user = $this->user->id;
+				$character->name = $post['name'];
+				$character->gender = $post['gender'];
+				$character->race = $post['race'];
+				
+				$character->user = $this->user->id;
 				
 				// Default starting money
-				$sprig->money = 1000;
-				$sprig->hp = 100;
-				$sprig->max_hp = 100;
+				$character->money = 1000;
+				$character->hp = 100;
+				$character->max_hp = 100;
 				
-				$sprig->level = 1;
-				$sprig->xp = 0;
+				$character->level = 1;
+				$character->xp = 0;
 				
-				$sprig->energy = 100;
-				$sprig->alignment = 5000;
+				$character->energy = 100;
+				$character->alignment = 5000;
 				
-				$sprig->zone = 1;
+				$character->zone = 1;
 				
-				$sprig->create();
+				$character->save();
 				
 				$this->MG->add_history( 'Created the character: ' . $post['name'] );
 				
@@ -151,7 +155,9 @@ class Controller_Character extends Controller_Frontend {
 	function valid_race( $form, $field )
 	{
 		
-		$race = Sprig::factory( 'race', array( 'id' => $form[$field] ) )->load();
+		$race = Jelly::select( 'race' )
+			->where( 'id', '=', $form[$field] )
+			->load();
 		
 		if ( $race->loaded() )
 		{
@@ -165,7 +171,7 @@ class Controller_Character extends Controller_Frontend {
 	// Retrieve all races from the database and assign them to an array
 	function getRaces()
 	{
-		$races = Sprig::factory( 'race' )->load(NULL, NULL);
+		$races = Jelly::select( 'race' )->execute();
 		
 		$t = array();
 		
