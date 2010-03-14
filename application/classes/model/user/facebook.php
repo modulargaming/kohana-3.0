@@ -12,12 +12,15 @@ class Model_User_Facebook extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
+		
 		$meta->table = 'user_facebook';
-		//$meta->primary_key = 'facebook_id';
+		$meta->load_with = array('user');
+		
 		$meta->fields( array(
 			'facebook_id' => new Field_Primary,
 			'user'        => new Field_BelongsTo,
 		));
+		
 	}
 	
 }

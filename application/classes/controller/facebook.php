@@ -19,12 +19,35 @@ class Controller_Facebook extends Controller_Frontend {
 		if ( $this->user )
 			Request::instance()->redirect('');
 		
+		
+		// Experimental facebook connection
+		$this->facebook = new Fb;
+		
+		// User accessed from facebook!
+		if ( $this->facebook->validate_fb_params() )
+		{
+			$this->facebook->require_frame();
+			$_SESSION['fb_uid'] = $this->facebook->require_login();
+		}
+		elseif ( !isset( $_SESSION['fb_uid'] )) // Page dosn't have the faceboko params and the sessions isnt set.
+		{
+			Request::instance()->redirect('');
+		}
+		
+		// Check if the user got an account.
 		$user_facebook = Jelly::select( 'user_facebook' )
 			->where( 'facebook_id', '=', $_SESSION['fb_uid'] )
 			->load();
-			
+		
+		// If we found it, log him in.
 		if ( $user_facebook->loaded() )
-			die( 'user_found' );
+		{
+			
+			$this->a1->force_login( $user_facebook->user->username );
+			
+			Request::instance()->redirect('');
+		}
+		
 		
 		$user = Jelly::factory('user');
 		
@@ -51,15 +74,27 @@ class Controller_Facebook extends Controller_Frontend {
 			$user->password = '';
 			
 			// Set the default role for registered user.
-			$user->role = 'user';
+			$user->role = 'facebook';
 			
 			try
 			{
 				// Create the new user
-				$user->save();
+				$testy = $user->save();
+				//print_r($testy);
+				$user_id = mysql_insert_id();
+				
+				
+				$ufb = Jelly::factory( 'user_facebook' );
+				
+				
+				$ufb->facebook_id = $_SESSION['fb_uid'];
+				$ufb->user = $user_id;
+				$ufb->save();
+				
+				$this->a1->force_login( $values['username'] );
 				
 				// Redirect the user to the login page
-				$this->request->redirect( 'facebook/login' );
+				$this->request->redirect( '' );
 			}
 			catch (Validate_Exception $e)
 			{

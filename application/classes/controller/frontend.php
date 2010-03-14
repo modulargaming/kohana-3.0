@@ -38,6 +38,8 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			
 		}
 		
+		/*
+		
 		// Experimental facebook connection
 		$this->facebook = new Fb;
 		
@@ -57,22 +59,14 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 			echo 'Logged in: ' . $_SESSION['fb_uid'];
 			$this->is_facebook = true;
 			
-			if ($this->auto_render === TRUE && !Request::$is_ajax )
-			{
-				
-				// Load the template
-				$this->template = View::factory('template/facebook')
-					->bind('js',  $this->js)
-					->bind('css', $this->css);
-	
-			}
-			
 		}
 		
 		if ( $this->require_facebook && !$this->is_facebook )
 		{
 			Request::instance()->redirect('');
 		}
+		
+		*/
 		
 	}
 	

@@ -26,13 +26,9 @@ class Model_User extends Jelly_Model implements Acl_Role_Interface {
 				'max_length' => 20,
 			)),
 			
-			'email' => new Field_Email(array(
-				'empty' => FALSE,
-			)),
+			'email' => new Field_Email,
 			
-			'password' => new Field_String(array(
-				'empty' => FALSE,
-			)),
+			'password' => new Field_String,
 			
 			'token' => new Field_String(array(
 				'empty' => TRUE,
