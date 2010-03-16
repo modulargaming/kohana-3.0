@@ -20,6 +20,8 @@ class Model_Npc extends Jelly_Model {
 			'name' => new Field_String,
 			
 			'message' => new Field_Text,
+		
+			'zone_id' => new Field_Integer,
 		);
 		
 	}
