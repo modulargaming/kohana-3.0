@@ -12,6 +12,7 @@ class Controller_Facebook extends Controller_Frontend {
 	
 	public $title = 'Register';
 	public $require_facebook = TRUE;
+	public $template = 'template/facebook';
 	
 	public function action_register()
 	{
