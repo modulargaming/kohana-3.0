@@ -20,10 +20,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `alignments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `min` int(11) NOT NULL,
-  `max` int(11) NOT NULL,
+  `min` int(6) NOT NULL,
+  `max` int(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
@@ -45,10 +45,10 @@ INSERT INTO `alignments` (`id`, `name`, `min`, `max`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `battles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `character_id` int(11) NOT NULL,
-  `monster_id` int(11) NOT NULL,
-  `hp` int(11) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `character_id` int(6) NOT NULL,
+  `monster_id` int(6) NOT NULL,
+  `hp` int(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -64,11 +64,11 @@ CREATE TABLE IF NOT EXISTS `battles` (
 --
 
 CREATE TABLE IF NOT EXISTS `blog_posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `author` int(11) NOT NULL,
+  `author` int(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -84,19 +84,19 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `user_id` int(6) NOT NULL,
   `name` varchar(255) NOT NULL,
   `gender` enum('male','female') NOT NULL,
-  `race_id` int(11) NOT NULL,
+  `race_id` int(6) NOT NULL,
   `alignment` int(4) NOT NULL,
-  `hp` int(11) NOT NULL,
-  `max_hp` int(11) NOT NULL,
-  `money` int(11) NOT NULL,
-  `level` int(11) NOT NULL,
-  `xp` int(11) DEFAULT NULL,
-  `energy` int(11) NOT NULL,
-  `zone_id` int(11) NOT NULL,
+  `hp` int(6) NOT NULL,
+  `max_hp` int(6) NOT NULL,
+  `money` int(6) NOT NULL,
+  `level` int(6) NOT NULL,
+  `xp` int(6) DEFAULT NULL,
+  `energy` int(6) NOT NULL,
+  `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -114,7 +114,7 @@ INSERT INTO `characters` (`id`, `user_id`, `name`, `gender`, `race_id`, `alignme
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `class` varchar(25) NOT NULL,
   `image` varchar(25) NOT NULL,
   `description` text NOT NULL,
@@ -137,14 +137,14 @@ INSERT INTO `items` (`id`, `class`, `image`, `description`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `monsters` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `max_hp` int(11) NOT NULL,
+  `max_hp` int(6) NOT NULL,
   `defence` int(2) NOT NULL,
-  `min_dmg` int(11) NOT NULL,
-  `max_dmg` int(11) NOT NULL,
-  `money` int(11) NOT NULL,
-  `xp` int(11) NOT NULL,
+  `min_dmg` int(6) NOT NULL,
+  `max_dmg` int(6) NOT NULL,
+  `money` int(6) NOT NULL,
+  `xp` int(6) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -164,8 +164,8 @@ INSERT INTO `monsters` (`id`, `name`, `max_hp`, `defence`, `min_dmg`, `max_dmg`,
 --
 
 CREATE TABLE IF NOT EXISTS `npcs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `zone_id` int(11) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `zone_id` int(6) NOT NULL,
   `name` varchar(255) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -183,10 +183,10 @@ CREATE TABLE IF NOT EXISTS `npcs` (
 --
 
 CREATE TABLE IF NOT EXISTS `races` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
-  `starting_zone` int(11) NOT NULL,
+  `starting_zone` int(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -222,8 +222,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 CREATE TABLE IF NOT EXISTS `shops` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `zone_id` int(11) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `zone_id` int(6) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   UNIQUE KEY `id` (`id`)
@@ -243,10 +243,10 @@ INSERT INTO `shops` (`id`, `zone_id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `shop_items` (
-  `shop_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `price` int(11) NOT NULL
+  `shop_id` int(6) NOT NULL,
+  `item_id` int(6) NOT NULL,
+  `amount` int(6) NOT NULL,
+  `price` int(6) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -288,8 +288,8 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `token`, `logins`, `
 --
 
 CREATE TABLE IF NOT EXISTS `user_facebook` (
-  `facebook_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `facebook_id` int(6) NOT NULL,
+  `user_id` int(6) NOT NULL,
   UNIQUE KEY `facebook_id` (`facebook_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -305,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `user_facebook` (
 --
 
 CREATE TABLE IF NOT EXISTS `user_histories` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(6) NOT NULL,
   `time` int(10) NOT NULL,
   `history` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -324,9 +324,9 @@ INSERT INTO `user_histories` (`user_id`, `time`, `history`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `user_items` (
-  `item_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL
+  `item_id` int(6) NOT NULL,
+  `user_id` int(6) NOT NULL,
+  `amount` int(6) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -341,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `user_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `zones` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `energy` int(4) NOT NULL,
@@ -365,8 +365,8 @@ INSERT INTO `zones` (`id`, `name`, `description`, `energy`, `x`, `y`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `zone_monster` (
-  `zone_id` int(11) NOT NULL,
-  `monster_id` int(11) NOT NULL
+  `zone_id` int(6) NOT NULL,
+  `monster_id` int(6) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
