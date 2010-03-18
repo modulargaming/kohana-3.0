@@ -1,28 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
--- Värd: localhost
--- Skapad: 27 februari 2010 kl 17:22
--- Serverversion: 5.1.37
--- PHP-version: 5.3.0
+-- Host: localhost
+-- Generation Time: Mar 18, 2010 at 06:19 PM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.1-5ubuntu1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- Databas: `mg`
+-- Database: `mg`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `alignments`
+-- Table structure for table `alignments`
 --
 
 CREATE TABLE IF NOT EXISTS `alignments` (
@@ -34,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `alignments` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Data i tabell `alignments`
+-- Dumping data for table `alignments`
 --
 
 INSERT INTO `alignments` (`id`, `name`, `min`, `max`) VALUES
@@ -47,7 +41,7 @@ INSERT INTO `alignments` (`id`, `name`, `min`, `max`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `battles`
+-- Table structure for table `battles`
 --
 
 CREATE TABLE IF NOT EXISTS `battles` (
@@ -56,19 +50,17 @@ CREATE TABLE IF NOT EXISTS `battles` (
   `monster_id` int(11) NOT NULL,
   `hp` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Data i tabell `battles`
+-- Dumping data for table `battles`
 --
 
-INSERT INTO `battles` (`id`, `character_id`, `monster_id`, `hp`) VALUES
-(41, 6, 2, 100);
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `blog_posts`
+-- Table structure for table `blog_posts`
 --
 
 CREATE TABLE IF NOT EXISTS `blog_posts` (
@@ -81,16 +73,14 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Data i tabell `blog_posts`
+-- Dumping data for table `blog_posts`
 --
 
-INSERT INTO `blog_posts` (`id`, `title`, `content`, `created_on`, `author`) VALUES
-(1, 'testy', 'yryryryryryry', '2009-12-29 00:00:00', 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `characters`
+-- Table structure for table `characters`
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -104,23 +94,23 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `max_hp` int(11) NOT NULL,
   `money` int(11) NOT NULL,
   `level` int(11) NOT NULL,
-  `xp` int(11) NOT NULL,
+  `xp` int(11) DEFAULT NULL,
   `energy` int(11) NOT NULL,
   `zone_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Data i tabell `characters`
+-- Dumping data for table `characters`
 --
 
 INSERT INTO `characters` (`id`, `user_id`, `name`, `gender`, `race_id`, `alignment`, `hp`, `max_hp`, `money`, `level`, `xp`, `energy`, `zone_id`) VALUES
-(6, 2, 'Cookie', 'male', 1, 5000, 100, 100, 980, 1, 0, 100, 1);
+(1, 1, 'curtis', 'male', 1, 5000, 100, 100, 1000, 1, 0, 100, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `items`
+-- Table structure for table `items`
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
@@ -133,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `items` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Data i tabell `items`
+-- Dumping data for table `items`
 --
 
 INSERT INTO `items` (`id`, `class`, `image`, `description`, `name`) VALUES
@@ -143,7 +133,7 @@ INSERT INTO `items` (`id`, `class`, `image`, `description`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `monsters`
+-- Table structure for table `monsters`
 --
 
 CREATE TABLE IF NOT EXISTS `monsters` (
@@ -160,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `monsters` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Data i tabell `monsters`
+-- Dumping data for table `monsters`
 --
 
 INSERT INTO `monsters` (`id`, `name`, `max_hp`, `defence`, `min_dmg`, `max_dmg`, `money`, `xp`, `image`) VALUES
@@ -170,7 +160,26 @@ INSERT INTO `monsters` (`id`, `name`, `max_hp`, `defence`, `min_dmg`, `max_dmg`,
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `races`
+-- Table structure for table `npcs`
+--
+
+CREATE TABLE IF NOT EXISTS `npcs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zone_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `npcs`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `races`
 --
 
 CREATE TABLE IF NOT EXISTS `races` (
@@ -182,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `races` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Data i tabell `races`
+-- Dumping data for table `races`
 --
 
 INSERT INTO `races` (`id`, `name`, `description`, `starting_zone`) VALUES
@@ -191,7 +200,7 @@ INSERT INTO `races` (`id`, `name`, `description`, `starting_zone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE IF NOT EXISTS `sessions` (
@@ -202,14 +211,14 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Data i tabell `sessions`
+-- Dumping data for table `sessions`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `shops`
+-- Table structure for table `shops`
 --
 
 CREATE TABLE IF NOT EXISTS `shops` (
@@ -221,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `shops` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Data i tabell `shops`
+-- Dumping data for table `shops`
 --
 
 INSERT INTO `shops` (`id`, `zone_id`, `name`, `description`) VALUES
@@ -230,7 +239,7 @@ INSERT INTO `shops` (`id`, `zone_id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `shop_items`
+-- Table structure for table `shop_items`
 --
 
 CREATE TABLE IF NOT EXISTS `shop_items` (
@@ -241,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `shop_items` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Data i tabell `shop_items`
+-- Dumping data for table `shop_items`
 --
 
 INSERT INTO `shop_items` (`shop_id`, `item_id`, `amount`, `price`) VALUES
@@ -250,7 +259,7 @@ INSERT INTO `shop_items` (`shop_id`, `item_id`, `amount`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -259,56 +268,59 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(64) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
-  `logins` int(10) NOT NULL,
+  `logins` int(10) DEFAULT NULL,
   `last_login` int(10) DEFAULT NULL,
   `role` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Data i tabell `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `token`, `logins`, `last_login`, `role`) VALUES
-(2, 'copy112', 'copy112@gmail.com', '788429e33e99edb89255e7c8c3755c5a4cc19e7b15d06e701c', '4NaXzislTKzNtepgjjvWOzqXXmBsncmf', 35, 1267227526, 'admin'),
-(18, 'test', 'test@gmail.com', 'ddbb5d3888e4c75cc2abbfe76a5b57527f3bc3cc9979cd615c', 'WMp7BzN6n1cohSioA5pbkqa3a2ezOJTO', 3, 1261614811, ''),
-(19, 'test2', 'test@test.com', NULL, NULL, 0, NULL, ''),
-(20, 'test2', 'test@test.com', NULL, NULL, 0, NULL, ''),
-(21, 'test2', 'test@test.com', NULL, NULL, 0, NULL, ''),
-(22, 'test2', 'test@test.com', NULL, NULL, 0, NULL, ''),
-(23, 'test2', 'test@test.com', NULL, NULL, 0, NULL, ''),
-(24, 'test2', 'test@test.com', NULL, NULL, 0, NULL, ''),
-(25, 'testy', 'thetest2@gmail.com', '76cd5db8d1db010a2a9f07541a22ebe2d480746792239b4609', '', 0, NULL, 'user'),
-(26, 'tester', 'copy112@lol.com', 'ef72d9d9320289efdddc16753e6e5e1d73e165274fb6ba87ea', '', 0, NULL, '2'),
-(27, 'copy1122', 'copy112@gmail.com', 'afa043a96395678c1fd11273bc5c0038650ebecb06decf8b16', '', 0, NULL, '');
+(1, 'curtis', 'curtis@delicata.eu', '10180313ec28b097104bc89fab1d09d00dba1de942aa6e32e4', 'lVo5DeqivyjO8jUePxxWf1e22AjJLxX4', 1, 1268936239, 'user');
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `user_histories`
+-- Table structure for table `user_facebook`
+--
+
+CREATE TABLE IF NOT EXISTS `user_facebook` (
+  `facebook_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  UNIQUE KEY `facebook_id` (`facebook_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_facebook`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_histories`
 --
 
 CREATE TABLE IF NOT EXISTS `user_histories` (
   `user_id` int(11) NOT NULL,
-  `time` int(11) NOT NULL,
+  `time` int(10) NOT NULL,
   `history` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Data i tabell `user_histories`
+-- Dumping data for table `user_histories`
 --
 
 INSERT INTO `user_histories` (`user_id`, `time`, `history`) VALUES
-(2, 1264780728, 'Created the character'),
-(2, 1265926962, 'hi'),
-(2, 1266000411, 'Created the character: Cookie'),
-(2, 1266000938, 'Started a new battle agains Strong Pig'),
-(2, 1267011168, 'Started a new battle agains Strong Pig');
+(1, 1268936308, 'Created the character: curtis');
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `user_items`
+-- Table structure for table `user_items`
 --
 
 CREATE TABLE IF NOT EXISTS `user_items` (
@@ -318,17 +330,14 @@ CREATE TABLE IF NOT EXISTS `user_items` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Data i tabell `user_items`
+-- Dumping data for table `user_items`
 --
 
-INSERT INTO `user_items` (`item_id`, `user_id`, `amount`) VALUES
-(1, 2, 41),
-(2, 2, 3);
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `zones`
+-- Table structure for table `zones`
 --
 
 CREATE TABLE IF NOT EXISTS `zones` (
@@ -342,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `zones` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Data i tabell `zones`
+-- Dumping data for table `zones`
 --
 
 INSERT INTO `zones` (`id`, `name`, `description`, `energy`, `x`, `y`) VALUES
@@ -352,7 +361,7 @@ INSERT INTO `zones` (`id`, `name`, `description`, `energy`, `x`, `y`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `zone_monster`
+-- Table structure for table `zone_monster`
 --
 
 CREATE TABLE IF NOT EXISTS `zone_monster` (
@@ -361,13 +370,10 @@ CREATE TABLE IF NOT EXISTS `zone_monster` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Data i tabell `zone_monster`
+-- Dumping data for table `zone_monster`
 --
 
 INSERT INTO `zone_monster` (`zone_id`, `monster_id`) VALUES
 (1, 1),
 (1, 2);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
