@@ -30,11 +30,12 @@
 </div>
 
 <div id="buy-form" title="Buy item">
-	
 	<form>
-		<dl>
-			<dd><label>Ammount</label></dd>
-			<dt><input type="text" name="ammount" /></dt>
-		</dl>
+		<fieldset>
+			<dl>
+				<dd><label>Ammount</label></dd>
+				<dt><input type="text" name="ammount" /></dt>
+			</dl>
+		</fieldset>
 	</form>
 </div>

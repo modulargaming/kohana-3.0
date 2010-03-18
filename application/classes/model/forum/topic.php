@@ -30,7 +30,6 @@ class Model_Forum_Topic extends Jelly_Model {
 			
 			'locked' => new Field_Enum(array(
 				'choices' => array('Y' => 'Y', 'Y' => 'Y'),
-			)),
-			
+			))
 		);
 	}

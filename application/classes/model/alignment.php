@@ -10,16 +10,6 @@
 
 class Model_Alignment extends Jelly_Model {
 	
-	protected function _init()
-	{
-		$this->_fields += array(
-			'id' => new Sprig_Field_Auto,
-			'name' => new Sprig_Field_Char(),
-			'min' => new Sprig_Field_Integer(),
-			'max' => new Sprig_Field_Integer(),
-		);
-	}
-	
 	public static function initialize(Jelly_Meta $meta)
 	{
 		
