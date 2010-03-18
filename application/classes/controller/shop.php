@@ -19,6 +19,8 @@ class Controller_Shop extends Controller_Frontend {
 		
 		parent::before();
 		
+		$this->add_js('assets/js/shop.js');
+		
 		// Assign the shop id to $shop_id
 		$this->shop_id = Request::instance()->param('shop');
 		
