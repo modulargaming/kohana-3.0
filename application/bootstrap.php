@@ -121,6 +121,12 @@ Route::set('shop', 'shop(/<shop>(/<action>(/<item>)))')
 		'action'     => 'index',
 	));
 
+Route::set('npc', 'npc(/<npc>(/<action>(/<method>)))')
+	->defaults(array(
+		'controller' => 'npc',
+		'action'     => 'index',
+	));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',

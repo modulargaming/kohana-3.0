@@ -24,6 +24,8 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 		}
 		parent::before();
 		
+		$this->add_js( 'assets/js/jquery.tooltip.js' );
+		
 		// Make sure the user got a character if characters is required in the controller
 		if ( $this->load_character ) {
 			
@@ -44,19 +46,8 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 		if ( isset( $_SESSION['facebook'] ) )
 		{
 			
-			if ($this->auto_render === TRUE && !Request::$is_ajax )
-			{
-				
-				// Load the template
-				//$this->template = View::factory('template/facebook')
-				//	->bind('js',  $this->js)
-				//	->bind('css', $this->css);
-					
-				$this->css = array();
-				$this->add_css('assets/css/facebook.css');
-	
-			}
-			
+			$this->css = array();
+			$this->add_css('assets/css/facebook.css');
 			
 			$this->facebook = new Fb;
 			$this->facebook->api_client->set_user = $_SESSION['fb_uid'];

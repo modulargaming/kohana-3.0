@@ -12,6 +12,7 @@ class Controller_Zone extends Controller_Frontend {
 	
 	public $title = 'Zone';
 	public $load_character = TRUE;
+	public $require_character = TRUE;
 	
 	public function action_index()
 	{
