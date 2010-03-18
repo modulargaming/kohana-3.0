@@ -374,6 +374,11 @@ ul.history {
 	background: #f6dcd9;
 }
 
+.items .item {
+	float: left;
+	margin: 5px;
+}
+
 
 #tooltip {
 	position: absolute;
@@ -384,4 +389,3 @@ ul.history {
 	opacity: 0.85;
 }
 #tooltip h3, #tooltip div { margin: 0; }
-
