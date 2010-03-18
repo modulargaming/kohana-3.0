@@ -3,9 +3,9 @@
  * 
  *
  * @package    Modular Gaming
- * @author     Copy112
- * @copyright  (c) 2010 Copy112
- * @license    http://copy112.com/mg/license
+ * @author     Curtis Delicata
+ * @copyright  (c) 2010 Curtis Delicata
+ * @license    BSD - http://www.modulargaming.com/projects/modulargaming/wiki/License
  */
 
 class Model_Forum_Topic extends Jelly_Model {
