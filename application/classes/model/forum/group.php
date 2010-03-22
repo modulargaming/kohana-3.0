@@ -8,7 +8,7 @@
  * @license    BSD - http://www.modulargaming.com/projects/modulargaming/wiki/License
  */
 
-class Model_Forum_Topic extends Jelly_Model {
+class Model_Forum_Group extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
@@ -17,17 +17,10 @@ class Model_Forum_Topic extends Jelly_Model {
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
-			'group_id' => new Field_BelongsTo,
 			
 			'title' => new Field_String,
-			'content' => new Field_String,
-
-			'created' => new Field_Integer,
-			'posts' => new Field_Integer,
-			
-			
-			'locked' => new Field_Enum(array(
-				'choices' => array('y' => 'y', 'y' => 'y'),
+			'description' => new Field_String,
+ 			'role_access' => new Field_Integer,
 			))
 		);
 	}
