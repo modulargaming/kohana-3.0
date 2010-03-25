@@ -21,12 +21,11 @@ class Model_Forum_Topic extends Jelly_Model {
 			
 			'title' => new Field_String,
 			'content' => new Field_String,
+			'status' => new Field_String,
 
 			'created' => new Field_Integer,
 			'posts' => new Field_Integer,
 			
-			'locked' => new Field_Enum(array(
-				'choices' => array('y' => 'y', 'y' => 'y'),
 			))
 		);
 	}
