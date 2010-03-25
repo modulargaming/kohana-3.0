@@ -13,7 +13,6 @@ class Model_Forum_Topic extends Jelly_Model {
 	public static function initialize(Jelly_Meta $meta)
 	{
 		
-		// $meta->load_with = array('forum_posts');
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,

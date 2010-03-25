@@ -13,6 +13,7 @@ class Model_Forum_Post extends Jelly_Model {
 	public static function initialize(Jelly_Meta $meta)
 	{
 		
+		$meta->load_with = array('user');		
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
