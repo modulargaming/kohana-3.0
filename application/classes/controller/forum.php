@@ -17,17 +17,18 @@ class Controller_Forum extends Controller_Frontend {
 	{
 		
 		if ( !is_numeric( $id ) )
-			die( 'ID is not a Integer' );
+			die( 'Invalid thread ID' );
 		
 		$posts = Jelly::select( 'forum_posts' )
 			->where( 'topic_id', '=', $id )
-			->load();
+			->execute();
+
 /*		
 		if ( $posts->topic_id != )
 			die( ' ' );
 
 */
-		
+
 		$this->template->content = View::factory( 'forum/index' )
 			->set( 'posts', $posts );
 		

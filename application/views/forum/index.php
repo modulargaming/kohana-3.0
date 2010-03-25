@@ -1,7 +1,11 @@
-<h2><?php echo $posts->id ?></h2>
+<?php foreach ( $posts as $p ): ?>
 
-<p><?php echo $posts->content ?></p>
 
-<p><?php echo $posts->user_id ?></p>
+<h2><?php echo $p->id ?></h2>
 
+<p><?php echo $p->content ?></p>
+
+<p><?php echo $p->user_id ?></p>
+
+<?php endforeach;?>
 
