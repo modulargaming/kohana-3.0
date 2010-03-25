@@ -25,6 +25,7 @@
 				
 				echo '<li class="first">' . html::anchor( 'dashboard', 'Dashboard' )    . '</li>';
 				echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
+				echo '<li>' . html::anchor( 'forum', 'Forum' ) . '</li>';
 				echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
 				echo '<li class="last">' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
 				
