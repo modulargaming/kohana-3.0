@@ -1,4 +1,4 @@
-application/config/*
+*database.php*
 *.db
 .project
 .settings
