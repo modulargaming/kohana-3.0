@@ -1,11 +1,11 @@
 <?php foreach ( $categories as $c ): ?>
 
+<p>
+<?php echo html::anchor( "forum/category/$c->id", "$c->title" ); ?>
+<br />
+<?php echo $c->description ?>
 
-<h2><?php echo $c->id ?></h2>
-
-<p><?php echo $c->title ?></p>
-
-<p><?php echo $c->description ?></p>
+</p>
 
 <?php endforeach;?>
 
