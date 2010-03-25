@@ -8,7 +8,7 @@
  * @license    BSD - http://www.modulargaming.com/projects/modulargaming/wiki/License
  */
 
-class Model_Forum_Categories extends Jelly_Model {
+class Model_Forum_Category extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
@@ -22,6 +22,9 @@ class Model_Forum_Categories extends Jelly_Model {
 			'description' => new Field_String,
  			'role_access' => new Field_Integer,
 		
-		);
-	}
+                );
+
+        }
+
 }
+

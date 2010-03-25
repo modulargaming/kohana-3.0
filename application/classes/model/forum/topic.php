@@ -17,7 +17,7 @@ class Model_Forum_Topics extends Jelly_Model {
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
-			'group_id' => new Field_BelongsTo,
+			'group' => new Field_BelongsTo,
 			
 			'title' => new Field_String,
 			'content' => new Field_String,
@@ -26,7 +26,9 @@ class Model_Forum_Topics extends Jelly_Model {
 			'created' => new Field_Integer,
 			'posts' => new Field_Integer,
 			
-			))
-		);
-	}
+                );
+
+        }
+
 }
+
