@@ -137,6 +137,31 @@ class Controller_Shop extends Controller_Frontend {
 		}
 		
 	}
-
+	/*
+	public function action_view( )
+	{
+		
+		$items = Model_Shop::get_items( $this->shop->id );
+		
+		$return = array(
+			'name' => $this->shop->name,
+		);
+		
+		foreach ( $items as $i ) {
+			$return['items'][] = array(
+				'id' => $i->id,
+				'name' => $i->name,
+				'image' => $i->image,
+				'price' => $i->price,
+				'amount' => $i->amount,
+				'description' => $i->description,
+			);
+		}
+		
+		die(json_encode($return));
+		
+		
+	}
+	*/
 	
 }
