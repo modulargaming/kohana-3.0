@@ -8,7 +8,7 @@
  * @license    BSD - http://www.modulargaming.com/projects/modulargaming/wiki/License
  */
 
-class Model_Forum_Topics extends Jelly_Model {
+class Model_Forum_Topic extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
