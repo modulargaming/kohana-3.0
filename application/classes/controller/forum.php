@@ -19,8 +19,9 @@ class Controller_Forum extends Controller_Frontend {
         {
                 $categories = Jelly::select( 'forum_category' )
                         ->execute();
-/*
 
+
+/*
                 if ( $categories->id != )
                         die( 'No categories exist' );
 */
@@ -93,14 +94,14 @@ class Controller_Forum extends Controller_Frontend {
 {
 $this->title = 'Forum - Post';
  
-$sprig = Sprig::factory('forum_post');
+$jelly = Jelly::factory('forum_post');
  
 // Check if we have a post request
 $post = Validate::factory($_POST)
 ->filter(TRUE, 'trim')
 ->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-->rules('title', $sprig->field('title')->rules)
-->rules('content', $sprig->field('content')->rules)
+//->rules('title', $jelly->field('title')->rules)
+//->rules('content', $jelly->field('content')->rules)
 ->callback('captcha', array($this, 'captcha_valid'));
  
 $post = Security::xss_clean($post);
@@ -109,15 +110,15 @@ if ($post->check())
  
  
 // Assign the validated data to the sprig object
-$sprig->values( $post->as_array());
-$sprig->author = $this->user->id;
-$sprig->created_on = time();
+$jelly->values( $post->as_array());
+$jelly->author = $this->user->id;
+$jelly->created_on = time();
  
  
 try
 {
 // Create the new post
-$sprig->create();
+$jelly->create();
  
 // Redirect the user to the login page
                                 $this->request->redirect( 'forum' );
