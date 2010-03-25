@@ -19,7 +19,7 @@ class Controller_Forum extends Controller_Frontend {
 		if ( !is_numeric( $id ) )
 			die( 'Invalid thread ID' );
 		
-		$posts = Jelly::select( 'forum_posts' )
+		$posts = Jelly::select( 'forum_post' )
 			->where( 'topic_id', '=', $id )
 			->execute();
 

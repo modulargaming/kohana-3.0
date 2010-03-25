@@ -8,7 +8,7 @@
  * @license    BSD - http://www.modulargaming.com/projects/modulargaming/wiki/License
  */
 
-class Model_Forum_Posts extends Jelly_Model {
+class Model_Forum_Post extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
@@ -16,9 +16,9 @@ class Model_Forum_Posts extends Jelly_Model {
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
-			'topic_id' => new Field_BelongsTo,
+			'topic' => new Field_BelongsTo,
 			
-			'user_id' => new Field_BelongsTo,
+			'user' => new Field_BelongsTo,
 			
 			'content' => new Field_String,
 
