@@ -27,3 +27,5 @@ class Model_Forum_Post extends Jelly_Model {
 		);
 			
 	}
+
+}

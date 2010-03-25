@@ -21,6 +21,7 @@ class Model_Forum_Group extends Jelly_Model {
 			'title' => new Field_String,
 			'description' => new Field_String,
  			'role_access' => new Field_Integer,
-			))
+		
 		);
 	}
+}

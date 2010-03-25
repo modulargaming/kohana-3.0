@@ -25,9 +25,9 @@ class Model_Forum_Topic extends Jelly_Model {
 			'created' => new Field_Integer,
 			'posts' => new Field_Integer,
 			
-			
 			'locked' => new Field_Enum(array(
 				'choices' => array('y' => 'y', 'y' => 'y'),
 			))
 		);
 	}
+}
