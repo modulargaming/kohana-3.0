@@ -33,51 +33,39 @@ class Battle {
 	 * @param   object   Character
 	 * @return  boolean
 	 */
-	public static function fight( $char, $monster )
+	public static function fight( $character, $battle )
 	{
 		
-		$c_hp = $char->hp;
+		$c_hp = $character->hp;
 		$c_defence = 30;
 		$c_dmg = 5;
 		
-		$m_hp = $monster->hp;
-		$m_defence = $monster->monster->defence;
-		$m_dmg = rand( $monster->monster->min_dmg, $monster->monster->max_dmg );
+		
+		$monster = $battle->monster;
+		
+		// Check how much dmg the monster should do on the character.
+		$monster_dmg = rand( $monster->min_dmg, $monster->max_dmg );
+		$monster_dmg = round( $monster_dmg * ( 100 - $c_defence ) / 100 );
+		
+		// Set the characters health
+		$character->hp = $character->hp - $monster_dmg;
+		$character->save();
+		
+		// Check how much dmg the character should do on the monster.
+		$character_dmg = round( $c_dmg * ( 100 - $monster->defence ) / 100 );
+		
+		// Set the monsters health
+		$monster->hp = $monster->hp - $character_dmg;
+		$monster->save();
 		
 		
-		$t = $c_hp;
-		$t = round( $t - $m_dmg * ( ( 100 - $c_defence ) / 100 ) );
+		// Set an array of messages.
+		$message = array(
+			'You did '.$character_dmg.' damage.',
+			'The foe did '.$monster_dmg.' damage',
+		);
 		
-		$char->hp = $t;
-		
-		try
-		{
-			$char->save();
-		}
-		catch (Validate_Exception $e)
-		{
-			
-			// Get the errors using the Validate::errors() method
-			print_r( $e->array->errors('register') );
-			die();
-		}
-		
-		$t = $m_hp;
-		$t = round( $t - $c_dmg * ( ( 100 - $m_defence ) / 100 ) );
-		
-		$monster->hp = $t;
-		
-		try
-		{
-			$monster->save();
-		}
-		catch (Validate_Exception $e)
-		{
-			
-			// Get the errors using the Validate::errors() method
-			print_r( $e->array->errors('register') );
-			die();
-		}
+		Message::set( Message::SUCCESS, $message );
 		
 	}
 	

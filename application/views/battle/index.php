@@ -1,4 +1,7 @@
 <h2>Battle</h2>
+
+<?php echo Message::render() ?>
+
 <div class="battle">
 	<div class="left">
 		<h3>You:</h3>

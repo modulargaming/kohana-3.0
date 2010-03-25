@@ -66,9 +66,14 @@ class Controller_Battle extends Controller_Frontend {
 		$char = $this->character;
 		$monster = $char->battle;
 		
+		// If the battle alredy ended, redirect them to end battle.
 		if ( !Battle::can_fight( $char ) or !Battle::can_fight( $monster ) )
 			$this->request->redirect( 'battle/end' );
 		
+		
+		// TODO: Write a math system that calculates the changes of escaping.
+		
+				
 		
 	}
 	
