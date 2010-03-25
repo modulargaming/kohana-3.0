@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2010 at 06:47 PM
+-- Generation Time: Mar 25, 2010 at 09:58 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1-5ubuntu2
 
@@ -50,12 +50,14 @@ CREATE TABLE IF NOT EXISTS `battles` (
   `monster_id` int(6) NOT NULL,
   `hp` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `battles`
 --
 
+INSERT INTO `battles` (`id`, `character_id`, `monster_id`, `hp`) VALUES
+(1, 1, 1, 42);
 
 -- --------------------------------------------------------
 
@@ -105,26 +107,28 @@ CREATE TABLE IF NOT EXISTS `characters` (
 --
 
 INSERT INTO `characters` (`id`, `user_id`, `name`, `gender`, `race_id`, `alignment`, `hp`, `max_hp`, `money`, `level`, `xp`, `energy`, `zone_id`) VALUES
-(1, 1, 'curtis', 'male', 1, 5000, 100, 100, 1000, 1, 0, 90, 2);
+(1, 1, 'curtis', 'male', 1, 5000, 96, 100, 1000, 1, 0, 70, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `forum_groups`
+-- Table structure for table `forum_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `forum_groups` (
+CREATE TABLE IF NOT EXISTS `forum_categories` (
   `id` int(6) NOT NULL,
   `title` varchar(30) NOT NULL,
   `description` varchar(50) NOT NULL,
-  `role_access` int(2) NOT NULL,
+  `access` int(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `forum_groups`
+-- Dumping data for table `forum_categories`
 --
 
+INSERT INTO `forum_categories` (`id`, `title`, `description`, `access`) VALUES
+(1, 'Test category', 'This is a test', 1);
 
 -- --------------------------------------------------------
 
@@ -146,7 +150,8 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
 --
 
 INSERT INTO `forum_posts` (`id`, `topic_id`, `user_id`, `content`, `created`) VALUES
-(1, 1, 1, 'Test', 1234567890);
+(1, 1, 1, 'Test', 1234567890),
+(2, 1, 2, 'a', 1234567891);
 
 -- --------------------------------------------------------
 
@@ -156,11 +161,11 @@ INSERT INTO `forum_posts` (`id`, `topic_id`, `user_id`, `content`, `created`) VA
 
 CREATE TABLE IF NOT EXISTS `forum_topics` (
   `id` int(6) NOT NULL,
-  `group_id` int(6) NOT NULL,
+  `category_id` int(6) NOT NULL,
   `title` varchar(30) NOT NULL,
+  `status` varchar(12) NOT NULL,
   `reply_id` int(6) NOT NULL,
   `created` int(10) NOT NULL,
-  `locked` enum('y','n') NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -168,6 +173,8 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
 -- Dumping data for table `forum_topics`
 --
 
+INSERT INTO `forum_topics` (`id`, `category_id`, `title`, `status`, `reply_id`, `created`) VALUES
+(1, 1, 'Test', '', 1, 1234567891);
 
 -- --------------------------------------------------------
 
@@ -346,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `token`, `logins`, `last_login`, `role`) VALUES
-(1, 'curtis', 'curtis@delicata.eu', '10180313ec28b097104bc89fab1d09d00dba1de942aa6e32e4', 'mPAXGDahKG5C6C4WGHxwAcW30CR15fs2', 3, 1269283235, 'user');
+(1, 'curtis', 'curtis@delicata.eu', '10180313ec28b097104bc89fab1d09d00dba1de942aa6e32e4', 'pAwFY9bMhubkgMzWTY898NpjCmjXqcRW', 5, 1269550851, 'user');
 
 -- --------------------------------------------------------
 
@@ -382,7 +389,8 @@ CREATE TABLE IF NOT EXISTS `user_histories` (
 --
 
 INSERT INTO `user_histories` (`user_id`, `time`, `history`) VALUES
-(1, 1268936308, 'Created the character: curtis');
+(1, 1268936308, 'Created the character: curtis'),
+(1, 1269550854, 'Started a new battle agains Pig');
 
 -- --------------------------------------------------------
 
