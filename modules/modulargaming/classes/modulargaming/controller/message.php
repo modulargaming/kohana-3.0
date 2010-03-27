@@ -2,15 +2,16 @@
 /**
  * 
  *
- * @package    Untold Nation
+ * @package    Modular Gaming
+ * @subpackage Core
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    May not be used without full permission from the Author (Oscar Hinton).
+ * @license    http://copy112.com/mg/license
  */
 
-class Modulargaming_Controller_PM extends Controller_Frontend {
+class Modulargaming_Controller_Message extends Controller_Frontend {
 
-	public $title = 'PM';
+	public $title = 'Messages';
 	public $protected = true;
 
 	public function before()
@@ -27,7 +28,7 @@ class Modulargaming_Controller_PM extends Controller_Frontend {
 			->set( 'sidebar', $this->sidebar );
 	}
 	
-	public function action_new()
+	public function action_create()
 	{
 		
 		$this->template->content = View::factory('pm/new')
@@ -35,6 +36,10 @@ class Modulargaming_Controller_PM extends Controller_Frontend {
 		
 	}
 	
+	/**
+	 * Retrive usernames that start on the given param.
+	 * @param string $search
+	 */
 	public function action_reciver( $search )
 	{
 		
@@ -43,14 +48,15 @@ class Modulargaming_Controller_PM extends Controller_Frontend {
 			->where( 'username', 'LIKE', $search.'%' )
 			->execute();
 		
+		// Add the usernames to an array.
 		$array = array();
-		
 		foreach ( $users as $u )
 		{
 			$array[] = $u->username;
 		}
 		
-		die( json_encode( $array ) );
+		// Json encode it, and output it.
+		$this->request->response = json_encode( $array );
 		
 	}
 

@@ -1,11 +1,12 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Model for managing the user table
+ * 
  *
- * @package    Untold Nation
+ * @package    Modular Gaming
+ * @subpackage Core
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    May not be used without full permission from the Author (Oscar Hinton).
+ * @license    http://copy112.com/mg/license
  */
 
 abstract class Modulargaming_Controller_Frontend extends Controller {

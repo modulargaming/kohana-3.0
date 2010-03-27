@@ -6,7 +6,7 @@
  * @subpackage Core
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    May not be used without full permission from the Author (Oscar Hinton).
+ * @license    http://copy112.com/mg/license
  */
 
 class Modulargaming_Controller_Account extends Controller_Frontend {
