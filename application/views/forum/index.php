@@ -1,5 +1,6 @@
-<?php foreach ( $categories as $c ): ?>
+<?php echo Message::render() ?>
 
+<?php foreach ( $categories as $c ): ?>
 <p>
 <?php echo html::anchor( 'forum/category/'.$c->id, $c->title ); ?>
 <br />

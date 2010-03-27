@@ -1,3 +1,5 @@
+<?php echo Message::render() ?>
+
 <?php foreach ( $posts as $p ): ?>
 
 <p>
