@@ -96,7 +96,8 @@ Kohana::modules(array(
 	'image'      => MODPATH.'image',	
 
 	'blog'  => MODPATH.'blog', // Blog
-	
+	'forum' => MODPATH.'forum', // Offical forum module
+
 	'message' => MODPATH.'message',
 
 	'facebook' => MODPATH.'facebook',
