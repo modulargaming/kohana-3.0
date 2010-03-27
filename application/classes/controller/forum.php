@@ -94,34 +94,33 @@ class Controller_Forum extends Controller_Frontend {
 {
 $this->title = 'Forum - Post';
  
-$jelly = Jelly::factory('forum_post');
- 
 // Check if we have a post request
 $post = Validate::factory($_POST)
 ->filter(TRUE, 'trim')
 ->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-//->rules('title', $jelly->field('title')->rules)
-//->rules('content', $jelly->field('content')->rules)
 ->callback('captcha', array($this, 'captcha_valid'));
  
 $post = Security::xss_clean($post);
 if ($post->check())
 {
  
- 
-// Assign the validated data to the sprig object
-$jelly->values( $post->as_array());
-$jelly->author = $this->user->id;
-$jelly->created_on = time();
- 
- 
+
 try
 {
 // Create the new post
-$jelly->create();
+Jelly::factory('post')
+     ->set(array(
+         'title' => $post->title,
+         'content' => $post->content,
+         'author' => $this->user-id,
+         'status' => 'open',
+         'created' => time(),
+     ))->save();
+
+
  
-// Redirect the user to the login page
-                                $this->request->redirect( 'forum' );
+// Redirect the user to the forum topic
+                                $this->request->redirect( 'forum/topic/' );
 }
  
 catch (Validate_Exception $e)
@@ -140,6 +139,8 @@ $this->errors = $post->errors('forum/post');
                         ->set( 'post', $post->as_array() );
  
  
+
+
 }
  
 public function captcha_valid(Validate $array, $field)
