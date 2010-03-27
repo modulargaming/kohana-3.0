@@ -127,7 +127,7 @@ $jelly->create();
 catch (Validate_Exception $e)
 {
 // Get the errors using the Validate::errors() method
-$this->errors = $e->array->errors('register');
+$this->errors = $e->array->errors('forum');
 }
  
 }
