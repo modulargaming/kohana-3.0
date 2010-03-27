@@ -1,3 +1,5 @@
+<?php echo Message::render() ?>
+
 <?php foreach ( $topics as $t ): ?>
 
 <p>

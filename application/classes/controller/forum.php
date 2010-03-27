@@ -24,7 +24,6 @@ class Controller_Forum extends Controller_Frontend {
                 if ($categories->count() == 0)
 {
 
-                // Set an array of messages.
                 $message = 'No categories exist';
                 Message::set( Message::WARN, $message );
 
@@ -42,9 +41,15 @@ class Controller_Forum extends Controller_Frontend {
 
 		$this->title = 'Forum - Category '."$id";
 
-		if ( !is_numeric( $id ) )
-			die( 'Invalid thread ID' );
-		
+		if ( !is_numeric( $id ) ) 
+
+		{
+
+                $message = 'Invalid ID';
+                Message::set( Message::WARN, $message );
+
+		}
+
 		$topics = Jelly::select( 'forum_topic' )
 			->where( 'category_id', '=', $id )
 			->execute();
@@ -53,7 +58,6 @@ class Controller_Forum extends Controller_Frontend {
                 if ($topics->count() == 0)
 {
 
-                // Set an array of messages.
                 $message = 'No topics exist';
                 Message::set( Message::WARN, $message );
 
@@ -72,8 +76,14 @@ class Controller_Forum extends Controller_Frontend {
 		
 		$this->title = 'Forum - Topic '."$id";
 		
-		if ( !is_numeric( $id ) )
-			die( 'Invalid thread ID' );
+                if ( !is_numeric( $id ) ) 
+
+                {
+
+                $message = 'Invalid ID';
+                Message::set( Message::WARN, $message );
+
+                }
 		
 		$posts = Jelly::select( 'forum_post' )
 			->where( 'topic_id', '=', $id )
@@ -81,10 +91,9 @@ class Controller_Forum extends Controller_Frontend {
 
 		
 
-                if ($posts->topic->count() == 0)
+                if ($posts == NULL)
 {
 
-                // Set an array of messages.
                 $message = 'Topic does not exist';
                 Message::set( Message::WARN, $message );
 
@@ -96,10 +105,20 @@ class Controller_Forum extends Controller_Frontend {
 	}
 	
 
- public function action_post()
+ public function action_post( $id )
  
 {
 $this->title = 'Forum - Post';
+
+                if ( !is_numeric( $id ) ) 
+
+                {
+
+                $message = 'Invalid ID';
+                Message::set( Message::WARN, $message );
+
+                }
+
  
 // Check if we have a post request
 $post = Validate::factory($_POST)
