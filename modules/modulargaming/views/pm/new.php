@@ -1,8 +1,8 @@
 <h2>PM - Write a new message</h2>
 
-<div class="left"><?php echo $sidebar ?></div>
+<div class="left w150"><?php echo $sidebar ?></div>
 
-<div class="left">
+<div class="right w500" id="new_pm">
 
 	<?php echo form::open() ?>
 	<fieldset>

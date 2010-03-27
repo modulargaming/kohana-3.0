@@ -11,6 +11,7 @@
 class Modulargaming_Controller_PM extends Controller_Frontend {
 
 	public $title = 'PM';
+	public $protected = true;
 
 	public function before()
 	{
@@ -31,6 +32,25 @@ class Modulargaming_Controller_PM extends Controller_Frontend {
 		
 		$this->template->content = View::factory('pm/new')
 			->set( 'sidebar', $this->sidebar );
+		
+	}
+	
+	public function action_reciver( $search )
+	{
+		
+		// Find all users whos username starts on the search string.
+		$users = Jelly::select( 'user' )
+			->where( 'username', 'LIKE', $search.'%' )
+			->execute();
+		
+		$array = array();
+		
+		foreach ( $users as $u )
+		{
+			$array[] = $u->username;
+		}
+		
+		die( json_encode( $array ) );
 		
 	}
 
