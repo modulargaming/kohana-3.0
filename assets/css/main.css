@@ -142,6 +142,10 @@ input[type="submit"]:hover {
 	color: #bc2a4d;
 }
 
+fieldset.small dt {
+	width: 70px;
+}
+
 label.error {
 	float: none;
 	color: red;

@@ -3,7 +3,6 @@
 <?php echo Message::display(); ?>
 
 <?php echo form::open(); ?>
-
 <fieldset>
 	<dl>
 		<dt><?php echo form::label('username', 'Username:'); ?></dt>

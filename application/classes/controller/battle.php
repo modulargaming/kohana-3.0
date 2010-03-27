@@ -13,48 +13,42 @@ class Controller_Battle extends Controller_Frontend {
 	public $protected = TRUE;
 	public $load_character = TRUE;
 	public $require_character = TRUE;
-	public $title = 'Battle';
-	
-	public function before()
-	{
-		parent::before();
-		
-		// Check if the user has a character already.
-		if ( !$this->character->loaded() )
-			$this->request->redirect( 'character/create' );
-		
-	}
-	
+	public $title = 'Battle';	
 	
 	public function action_index()
 	{
+		
 		$character = $this->character;
-		$monster = $character->battle;
+		$battle = $character->battle;
 		
 		$char = new Character( $character );
 		
-		if ( !$monster->id )
-			$this->request->redirect( 'battle/new' );
+		// if the battle haven't started, start one.
+		if ( !$battle->loaded() )
+			$this->new_battle();
 		
-		if ( !Battle::can_fight( $character ) or !Battle::can_fight( $monster ) )
+		// Check if the player and enemy can fight, if not end the battle.
+		if ( !Battle::can_fight( $character ) or !Battle::can_fight( $battle ) )
 			$this->request->redirect( 'battle/end' );
 		
 		$this->template->content = View::factory('battle/index')
 			->set( 'char', $char )
 			->set( 'character', $character )
-			->set( 'monster', $monster );
+			->set( 'battle', $battle )
+			->set( 'monster', $battle->monster );
+		
 	}
 	
 	public function action_attack()
 	{
 		
-		$char = $this->character;
-		$monster = $char->battle;
+		$character = $this->character;
+		$battle = $character->battle;
 		
-		if ( !Battle::can_fight( $char ) or !Battle::can_fight( $monster ) )
+		if ( !Battle::can_fight( $character ) or !Battle::can_fight( $battle ) )
 			$this->request->redirect( 'battle/end' );
 		
-		Battle::fight( $char, $monster );
+		Battle::fight( $character, $battle );
 		
 		$this->request->redirect( 'battle' );
 		
@@ -63,32 +57,28 @@ class Controller_Battle extends Controller_Frontend {
 	public function action_run()
 	{
 		
-		$char = $this->character;
-		$monster = $char->battle;
+		$character = $this->character;
+		$battle = $character->battle;
+		$monster = $battle->monster;
 		
-		// If the battle alredy ended, redirect them to end battle.
-		if ( !Battle::can_fight( $char ) or !Battle::can_fight( $monster ) )
+		// Check if the player and enemy can fight, if not end the battle.
+		if ( !Battle::can_fight( $character ) or !Battle::can_fight( $battle ) )
 			$this->request->redirect( 'battle/end' );
-		
 		
 		// TODO: Write a math system that calculates the changes of escaping.
 		
-				
+		Battle::end( $battle );
+		
+		$this->template->content = View::factory('battle/run/success')
+			->set( 'character', $character )
+			->set( 'monster', $monster );
+		
 		
 	}
 	
-	public function action_new()
+	public function new_battle()
 	{
-		
-		$char = $this->character;
-		$monster = $char->battle;
-		
-		if ( $monster->id )
-			$this->request->redirect( 'battle' );
-		
-		$this->MG->new_battle( $char );
-		
-		$this->request->redirect( 'battle' );
+		$this->MG->new_battle( $this->character );
 	}
 	
 	public function action_end()

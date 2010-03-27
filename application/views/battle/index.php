@@ -15,20 +15,20 @@
 	
 	<div class="right">
 			
-		<?php echo html::image( 'assets/images/monsters/' . $monster->monster->image, array( 'class' => 'npc' ) ) ?>
+		<?php echo html::image( 'assets/images/monsters/' . $monster->image, array( 'class' => 'npc' ) ) ?>
 		<?php
-			$m_per = $char->percent_hp($monster->hp, $monster->monster->max_hp);
+			$m_per = $char->percent_hp($battle->hp, $monster->max_hp);
 		?>
 		
 		<div class="right">
 			<div style="text-align: center;">
-				<h2><?php echo $monster->monster->name; ?></h2>
-				<p style="margin-top: -8px;">Level 1</p
+				<h2><?php echo $monster->name; ?></h2>
+				<p style="margin-top: -8px;">Level 1</p>
 			</div>
 			
 			<span class="bar small hp">
 				<?php echo '<span style="width: ' . $m_per . '%"></span>'; ?>
-				<p><?php echo $monster->hp . ' / '. $monster->monster->max_hp; ?></p>
+				<p><?php echo $battle->hp . ' / '. $monster->max_hp; ?></p>
 			</span>
 		
 		</div>
@@ -40,6 +40,7 @@
 	
 	<div style="clear:both;"></div>
 	
-	<?php echo html::anchor( 'battle/attack', 'Attack' ); ?>
+	<?php echo html::anchor( 'battle/attack', 'Attack' ); ?><br />
+	<?php echo html::anchor( 'battle/run', 'Try to run away' ); ?><br />
 	
 </div>

@@ -69,4 +69,11 @@ class Battle {
 		
 	}
 	
+	
+	public static function end( $battle )
+	{
+		
+		$battle->delete();
+		
+	}
 }

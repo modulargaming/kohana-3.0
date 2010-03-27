@@ -52,6 +52,13 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 		{
 			if ($this->a1->login($post['username'],$post['password'], isset($_POST['remember']) ? (bool) $_POST['remember'] : FALSE))
 			{
+			
+				// If it is an ajax request, output 1 to verify the user has been logged in.
+				if ( Request::$is_ajax )
+				{
+					die('1');
+				}
+				
 				$this->request->redirect( '' );
 			}
 			else
@@ -63,6 +70,13 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 		{
 			$this->errors = $post->errors('register');
 		}
+		
+		
+		if ( Request::$is_ajax && !empty( $this->errors ) )
+		{
+			die( json_encode( $this->errors ) );
+		}
+		
 		
 		if ( !empty($this->errors) )
 			Message::set( Message::ERROR, $this->errors );

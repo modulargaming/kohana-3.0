@@ -32,7 +32,7 @@
 			} else {
 				
 				echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
-				echo '<li>' . html::anchor( 'account/login', 'Login' ) . '</li>';
+				echo '<li class="login">' . html::anchor( 'account/login', 'Login' ) . '</li>';
 				echo '<li class="last">' . html::anchor( 'account/register', 'Register' ) . '</li>';
 				
 			}
@@ -48,6 +48,29 @@
 	<div class="wrapper">
 		<p class="copyright">© 2010 the Modular Gaming Team.</p>
 	</div>
+</div>
+
+<div id="login-dialog" title="Login" class="hidden">
+	<ul class="errors"></ul>
+	<form>
+	<fieldset class="small">
+		<dl>
+			<dt><?php echo form::label('username', 'Username:'); ?></dt>
+			<dd><?php echo form::input('username'); ?></dd>
+		</dl>
+		<dl>
+			<dt><?php echo form::label('password', 'Password:'); ?></dt>
+			<dd>
+				<?php echo form::password('password'); ?>
+			</dd>
+		</dl>
+		<dl>
+			<dt>&nbsp;</dt>
+			<dd><?php echo form::label('remember', form::checkbox('remember').'Remember me'); ?></dd>
+		</dl>
+		
+	</fieldset>
+	</form>
 </div>
 <?php
 	if( Kohana::$environment == 'development' )
