@@ -4,7 +4,7 @@ $(function() {
 	
 	$('li.login a').click(function() {
 		
-		$( '#login-dialog' ).dialog({
+		var dialog = $( '#login-dialog' ).dialog({
 			modal: true,
 			resizable: false,
 			width: 320,
@@ -43,6 +43,14 @@ $(function() {
 				Cancel: function() {
 					$(this).dialog('close');
 				}
+			}
+		});
+		
+		// Submit the dialog form when pressing enter.
+		$('#login-dialog').find('input').keypress(function(e) {
+			if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+				$(this).parents('div.ui-dialog').find('.ui-dialog-buttonpane').find('button:first').click();
+				return false;
 			}
 		});
 		

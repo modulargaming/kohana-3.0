@@ -2,26 +2,23 @@
 
 <div class="left"><?php echo $sidebar ?></div>
 
-<div class="right">
+<div class="left">
 
 	<?php echo form::open() ?>
 	<fieldset>
 		<dl>
-			<dt><?php echo form::label('username', 'Username:'); ?></dt>
-			<dd><?php echo form::input('username'); ?></dd>
+			<dt><?php echo form::label('to', 'Reciver:'); ?></dt>
+			<dd><?php echo form::input('to'); ?></dd>
 		</dl>
 		<dl>
-			<dt><?php echo form::label('password', 'Password:'); ?></dt>
+			<dt><?php echo form::label('message', 'message:'); ?></dt>
 			<dd>
-				<?php echo form::password('password'); ?>
+				<?php echo form::textarea('message'); ?>
 			</dd>
 		</dl>
-		<dl>
-			<dt>&nbsp;</dt>
-			<dd><?php echo form::label('remember', form::checkbox('remember').'Remember me'); ?></dd>
-		</dl>
+		<br /><br />
 		
-		<?php echo form::submit('login', 'Login'); ?>
+		<?php echo form::submit('send', 'Send'); ?>
 	</fieldset>
 	<?php echo form::close() ?>
 
