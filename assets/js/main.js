@@ -62,7 +62,7 @@ $(function() {
 	
 	
 	// Autocomplete for reciver in pm.
-	$('#new_pm input').autocomplete({
+	$('#new_pm input[name=to]').autocomplete({
 		source: function(request, response) {
 			$.ajax({
 				url: path+'pm/reciver/'+request.term,
