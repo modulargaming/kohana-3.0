@@ -21,13 +21,14 @@ class Controller_Forum extends Controller_Frontend {
                         ->execute();
 
 
-/*
-                if ( $categories->id != )
-                        die( 'No categories exist' );
-*/
+                if ($categories->count() == 0)
+{
 
+                // Set an array of messages.
+                $message = 'No categories exist';
+                Message::set( Message::WARN, $message );
 
-
+}
 
                 $this->template->content = View::factory( 'forum/index' )
                         ->set( 'categories', $categories );
@@ -49,11 +50,14 @@ class Controller_Forum extends Controller_Frontend {
 			->execute();
 
 		
-/*
+                if ($topics->count() == 0)
+{
 
-		if ( $topics->category != )
-			die( 'No such category' );
-*/
+                // Set an array of messages.
+                $message = 'No topics exist';
+                Message::set( Message::WARN, $message );
+
+}
 
 
 		$this->template->content = View::factory( 'forum/category' )
@@ -76,12 +80,15 @@ class Controller_Forum extends Controller_Frontend {
 			->execute();
 
 		
-/*
 
-		if ( $posts->topic != )
-			die( 'No such thread' );
-*/
+                if ($posts->topic->count() == 0)
+{
 
+                // Set an array of messages.
+                $message = 'Topic does not exist';
+                Message::set( Message::WARN, $message );
+
+}
 
 		$this->template->content = View::factory( 'forum/topic' )
 			->set( 'posts', $posts );
