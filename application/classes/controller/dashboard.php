@@ -17,8 +17,6 @@ class Controller_Dashboard extends Controller_Frontend {
 	public function action_index()
 	{
 		
-		
-		
 		// Initialize the character class, and set the players character as the default.
 		$char = new Character( $this->character );
 		

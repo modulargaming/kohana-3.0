@@ -32,7 +32,6 @@ $(function() {
 							for (var i in raw_errors) {
 								errors += '<li>'+raw_errors[i]+'</li>';
 							}
-														
 							
 							$(dialog).find('ul.errors').html( errors );
 							
@@ -56,6 +55,28 @@ $(function() {
 		
 		return false; // Disable the link.
 	});
+	
+	
+	
+	
+	
+	
+	// Autocomplete for reciver in pm.
+	$('#new_pm input').autocomplete({
+		source: function(request, response) {
+			$.ajax({
+				url: path+'pm/reciver/'+request.term,
+				dataType: 'json',
+				success: function(data) {
+					response(data);
+				}
+			});
+		},
+		minLength: 2
+	});
+	
+	
+	
 	
 });
 
