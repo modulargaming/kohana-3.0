@@ -110,7 +110,9 @@ class Controller_Forum extends Controller_Frontend {
 {
 $this->title = 'Forum - Post';
 
-                if ( !is_numeric( $id ) ) 
+                
+/*
+if ( !is_numeric( $id ) ) 
 
                 {
 
@@ -118,7 +120,7 @@ $this->title = 'Forum - Post';
                 Message::set( Message::ERROR, $message );
 
                 }
-
+*/
  
 // Check if we have a post request
 $post = Validate::factory($_POST)
