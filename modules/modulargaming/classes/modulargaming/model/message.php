@@ -9,7 +9,7 @@
  */
 
 
-class Model_Item extends Jelly_Model {
+class Modulargaming_Model_Message extends Jelly_Model {
 	
 	
 	public static function initialize(Jelly_Meta $meta)
@@ -17,14 +17,15 @@ class Model_Item extends Jelly_Model {
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
-			'name' => new Field_String,
-			'class' => new Field_String,
-			
-			'image' => new Field_String(array(
-				'directory' => 'assets/images/monsters/',
+			'to' => new Field_BelongsTo('to',array(
+				'model' => 'user',
 			)),
-			
-			'description' => new Field_Text,
+			'from' => new Field_BelongsTo('from',array(
+				'model' => 'user',
+			)),
+			'status' => new Field_String,
+			'title' => new Field_String,
+			'message' => new Field_Text,
 		);
 		
 	}

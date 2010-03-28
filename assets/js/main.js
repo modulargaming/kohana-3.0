@@ -65,7 +65,7 @@ $(function() {
 	$('#new_pm input[name=to]').autocomplete({
 		source: function(request, response) {
 			$.ajax({
-				url: path+'pm/reciver/'+request.term,
+				url: path+'message/reciver/'+request.term,
 				dataType: 'json',
 				success: function(data) {
 					response(data);
