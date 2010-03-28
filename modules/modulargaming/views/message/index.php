@@ -17,7 +17,7 @@
 		<tbody>
 			<?php foreach($messages as $m): ?>
 			<tr>
-				<td><?php echo $m->title ?></td>
+				<td><?php echo html::anchor('message/view/'.$m->id, $m->title) ?></td>
 				<td><?php echo $m->from->username ?></td>
 				<td><?php echo $m->time ?></td>
 			</tr>

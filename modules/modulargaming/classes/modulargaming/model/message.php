@@ -20,11 +20,12 @@ class Modulargaming_Model_Message extends Jelly_Model {
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
-			'to' => new Field_BelongsTo('to',array(
-				'model' => 'user',
+			'to' => new Field_BelongsTo(array(
+				'column'  => 'to',
+				'foreign' => 'user.id',
 			)),
 			'from' => new Field_BelongsTo(array(
-				'column' => 'from',
+				'column'  => 'from',
 				'foreign' => 'user.id',
 			)),
 			'status' => new Field_String,
