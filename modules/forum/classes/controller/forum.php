@@ -105,18 +105,87 @@ class Controller_Forum extends Controller_Frontend {
 	}
 	
 
- public function action_post( $id )
- 
-{
-$this->title = 'Forum - Post';
+	/**
+         * Create a new post.
+         */
+        public function action_create( $id )
+        {
 
- 
-// Redirect the user to the forum topic
-                                $this->request->redirect( 'forum/topic/' );
+		$this->title = 'Forum - Post';
 
-}
+
+                // Validate the form input
+                $post = Validate::factory($_POST)
+                        ->filter(TRUE,'trim')
+			->callback('captcha',       array($this, 'captcha_valid'))
+			//->callback($id, array($this, 'topic_exists'))
+                        ->rule('title', 'not_empty')
+                        ->rule('title', 'min_length', array(3))
+                        ->rule('title', 'max_length', array(20))
+                        ->rule('content', 'not_empty')
+                        ->rule('content', 'min_length', array(10))
+	                ->rule('content', 'max_length', array(1000));
+
+                if ($post->check())
+                {
+
+                        $values = array(
+                                'title'       => $post['title'],
+                                'content'  => $post['content'],
+                                'author'     => $this->user->id,
+				'topic_id'   => $id,
+                        );
+
+                        $message = Jelly::factory('forum_post');
+
+                        // Assign the validated data to the sprig object
+                        $message->set($values);
+                        $message->save();
+
+                        Message::set(Message::SUCCESS, 'You posted a message.' );
+
+                        $this->request->redirect('forum');
+
+                }
+
+
+ else
+                {
+                        $this->errors = $post->errors('forum');
+                }
+
+                if ( ! empty($this->errors))
+                        Message::set(Message::ERROR, $this->errors);
+
+                $this->template->content = View::factory('forum/create')
+                        ->set('post', $post->as_array());
+
+        }
  
 
+        public function captcha_valid(Validate $array, $field)
+        {
+                if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
+        }
+
+
+
+public function topic_exists(Validate $array, $field)
+        {
+
+                $topic = Jelly::select('forum_topic')
+                        ->where('id', '=', $array[$field])
+                        ->load();
+
+                // If no topic was found, give an error.
+                if ( ! $topic->loaded())
+                {
+                        $array->error($field, 'incorrect');
+                        return;
+                }
+
+
+        }
 
 
 } // End Forum
