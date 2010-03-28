@@ -6,10 +6,23 @@
 
 	<?php echo Message::render() ?>
 	
-	<?php foreach($messages as $m): ?>
-		
-		<?php echo $m->title ?>
-		
-	<?php endforeach ?>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>From</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach($messages as $m): ?>
+			<tr>
+				<td><?php echo $m->title ?></td>
+				<td><?php echo $m->from->username ?></td>
+				<td><?php echo $m->time ?></td>
+			</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
 	
 </div>

@@ -17,8 +17,8 @@ return array
 			 * boolean  persistent
 			 * string   database
 			 */
-		//	'hostname'   => '192.168.0.199',
-			'hostname'   => '127.0.0.1',
+			'hostname'   => '192.168.0.199',
+		//	'hostname'   => '127.0.0.1',
 			'username'   => 'root',
 			'password'   => FALSE,
 			'persistent' => FALSE,
@@ -27,7 +27,7 @@ return array
 		'table_prefix' => '',
 		'charset'      => 'utf8',
 		'caching'      => TRUE,
-		'profiling'    => FALSE,
+		'profiling'    => TRUE,
 	),
 	'alternate' => array(
 		'type'       => 'pdo',
