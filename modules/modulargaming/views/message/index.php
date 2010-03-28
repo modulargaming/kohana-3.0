@@ -5,5 +5,11 @@
 <div class="right w500">
 
 	<?php echo Message::render() ?>
-
+	
+	<?php foreach($messages as $m): ?>
+		
+		<?php echo $m->title ?>
+		
+	<?php endforeach ?>
+	
 </div>

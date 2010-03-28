@@ -27,8 +27,14 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 	 */
 	public function action_index()
 	{
+		
+		$messages = Jelly::select('message')
+			->where('to', '=', $this->user->id)
+			->execute();
+		
 		$this->template->content = View::factory('message/index')
-			->set( 'sidebar', $this->sidebar );
+			->set('sidebar', $this->sidebar)
+			->set('messages', $messages);
 	}
 	
 	/**
