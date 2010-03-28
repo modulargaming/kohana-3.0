@@ -38,6 +38,33 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 	}
 	
 	/**
+	 * Display the message.
+	 * @param integer $id
+	 */
+	public function action_view( $id )
+	{
+		
+		if ( ! is_numeric($id) )
+			die('Not numeric');
+		
+		$message = Jelly::select('message')
+			->where('id', '=', $id)
+			->load();
+		
+		// Make sure the user either reciver or sent the message
+		if ($message->to->id != $this->user->id AND $message->from->id != $this->user->id)
+		{
+			Message::set(Message::ERROR, 'Sorry, but this message isn\'t for you');
+			$this->request->redirect('message');
+		}
+			
+		
+		$this->template->content = View::factory('message/view')
+			->set('sidebar', $this->sidebar)
+			->set('message', $message);
+	}
+	
+	/**
 	 * Create a new post.
 	 */
 	public function action_create()
