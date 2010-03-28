@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2010 at 09:58 PM
+-- Generation Time: Mar 28, 2010 at 11:48 PM
 -- Server version: 5.1.41
--- PHP Version: 5.3.1-5ubuntu2
+-- PHP Version: 5.3.2-1ubuntu2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -20,10 +20,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `alignments` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `min` int(6) NOT NULL,
-  `max` int(6) NOT NULL,
+  `min` int(11) NOT NULL,
+  `max` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
@@ -45,19 +45,20 @@ INSERT INTO `alignments` (`id`, `name`, `min`, `max`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `battles` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
-  `character_id` int(6) NOT NULL,
-  `monster_id` int(6) NOT NULL,
-  `hp` int(6) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `character_id` int(11) NOT NULL,
+  `monster_id` int(11) NOT NULL,
+  `hp` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `battles`
 --
 
 INSERT INTO `battles` (`id`, `character_id`, `monster_id`, `hp`) VALUES
-(1, 1, 1, 42);
+(2, 1, 2, 100),
+(3, 2, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -66,11 +67,11 @@ INSERT INTO `battles` (`id`, `character_id`, `monster_id`, `hp`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `blog_posts` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `author` int(6) NOT NULL,
+  `author` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -86,28 +87,29 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
 --
 
 CREATE TABLE IF NOT EXISTS `characters` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
-  `user_id` int(6) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `gender` enum('male','female') NOT NULL,
-  `race_id` int(6) NOT NULL,
+  `race_id` int(11) NOT NULL,
   `alignment` int(4) NOT NULL,
-  `hp` int(6) NOT NULL,
-  `max_hp` int(6) NOT NULL,
-  `money` int(6) NOT NULL,
-  `level` int(6) NOT NULL,
-  `xp` int(6) DEFAULT NULL,
-  `energy` int(6) NOT NULL,
-  `zone_id` int(6) NOT NULL,
+  `hp` int(11) NOT NULL,
+  `max_hp` int(11) NOT NULL,
+  `money` int(11) NOT NULL,
+  `level` int(11) NOT NULL,
+  `xp` int(11) DEFAULT NULL,
+  `energy` int(11) NOT NULL,
+  `zone_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `characters`
 --
 
 INSERT INTO `characters` (`id`, `user_id`, `name`, `gender`, `race_id`, `alignment`, `hp`, `max_hp`, `money`, `level`, `xp`, `energy`, `zone_id`) VALUES
-(1, 1, 'curtis', 'male', 1, 5000, 96, 100, 1000, 1, 0, 70, 1);
+(1, 1, 'curtis', 'male', 1, 5000, 100, 100, 612, 1, 0, 70, 1),
+(2, 2, 'Lewis', 'male', 1, 5000, 0, 100, 1000, 1, 0, 90, 2);
 
 -- --------------------------------------------------------
 
@@ -128,7 +130,9 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 --
 
 INSERT INTO `forum_categories` (`id`, `title`, `description`, `access`) VALUES
-(1, 'Test category', 'This is a test', 1);
+(1, 'General', 'General Discussions', 0),
+(2, 'Marketplace', 'Buy and sell items.', 0),
+(3, 'Alliances', 'Alliance Discussions', 0);
 
 -- --------------------------------------------------------
 
@@ -140,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
   `id` int(6) NOT NULL,
   `topic_id` int(6) NOT NULL,
   `user_id` int(6) NOT NULL,
+  `title` varchar(25) NOT NULL,
   `content` text NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
@@ -149,9 +154,9 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
 -- Dumping data for table `forum_posts`
 --
 
-INSERT INTO `forum_posts` (`id`, `topic_id`, `user_id`, `content`, `created`) VALUES
-(1, 1, 1, 'Test', 1234567890),
-(2, 1, 2, 'a', 1234567891);
+INSERT INTO `forum_posts` (`id`, `topic_id`, `user_id`, `title`, `content`, `created`) VALUES
+(1, 1, 1, '', 'Test', 1234567890),
+(2, 1, 2, '', 'a', 1234567891);
 
 -- --------------------------------------------------------
 
@@ -183,7 +188,7 @@ INSERT INTO `forum_topics` (`id`, `category_id`, `title`, `status`, `reply_id`, 
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `class` varchar(25) NOT NULL,
   `image` varchar(25) NOT NULL,
   `description` text NOT NULL,
@@ -202,18 +207,42 @@ INSERT INTO `items` (`id`, `class`, `image`, `description`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messages`
+--
+
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `to` int(6) NOT NULL,
+  `from` int(6) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `title` varchar(25) NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `to`, `from`, `status`, `title`, `message`) VALUES
+(1, 1, 1, 'sent', 'test', 'test test test'),
+(2, 1, 1, 'sent', 'hkkk', 'hkkkkkkkkkkkk');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `monsters`
 --
 
 CREATE TABLE IF NOT EXISTS `monsters` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `max_hp` int(6) NOT NULL,
+  `max_hp` int(11) NOT NULL,
   `defence` int(2) NOT NULL,
-  `min_dmg` int(6) NOT NULL,
-  `max_dmg` int(6) NOT NULL,
-  `money` int(6) NOT NULL,
-  `xp` int(6) NOT NULL,
+  `min_dmg` int(11) NOT NULL,
+  `max_dmg` int(11) NOT NULL,
+  `money` int(11) NOT NULL,
+  `xp` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
@@ -238,8 +267,8 @@ INSERT INTO `monsters` (`id`, `name`, `max_hp`, `defence`, `min_dmg`, `max_dmg`,
 --
 
 CREATE TABLE IF NOT EXISTS `npcs` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
-  `zone_id` int(6) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zone_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -257,10 +286,10 @@ CREATE TABLE IF NOT EXISTS `npcs` (
 --
 
 CREATE TABLE IF NOT EXISTS `races` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
-  `starting_zone` int(6) NOT NULL,
+  `starting_zone` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -296,8 +325,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 CREATE TABLE IF NOT EXISTS `shops` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
-  `zone_id` int(6) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zone_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   UNIQUE KEY `id` (`id`)
@@ -317,10 +346,10 @@ INSERT INTO `shops` (`id`, `zone_id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `shop_items` (
-  `shop_id` int(6) NOT NULL,
-  `item_id` int(6) NOT NULL,
-  `amount` int(6) NOT NULL,
-  `price` int(6) NOT NULL
+  `shop_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `price` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -328,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `shop_items` (
 --
 
 INSERT INTO `shop_items` (`shop_id`, `item_id`, `amount`, `price`) VALUES
-(1, 1, 0, 50);
+(1, 1, 100, 50);
 
 -- --------------------------------------------------------
 
@@ -346,14 +375,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_login` int(10) DEFAULT NULL,
   `role` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `token`, `logins`, `last_login`, `role`) VALUES
-(1, 'curtis', 'curtis@delicata.eu', '10180313ec28b097104bc89fab1d09d00dba1de942aa6e32e4', 'pAwFY9bMhubkgMzWTY898NpjCmjXqcRW', 5, 1269550851, 'user');
+(1, 'curtis', 'curtis@delicata.eu', '10180313ec28b097104bc89fab1d09d00dba1de942aa6e32e4', 'D7wEnhdZRJklhnprlpQyGz6yfCIcRMpd', 22, 1269810363, 'user'),
+(2, 'Lewis', 'lewis@delicata.eu', 'da1658908899e09ad0ee3ca60fc32927d106637faf93dd4762', 'Oj0LX4sCuMkgRG283gEok0CJqIWaNfCt', 1, 1269810680, 'user');
 
 -- --------------------------------------------------------
 
@@ -362,8 +392,8 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `token`, `logins`, `
 --
 
 CREATE TABLE IF NOT EXISTS `user_facebook` (
-  `facebook_id` int(6) NOT NULL,
-  `user_id` int(6) NOT NULL,
+  `facebook_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   UNIQUE KEY `facebook_id` (`facebook_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -379,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `user_facebook` (
 --
 
 CREATE TABLE IF NOT EXISTS `user_histories` (
-  `user_id` int(6) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `time` int(10) NOT NULL,
   `history` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -390,7 +420,10 @@ CREATE TABLE IF NOT EXISTS `user_histories` (
 
 INSERT INTO `user_histories` (`user_id`, `time`, `history`) VALUES
 (1, 1268936308, 'Created the character: curtis'),
-(1, 1269550854, 'Started a new battle agains Pig');
+(1, 1269550854, 'Started a new battle agains Pig'),
+(1, 1269706179, 'Started a new battle agains Strong Pig'),
+(2, 1269810706, 'Created the character: Lewis'),
+(2, 1269810716, 'Started a new battle agains Pig');
 
 -- --------------------------------------------------------
 
@@ -399,9 +432,9 @@ INSERT INTO `user_histories` (`user_id`, `time`, `history`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `user_items` (
-  `item_id` int(6) NOT NULL,
-  `user_id` int(6) NOT NULL,
-  `amount` int(6) NOT NULL
+  `item_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -416,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `user_items` (
 --
 
 CREATE TABLE IF NOT EXISTS `zones` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `energy` int(4) NOT NULL,
@@ -440,8 +473,8 @@ INSERT INTO `zones` (`id`, `name`, `description`, `energy`, `x`, `y`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `zone_monster` (
-  `zone_id` int(6) NOT NULL,
-  `monster_id` int(6) NOT NULL
+  `zone_id` int(11) NOT NULL,
+  `monster_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
