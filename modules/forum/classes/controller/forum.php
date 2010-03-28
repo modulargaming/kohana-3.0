@@ -91,7 +91,7 @@ class Controller_Forum extends Controller_Frontend {
 
 		
 
-                if ($posts == NULL)
+                if (!$posts)
 {
 
                 $message = 'Topic does not exist';
@@ -110,73 +110,11 @@ class Controller_Forum extends Controller_Frontend {
 {
 $this->title = 'Forum - Post';
 
-                
-/*
-if ( !is_numeric( $id ) ) 
-
-                {
-
-                $message = 'Invalid ID';
-                Message::set( Message::ERROR, $message );
-
-                }
-*/
- 
-// Check if we have a post request
-$post = Validate::factory($_POST)
-->filter(TRUE, 'trim')
-->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-->callback('captcha', array($this, 'captcha_valid'));
- 
-$post = Security::xss_clean($post);
-if ($post->check())
-{
- 
-
-try
-{
-// Create the new post
-Jelly::factory('post')
-     ->set(array(
-         'title' => $post->title,
-         'content' => $post->content,
-         'author' => $this->user-id,
-         'status' => 'open',
-         'created' => time(),
-     ))->save();
-
-
  
 // Redirect the user to the forum topic
                                 $this->request->redirect( 'forum/topic/' );
-}
- 
-catch (Validate_Exception $e)
-{
-// Get the errors using the Validate::errors() method
-$this->errors = $e->array->errors('forum');
-}
- 
-}
-else
-{
-$this->errors = $post->errors('forum/post');
-}
-                $this->template->content = View::factory('forum/post')
-                        ->set( 'errors', $this->errors )
-                        ->set( 'post', $post->as_array() );
- 
- 
-
 
 }
- 
-public function captcha_valid(Validate $array, $field)
-        {
-                if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
-        }
- 
- 
  
 
 
