@@ -36,7 +36,7 @@ class Battle {
 	public static function fight( $character, $battle )
 	{
 		
-		$c_hp = $character->hp;
+		// TODO: Replace the temp variables with a correct math system to calculate them.
 		$c_defence = 30;
 		$c_dmg = 5;
 		
@@ -55,8 +55,8 @@ class Battle {
 		$character_dmg = round( $c_dmg * ( 100 - $monster->defence ) / 100 );
 		
 		// Set the monsters health
-		$monster->hp = $monster->hp - $character_dmg;
-		$monster->save();
+		$battle->hp = $battle->hp - $character_dmg;
+		$battle->save();
 		
 		
 		// Set an array of messages.
