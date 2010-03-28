@@ -1,4 +1,4 @@
-<h2>PM - Inbox</h2>
+<h2>Messages - Inbox</h2>
 
 <div class="left w150"><?php echo $sidebar ?></div>
 

@@ -38,6 +38,21 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 	}
 	
 	/**
+	 * Display the inbox.
+	 */
+	public function action_sent()
+	{
+		
+		$messages = Jelly::select('message')
+			->where('from', '=', $this->user->id)
+			->execute();
+		
+		$this->template->content = View::factory('message/sent')
+			->set('sidebar', $this->sidebar)
+			->set('messages', $messages);
+	}
+	
+	/**
 	 * Display the message.
 	 * @param integer $id
 	 */

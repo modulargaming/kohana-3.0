@@ -1,4 +1,4 @@
-<h2>PM - Write a new message</h2>
+<h2>Messages - Write a new message</h2>
 
 <div class="left w150"><?php echo $sidebar ?></div>
 
