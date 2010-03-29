@@ -14,5 +14,5 @@
 <?php endforeach;?>
 
 <p>
-<?php echo html::anchor( 'create/'.$id, 'Post' ); ?>
+<?php echo html::anchor( 'create/'.$topic, 'Post' ); ?>
 </p>
