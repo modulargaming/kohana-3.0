@@ -13,3 +13,6 @@
 
 <?php endforeach;?>
 
+<p>
+<?php echo html::anchor( 'create/'.$id, 'Post' ); ?>
+</p>
