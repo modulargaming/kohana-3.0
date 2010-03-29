@@ -3,8 +3,8 @@
  * 
  *
  * @package    Modular Gaming
- * @author     Copy112
- * @copyright  (c) 2009 Copy112
+ * @author     Oscar Hinton
+ * @copyright  (c) 2010 Oscar Hinton
  * @license    http://copy112.com/mg/license
  */
 

@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * 
+ *
  *
  * @package    Modular Gaming
  * @author     Curtis Delicata
@@ -14,93 +14,80 @@ class Controller_Forum extends Controller_Frontend {
 	public $title = 'Forum';
 	
 	public function action_index ()
+	{
+		
+		$categories = Jelly::select('forum_category')
+			->execute();
+		
+		// Check if no categories was found.
+		if ($categories->count() == 0)
+		{
+			// Set an error message.
+			Message::set(Message::ERROR, 'No categories exist');
+		}
+		
+		$this->template->content = View::factory('forum/index')
+			->set('categories', $categories);
 
+	}
 
-        {
-                $categories = Jelly::select( 'forum_category' )
-                        ->execute();
-
-
-                if ($categories->count() == 0)
-{
-
-                $message = 'No categories exist';
-                Message::set( Message::ERROR, $message );
-
-}
-
-                $this->template->content = View::factory( 'forum/index' )
-                        ->set( 'categories', $categories );
-
-        }
-
-
+	
 	public function action_category ( $id )
-
 	{
 
 		$this->title = 'Forum - Category '."$id";
 
 		if ( !is_numeric( $id ) ) 
-
 		{
-
-                $message = 'Invalid ID';
-                Message::set( Message::ERROR, $message );
-
+			die('Invalid ID');
 		}
 
-		$topics = Jelly::select( 'forum_topic' )
-			->where( 'category_id', '=', $id )
+		$topics = Jelly::select('forum_topic')
+			->where('category_id', '=', $id)
 			->execute();
-
 		
-                if ($topics->count() == 0)
-{
-
-                $message = 'No topics exist';
-                Message::set( Message::ERROR, $message );
-
-}
-
-
+		
+		if ($topics->count() == 0)
+		{
+			Message::set( Message::ERROR, 'No topics exist' );
+		}
+		
 		$this->template->content = View::factory( 'forum/category' )
 			->set( 'topics', $topics );
 
 	}
-
-
-
+	
+	
+	
 	public function action_topic( $id )
 	{
 		
-		$this->title = 'Forum - Topic '."$id";
+		if ( ! is_numeric($id)) 
+		{
+			die('Invalid ID');
+		}
 		
-                if ( !is_numeric( $id ) ) 
-
-                {
-
-                $message = 'Invalid ID';
-                Message::set( Message::ERROR, $message );
-
-                }
+		$topic = Jelly::select('forum_topic')
+			->where('id', '=', $id)
+			->load();
 		
-		$posts = Jelly::select( 'forum_post' )
-			->where( 'topic_id', '=', $id )
+		if ($topic->loaded())
+		{
+			$this->title = 'Forum - '.$topic->title;
+		}
+		else
+		{
+			Message::set(Message::ERROR, 'Topic does not exist');
+		}
+		
+		$posts = Jelly::select('forum_post')
+			->where('topic_id', '=', $id)
 			->execute();
-
 		
-
-                if (!$posts)
-{
-
-                $message = 'Topic does not exist';
-                Message::set( Message::ERROR, $message );
-
-}
-
+		
 		$this->template->content = View::factory( 'forum/topic' )
-			->set( 'posts', $posts );
+			->set('topic', $topic)
+			->set('posts', $posts);
 		
 	}
 	

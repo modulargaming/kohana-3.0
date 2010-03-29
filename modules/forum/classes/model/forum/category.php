@@ -20,11 +20,10 @@ class Model_Forum_Category extends Jelly_Model {
 			
 			'title' => new Field_String,
 			'description' => new Field_String,
- 			'role_access' => new Field_Integer,
+ 			//'role_access' => new Field_Integer,
 		
-                );
+		);
 
-        }
+	}
 
 }
-

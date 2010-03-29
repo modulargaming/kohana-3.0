@@ -17,12 +17,12 @@
 		<?php else: ?>
 			<tr>
 		<?php endif; ?>
-				<td><?php echo $v->id; ?></td>
-				<td><?php echo $v->username; ?></td>
-				<td><?php echo $v->email; ?></td>
-				<td><?php echo $v->verbose( 'last_login' ); ?></td>
-				<td><?php echo $v->role; ?></td>
-				<td><?php echo html::anchor( 'admin/users/edit/' . $v->id, 'Edit'); ?> Delete</td>
+				<td><?php echo $v->id ?></td>
+				<td><?php echo $v->username ?></td>
+				<td><?php echo $v->email ?></td>
+				<td><?php echo $v->last_login ?></td>
+				<td><?php echo $v->role ?></td>
+				<td><?php echo html::anchor( 'admin/users/edit/' . $v->id, 'Edit') ?> Delete</td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>

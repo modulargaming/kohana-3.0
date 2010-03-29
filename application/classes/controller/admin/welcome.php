@@ -3,25 +3,26 @@
  * 
  *
  * @package    Modular Gaming
- * @author     Copy112
- * @copyright  (c) 2009 Copy112
+ * @author     Oscar Hinton
+ * @copyright  (c) 2010 Oscar Hinton
  * @license    http://copy112.com/mg/license
  */
 
 class Controller_Admin_Welcome extends Controller_Backend {
 
 	public $title = 'Admin - Index';
+	public $active_time = 259200; // Time since last login to be called active. (3days)
 
 	public function action_index()
 	{
 		
-		$users = Sprig::factory( 'user' )->load( NULL, NULL )->count();
+		// Get the total number of users.
+		$users = Jelly::select('user')->count();
 		
-		// Check the active users by taking todays time, and substract 1 week
-		$sql = new Database_Query_Builder_Select();
-		$sql->where( 'last_login', '>', time() - ( 7 * 24 * 60 * 60 ) );
-		
-		$active_users = Sprig::factory( 'user' )->load( $sql, NULL )->count();
+		// Get the number of active users.
+		$active_users = Jelly::select('user')
+			->where('last_login', '>', time()-$this->active_time)
+			->count();
 		
 		
 		$this->template->content = View::factory('admin/index')
