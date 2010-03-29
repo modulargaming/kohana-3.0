@@ -21,6 +21,7 @@ class Model_Forum_Post extends Jelly_Model {
 			
 			'user' => new Field_BelongsTo,
 			
+			'title' => new Field_String,
 			'content' => new Field_String,
 
 			'created' => new Field_Integer,

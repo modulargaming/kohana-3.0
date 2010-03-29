@@ -119,8 +119,9 @@ class Controller_Forum extends Controller_Frontend {
 			$values = array(
 				'title'    => $post['title'],
 				'content'  => $post['content'],
-				'author'   => $this->user->id,
-				'topic_id' => $id,
+				'user'   => $this->user->id,
+				'topic' => $id,
+				'created' => time(),
 			);
 			
 			$message = Jelly::factory('forum_post');
