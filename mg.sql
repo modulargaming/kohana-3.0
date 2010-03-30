@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2010 at 11:48 PM
+-- Generation Time: Mar 30, 2010 at 10:22 PM
 -- Server version: 5.1.41
--- PHP Version: 5.3.2-1ubuntu2
+-- PHP Version: 5.3.2-1ubuntu3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -118,12 +118,12 @@ INSERT INTO `characters` (`id`, `user_id`, `name`, `gender`, `race_id`, `alignme
 --
 
 CREATE TABLE IF NOT EXISTS `forum_categories` (
-  `id` int(6) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `title` varchar(30) NOT NULL,
   `description` varchar(50) NOT NULL,
   `access` int(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `forum_categories`
@@ -141,22 +141,29 @@ INSERT INTO `forum_categories` (`id`, `title`, `description`, `access`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `forum_posts` (
-  `id` int(6) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `topic_id` int(6) NOT NULL,
   `user_id` int(6) NOT NULL,
   `title` varchar(25) NOT NULL,
-  `content` text NOT NULL,
+  `content` varchar(500) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `forum_posts`
 --
 
 INSERT INTO `forum_posts` (`id`, `topic_id`, `user_id`, `title`, `content`, `created`) VALUES
-(1, 1, 1, '', 'Test', 1234567890),
-(2, 1, 2, '', 'a', 1234567891);
+(1, 1, 1, 'Test', 'testasasasa', 1269904152),
+(2, 1, 1, 'test again', 'another test', 1269905004),
+(3, 1, 2, '123', '1234567890', 1269946315),
+(4, 1, 1, 'HAAA', 'HAHAHAHAHAAHAH', 1269981498),
+(5, 4, 1, 'Test', 'Testaaaaaaa', 1269982454),
+(6, 5, 1, 'tests', 'testss', 1269983295),
+(7, 6, 1, 'Testataa', 'testoooo', 1269983354),
+(8, 7, 1, 'testasasa', 'testasasass', 1269983407),
+(9, 7, 1, 'testaasa', 'testasasa', 1269983455);
 
 -- --------------------------------------------------------
 
@@ -165,21 +172,28 @@ INSERT INTO `forum_posts` (`id`, `topic_id`, `user_id`, `title`, `content`, `cre
 --
 
 CREATE TABLE IF NOT EXISTS `forum_topics` (
-  `id` int(6) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `category_id` int(6) NOT NULL,
+  `user_id` int(6) NOT NULL,
   `title` varchar(30) NOT NULL,
   `status` varchar(12) NOT NULL,
-  `reply_id` int(6) NOT NULL,
+  `posts` int(6) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `forum_topics`
 --
 
-INSERT INTO `forum_topics` (`id`, `category_id`, `title`, `status`, `reply_id`, `created`) VALUES
-(1, 1, 'Test', '', 1, 1234567891);
+INSERT INTO `forum_topics` (`id`, `category_id`, `user_id`, `title`, `status`, `posts`, `created`) VALUES
+(1, 1, 0, 'Test', '', 0, 1234567891),
+(2, 0, 0, 'Test', 'open', 0, 1269981965),
+(3, 1, 0, 'Test', 'open', 0, 1269982052),
+(4, 1, 0, 'Test', 'open', 1, 1269982454),
+(5, 1, 0, 'tests', 'open', 1, 1269983295),
+(6, 1, 0, 'Testataa', 'open', 1, 1269983354),
+(7, 2, 0, 'testasasa', 'open', 1, 1269983407);
 
 -- --------------------------------------------------------
 
@@ -382,8 +396,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `token`, `logins`, `last_login`, `role`) VALUES
-(1, 'curtis', 'curtis@delicata.eu', '10180313ec28b097104bc89fab1d09d00dba1de942aa6e32e4', 'D7wEnhdZRJklhnprlpQyGz6yfCIcRMpd', 22, 1269810363, 'user'),
-(2, 'Lewis', 'lewis@delicata.eu', 'da1658908899e09ad0ee3ca60fc32927d106637faf93dd4762', 'Oj0LX4sCuMkgRG283gEok0CJqIWaNfCt', 1, 1269810680, 'user');
+(1, 'curtis', 'curtis@delicata.eu', '10180313ec28b097104bc89fab1d09d00dba1de942aa6e32e4', '6IVbcX3SwoRfbg1Z5YKwUkKzMU4cbCZl', 24, 1269981399, 'user'),
+(2, 'Lewis', 'lewis@delicata.eu', 'da1658908899e09ad0ee3ca60fc32927d106637faf93dd4762', 'joUCS8Yp3AyGIbDHuJjdvwydH7KeSPMu', 2, 1269946236, 'user');
 
 -- --------------------------------------------------------
 
