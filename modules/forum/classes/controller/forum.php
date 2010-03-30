@@ -131,12 +131,14 @@ class Controller_Forum extends Controller_Frontend {
 			// Assign the validated data to the sprig object
 			$topic->set($topic_values);
 			$topic->save();
+			
+			$topic_id = $topic->id;
 
 			$post_values = array(
 				'title'    => $post['title'],
 				'content'  => $post['content'],
 				'user'   => $this->user->id,
-				'topic' => $topic_values->topic,
+				'topic' => $topic_id,
 				'created' => time(),
 			);
 
