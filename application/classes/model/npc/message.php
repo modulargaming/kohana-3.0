@@ -9,22 +9,16 @@
  */
 
 
-class Model_Item extends Jelly_Model {
-	
+class Model_Npc_Message extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
-			'name' => new Field_String,
-			'class' => new Field_String,
-			
-			'image' => new Field_String(array(
-				'directory' => 'assets/images/monsters/',
-			)),
-			
-			'description' => new Field_Text,
+			'npc' => new Field_BelongsTo,
+			'title' => new Field_String,
+			'message' => new Field_Text,
 		);
 		
 	}

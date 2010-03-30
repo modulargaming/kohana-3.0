@@ -1,10 +1,10 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * 
+ * Model for the NPC's messages.
  *
  * @package    Modular Gaming
- * @author     Copy112
- * @copyright  (c) 2010 Copy112
+ * @author     Oscar Hinton
+ * @copyright  (c) 2010 Oscar Hinton
  * @license    http://copy112.com/mg/license
  */
 
@@ -22,6 +22,11 @@ class Model_Npc extends Jelly_Model {
 			'message' => new Field_Text,
 		
 			'zone_id' => new Field_Integer,
+		
+			'messages' => new Field_HasMany(array(
+				'column'  => 'npc_message',
+				'foreign' => 'npc_message.npc_id',
+			)),
 		);
 		
 	}
