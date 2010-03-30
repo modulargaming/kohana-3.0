@@ -168,7 +168,7 @@ class Controller_Forum extends Controller_Frontend {
 			
 			Message::set(Message::SUCCESS, 'You created a topic.' );
 			
-			$this->request->redirect('forum');
+			$this->request->redirect('forum/category/'.$id);
 			
 		}
 		else
@@ -231,7 +231,7 @@ class Controller_Forum extends Controller_Frontend {
 			
 			Message::set(Message::SUCCESS, 'You posted a message.' );
 			
-			$this->request->redirect('forum');
+			$this->request->redirect('forum/topic/'.$id);
 			
 		}
 		else
