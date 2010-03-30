@@ -93,6 +93,79 @@ class Controller_Forum extends Controller_Frontend {
 	
 
 	/**
+	 * Create a new topic.
+	 */
+	public function action_new( $id )
+	{
+	
+		$this->title = 'Forum - New Topic';
+		
+		
+		// Validate the form input
+		$post = Validate::factory($_POST)
+			->filter(TRUE,'trim')
+			->callback('captcha', array($this, 'captcha_valid'))
+			//->callback($id, array($this, 'category_exists'))
+			->rule('title', 'not_empty')
+			->rule('title', 'min_length', array(3))
+			->rule('title', 'max_length', array(20))
+			->rule('content', 'not_empty')
+			->rule('content', 'min_length', array(5))
+			->rule('content', 'max_length', array(1000));
+
+		
+		if ($post->check())
+		{
+			$topic_values = array(
+				'title'    => $post['title'],
+				'user'   => $this->user->id,
+				'category' => $id,
+				'created' => time(),
+			);
+			
+
+			$post_values = array(
+				'title'    => $post['title'],
+				'content'  => $post['content'],
+				'user'   => $this->user->id,
+				'topic' => $topic_values->id,
+				'created' => time(),
+			);
+
+			$topic = Jelly::factory('forum_topic');
+			
+			// Assign the validated data to the sprig object
+			$topic->set($topic_values);
+			$topic->save();
+
+			
+			$message = Jelly::factory('forum_post');
+			
+			// Assign the validated data to the sprig object
+			$message->set($post_values);
+			$message->save();
+			
+			Message::set(Message::SUCCESS, 'You created a topic.' );
+			
+			$this->request->redirect('forum');
+			
+		}
+		else
+        {
+        	$this->errors = $post->errors('forum');
+		}
+		
+		if ( ! empty($this->errors))
+			Message::set(Message::ERROR, $this->errors);
+		
+		$this->template->content = View::factory('forum/new')
+			->set('post', $post->as_array());
+
+	}
+	
+	
+	
+	/**
 	 * Create a new post.
 	 */
 	public function action_create( $id )
@@ -110,7 +183,7 @@ class Controller_Forum extends Controller_Frontend {
 			->rule('title', 'min_length', array(3))
 			->rule('title', 'max_length', array(20))
 			->rule('content', 'not_empty')
-			->rule('content', 'min_length', array(10))
+			->rule('content', 'min_length', array(5))
 			->rule('content', 'max_length', array(1000));
 		
 		if ($post->check())
@@ -149,6 +222,8 @@ class Controller_Forum extends Controller_Frontend {
 	}
 	
 	
+
+
 	public function captcha_valid(Validate $array, $field)
 	{
 		if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
@@ -169,7 +244,8 @@ class Controller_Forum extends Controller_Frontend {
 			$array->error($field, 'incorrect');
 			return;
 		}
-	}
-	
+
+}	
 	
 } // End Forum
+	
