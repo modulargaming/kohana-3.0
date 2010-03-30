@@ -121,6 +121,7 @@ class Controller_Forum extends Controller_Frontend {
 				'user'   => $this->user->id,
 				'category' => $id,
 				'status' => 'open',
+				'posts' => '1',
 				'created' => time(),
 			);
 			
@@ -130,8 +131,6 @@ class Controller_Forum extends Controller_Frontend {
 			// Assign the validated data to the sprig object
 			$topic->set($topic_values);
 			$topic->save();
-
-						
 
 			$post_values = array(
 				'title'    => $post['title'],
