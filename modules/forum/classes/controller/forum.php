@@ -42,6 +42,11 @@ class Controller_Forum extends Controller_Frontend {
 			die('Invalid ID');
 		}
 
+		$category = Jelly::select('forum_category')
+			->where('id', '=', $id)
+			->load();
+
+
 		$topics = Jelly::select('forum_topic')
 			->where('category_id', '=', $id)
 			->execute();
@@ -53,6 +58,7 @@ class Controller_Forum extends Controller_Frontend {
 		}
 		
 		$this->template->content = View::factory( 'forum/category' )
+			->set( 'category', $category )
 			->set( 'topics', $topics );
 
 	}
