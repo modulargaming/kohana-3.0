@@ -23,7 +23,7 @@
 	
 	<dl>
 		<dt>&nbsp;</dt>
-		<dd><?php echo form::label('tos', form::checkbox('tos', 'yes').'I have read and agrees to the '.html::anchor('account/tos', 'Terms of Service', array( 'target' => '_blank'))); ?></dd>
+		<dd><?php echo form::label('tos', form::checkbox('tos', 'yes').'I have read and agree to the '.html::anchor('account/tos', 'Terms of Service', array( 'target' => '_blank'))); ?></dd>
 	</dl>
 	
 	<?php echo form::submit('register', 'Register'); ?>

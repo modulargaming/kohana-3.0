@@ -66,10 +66,10 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 			->where('id', '=', $id)
 			->load();
 		
-		// Make sure the user either reciver or sent the message
+		// Make sure the user received or sent the message.
 		if ($message->to->id != $this->user->id AND $message->from->id != $this->user->id)
 		{
-			Message::set(Message::ERROR, 'Sorry, but this message isn\'t for you');
+			Message::set(Message::ERROR, 'This is not your message.');
 			$this->request->redirect('message');
 		}
 			
@@ -109,7 +109,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 			
 			$message = Jelly::factory('message');
 			
-			// Assign the validated data to the sprig object
+			// Assign the validated data to the Jelly object
 			$message->set($values);
 			$message->save();
 			
@@ -133,7 +133,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 	}
 	
 	/**
-	 * Retrive usernames that start on the given param.
+	 * Retrieve usernames that start on the given parameter.
 	 * @param string $search
 	 */
 	public function action_reciver( $search )
@@ -179,4 +179,4 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 		
 	}
 
-} // End PM
+} // End Message

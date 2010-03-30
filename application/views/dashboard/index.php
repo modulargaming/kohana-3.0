@@ -28,7 +28,7 @@
 	
 	<?php else: ?>
 	
-	<p>Whops seems like you don't have a character yet, <?php echo html::anchor( 'character', 'create one' ) ?>.</p>
+	<p>You do not have a character yet, <?php echo html::anchor( 'character', 'create one?' ) ?>.</p>
 	
 	<?php endif ?>
 </div>

@@ -46,7 +46,7 @@
 
 <div class="footer">
 	<div class="wrapper">
-		<p class="copyright">© 2010 the Modular Gaming Team.</p>
+		<p class="copyright">&copy; 2010 the Modular Gaming Team.</p>
 	</div>
 </div>
 
