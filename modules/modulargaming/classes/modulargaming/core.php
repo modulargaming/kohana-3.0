@@ -15,7 +15,7 @@ class Modulargaming_Core {
 	}
 	
 	/**
-	 * Ads a history item
+	 * Adds a history item
 	 * 
 	 * @param string $history
 	 * @return 
@@ -41,7 +41,7 @@ class Modulargaming_Core {
 	
 	
 	/**
-	 * Initializes a new battle for the character using the monsters id as enemy.
+	 * Initializes a new battle for the character using the monsters id as the enemy.
 	 *
 	 * @param   object   Character
 	 * @return  boolean
@@ -68,14 +68,14 @@ class Modulargaming_Core {
 		);
 		
 		// Add the row to the db.
-		$sprig = Jelly::factory('battle');
-		$sprig->set($t);
+		$jelly = Jelly::factory('battle');
+		$jelly->set($t);
 		
 		try
 		{
-		    $sprig->save();
+		    $jelly->save();
 		    
-		    $this->add_history( 'Started a new battle agains ' . $monster->name );
+		    $this->add_history( 'Started a new battle against ' . $monster->name );
 		    
 			return TRUE;
 		}
@@ -90,7 +90,7 @@ class Modulargaming_Core {
 	
 	
 	
-	// Detect how long time it has been since the timestamp was created
+	// Detect how long ago it has been since the timestamp was created
 	static public function ago($timestamp){
 		
 		$difference = time() - $timestamp;

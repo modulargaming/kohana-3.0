@@ -65,7 +65,7 @@ class Controller_Battle extends Controller_Frontend {
 		if ( !Battle::can_fight( $character ) or !Battle::can_fight( $battle ) )
 			$this->request->redirect( 'battle/end' );
 		
-		// TODO: Write a math system that calculates the changes of escaping.
+		// TODO: Write a math system that calculates the chances of escaping.
 		
 		Battle::end( $battle );
 		

@@ -11,7 +11,7 @@
 class Battle {	
 	
 	/**
-	 * Verifies if the player/monster can fight.
+	 * Verify if the player/monster can fight.
 	 *
 	 * @param   object   Character
 	 * @return  boolean
@@ -28,7 +28,7 @@ class Battle {
 	
 	
 	/**
-	 * Verifies if the player/monster can fight.
+	 * Verify if the player/monster can fight.
 	 *
 	 * @param   object   Character
 	 * @return  boolean
@@ -43,7 +43,7 @@ class Battle {
 		
 		$monster = $battle->monster;
 		
-		// Check how much dmg the monster should do on the character.
+		// Check how much damage the monster will do on the character.
 		$monster_dmg = rand( $monster->min_dmg, $monster->max_dmg );
 		$monster_dmg = round( $monster_dmg * ( 100 - $c_defence ) / 100 );
 		
@@ -51,7 +51,7 @@ class Battle {
 		$character->hp = $character->hp - $monster_dmg;
 		$character->save();
 		
-		// Check how much dmg the character should do on the monster.
+		// Check how much damage the character should do on the monster.
 		$character_dmg = round( $c_dmg * ( 100 - $monster->defence ) / 100 );
 		
 		// Set the monsters health
