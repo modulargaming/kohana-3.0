@@ -108,7 +108,7 @@ class Controller_Battle extends Controller_Frontend {
 		}
 		else
 		{
-			$view = 'lost';
+			$view = 'end';
 		}
 		
 		$this->template->content = View::factory( 'battle/' . $view )
