@@ -120,17 +120,10 @@ class Controller_Forum extends Controller_Frontend {
 				'title'    => $post['title'],
 				'user'   => $this->user->id,
 				'category' => $id,
+				'status' => 'open',
 				'created' => time(),
 			);
 			
-
-			$post_values = array(
-				'title'    => $post['title'],
-				'content'  => $post['content'],
-				'user'   => $this->user->id,
-				'topic' => $topic_values->id,
-				'created' => time(),
-			);
 
 			$topic = Jelly::factory('forum_topic');
 			
@@ -138,7 +131,18 @@ class Controller_Forum extends Controller_Frontend {
 			$topic->set($topic_values);
 			$topic->save();
 
-			
+						
+
+			$post_values = array(
+				'title'    => $post['title'],
+				'content'  => $post['content'],
+				'user'   => $this->user->id,
+				'topic' => $topic_values->topic,
+				'created' => time(),
+			);
+
+
+
 			$message = Jelly::factory('forum_post');
 			
 			// Assign the validated data to the sprig object
@@ -171,7 +175,7 @@ class Controller_Forum extends Controller_Frontend {
 	public function action_create( $id )
 	{
 	
-		$this->title = 'Forum - Post';
+		$this->title = 'Forum - New Post';
 		
 		
 		// Validate the form input

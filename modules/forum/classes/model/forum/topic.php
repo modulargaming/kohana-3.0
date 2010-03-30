@@ -16,10 +16,9 @@ class Model_Forum_Topic extends Jelly_Model {
 		
 		$meta->fields += array(
 			'id' => new Field_Primary,
-			//'group' => new Field_BelongsTo,
+			'category' => new Field_BelongsTo,
 			
 			'title' => new Field_String,
-			//'content' => new Field_String,
 			'status' => new Field_String,
 
 			'created' => new Field_Integer,
