@@ -25,11 +25,11 @@ class Controller_Npc extends Controller_Frontend {
 			->where('id', '=', $id)
 			->load();
 		
-		if ( $npc->zone_id != $this->character->zone->id )
-			die( 'not in your current zone' );
+		if ($npc->zone_id != $this->character->zone->id)
+			die('not in your current zone');
 		
-		$this->template->content = View::factory( 'npc/index' )
-			->set( 'npc', $npc );
+		$this->template->content = View::factory('npc/index')
+			->set('npc', $npc);
 		
 	}
 	
@@ -50,8 +50,9 @@ class Controller_Npc extends Controller_Frontend {
 			->and_where('npc_id', '=', $id)
 			->load();
 		
-		$this->template->content = View::factory( 'npc/index' )
-			->set( 'npc', $npc );
+		$this->template->content = View::factory('npc/talk')
+			->set('npc', $npc)
+			->set('message', $message);
 		
 	}
 	
