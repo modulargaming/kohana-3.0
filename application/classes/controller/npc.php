@@ -56,4 +56,27 @@ class Controller_Npc extends Controller_Frontend {
 		
 	}
 	
+/**
+	 * Get the quest specified by the param.
+	 * @param integer $id
+	 * @param integer $message_id
+	 */
+	public function action_quest($id, $quest_id)
+	{
+		
+		$npc = Jelly::select('npc')
+			->where('id', '=', $id)
+			->load();
+		
+		$quest = Jelly::select('npc_quest')
+			->where('id', '=', $quest_id)
+			->and_where('npc_id', '=', $id)
+			->load();
+		
+		$this->template->content = View::factory('npc/quest')
+			->set('npc', $npc)
+			->set('quest', $quest);
+		
+	}
+	
 } // End Npc
