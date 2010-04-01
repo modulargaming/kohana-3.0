@@ -1,4 +1,4 @@
-# Modular Gaming Private Edition
+# Modular Gaming
 
 A modular web game framework.
 
