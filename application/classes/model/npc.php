@@ -18,14 +18,17 @@ class Model_Npc extends Jelly_Model {
 			'id' => new Field_Primary,
 			'zone' => new Field_BelongsTo,
 			'name' => new Field_String,
-			
-			'message' => new Field_Text,
 		
 			'zone_id' => new Field_Integer,
 		
 			'messages' => new Field_HasMany(array(
 				'column'  => 'npc_message',
 				'foreign' => 'npc_message.npc_id',
+			)),
+			
+			'quests' => new Field_HasMany(array(
+				'column'  => 'npc_quest',
+				'foreign' => 'npc_quest.npc_id',
 			)),
 		);
 		
