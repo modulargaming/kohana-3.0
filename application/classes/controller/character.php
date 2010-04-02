@@ -104,24 +104,20 @@ class Controller_Character extends Controller_Frontend {
 			try
 			{
 				
-				$character->name = $post['name'];
-				$character->gender = $post['gender'];
-				$character->race = $post['race'];
-				
-				$character->user = $this->user->id;
-				
-				// Default starting money
-				$character->money = 1000;
-				$character->hp = 100;
-				$character->max_hp = 100;
-				
-				$character->level = 1;
-				$character->xp = 0;
-				
-				$character->energy = 100;
-				$character->alignment = 5000;
-				
-				$character->zone = 1;
+				$values = array(
+					'name' => $post['name'],
+					'gender' => $post['gender'],
+					'race' => $post['race'],
+					'user' => $this->user->id,
+					'money' => 1000,
+					'hp' => 100,
+					'max_hp' => 100,
+					'level' => 1,
+					'xp' => 0,
+					'energy' => 100,
+					'alignment' => 5000,
+					'zone' => 1,
+				);
 				
 				$character->save();
 				
