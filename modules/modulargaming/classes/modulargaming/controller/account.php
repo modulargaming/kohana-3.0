@@ -102,34 +102,29 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 		// Validate the form input
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
-			->rule ('username',         'not_empty')
-			->rule ('username',         'alpha_numeric')
-			->rule ('email',            'not_empty')
-			->rule ('email',            'email')
-			->rule ('email_confirm',    'matches', array('email'))
-			->rule ('password',         'min_length', array ( 6 ) )
-			->rule ('password',         'max_length', array( 20 ) )
-			->rule ('password_confirm', 'matches', array('password'))
-			->callback('captcha',       array($this, 'captcha_valid'))
-			->rule ('tos',              'not_empty');
+			->rule('username', 'not_empty')
+			->rule('username', 'alpha_numeric')
+			->rule('email', 'not_empty')
+			->rule('email', 'email')
+			->rule('email_confirm', 'matches', array('email'))
+			->rule('password', 'min_length', array ( 6 ) )
+			->rule('password', 'max_length', array( 20 ) )
+			->rule('password_confirm', 'matches', array('password'))
+			->rule ('tos', 'not_empty')
+			->callback('captcha', array($this, 'captcha_valid'));
 		
 		if ($post->check())
 		{
 			
 			$values = array(
 				'username' => $post['username'],
-				'email'    => $post['email'],
-				'password' => $post['password'],
+				'password' => $this->a1->hash_password($post['password']),
+				'email' => $post['email'],
+				'role' => 'user',
 			);
 			
 			// Assign the validated data to the sprig object
-			$user->set( $values );
-			
-			// Hash the password
-			$user->password = $this->a1->hash_password( $post['password'] );
-			
-			// Set the default role for registered user.
-			$user->role = 'user';
+			$user->set($values);
 			
 			try
 			{
@@ -137,7 +132,7 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 				$user->save();
 				
 				// Redirect the user to the login page
-				$this->request->redirect( 'account/login' );
+				$this->request->redirect('account/login');
 			}
 			catch (Validate_Exception $e)
 			{
@@ -151,13 +146,16 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 			$this->errors = $post->errors('account/register');
 		}
 		
-		if ( !empty($this->errors) )
-			Message::set( Message::ERROR, $this->errors );
+		if ( ! empty($this->errors))
+			Message::set(Message::ERROR, $this->errors);
 		
 		$this->template->content = View::factory('account/register')
-			->set( 'post',   $post->as_array() );
+			->set('post', $post->as_array());
 	}
 	
+	/**
+	 * Logout
+	 */
 	public function action_logout()
 	{
 		if ($this->user)
@@ -166,19 +164,38 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 		$this->request->redirect( '' );
 	}
 	
+	/**
+	 * Validate the captcha
+	 * @param Validate $array
+	 * @param string   $field
+	 */
 	public function captcha_valid(Validate $array, $field)
 	{
 		if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
 	}
 	
+	/**
+	 * Placeholder for email verification
+	 * @param string $key
+	 */
 	public function action_confirm($key)
 	{
 		
 	}
 	
+	/**
+	 * Display the Term Of Service
+	 */
 	public function action_tos()
 	{
-		$this->template->content = View::factory( 'account/tos' );
+		// If it's an ajax request, send only the view.
+		if ( ! Request::$is_ajax) {
+			$this->template->content = View::factory('account/tos');
+		}
+		else
+		{
+			$this->request->response = View::factory('account/tos');
+		}
 	}
 
 } // End Account
