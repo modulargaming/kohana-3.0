@@ -139,7 +139,6 @@ class Controller_Forum extends Controller_Frontend {
 				'category' => $id,
 				'status' => 'open',
 				'posts' => '1',
-				'created' => time(),
 			);
 			
 
@@ -156,7 +155,6 @@ class Controller_Forum extends Controller_Frontend {
 				'content'  => $post['content'],
 				'user'   => $this->user->id,
 				'topic' => $topic_id,
-				'created' => time(),
 			);
 
 
@@ -222,7 +220,6 @@ class Controller_Forum extends Controller_Frontend {
 				'content'  => $post['content'],
 				'user'   => $this->user->id,
 				'topic' => $id,
-				'created' => time(),
 			);
 			
 			$message = Jelly::factory('forum_post');
@@ -231,16 +228,16 @@ class Controller_Forum extends Controller_Frontend {
 			$message->set($values);
 			$message->save();
 	
-/*
+
 			$topic_id = $message->topic;
 
 			$topic = Jelly::select('forum_topic')
                         ->where('id', '=', $topic_id)
                         ->load();
 
-			$topic->set(posts+1);
+			$topic->posts = $topic->posts+1;
 			$topic-save();
-*/		
+		
 			Message::set(Message::SUCCESS, 'You posted a message.' );
 			
 			$this->request->redirect('forum/topic/'.$id);
