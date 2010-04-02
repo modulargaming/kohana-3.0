@@ -9,16 +9,17 @@ A modular web game framework.
 * PHP 5.2+
 * Mysql 5.0+
 * [Kohana v3.0] (http://github.com/modulargaming/core)
-* Kohana Modules: 
+* Kohana Modules
 
 		[A1](http://github.com/modulargaming/A1)
-		[A2] (http://github.com/modulargaming/A2)
-		[ACL] (http://github.com/modulargaming/acl)
-		[Blog] (http://github.com/modulargaming/blog)
+		[A2](http://github.com/modulargaming/A2)
+		[ACL](http://github.com/modulargaming/acl)
+		[Blog](http://github.com/modulargaming/blog)
 		[Captcha](http://github.com/modulargaming/captcha)
-		[Database] (http://github.com/modulargaming/database)
+		[Database](http://github.com/modulargaming/database)
+		[Jelly](http://github.com/modulargaming/jelly 
+		[Message](http://github.com/modulargaming/message)
 		[Pagination](http://github.com/modulargaming/pagination)
-		[Jelly] (http://github.com/modulargaming/jelly 
 
 		(**They are all included**)
 
@@ -61,7 +62,9 @@ Open `application/bootstrap.php` and make the following changes:
 
 * Set the default [timezone](http://php.net/timezones) for your application
 
-Make sure the `application/cache` and `application/logs` directories are world writable with `chmod 0777 application/{cache,logs}`
+Make sure the `application/cache` and `application/logs` directories are world writable with:
+
+ `chmod 0777 application/{cache,logs}`
 
 
 Now Browse to `yourdomain.com` and you should see the **Home Page**.
