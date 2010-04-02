@@ -37,9 +37,9 @@ class Controller_Forum extends Controller_Frontend {
 
 		$this->title = 'Forum - Category '."$id";
 
-		if ( !is_numeric( $id ) ) 
+		if ( ! is_numeric($id)) 
 		{
-			Message::set( Message::ERROR, 'Invalid ID' );
+			Message::set(Message::ERROR, 'Invalid ID');
 		}
 
 		$category = Jelly::select('forum_category')
@@ -74,10 +74,10 @@ class Controller_Forum extends Controller_Frontend {
 	public function action_topic( $id )
 	{
 		
-                if ( !is_numeric( $id ) ) 
-                {
-                        Message::set( Message::ERROR, 'Invalid ID' );
-                }
+		if ( ! is_numeric($id)) 
+		{
+			Message::set(Message::ERROR, 'Invalid ID');
+		}
 		
 		$topic = Jelly::select('forum_topic')
 			->where('id', '=', $id)
@@ -112,10 +112,10 @@ class Controller_Forum extends Controller_Frontend {
 	
 		$this->title = 'Forum - New Topic';
 		
-		                if ( !is_numeric( $id ) ) 
-                {
-                        Message::set( Message::ERROR, 'Invalid ID' );
-                }
+		if ( ! is_numeric($id)) 
+		{
+			Message::set(Message::ERROR, 'Invalid ID');
+		}
 
 		// Validate the form input
 		$post = Validate::factory($_POST)
@@ -193,10 +193,10 @@ class Controller_Forum extends Controller_Frontend {
 	
 		$this->title = 'Forum - New Post';
 
-	                if ( !is_numeric( $id ) ) 
-                {
-                        Message::set( Message::ERROR, 'Invalid ID' );
-                }
+		if ( ! is_numeric($id)) 
+		{
+			Message::set(Message::ERROR, 'Invalid ID');
+		}
 	
 		
 		// Validate the form input
@@ -232,8 +232,8 @@ class Controller_Forum extends Controller_Frontend {
 			$topic_id = $id;
 
 			$topic = Jelly::select('forum_topic')
-                        ->where('id', '=', $topic_id)
-                        ->load();
+				->where('id', '=', $topic_id)
+				->load();
 
 			$topic->posts = $topic->posts+1;
 			$topic->save();
