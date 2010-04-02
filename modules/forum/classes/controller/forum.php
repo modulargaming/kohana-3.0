@@ -120,6 +120,7 @@ class Controller_Forum extends Controller_Frontend {
 		// Validate the form input
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
+			->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
 			->callback('captcha', array($this, 'captcha_valid'))
 			//->callback($id, array($this, 'category_exists'))
 			->rule('title', 'not_empty')
@@ -203,6 +204,7 @@ class Controller_Forum extends Controller_Frontend {
 		// Validate the form input
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
+			->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
 			->callback('captcha', array($this, 'captcha_valid'))
 			//->callback($id, array($this, 'topic_exists'))
 			->rule('title', 'not_empty')
