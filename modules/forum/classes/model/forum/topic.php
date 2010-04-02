@@ -21,7 +21,13 @@ class Model_Forum_Topic extends Jelly_Model {
 			'title' => new Field_String,
 			'status' => new Field_String,
 
-			'created' => new Field_Integer,
+			'created' => new Field_Timestamp(array(
+
+				'empty'  => TRUE,
+
+				'auto_now_create' => true,
+
+			)),
 			'posts' => new Field_Integer,
 			
                 );
