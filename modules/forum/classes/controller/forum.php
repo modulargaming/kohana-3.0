@@ -236,7 +236,7 @@ class Controller_Forum extends Controller_Frontend {
                         ->load();
 
 			$topic->posts = $topic->posts+1;
-			$topic-save();
+			$topic->save();
 		
 			Message::set(Message::SUCCESS, 'You posted a message.' );
 			
