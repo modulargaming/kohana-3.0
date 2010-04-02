@@ -91,12 +91,12 @@ class Controller_Character extends Controller_Frontend {
 		$character = Jelly::factory('character');
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
-			->rule( 'name',   'not_empty' )
-			->rule( 'name',   'min_length', array(3) )
-			->rule( 'name',   'max_length', array(20) )
-			->rule( 'gender', 'not_empty' )
-			->rule( 'race',   'not_empty' )
-			->callback( 'race', array( $this, 'valid_race' ));
+			->rule('name', 'not_empty')
+			->rule('name', 'min_length', array(3))
+			->rule('name', 'max_length', array(20))
+			->rule('gender', 'not_empty')
+			->rule('race', 'not_empty')
+			->callback('race', array($this, 'valid_race'));
 		
 		if ($post->check())
 		{
