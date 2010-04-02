@@ -121,7 +121,7 @@ class Controller_Forum extends Controller_Frontend {
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
 			->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-			->callback('captcha', array($this, 'captcha_valid'))
+			//->callback('captcha', array($this, 'captcha_valid'))
 			//->callback($id, array($this, 'category_exists'))
 			->rule('title', 'not_empty')
 			->rule('title', 'min_length', array(3))
@@ -203,7 +203,7 @@ class Controller_Forum extends Controller_Frontend {
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
 			->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-			->callback('captcha', array($this, 'captcha_valid'))
+			//->callback('captcha', array($this, 'captcha_valid'))
 			//->callback($id, array($this, 'topic_exists'))
 			->rule('title', 'not_empty')
 			->rule('title', 'min_length', array(3))
@@ -229,7 +229,7 @@ class Controller_Forum extends Controller_Frontend {
 			$message->save();
 	
 
-			$topic_id = $message->topic;
+			$topic_id = $id;
 
 			$topic = Jelly::select('forum_topic')
                         ->where('id', '=', $topic_id)
