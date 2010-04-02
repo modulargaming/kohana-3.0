@@ -119,6 +119,8 @@ class Controller_Character extends Controller_Frontend {
 					'zone' => 1,
 				);
 				
+				$character->values($values);
+				
 				$character->save();
 				
 				$this->MG->add_history( 'Created the character: ' . $post['name'] );
