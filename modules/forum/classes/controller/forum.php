@@ -228,16 +228,16 @@ class Controller_Forum extends Controller_Frontend {
 			$message->set($values);
 			$message->save();
 	
-/*
+
 			$topic_id = $message->topic;
 
 			$topic = Jelly::select('forum_topic')
                         ->where('id', '=', $topic_id)
                         ->load();
 
-			$topic->set(posts+1);
+			$topic->posts = $topic->posts+1;
 			$topic-save();
-*/		
+		
 			Message::set(Message::SUCCESS, 'You posted a message.' );
 			
 			$this->request->redirect('forum/topic/'.$id);
