@@ -20,6 +20,13 @@ class Model_Forum_Category extends Jelly_Model {
 			
 			'title' => new Field_String,
 			'description' => new Field_String,
+			'created' => new Field_Timestamp(array(
+
+				'empty'  => TRUE,
+
+				'auto_now_create' => true,
+
+			)),
  			//'role_access' => new Field_Integer,
 		
 		);

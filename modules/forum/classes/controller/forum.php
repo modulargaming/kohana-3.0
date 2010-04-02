@@ -139,7 +139,6 @@ class Controller_Forum extends Controller_Frontend {
 				'category' => $id,
 				'status' => 'open',
 				'posts' => '1',
-				'created' => time(),
 			);
 			
 
@@ -156,7 +155,6 @@ class Controller_Forum extends Controller_Frontend {
 				'content'  => $post['content'],
 				'user'   => $this->user->id,
 				'topic' => $topic_id,
-				'created' => time(),
 			);
 
 
@@ -222,7 +220,6 @@ class Controller_Forum extends Controller_Frontend {
 				'content'  => $post['content'],
 				'user'   => $this->user->id,
 				'topic' => $id,
-				'created' => time(),
 			);
 			
 			$message = Jelly::factory('forum_post');
