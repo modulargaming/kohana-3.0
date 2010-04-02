@@ -61,7 +61,7 @@ Open `application/bootstrap.php` and make the following changes:
 
 * Set the default [timezone](http://php.net/timezones) for your application
 
-Make sure the `application/cache` and `application/logs` directories are world writable with `chmod application/{cache,logs} 0777`
+Make sure the `application/cache` and `application/logs` directories are world writable with `chmod 0777 application/{cache,logs}`
 
 
 Now Browse to `yourdomain.com` and you should see the **Home Page**.
