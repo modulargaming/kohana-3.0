@@ -220,16 +220,16 @@ CREATE TABLE IF NOT EXISTS `monsters` (
 --
 
 INSERT INTO `monsters` (`id`, `name`, `max_hp`, `defence`, `min_dmg`, `max_dmg`, `money`, `xp`, `image`) VALUES
-(1, 'Alpha', 50, 20, 1, 2, 300, 10, 'virus.png'),
-(2, 'Beta', 100, 10, 1, 5, 1000, 20, 'virus2.png'),
-(3, 'Gamma', 150, 20, 2, 8, 300, 30, 'virus3.png'),
-(4, 'Delta', 150, 20, 5, 15, 300, 50, 'virus4.png'),
-(5, 'Epsilon', 150, 20, 8, 15, 300, 100, 'virus5.png'),
-(6, 'Zeta', 150, 20, 10, 18, 300, 150, 'virus6.png'),
-(7, 'Kappa', 150, 10, 15, 20, 1000, 300, 'virus7.png'),
-(8, 'Lambda', 200, 10, 15, 20, 1000, 500, 'virus8.png'),
-(9, 'Mu', 300, 10, 15, 20, 1000, 1000, 'virus9.png'),
-(10, 'Nu', 400, 10, 15, 20, 1000, 2500, 'virus10.png');
+(1, 'Alpha', 50, 20, 1, 2, 300, 10, 'virus/virus.png'),
+(2, 'Beta', 100, 10, 1, 5, 1000, 20, 'virus/virus2.png'),
+(3, 'Gamma', 150, 20, 2, 8, 300, 30, 'virus/virus3.png'),
+(4, 'Delta', 150, 20, 5, 15, 300, 50, 'virus/virus4.png'),
+(5, 'Epsilon', 150, 20, 8, 15, 300, 100, 'virus/virus5.png'),
+(6, 'Zeta', 150, 20, 10, 18, 300, 150, 'virus/virus6.png'),
+(7, 'Kappa', 150, 10, 15, 20, 1000, 300, 'virus/virus7.png'),
+(8, 'Lambda', 200, 10, 15, 20, 1000, 500, 'virus/virus8.png'),
+(9, 'Mu', 300, 10, 15, 20, 1000, 1000, 'virus/virus9.png'),
+(10, 'Nu', 400, 10, 15, 20, 1000, 2500, 'virus/virus10.png');
 
 -- --------------------------------------------------------
 
