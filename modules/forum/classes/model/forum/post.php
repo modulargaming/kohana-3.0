@@ -5,7 +5,7 @@
  * @package    Modular Gaming
  * @author     Curtis Delicata
  * @copyright  (c) 2010 Curtis Delicata
- * @license    BSD - http://www.modulargaming.com/projects/modulargaming/wiki/License
+ * @license    BSD - http://www.modulargaming.com/license
  */
 
 class Model_Forum_Post extends Jelly_Model {
