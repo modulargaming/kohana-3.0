@@ -130,20 +130,19 @@ $this->template->content = View::factory('forum/new')
 
 
 
-public function category_exists(Validate $array, $field)
-{
+        function valid_category( $form, $field )
+        {
+                
+                $race = Jelly::select( 'forum_category' )
+                        ->where( 'id', '=', $form[$field] )
+                        ->load();
+                
+                if ( $race->loaded() )
+                {
+                        return true;
+                }
+                
+                $form->error($field, 'category_not_valid');
 
-$category = Jelly::select('forum_category')
-->where('id', '=', $array[$field])
-->load();
-
-// If no category was found, give an error.
-if ( ! $category->loaded())
-{
-$array->error($field, 'incorrect');
-return;
-}
-
-}
-
+        }
 } // End Forum_Topic
