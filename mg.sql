@@ -169,10 +169,16 @@ CREATE TABLE IF NOT EXISTS `items` (
 -- Dumping data for table `items`
 --
 
+
 INSERT INTO `items` (`id`, `class`, `image`, `description`, `name`) VALUES
-(1, 'food', 'chicken.png', 'A very delicate chicken, replenishes some health on use.', 'Cooked chicken'),
-(2, 'food', 'orange.png', 'An orange.', 'Orange'),
-(3, 'weapon', 'sword.png', 'An sword made of steal. Nothing special but it will still help!', 'Sword');
+(1, 'food', 'food/apple.png', 'A very delicate apple, replenishes some health on use.', 'Apple'),
+(2, 'food', 'food/pie.png', 'A pie, replenishes a lot of health on use', 'Cooked Pie'),
+(3, 'weapon', 'axe/starter.png', 'An axe made of wood. Nothing special but it will still help!', 'Starter Axe'),
+(4, 'weapon', 'bow/starter.png', 'An bow made of wood. Nothing special but it will still help!', 'Starter Bow'),
+(5, 'weapon', 'bow/basic.png', 'An bow made of wood. Quite good.', 'Basic Bow'),
+(6, 'weapon', 'sword/basic.png', 'An sword made of iron. Nothing special but it will still help!', 'Basic Sword'),
+(7, 'weapon', 'sword/basic2.png', 'An long sword made of iron. Nothing special but it will still help!', 'Basic Long Sword'),
+(8, 'weapon', 'sword/ice.png', 'An sword made of ice. Nothing special but it will still help!', 'Basic Long Sword');
 
 -- --------------------------------------------------------
 
@@ -214,16 +220,16 @@ CREATE TABLE IF NOT EXISTS `monsters` (
 --
 
 INSERT INTO `monsters` (`id`, `name`, `max_hp`, `defence`, `min_dmg`, `max_dmg`, `money`, `xp`, `image`) VALUES
-(1, 'Alpha', 50, 20, 1, 2, 300, 10, 'virus.png'),
-(2, 'Beta', 100, 10, 1, 5, 1000, 20, 'virus2.png'),
-(3, 'Gamma', 150, 20, 2, 8, 300, 30, 'virus3.png'),
-(4, 'Delta', 150, 20, 5, 15, 300, 50, 'virus4.png'),
-(5, 'Epsilon', 150, 20, 8, 15, 300, 100, 'virus5.png'),
-(6, 'Zeta', 150, 20, 10, 18, 300, 150, 'virus6.png'),
-(7, 'Kappa', 150, 10, 15, 20, 1000, 300, 'virus7.png'),
-(8, 'Lambda', 200, 10, 15, 20, 1000, 500, 'virus8.png'),
-(9, 'Mu', 300, 10, 15, 20, 1000, 1000, 'virus9.png'),
-(10, 'Nu', 400, 10, 15, 20, 1000, 2500, 'virus10.png');
+(1, 'Alpha', 50, 20, 1, 2, 300, 10, 'virus/virus.png'),
+(2, 'Beta', 100, 10, 1, 5, 1000, 20, 'virus/virus2.png'),
+(3, 'Gamma', 150, 20, 2, 8, 300, 30, 'virus/virus3.png'),
+(4, 'Delta', 150, 20, 5, 15, 300, 50, 'virus/virus4.png'),
+(5, 'Epsilon', 150, 20, 8, 15, 300, 100, 'virus/virus5.png'),
+(6, 'Zeta', 150, 20, 10, 18, 300, 150, 'virus/virus6.png'),
+(7, 'Kappa', 150, 10, 15, 20, 1000, 300, 'virus/virus7.png'),
+(8, 'Lambda', 200, 10, 15, 20, 1000, 500, 'virus/virus8.png'),
+(9, 'Mu', 300, 10, 15, 20, 1000, 1000, 'virus/virus9.png'),
+(10, 'Nu', 400, 10, 15, 20, 1000, 2500, 'virus/virus10.png');
 
 -- --------------------------------------------------------
 
@@ -360,7 +366,12 @@ CREATE TABLE IF NOT EXISTS `shop_items` (
 INSERT INTO `shop_items` (`shop_id`, `item_id`, `amount`, `price`) VALUES
 (1, 1, 100, 5),
 (1, 2, 300, 4),
-(2, 3, 10, 1000);
+(2, 3, 10, 200),
+(2, 4, 10, 400),
+(2, 5, 10, 800),
+(2, 6, 10, 1600),
+(2, 7, 10, 2000),
+(2, 8, 10, 15000);
 
 -- --------------------------------------------------------
 
