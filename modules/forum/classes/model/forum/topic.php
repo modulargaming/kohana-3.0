@@ -13,7 +13,7 @@ class Model_Forum_Topic extends Jelly_Model {
 	public static function initialize(Jelly_Meta $meta)
 	{
 		
-		
+
 		$meta->fields += array(
 			'id' => new Field_Primary,
 			'category' => new Field_BelongsTo,
@@ -21,6 +21,8 @@ class Model_Forum_Topic extends Jelly_Model {
 			'title' => new Field_String,
 			'status' => new Field_String,
 
+			'user' => new Field_BelongsTo,
+			
 			'created' => new Field_Timestamp(array(
 
 				'empty'  => TRUE,

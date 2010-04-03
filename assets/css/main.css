@@ -1,4 +1,6 @@
-body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, blockquote {
+    background-position:100% 0%;
+    border:1px dotted #ccc;
+    padding:30pxbody, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, blockquote {
 	margin: 0; padding: 0; border: 0;
 	font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline;
 }
@@ -393,7 +395,18 @@ ul.history {
 #tooltip h3, #tooltip div { margin: 0; }
 
 
-
+div.forum-title 
+		{
+    background-position:100% 0%;
+    border:1px dotted #ccc;
+    padding:10px
+		}
+div.forum-content 
+		{
+    background-position:100% 0%;
+    border:1px dotted #ccc;
+    padding:30px
+		}
 
 
 

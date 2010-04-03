@@ -5,7 +5,7 @@
 <p>
 <?php echo html::anchor( 'forum/topic/'.$t->id, $t->title ); ?>
 <br />
-<?php echo MG::Ago($t->created) ?>
+Created by <?php echo $t->user->username ?> <?php echo MG::Ago($t->created) ?>
 
 </p>
 
