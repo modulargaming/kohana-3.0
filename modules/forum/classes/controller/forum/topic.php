@@ -66,14 +66,14 @@ Message::set(Message::ERROR, 'Invalid ID');
 $post = Validate::factory($_POST)
 ->filter(TRUE,'trim')
 ->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-//->callback('captcha', array($this, 'captcha_valid'))
-//->callback($id, array($this, 'category_exists'))
 ->rule('title', 'not_empty')
 ->rule('title', 'min_length', array(3))
 ->rule('title', 'max_length', array(20))
 ->rule('content', 'not_empty')
 ->rule('content', 'min_length', array(5))
 ->rule('content', 'max_length', array(1000));
+//->callback($id, array($this, 'category_exists'))
+
 
 
 if ($post->check())
@@ -130,15 +130,15 @@ $this->template->content = View::factory('forum/new')
 
 
 
- public function topic_exists(Validate $array, $field)
+public function category_exists(Validate $array, $field)
 {
 
-$topic = Jelly::select('forum_topic')
+$category = Jelly::select('forum_category')
 ->where('id', '=', $array[$field])
 ->load();
 
-// If no topic was found, give an error.
-if ( ! $topic->loaded())
+// If no category was found, give an error.
+if ( ! $category->loaded())
 {
 $array->error($field, 'incorrect');
 return;
