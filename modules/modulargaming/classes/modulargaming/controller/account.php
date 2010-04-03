@@ -23,6 +23,42 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 			$this->request->redirect( 'account/login' );
 		
 		
+		$post = Validate::factory($_POST)
+			->filter(TRUE,'trim')
+			->rule('email', 'not_empty')
+			->rule('email', 'email')
+			->rule('password', 'max_length', array(20))
+			->rule('password_confirm', 'matches', array('password'))
+			->callback('password', array($this, 'settings_password_length'))
+			->callback('confirm_email', array($this, 'settings_confirm_email'))
+			->callback('old_password', array($this, 'settings_password'));
+			
+		
+		if ($post->check())
+		{
+			
+			// If confirm_email is not empty, the user wants a new email.
+			if ($post['confirm_email'] != '')
+				$this->user->email = $post['email'];
+			
+			// If confirm_email is entered, the user wants a new email.
+			if ($post['password'] != '')
+				$this->user->password = $this->a1->hash_password($post['password']);
+			
+			
+			$this->user->save();
+			
+			Message::set(Message::SUCCESS, 'Profile updated!');
+			
+		}
+		else
+		{
+			$this->errors = $post->errors('account/register');
+		}
+		
+		if ( ! empty($this->errors))
+			Message::set(Message::ERROR, $this->errors);
+		
 		$this->title = 'Settings';
 		$this->template->content = View::factory('account/index');
 		
@@ -164,15 +200,6 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 		$this->request->redirect( '' );
 	}
 	
-	/**
-	 * Validate the captcha
-	 * @param Validate $array
-	 * @param string   $field
-	 */
-	public function captcha_valid(Validate $array, $field)
-	{
-		if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
-	}
 	
 	/**
 	 * Placeholder for email verification
@@ -197,5 +224,71 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 			$this->request->response = View::factory('account/tos');
 		}
 	}
+	
+	/**
+	 * Validate the captcha
+	 * @param Validate $array
+	 * @param string   $field
+	 */
+	public function captcha_valid(Validate $array, $field)
+	{
+		if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
+	}
+	
+	
+	/**
+	 * Validate to make sure that if specified the confirm email matches the email.
+	 * @param Validate $array
+	 * @param string   $field
+	 */
+	public function settings_confirm_email(Validate $array, $field)
+	{
+		
+		if ($array[$field] == '')
+			return;
+		
+		if ($array[$field] != $array['email'])
+		{
+			$array->error($field, 'not_match');
+			return;
+		}
+	}
+	
+	/**
+	 * Validate to make sure the users 'old password' matches it's password.
+	 * @param Validate $array
+	 * @param string   $field
+	 */
+	public function settings_password(Validate $array, $field)
+	{
+		
+		$salt = $this->a1->find_salt($this->user->password);
+		
+		if ( $this->a1->hash_password($array[$field], $salt) != $this->user->password)
+		{
+			$array->error($field, 'invalid');
+			return;
+		}
+	}
+	
+	/**
+	 * Validate to make sure that if a password is entered, it's longer then 6 characters
+	 * @param Validate $array
+	 * @param string   $field
+	 */
+	public function settings_password_length(Validate $array, $field)
+	{
+		
+		if ($array[$field] == '')
+			return;
+		
+		if (strlen($array[$field]) < 6)
+		{
+			$array->error($field, 'min_length');
+			return;
+		}
+		
+	}	
+	
 
 } // End Account
