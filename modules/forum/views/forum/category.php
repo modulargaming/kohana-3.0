@@ -12,6 +12,6 @@
 <?php endforeach;?>
 
 <p>
-<?php echo html::anchor( 'forum/new/'.$category->id, 'Create topic' ); ?>
+<?php echo html::anchor( 'forum/category/'.$category->id.'/new_topic', 'Create topic' ); ?>
 </p>
 
