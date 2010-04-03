@@ -89,6 +89,7 @@ class Controller_Character extends Controller_Frontend {
 			$this->request->redirect( 'character/create' );
 				
 		$character = Jelly::factory('character');
+		
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
 			->rule('name', 'not_empty')
@@ -119,7 +120,7 @@ class Controller_Character extends Controller_Frontend {
 					'zone' => 1,
 				);
 				
-				$character->values($values);
+				$character->set($values);
 				
 				$character->save();
 				
