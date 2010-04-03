@@ -2,16 +2,14 @@
 
 <?php foreach ( $topics as $t ): ?>
 
-<p>
+<div class=forum-topic>
 <?php echo html::anchor( 'forum/topic/'.$t->id, $t->title ); ?>
 <br />
-<?php echo MG::Ago($t->created) ?>
+Created by <?php echo $t->user->username ?> <?php echo MG::Ago($t->created) ?>
 
-</p>
-
+</div>
 <?php endforeach;?>
 
-<p>
-<?php echo html::anchor( 'forum/new/'.$category->id, 'Create topic' ); ?>
-</p>
-
+<div>
+<?php echo html::anchor( 'forum/category/'.$category->id.'/new_topic', 'Create topic' ); ?>
+</div>

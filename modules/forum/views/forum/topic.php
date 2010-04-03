@@ -2,17 +2,21 @@
 
 <?php foreach ( $posts as $p ): ?>
 
-<p>
-<?php echo $p->user->username ?>
-<br />
-<?php echo $p->content ?>
-<br />
-<?php echo MG::Ago($p->created) ?>
+<div class=forum-title>
+<?php echo html::anchor( 'forum/post/'.$p->id, $p->title ); ?>
+</div>
 
-</p>
+<div class=forum-content>
+
+<?php echo $p->content ?>
+</div>
+
+<div>
+Created by <?php echo $p->user->username ?> <?php echo MG::Ago($p->created) ?>
+</div>
 
 <?php endforeach;?>
 
-<p>
-<?php echo html::anchor( 'forum/create/'.$topic->id, 'Create Post' ); ?>
-</p>
+<div class=strong>
+<?php echo html::anchor( 'forum/topic/'.$topic->id.'/new_post', 'Create Post' ); ?>
+</div>

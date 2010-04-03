@@ -1,302 +1,90 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- *
- *
- * @package    Modular Gaming
- * @author     Curtis Delicata
- * @copyright  (c) 2010 Curtis Delicata
- * @license    BSD - http://modulargaming.com/projects/modulargaming/wiki/License
- */
+*
+*
+* @package Modular Gaming
+* @author Curtis Delicata
+* @copyright (c) 2010 Curtis Delicata
+* @license BSD - http://modulargaming.com/projects/modulargaming/wiki/License
+*/
 
 class Controller_Forum extends Controller_Frontend {
-	
-	public $protected = TRUE;
-	public $title = 'Forum';
-	
-	public function action_index ()
-	{
-		
-		$categories = Jelly::select('forum_category')
-			->execute();
-		
-		// Check if no categories was found.
-		if ($categories->count() == 0)
-		{
-			// Set an error message.
-			Message::set(Message::ERROR, 'No categories exist');
-		}
-		
-		$this->template->content = View::factory('forum/index')
-			->set('categories', $categories);
 
-	}
+public $protected = TRUE;
+public $title = 'Forum';
 
-	
-	public function action_category ( $id )
-	{
+public function action_index ()
+{
 
-		$this->title = 'Forum - Category '."$id";
+$categories = Jelly::select('forum_category')
+->execute();
 
-		if ( ! is_numeric($id)) 
-		{
-			Message::set(Message::ERROR, 'Invalid ID');
-		}
+// Check if no categories was found.
+if ($categories->count() == 0)
+{
+// Set an error message.
+Message::set(Message::ERROR, 'No categories exist');
+}
 
-		$category = Jelly::select('forum_category')
-			->where('id', '=', $id)
-			->load();
+$this->template->content = View::factory('forum/index')
+->set('categories', $categories);
 
-		if ( ! $category->loaded())
-
-		{
-			Message::set( Message::ERROR, 'Invalid category' );
-		}
+}
 
 
-		$topics = Jelly::select('forum_topic')
-			->where('category_id', '=', $id)
-			->execute();
-		
-		
-		if ($topics->count() == 0)
-		{
-			Message::set( Message::ERROR, 'No topics exist' );
-		}
-		
-		$this->template->content = View::factory( 'forum/category' )
-			->set( 'category', $category )
-			->set( 'topics', $topics );
+public function action_category ( $id )
+{
 
-	}
-	
-	
-	
-	public function action_topic( $id )
-	{
-		
-		if ( ! is_numeric($id)) 
-		{
-			Message::set(Message::ERROR, 'Invalid ID');
-		}
-		
-		$topic = Jelly::select('forum_topic')
-			->where('id', '=', $id)
-			->load();
-		
-		if ($topic->loaded())
-		{
-			$this->title = 'Forum - '.$topic->title;
-		}
-		else
-		{
-			Message::set(Message::ERROR, 'Topic does not exist');
-		}
-		
-		$posts = Jelly::select('forum_post')
-			->where('topic_id', '=', $id)
-			->execute();
-		
-		
-		$this->template->content = View::factory( 'forum/topic' )
-			->set('topic', $topic)
-			->set('posts', $posts);
-		
-	}
-	
+$this->title = 'Forum - Category '."$id";
 
-	/**
-	 * Create a new topic.
-	 */
-	public function action_new( $id )
-	{
-	
-		$this->title = 'Forum - New Topic';
-		
-		if ( ! is_numeric($id)) 
-		{
-			Message::set(Message::ERROR, 'Invalid ID');
-		}
+if ( ! is_numeric($id))
+{
+Message::set(Message::ERROR, 'Invalid ID');
+}
 
-		// Validate the form input
-		$post = Validate::factory($_POST)
-			->filter(TRUE,'trim')
-			->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-			//->callback('captcha', array($this, 'captcha_valid'))
-			//->callback($id, array($this, 'category_exists'))
-			->rule('title', 'not_empty')
-			->rule('title', 'min_length', array(3))
-			->rule('title', 'max_length', array(20))
-			->rule('content', 'not_empty')
-			->rule('content', 'min_length', array(5))
-			->rule('content', 'max_length', array(1000));
+$category = Jelly::select('forum_category')
+->where('id', '=', $id)
+->load();
 
-		
-		if ($post->check())
-		{
-			$topic_values = array(
-				'title'    => $post['title'],
-				'user'   => $this->user->id,
-				'category' => $id,
-				'status' => 'open',
-				'posts' => '1',
-			);
-			
+if ( ! $category->loaded())
 
-			$topic = Jelly::factory('forum_topic');
-			
-			// Assign the validated data to the sprig object
-			$topic->set($topic_values);
-			$topic->save();
-			
-			$topic_id = $topic->id;
-
-			$post_values = array(
-				'title'    => $post['title'],
-				'content'  => $post['content'],
-				'user'   => $this->user->id,
-				'topic' => $topic_id,
-			);
+{
+Message::set( Message::ERROR, 'Invalid category' );
+}
 
 
-
-			$message = Jelly::factory('forum_post');
-			
-			// Assign the validated data to the sprig object
-			$message->set($post_values);
-			$message->save();
-			
-			Message::set(Message::SUCCESS, 'You created a topic.' );
-			
-			$this->request->redirect('forum/category/'.$id);
-			
-		}
-		else
-        {
-        	$this->errors = $post->errors('forum');
-		}
-		
-		if ( ! empty($this->errors))
-			Message::set(Message::ERROR, $this->errors);
-		
-		$this->template->content = View::factory('forum/new')
-			->set('post', $post->as_array());
-
-	}
-	
-	
-	
-	/**
-	 * Create a new post.
-	 */
-	public function action_create( $id )
-	{
-	
-		$this->title = 'Forum - New Post';
-
-		if ( ! is_numeric($id)) 
-		{
-			Message::set(Message::ERROR, 'Invalid ID');
-		}
-	
-		
-		// Validate the form input
-		$post = Validate::factory($_POST)
-			->filter(TRUE,'trim')
-			->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-			//->callback('captcha', array($this, 'captcha_valid'))
-			//->callback($id, array($this, 'topic_exists'))
-			->rule('title', 'not_empty')
-			->rule('title', 'min_length', array(3))
-			->rule('title', 'max_length', array(20))
-			->rule('content', 'not_empty')
-			->rule('content', 'min_length', array(5))
-			->rule('content', 'max_length', array(1000));
-		
-		if ($post->check())
-		{
-			
-			$values = array(
-				'title'    => $post['title'],
-				'content'  => $post['content'],
-				'user'   => $this->user->id,
-				'topic' => $id,
-			);
-			
-			$message = Jelly::factory('forum_post');
-			
-			// Assign the validated data to the sprig object
-			$message->set($values);
-			$message->save();
-	
-
-			$topic_id = $id;
-
-			$topic = Jelly::select('forum_topic')
-				->where('id', '=', $topic_id)
-				->load();
-
-			$topic->posts = $topic->posts+1;
-			$topic->save();
-		
-			Message::set(Message::SUCCESS, 'You posted a message.' );
-			
-			$this->request->redirect('forum/topic/'.$id);
-			
-		}
-		else
-        {
-        	$this->errors = $post->errors('forum');
-		}
-		
-		if ( ! empty($this->errors))
-			Message::set(Message::ERROR, $this->errors);
-		
-		$this->template->content = View::factory('forum/create')
-			->set('post', $post->as_array());
-
-	}
-	
-	
+$topics = Jelly::select('forum_topic')
+->where('category_id', '=', $id)
+->execute();
 
 
-	public function captcha_valid(Validate $array, $field)
-	{
-		if ( ! Captcha::valid($array[$field])) $array->error($field, 'invalid');
-	}
+if ($topics->count() == 0)
+{
+Message::set( Message::ERROR, 'No topics exist' );
+}
+
+$this->template->content = View::factory( 'forum/category' )
+->set( 'category', $category )
+->set( 'topics', $topics );
+
+}
 
 
+public function category_exists(Validate $array, $field)
+{
 
-	public function topic_exists(Validate $array, $field)
-	{
-		
-		$topic = Jelly::select('forum_topic')
-			->where('id', '=', $array[$field])
-			->load();
-		
-		// If no topic was found, give an error.
-		if ( ! $topic->loaded())
-		{
-			$array->error($field, 'incorrect');
-			return;
-		}
+$category = Jelly::select('forum_category')
+->where('id', '=', $array[$field])
+->load();
 
-	}	
+// If no category was found, give an error.
+if ( ! $category->loaded())
+{
+$array->error($field, 'incorrect');
+return;
+}
 
-	public function category_exists(Validate $array, $field)
-	{
-		
-		$topic = Jelly::select('forum_category')
-			->where('id', '=', $array[$field])
-			->load();
-		
-		// If no topic was found, give an error.
-		if ( ! $topic->loaded())
-		{
-			$array->error($field, 'incorrect');
-			return;
-		}
+} 
 
-	}	
-	
-} // End Forum
-	
+
+}

@@ -17,10 +17,6 @@
 <dt><?php echo form::label( 'content', 'Content:' ); ?></dt>
 <dd><?php echo form::textarea( 'content', $post['content']); ?></dd>
 </dl>
-<dl>
-<dt><?php // echo Captcha::instance()->render(); ?></dt>
-<dd><?php // echo form::input( 'captcha', $post['captcha'] ); ?><br />Type the characters you see in the picture.</dd>
-</dl>
 <?php echo form::submit('post', 'post'); ?>
 </fieldset>
 <?php echo form::close(); ?>
