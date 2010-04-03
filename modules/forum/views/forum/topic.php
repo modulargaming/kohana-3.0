@@ -7,6 +7,7 @@
 </div>
 
 <div class=forum-content>
+
 <?php echo $p->content ?>
 </div>
 
@@ -16,6 +17,6 @@ Created by <?php echo $p->user->username ?> <?php echo MG::Ago($p->created) ?>
 
 <?php endforeach;?>
 
-<div>
+<div class=strong>
 <?php echo html::anchor( 'forum/topic/'.$topic->id.'/new_post', 'Create Post' ); ?>
 </div>

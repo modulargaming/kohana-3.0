@@ -395,20 +395,28 @@ ul.history {
 #tooltip h3, #tooltip div { margin: 0; }
 
 
+div.forum-category 
+		{
+    border:1px dotted #ccc;
+    padding:10px
+		}
+div.forum-topic
+		{
+    border:1px dotted #ccc;
+    padding:10px
+		}
 div.forum-title 
 		{
-    background-position:100% 0%;
     border:1px dotted #ccc;
     padding:10px
 		}
 div.forum-content 
 		{
-    background-position:100% 0%;
     border:1px dotted #ccc;
     padding:30px
 		}
 
-
+	
 
 
 
