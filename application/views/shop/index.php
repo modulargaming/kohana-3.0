@@ -10,32 +10,10 @@
 			html::image( 'assets/images/items/' . $i->image )
 		)
 		?>
-		
-		<div class="hidden">
-			<h3><?php echo $i->name?></h3>
-			<ul>
-				<li>Price: <?php echo $i->price ?></li>
-				<li>Amount: <?php echo $i->amount ?></li>
-			</ul>
-			<p class="description"><?php echo $i->description ?></p>
-		</div>
-		
-		
 	</div>
 	
 	<!--<?php echo $i->amount; ?>-->
 	<!--<?php echo html::anchor( 'shop/' . $shop->id . '/view/' . $i->id, $i->name ) ?>-->
 
 <?php endforeach ?>
-</div>
-
-<div id="buy-form" title="Buy item">
-	<form>
-		<fieldset>
-			<dl>
-				<dd><label>Ammount</label></dd>
-				<dt><input type="text" name="ammount" /></dt>
-			</dl>
-		</fieldset>
-	</form>
 </div>

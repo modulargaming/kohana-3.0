@@ -3,14 +3,14 @@
 
 <p><?php echo $item->description?></p>
 
-<?php echo Message::render(); ?>
+<?php echo Message::render() ?>
 
 <ul>
 	<li>Price: <?php echo $item->price ?></li>
 	<li>Ammount in store: <?php echo $item->amount ?></li>
 </ul>
 
-<?php echo form::open(); ?>
+<?php echo form::open() ?>
 <fieldset>
 	<dl>
 		<dt style="width: 60px;">
