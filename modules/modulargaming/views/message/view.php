@@ -11,7 +11,7 @@
 	
 	<p>Content: <?php echo $message->message ?></p>
 
-	<p>Date: <?php echo $message->created ?></p>
+	<p>Date: <?php if (isset ($post->created)) echo MG::Ago($message->created) ?></p>
 	
 	
 </div>
