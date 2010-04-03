@@ -6,10 +6,12 @@
 
 	<?php echo Message::render() ?>
 	
-	<h3><?php echo $message->title ?></h3>
+	<h3>Title: <?php echo $message->title ?></h3>
 	<p>From: <?php echo $message->from->username ?></p>
 	
-	<p><?php echo $message->message ?></p>
+	<p>Content: <?php echo $message->message ?></p>
+
+	<p>Date: <?php echo $message->created ?></p>
 	
 	
 </div>
