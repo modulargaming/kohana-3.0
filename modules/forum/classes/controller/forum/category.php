@@ -93,7 +93,7 @@ class Controller_Forum_Category extends Controller_Frontend {
 		
 		if ( ! $category->loaded())
 		{
-			die('CATEGORY NOT FOUND');
+			Message::set( Message::ERROR, 'Category does not exist' );
 		}
 		
 		// Validate the form input
@@ -159,5 +159,6 @@ class Controller_Forum_Category extends Controller_Frontend {
 			->set('post', $post->as_array());
 
 	}
+
 	
-}
+} // End Forum_Category
