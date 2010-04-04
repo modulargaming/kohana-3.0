@@ -55,7 +55,8 @@ class Controller_Forum_Topic extends Controller_Frontend {
 		// Make sure the topic exists
 		if ( ! $topic->loaded())
 		{
-			die('NO TOPIC');
+                        Message::set( Message::ERROR, 'Topic does not exist' );
+                        $this->request->redirect('forum');
 		}
 		
 		$this->title = 'Forum - Reply to '.$topic->title;
@@ -64,7 +65,6 @@ class Controller_Forum_Topic extends Controller_Frontend {
 		$post = Validate::factory($_POST)
 		->filter(TRUE,'trim')
 		->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-		//->callback($id, array($this, 'topic_exists'))
 		->rule('title', 'not_empty')
 		->rule('title', 'min_length', array(3))
 		->rule('title', 'max_length', array(20))
