@@ -94,6 +94,7 @@ class Controller_Forum_Category extends Controller_Frontend {
 		if ( ! $category->loaded())
 		{
 			Message::set( Message::ERROR, 'Category does not exist' );
+			$this->request->redirect('forum');
 		}
 		
 		// Validate the form input
