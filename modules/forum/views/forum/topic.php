@@ -18,5 +18,5 @@ Created by <?php echo $p->user->username ?> <?php echo MG::Ago($p->created) ?>
 <?php endforeach;?>
 
 <div class=strong>
-<?php echo html::anchor( 'forum/topic/'.$topic->id.'/new_post', 'Create Post' ); ?>
+<?php echo html::anchor( 'forum/topic/'.$topic->id.'/reply', 'Reply' ); ?>
 </div>
