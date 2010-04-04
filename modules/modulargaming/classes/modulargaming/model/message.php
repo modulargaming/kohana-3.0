@@ -31,13 +31,11 @@ class Modulargaming_Model_Message extends Jelly_Model {
 			'status' => new Field_String,
 			'title' => new Field_String,
 			'message' => new Field_Text,
-                        'created' => new Field_Timestamp(array(
-
-                                'empty'  => TRUE,
-
-                                'auto_now_create' => true,
-
-                        )),
+			'time' => new Field_Timestamp(array(
+				'empty'  => TRUE,
+				'auto_now_create' => true,
+				'pretty_format' => 'Y-m-d H:i',
+			)),
 		);
 		
 	}
