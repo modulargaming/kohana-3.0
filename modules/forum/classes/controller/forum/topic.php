@@ -43,7 +43,7 @@ class Controller_Forum_Topic extends Controller_Frontend {
 
 
 	/**
-	* Create a new topic.
+	* Create a new post.
 	*/
 	public function action_reply($id)
 	{
