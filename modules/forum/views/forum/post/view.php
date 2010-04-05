@@ -15,7 +15,7 @@ Created by:
 <?php echo MG::Ago($post->created) ?>
 <?php if ($user->id == $post->user->id) 
 {
-echo html::anchor( 'forum/post/'.$post->id.'/delete', ' Edit ' );
+echo html::anchor( 'forum/post/'.$post->id.'/edit', ' Edit ' );
 echo html::anchor( 'forum/post/'.$post->id.'/delete', ' Delete ' );
 }                                       
 ?>

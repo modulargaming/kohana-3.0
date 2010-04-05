@@ -104,7 +104,6 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `title` varchar(30) NOT NULL,
   `description` varchar(50) NOT NULL,
-  `access` int(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -390,7 +389,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_login` int(10) DEFAULT NULL,
   `role` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Table structure for table `user_facebook`
