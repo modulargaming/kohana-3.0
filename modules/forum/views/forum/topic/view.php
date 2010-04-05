@@ -12,7 +12,15 @@
 </div>
 
 <div>
-Created by <?php echo $p->user->username ?> <?php echo MG::Ago($p->created) ?>
+Created by 
+<?php echo $p->user->username ?> 
+<?php echo MG::Ago($p->created) ?>
+<?php if ($user->id == $p->user->id) 
+{
+echo html::anchor( 'forum/post/'.$p->id.'/delete', ' Edit ' );
+echo html::anchor( 'forum/post/'.$p->id.'/delete', ' Delete ' );
+}					
+?>
 </div>
 
 <?php endforeach;?>

@@ -13,7 +13,13 @@
 Created by: 
 <?php echo $post->user->username ?> 
 <?php echo MG::Ago($post->created) ?>
-<?php if ($user->id == $post->user->id) echo html::anchor( 'forum/post/'.$post->id.'/delete', 'Delete post?' ); ?> 
+<?php if ($user->id == $p->user->id) 
+{
+echo html::anchor( 'forum/post/'.$p->id.'/delete', ' Edit ' );
+echo html::anchor( 'forum/post/'.$p->id.'/delete', ' Delete ' );
+}                                       
+?>
+
 </div>
 
 

@@ -84,7 +84,7 @@ class Controller_Forum_Topic extends Controller_Frontend {
 		
 		$message = Jelly::factory('forum_post');
 		
-		// Assign the validated data to the sprig object
+		// Assign the validated data to the Jelly object
 		$message->set($values);
 		$message->save();
 		
