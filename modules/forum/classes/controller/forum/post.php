@@ -36,4 +36,44 @@ class Controller_Forum_Post extends Controller_Frontend {
 	}
 
 
+	public function action_edit($id)
+	{
+	}
+
+	public function action_delete($id)
+	{
+	
+	$post = Jelly::select('forum_post')
+                        ->where('id', '=', $id)
+                        ->load();
+
+                if ($post->loaded())
+                {
+                        $this->title = 'Forum - Post - Delete';
+                }
+                else
+                {
+                        Message::set(Message::ERROR, 'Post does not exist');
+
+                }
+
+
+	if ($this->user->id != $post->user->id)
+		{
+                        Message::set(Message::ERROR, 'You are not the author of this post.');
+
+		}
+
+	else	{
+		Jelly::factory('forum_post')->delete($id);
+                Message::set(Message::SUCCESS, 'Post has been deleted.');
+
+		}
+
+		$this->template->content = View::factory( 'forum/delete' )
+			->set('post', $post);
+
+
+	}
+
 } // End Forum_Post
