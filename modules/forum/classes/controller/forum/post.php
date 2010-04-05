@@ -91,6 +91,7 @@ class Controller_Forum_Post extends Controller_Frontend {
                 }
 
                 $this->template->content = View::factory( 'forum/post/edit' )
+                        ->set('message', $message)
                         ->set('post', $post);
 
 
