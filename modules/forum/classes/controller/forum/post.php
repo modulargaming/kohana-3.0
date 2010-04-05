@@ -127,10 +127,38 @@ class Controller_Forum_Post extends Controller_Frontend {
 		}
 
 	else	{
-		Jelly::factory('forum_post')->delete($id);
+		$topic = Jelly::select('forum_topic')
+				->where('id', '=', $post->topic->id)
+				->load();
+
+		if ($topic->posts >1)
+		{
+
+		$topic->posts = $topic->posts-1;
+                $topic->save();
+
+		$post->delete();		
                 Message::set(Message::SUCCESS, 'Post has been deleted.');
 			
 			$this->request->redirect('forum');
+
+		}
+
+	
+		if ($topic->posts == 1)
+
+		{
+
+		$topic->delete();
+		$post->delete();		
+                Message::set(Message::SUCCESS, 'Post has been deleted.');
+
+                        $this->request->redirect('forum');
+
+
+
+		}
+
 		}
 
 		$this->template->content = View::factory( 'forum/post/delete' )

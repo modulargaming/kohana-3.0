@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `status` varchar(10) NOT NULL,
   `title` varchar(25) NOT NULL,
   `message` text NOT NULL,
-  `time` int(10),
+  `created` int(10),
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
