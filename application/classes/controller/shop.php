@@ -26,7 +26,8 @@ class Controller_Shop extends Controller_Frontend {
 		
 		// Make sure it's a interger and not empty
 		if ( !is_numeric( $this->shop_id ) || $this->shop_id == '' ) {
-			die('Error, not integer');
+                        Message::set( Message::ERROR, 'Shop does not exist' );
+                        $this->request->redirect('zone');
 		}
 		
 		// Retrive the shop with matching id
@@ -126,7 +127,7 @@ class Controller_Shop extends Controller_Frontend {
 		
 		// Check if shop got enought items
 		if ( $this->item->amount < $amount ){
-			$array->error($field, 'not_enought');
+			$array->error($field, 'not_enough');
 			return false;
 		}
 		
