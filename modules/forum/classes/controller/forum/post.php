@@ -38,18 +38,18 @@ class Controller_Forum_Post extends Controller_Frontend {
 
 	public function action_edit($id)
 	{
-		$post = Jelly::select('forum_post')
+		$message = Jelly::select('forum_post')
                         ->where('id', '=', $id)
                         ->load();
 
                 // Make sure the post exists
-                if ( ! $post->loaded())
+                if ( ! $message->loaded())
                 {
                         Message::set( Message::ERROR, 'Post does not exist' );
                         $this->request->redirect('forum');
                 }
 
-		if ($this->user->id != $post->user->id)
+		if ($this->user->id != $message->user->id)
                 {
                         Message::set(Message::ERROR, 'You are not the author of this post.');
 
@@ -58,7 +58,7 @@ class Controller_Forum_Post extends Controller_Frontend {
 
 		else
 		{
-		$this->title = 'Forum - Edit '.$post->title;
+		$this->title = 'Forum - Edit '.$message->title;
 
                 // Validate the form input
                 $post = Validate::factory($_POST)
@@ -78,13 +78,11 @@ class Controller_Forum_Post extends Controller_Frontend {
                         'title' => $post['title'],
                         'content' => $post['content'],
                         'user' => $this->user->id,
-                        'topic' => $id,
                 );
 
-                $message = Jelly::factory('forum_post');
-
                 // Assign the validated data to the Jelly object
-                $message->set($values);
+		$message->title = $post['title'];
+		$message->content = $post['content'];
                 $message->save();
 
                 Message::set(Message::SUCCESS, 'Post has been edited.');

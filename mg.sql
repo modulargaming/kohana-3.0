@@ -111,10 +111,10 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 -- Dumping data for table `forum_categories`
 --
 
-INSERT INTO `forum_categories` (`id`, `title`, `description`, `access`) VALUES
-(1, 'General', 'General Discussions', 0),
-(2, 'Marketplace', 'Buy and sell items.', 0),
-(3, 'Alliances', 'Alliance Discussions', 0);
+INSERT INTO `forum_categories` (`id`, `title`, `description`) VALUES
+(1, 'General', 'General Discussions'),
+(2, 'Marketplace', 'Buy and sell items.'),
+(3, 'Alliances', 'Alliance Discussions');
 
 -- --------------------------------------------------------
 
