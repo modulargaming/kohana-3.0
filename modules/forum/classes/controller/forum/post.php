@@ -30,7 +30,7 @@ class Controller_Forum_Post extends Controller_Frontend {
 			Message::set(Message::ERROR, 'Post does not exist');
 		}
 		
-		$this->template->content = View::factory( 'forum/post' )
+		$this->template->content = View::factory( 'forum/post/view' )
 			->set('post', $post);
 	
 	}
@@ -73,7 +73,7 @@ class Controller_Forum_Post extends Controller_Frontend {
 			$this->request->redirect('forum');
 		}
 
-		$this->template->content = View::factory( 'forum/delete' )
+		$this->template->content = View::factory( 'forum/post/delete' )
 			->set('post', $post);
 
 

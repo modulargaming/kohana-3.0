@@ -35,7 +35,7 @@ class Controller_Forum_Topic extends Controller_Frontend {
 			->execute();
 		
 		
-		$this->template->content = View::factory( 'forum/topic' )
+		$this->template->content = View::factory( 'forum/topic/view' )
 			->set('topic', $topic)
 			->set('posts', $posts);
 	
@@ -111,7 +111,7 @@ class Controller_Forum_Topic extends Controller_Frontend {
 		if ( ! empty($this->errors))
 			Message::set(Message::ERROR, $this->errors);
 		
-		$this->template->content = View::factory('forum/create')
+		$this->template->content = View::factory('forum/post/create')
 			->set('post', $post->as_array());
 
 	}
