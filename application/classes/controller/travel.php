@@ -38,12 +38,16 @@ class Controller_Travel extends Controller_Frontend {
 	public function action_view( $id )
 	{
 		
-		if ( !is_numeric( $id ) ) {
-			die('Error, not integer');
+		if ( !is_numeric( $id ) )
+		{
+
+		        Message::set( Message::ERROR, 'Invalid ID' );
+                        $this->request->redirect('travel');
 		}
 		
 		if ( $id == $this->character->zone->id ) {
-			die( 'You can\'t move to the same zone as you currently is in');
+			Message::set( Message::ERROR, 'You cannot move to where you already are.' );
+                        $this->request->redirect('travel');
 		}
 		
 		$zone = Jelly::select('zone')
@@ -64,12 +68,18 @@ class Controller_Travel extends Controller_Frontend {
 	{
 		
 		// Make sure id is an integer.
-		if ( !is_numeric( $id ) ) {
-			die('Error, not integer');
+		if ( !is_numeric( $id ) ) 
+
+		{
+
+                        Message::set( Message::ERROR, 'Invalid ID' );
+                        $this->request->redirect('travel');
 		}
 		
-		if ( $id == $this->character->zone->id ) {
-			die( 'You can\'t move to the same zone as you currently is in');
+		if ( $id == $this->character->zone->id )
+		{
+			Message::set( Message::ERROR, 'You cannot move to where you already are.' );
+                        $this->request->redirect('travel');
 		}
 		
 		// Load the zone
@@ -82,7 +92,11 @@ class Controller_Travel extends Controller_Frontend {
 		
 		// Make sure the character got enough of engery
 		if ( $character->energy < $zone->energy )
-			die( 'need more energy' );
+				{
+                        	Message::set( Message::ERROR, 'Not enough energy.' );
+                        	$this->request->redirect('travel');
+	
+				}
 		
 		// Set the new zone, and energy
 		$character->zone = $zone->id;

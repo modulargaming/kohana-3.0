@@ -55,8 +55,10 @@ class Controller_Shop extends Controller_Frontend {
 	public function action_view( $id2, $id )
 	{
 		
-		if ( !is_numeric( $id ) ) {
-			die('Error, not integer');
+		if ( !is_numeric( $id ) )
+		{
+		        Message::set( Message::ERROR, 'Invalid ID' );
+                        $this->request->redirect('zone');	
 		}
 		
 		$item = Model_Shop::get_one_item( $this->shop->id, $id );

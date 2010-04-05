@@ -19,15 +19,20 @@ class Controller_Npc extends Controller_Frontend {
 	{
 		
 		if ( ! is_numeric($id))
-			die('id isnt numeric');
-		
-		$npc = Jelly::select('npc')
+				{
+                        	Message::set( Message::ERROR, 'NPC does not exist' );
+                        	$this->request->redirect('zone');		
+				}	
+	$npc = Jelly::select('npc')
 			->where('id', '=', $id)
 			->load();
 		
 		if ($npc->zone_id != $this->character->zone->id)
-			die('not in your current zone');
-		
+				{
+				Message::set( Message::ERROR, 'NPC is not in your current zone.' );
+                        	$this->request->redirect('zone');
+
+				}		
 		$this->template->content = View::factory('npc/index')
 			->set('npc', $npc);
 		
