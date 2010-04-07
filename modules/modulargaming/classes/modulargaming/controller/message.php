@@ -30,6 +30,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 		
 		$messages = Jelly::select('message')
 			->where('to', '=', $this->user->id)
+			->and_where('to_status', '<>', 'deleted')
 			->execute();
 		
 		$this->template->content = View::factory('message/index')
@@ -45,6 +46,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 		
 		$messages = Jelly::select('message')
 			->where('from', '=', $this->user->id)
+			->and_where('from_status', '<>', 'deleted')
 			->execute();
 		
 		$this->template->content = View::factory('message/sent')
@@ -56,7 +58,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 	 * Display the message.
 	 * @param integer $id
 	 */
-	public function action_view( $id )
+	public function action_view($id)
 	{
 		
 		if ( ! is_numeric($id) )
@@ -77,6 +79,56 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 		$this->template->content = View::factory('message/view')
 			->set('sidebar', $this->sidebar)
 			->set('message', $message);
+	}
+	
+	/**
+	 * Display the message.
+	 * @param integer $id
+	 */
+	public function action_delete($id)
+	{
+		
+		if ( ! is_numeric($id) )
+			die('Not numeric');
+		
+		$message = Jelly::select('message')
+			->where('id', '=', $id)
+			->load();
+		
+		if ($message->to->id == $this->user->id)
+		{
+			if ($message->from_status == 'deleted')
+			{
+				$message->delete();
+			}
+			else
+			{
+				$message->to_status = 'deleted';
+				$message->save();
+			}
+		}
+		elseif ($message->from->id == $this->user->id)
+		{
+			if ($message->to_status == 'deleted')
+			{
+				$message->delete();
+			}
+			else
+			{
+				$message->from_status = 'deleted';
+				$message->save();
+			}
+		}
+		else
+		{
+			Message::set(Message::ERROR, 'This isn\'t your message');
+			$this->request->redirect('message');
+		}
+		
+		Message::set(Message::SUCCESS, 'You deleted the message');
+			
+		$this->request->redirect('message');
+		
 	}
 	
 	/**
@@ -136,7 +188,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 	 * Retrieve usernames that start on the given parameter.
 	 * @param string $search
 	 */
-	public function action_reciver( $search )
+	public function action_reciver($search)
 	{
 		
 		// Find all users whos username starts on the search string.

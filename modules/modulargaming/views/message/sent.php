@@ -19,7 +19,7 @@
 			<tr>
 				<td><?php echo html::anchor('message/view/'.$m->id, $m->title) ?></td>
 				<td><?php echo $m->from->username ?></td>
-				<td><?php echo $m->time ?></td>
+				<td><?php echo date('Y-m-d H:i', $m->created) ?></td>
 			</tr>
 			<?php endforeach ?>
 		</tbody>

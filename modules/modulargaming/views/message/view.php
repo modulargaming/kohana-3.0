@@ -11,7 +11,7 @@
 	
 	<p>Content: <?php echo $message->message ?></p>
 
-	<p>Date: <?php if (isset ($post->created)) echo MG::Ago($message->created) ?></p>
+	<p>Date: <?php echo date('Y-m-d H:i', $message->created) ?></p>
 	
-	
+	<p><?php echo html::anchor('message/delete/'.$message->id, 'Delete') ?></p>
 </div>
