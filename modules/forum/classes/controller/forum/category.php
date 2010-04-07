@@ -73,7 +73,7 @@ class Controller_Forum_Category extends Controller_Frontend {
 			Message::set( Message::ERROR, 'No topics exist' );
 		}
 	
-		$this->template->content = View::factory( 'forum/category' )
+		$this->template->content = View::factory( 'forum/category/view' )
 			->set( 'category', $category )
 			->set( 'topics', $topics );
 	
@@ -93,7 +93,8 @@ class Controller_Forum_Category extends Controller_Frontend {
 		
 		if ( ! $category->loaded())
 		{
-			die('CATEGORY NOT FOUND');
+			Message::set( Message::ERROR, 'Category does not exist' );
+			$this->request->redirect('forum');
 		}
 		
 		// Validate the form input
@@ -155,9 +156,10 @@ class Controller_Forum_Category extends Controller_Frontend {
 		if ( ! empty($this->errors))
 			Message::set(Message::ERROR, $this->errors);
 		
-		$this->template->content = View::factory('forum/new')
+		$this->template->content = View::factory('forum/topic/create')
 			->set('post', $post->as_array());
 
 	}
+
 	
-}
+} // End Forum_Category

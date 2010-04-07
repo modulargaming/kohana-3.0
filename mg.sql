@@ -104,7 +104,6 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `title` varchar(30) NOT NULL,
   `description` varchar(50) NOT NULL,
-  `access` int(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -112,10 +111,10 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
 -- Dumping data for table `forum_categories`
 --
 
-INSERT INTO `forum_categories` (`id`, `title`, `description`, `access`) VALUES
-(1, 'General', 'General Discussions', 0),
-(2, 'Marketplace', 'Buy and sell items.', 0),
-(3, 'Alliances', 'Alliance Discussions', 0);
+INSERT INTO `forum_categories` (`id`, `title`, `description`) VALUES
+(1, 'General', 'General Discussions'),
+(2, 'Marketplace', 'Buy and sell items.'),
+(3, 'Alliances', 'Alliance Discussions');
 
 -- --------------------------------------------------------
 
@@ -131,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
   `content` varchar(500) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -148,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
   `posts` int(6) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -206,6 +205,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 CREATE TABLE IF NOT EXISTS `monsters` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `level` int(6) NOT NULL,
   `max_hp` int(6) NOT NULL,
   `defence` int(2) NOT NULL,
   `min_dmg` int(6) NOT NULL,
@@ -220,17 +220,17 @@ CREATE TABLE IF NOT EXISTS `monsters` (
 -- Dumping data for table `monsters`
 --
 
-INSERT INTO `monsters` (`id`, `name`, `max_hp`, `defence`, `min_dmg`, `max_dmg`, `money`, `xp`, `image`) VALUES
-(1, 'Alpha', 50, 20, 1, 2, 300, 10, 'virus/virus.png'),
-(2, 'Beta', 100, 10, 1, 5, 1000, 20, 'virus/virus2.png'),
-(3, 'Gamma', 150, 20, 2, 8, 300, 30, 'virus/virus3.png'),
-(4, 'Delta', 150, 20, 5, 15, 300, 50, 'virus/virus4.png'),
-(5, 'Epsilon', 150, 20, 8, 15, 300, 100, 'virus/virus5.png'),
-(6, 'Zeta', 150, 20, 10, 18, 300, 150, 'virus/virus6.png'),
-(7, 'Kappa', 150, 10, 15, 20, 1000, 300, 'virus/virus7.png'),
-(8, 'Lambda', 200, 10, 15, 20, 1000, 500, 'virus/virus8.png'),
-(9, 'Mu', 300, 10, 15, 20, 1000, 1000, 'virus/virus9.png'),
-(10, 'Nu', 400, 10, 15, 20, 1000, 2500, 'virus/virus10.png');
+INSERT INTO `monsters` (`id`, `name`, `level`, `max_hp`, `defence`, `min_dmg`, `max_dmg`, `money`, `xp`, `image`) VALUES
+(1, 'Alpha', 0, 50, 20, 1, 2, 300, 10, 'virus/virus.png'),
+(2, 'Beta', 0, 100, 10, 1, 5, 1000, 20, 'virus/virus2.png'),
+(3, 'Gamma', 0, 150, 20, 2, 8, 300, 30, 'virus/virus3.png'),
+(4, 'Delta', 0, 150, 20, 5, 15, 300, 50, 'virus/virus4.png'),
+(5, 'Epsilon', 0, 150, 20, 8, 15, 300, 100, 'virus/virus5.png'),
+(6, 'Zeta', 0, 150, 20, 10, 18, 300, 150, 'virus/virus6.png'),
+(7, 'Kappa', 0, 150, 10, 15, 20, 1000, 300, 'virus/virus7.png'),
+(8, 'Lambda', 0, 200, 10, 15, 20, 1000, 500, 'virus/virus8.png'),
+(9, 'Mu', 0, 300, 10, 15, 20, 1000, 1000, 'virus/virus9.png'),
+(10, 'Nu', 0, 400, 10, 15, 20, 1000, 2500, 'virus/virus10.png');
 
 -- --------------------------------------------------------
 
@@ -390,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_login` int(10) DEFAULT NULL,
   `role` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Table structure for table `user_facebook`

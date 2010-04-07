@@ -35,7 +35,7 @@ class Controller_Forum_Topic extends Controller_Frontend {
 			->execute();
 		
 		
-		$this->template->content = View::factory( 'forum/topic' )
+		$this->template->content = View::factory( 'forum/topic/view' )
 			->set('topic', $topic)
 			->set('posts', $posts);
 	
@@ -43,7 +43,7 @@ class Controller_Forum_Topic extends Controller_Frontend {
 
 
 	/**
-	* Create a new topic.
+	* Create a new post.
 	*/
 	public function action_reply($id)
 	{
@@ -55,7 +55,8 @@ class Controller_Forum_Topic extends Controller_Frontend {
 		// Make sure the topic exists
 		if ( ! $topic->loaded())
 		{
-			die('NO TOPIC');
+                        Message::set( Message::ERROR, 'Topic does not exist' );
+                        $this->request->redirect('forum');
 		}
 		
 		$this->title = 'Forum - Reply to '.$topic->title;
@@ -64,7 +65,6 @@ class Controller_Forum_Topic extends Controller_Frontend {
 		$post = Validate::factory($_POST)
 		->filter(TRUE,'trim')
 		->filter(TRUE, 'htmlspecialchars', array(ENT_QUOTES))
-		//->callback($id, array($this, 'topic_exists'))
 		->rule('title', 'not_empty')
 		->rule('title', 'min_length', array(3))
 		->rule('title', 'max_length', array(20))
@@ -84,7 +84,7 @@ class Controller_Forum_Topic extends Controller_Frontend {
 		
 		$message = Jelly::factory('forum_post');
 		
-		// Assign the validated data to the sprig object
+		// Assign the validated data to the Jelly object
 		$message->set($values);
 		$message->save();
 		
@@ -111,7 +111,7 @@ class Controller_Forum_Topic extends Controller_Frontend {
 		if ( ! empty($this->errors))
 			Message::set(Message::ERROR, $this->errors);
 		
-		$this->template->content = View::factory('forum/create')
+		$this->template->content = View::factory('forum/post/create')
 			->set('post', $post->as_array());
 
 	}

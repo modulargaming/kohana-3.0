@@ -23,7 +23,7 @@
 		<div class="right">
 			<div style="text-align: center;">
 				<h2><?php echo $monster->name; ?></h2>
-				<p style="margin-top: -8px;">Level 1</p>
+				<p style="margin-top: -8px;"><?php echo $monster->level; ?></p>
 			</div>
 			
 			<span class="bar small hp">
@@ -34,7 +34,7 @@
 		</div>
 		
 		<ul>
-			<li>Attack: <span>5 - 10</span></li>
+			<li>Attack: <span><?php echo $monster->min_dmg.' - '. $monster->max_dmg; ?></span></li>
 		</ul>
 	</div>
 	
