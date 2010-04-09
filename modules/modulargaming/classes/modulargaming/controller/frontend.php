@@ -53,6 +53,12 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		$this->a1 = $this->a2->a1;
 		$this->user = $this->a2->get_user();
 		
+		// Setup the user specific settings
+		if ($this->user)
+		{
+			I18n::lang('SV-SE');
+		}
+		
 		View::set_global(  'user',   $this->user   );
 		View::bind_global( 'errors', $this->errors );
 		View::bind_global( 'title',  $this->title  );
