@@ -11,6 +11,7 @@
  */
 
 return array(
+	
 	'Message' => 'Medelande',
 	'Messages' => 'Medelanden',
 	
@@ -28,10 +29,9 @@ return array(
 	 * Form elements
 	 */
 	
-	'reciver:' => 'Motagare:',
-	'title:' => 'Ämne:',
-	'message:' => 'Medelande:',
-	
-	'send' => 'Skicka',
+	'Reciver:' => 'Mottagare:',
+	'Title:' => 'Ämne:',
+	'Message:' => 'Medelande:',
+	'Send' => 'Skicka',
 	
 );
