@@ -12,10 +12,10 @@
 
 return array(
 	
-	'Message' => 'Medelande',
-	'Messages' => 'Medelanden',
+	'Message' => 'Meddelande',
+	'Messages' => 'Meddelanden',
 	
-	'Write a new message' => 'Skriv ett nytt medelande',
+	'Write a new message' => 'Skriv ett nytt meddelande',
 	'Inbox' => 'Inkorg',
 	'Sent' => 'Skickat',
 
@@ -34,4 +34,15 @@ return array(
 	'Message:' => 'Medelande:',
 	'Send' => 'Skicka',
 	
+	
+	/**
+	 * Error messages
+	 */
+	'This is not your message.' => 'Du kan endast komma åt dina egna meddelande',
+
+	/**
+	 * Confirm messages
+	 */
+	'You deleted the message!' => 'Meddelandet är nu raderat!',
+	'You sent away the message to :to!' => 'Meddelandet har skickats iväg till :to!',
 );
