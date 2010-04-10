@@ -12,6 +12,16 @@
 
 return array(
 	
+	/**
+	 * Account
+	 */
+	'Username:' => 'Användarnamn:',
+	
+	
+	
+	/**
+	 * Messages (PM)
+	 */
 	'Message' => 'Meddelande',
 	'Messages' => 'Meddelanden',
 	
@@ -19,30 +29,17 @@ return array(
 	'Inbox' => 'Inkorg',
 	'Sent' => 'Skickat',
 
-
 	'Title' => 'Ämne',
 	'From' => 'Från',
 	'Date' => 'Datum',
-	
-	
-	/**
-	 * Form elements
-	 */
 	
 	'Reciver:' => 'Mottagare:',
 	'Title:' => 'Ämne:',
 	'Message:' => 'Medelande:',
 	'Send' => 'Skicka',
 	
-	
-	/**
-	 * Error messages
-	 */
 	'This is not your message.' => 'Du kan endast komma åt dina egna meddelande',
 
-	/**
-	 * Confirm messages
-	 */
 	'You deleted the message!' => 'Meddelandet är nu raderat!',
 	'You sent away the message to :to!' => 'Meddelandet har skickats iväg till :to!',
 );

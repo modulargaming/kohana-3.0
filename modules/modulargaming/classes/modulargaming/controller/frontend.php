@@ -56,13 +56,15 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		// Setup the user specific settings
 		if ($this->user)
 		{
-			// TODO: Load from the user's table.
-			I18n::lang('SV-SE');
+			if ($this->user->language)
+			{
+				I18n::lang($this->user->language);
+			}
 		}
+		I18n::lang('sv');
 		
 		View::set_global('user', $this->user);
 		View::bind_global('errors', $this->errors);
-		View::bind_global('title', $this->title);
 		
 		
 		$this->MG = new ModularGaming($this->user);
@@ -87,6 +89,9 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 	
 	public function after()
 	{
+		
+		View::set_global('title', __($this->title));
+		
 		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
 			// Assign the template as the request response and render it

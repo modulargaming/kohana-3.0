@@ -53,6 +53,8 @@ class Modulargaming_Model_User extends Jelly_Model implements Acl_Role_Interface
 				 'empty' => TRUE,
 			)),
 			
+			'language' => new Field_String,
+			
 		);
 	}
 	
