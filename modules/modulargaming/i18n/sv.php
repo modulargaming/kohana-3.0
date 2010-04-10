@@ -29,6 +29,9 @@ return array(
 	'Type the characters you see in the picture.' => 'Ange tecknen som du ser i bilden.',
 
 	'Register' => 'Registrera',
+	'Login' => 'Logga in',
+	
+	':checkbox Remember me' => ':checkbox Kom ihåg mig',
 	
 	/**
 	 * Messages (PM)
