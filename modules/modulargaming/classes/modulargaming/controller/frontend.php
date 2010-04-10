@@ -6,7 +6,7 @@
  * @subpackage Core
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
+ * @license    http://www.modulargaming.com/license
  */
 
 abstract class Modulargaming_Controller_Frontend extends Controller {

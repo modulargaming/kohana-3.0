@@ -1,13 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-/**
- * 
- *
- * @package    Modular Gaming
- * @subpackage Core
- * @author     Oscar Hinton
- * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
- */
+
 class Form extends Kohana_Form {
 	
 	/**

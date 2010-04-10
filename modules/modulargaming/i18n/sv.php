@@ -16,8 +16,19 @@ return array(
 	 * Account
 	 */
 	'Username:' => 'Användarnamn:',
+	'E-mail address:' => 'E-postadress:',
+	'Confirm e-mail address:' => 'Bekräfta e-postadress:',
+	'Password:' => 'Lösenord',
+	'Confirm password:' => 'Bekräfta lösenord',
+
+	':checkbox I have read and agrees to the :tos' => ':checkbox Jag har läst och accepterat :tos',
+	'Terms of Service' => 'Villkoren',
 	
-	
+	'Must be between 6 and 20 characters.' => 'Behöver vara mellan 6 och 20 tecken.',
+	'Must be between 3 and 20 characters.' => 'Behöver vara mellan 3 och 20 tecken.',
+	'Type the characters you see in the picture.' => 'Ange tecknen som du ser i bilden.',
+
+	'Register' => 'Registrera',
 	
 	/**
 	 * Messages (PM)
