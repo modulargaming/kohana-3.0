@@ -48,7 +48,7 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 			
 			$this->user->save();
 			
-			Message::set(Message::SUCCESS, 'Profile updated!');
+			Message::set(Message::SUCCESS, __('Profile updated!'));
 			
 		}
 		else

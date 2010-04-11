@@ -18,8 +18,10 @@ return array(
 	'Username:' => 'Användarnamn:',
 	'E-mail address:' => 'E-postadress:',
 	'Confirm e-mail address:' => 'Bekräfta e-postadress:',
-	'Password:' => 'Lösenord',
-	'Confirm password:' => 'Bekräfta lösenord',
+	'Password:' => 'Lösenord:',
+	'Confirm password:' => 'Bekräfta lösenord:',
+	'New password:' => 'Nytt lösenord:',
+	'Current password:' => 'Nuvarande lösenord:',
 
 	':checkbox I have read and agrees to the :tos' => ':checkbox Jag har läst och accepterat :tos',
 	'Terms of Service' => 'Villkoren',
@@ -30,8 +32,15 @@ return array(
 
 	'Register' => 'Registrera',
 	'Login' => 'Logga in',
+	'Logout' => 'Logga ut',
+	'Edit' => 'Ändra',
+	'Settings' => 'Inställningar',
 	
 	':checkbox Remember me' => ':checkbox Kom ihåg mig',
+	
+	'Only required if you are changing the e-mail adress.' => 'Krävs endast ifall du ska ändra din e-postadress.',
+	'Only required if you are changing the password.' => 'Krävs endast ifall du ska ändra ditt lösenord.',
+	'Required for making sure you are you.' => 'Krävs för att verifiera vem du är.',
 	
 	/**
 	 * Messages (PM)
