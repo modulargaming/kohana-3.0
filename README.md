@@ -1,6 +1,6 @@
 # Modular Gaming
 
-A modular browser based game framework based on Kohana 3.
+A modular browser based game framework based on Kohana 3 using Jelly.
 
 > It is unstable and still developing.
 
