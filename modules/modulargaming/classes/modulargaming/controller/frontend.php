@@ -61,7 +61,7 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 				I18n::lang($this->user->language);
 			}
 		}
-		I18n::lang('sv');
+		I18n::lang('en');
 		
 		View::set_global('user', $this->user);
 		View::bind_global('errors', $this->errors);
