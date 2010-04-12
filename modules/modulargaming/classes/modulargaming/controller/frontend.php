@@ -6,7 +6,7 @@
  * @subpackage Core
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
+ * @license    http://www.modulargaming.com/license
  */
 
 abstract class Modulargaming_Controller_Frontend extends Controller {
@@ -53,14 +53,23 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		$this->a1 = $this->a2->a1;
 		$this->user = $this->a2->get_user();
 		
-		View::set_global(  'user',   $this->user   );
-		View::bind_global( 'errors', $this->errors );
-		View::bind_global( 'title',  $this->title  );
+		// Setup the user specific settings
+		if ($this->user)
+		{
+			if ($this->user->language)
+			{
+				I18n::lang($this->user->language);
+			}
+		}
+		I18n::lang('sv');
+		
+		View::set_global('user', $this->user);
+		View::bind_global('errors', $this->errors);
 		
 		
-		$this->MG = new ModularGaming( $this->user );
+		$this->MG = new ModularGaming($this->user);
 		
-		if ($this->auto_render === TRUE && !Request::$is_ajax )
+		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
 			
 			// Load the template
@@ -80,6 +89,9 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 	
 	public function after()
 	{
+		
+		View::set_global('title', __($this->title));
+		
 		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
 			// Assign the template as the request response and render it
