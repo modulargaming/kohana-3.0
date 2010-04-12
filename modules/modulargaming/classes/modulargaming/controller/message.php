@@ -19,7 +19,6 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 		parent::before();
 		
 		$this->sidebar = View::factory('message/sidebar');
-		
 	}
 	
 	/**
@@ -71,7 +70,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 		// Make sure the user received or sent the message.
 		if ($message->to->id != $this->user->id AND $message->from->id != $this->user->id)
 		{
-			Message::set(Message::ERROR, 'This is not your message.');
+			Message::set(Message::ERROR, __('This is not your message.'));
 			$this->request->redirect('message');
 		}
 			
@@ -121,11 +120,11 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 		}
 		else
 		{
-			Message::set(Message::ERROR, 'This isn\'t your message');
+			Message::set(Message::ERROR, __('This is not your message.'));
 			$this->request->redirect('message');
 		}
 		
-		Message::set(Message::SUCCESS, 'You deleted the message');
+		Message::set(Message::SUCCESS, __('You deleted the message!'));
 			
 		$this->request->redirect('message');
 		
@@ -165,7 +164,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 			$message->set($values);
 			$message->save();
 			
-			Message::set(Message::SUCCESS, 'You sent away the message to '.$post['to']);
+			Message::set(Message::SUCCESS, __('You sent away the message to :to!', array(':to' => $post['to'])));
 			
 			$this->request->redirect('message');
 			

@@ -6,7 +6,7 @@
  * @subpackage Core
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
+ * @license    ttp://www.modulargaming.com/license
  */
 
 class Modulargaming_Controller_Account extends Controller_Frontend {
@@ -48,7 +48,7 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 			
 			$this->user->save();
 			
-			Message::set(Message::SUCCESS, 'Profile updated!');
+			Message::set(Message::SUCCESS, __('Profile updated!'));
 			
 		}
 		else

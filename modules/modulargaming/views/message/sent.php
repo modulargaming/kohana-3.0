@@ -1,4 +1,4 @@
-<h2>Messages - Sent</h2>
+<h2><?php echo __('Messages').' - '.__('Sent') ?></h2>
 
 <div class="left w150"><?php echo $sidebar ?></div>
 
@@ -9,9 +9,9 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Title</th>
-				<th>From</th>
-				<th>Date</th>
+				<th><?php echo __('Title') ?></th>
+				<th><?php echo __('From') ?></th>
+				<th><?php echo __('Date') ?></th>
 			</tr>
 		</thead>
 		<tbody>
