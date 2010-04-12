@@ -15,14 +15,17 @@ return array(
 	/**
 	 * Forum
 	 */
-	'Title:'	=> 'empty',
-	'Content:'	=> 'empty',
-	'Create topic' => 'empty',
-	'Length must be between 3 and 20 characters.' => 'empty',
-	'Reply' => 'empty',
-	'Edit' => 'empty',
-	'Delete' => 'empty',
+	'Title:' => 'Ämne:',
+	'Content:' => 'Medelande:',
+	
+	'Create topic' => 'Ny tråd',
+	'Post reply' => 'Besvara',
+	'Length must be between 3 and 20 characters.' => 'Behöver vara mellan 3 och 20 tecken.',
+	
+	'Reply' => 'Besvara',
+	'Edit' => 'Ändra',
+	'Delete' => 'Radera',
 
-
+	'Created by:' => 'Skapad av:',
 	
 );
