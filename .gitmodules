@@ -25,3 +25,6 @@
 [submodule "modules/pagination"]
 	path = modules/pagination
 	url = git://github.com/modulargaming/pagination.git
+[submodule "modules/event"]
+	path = modules/event
+	url = git://github.com/Zeelot/event.git

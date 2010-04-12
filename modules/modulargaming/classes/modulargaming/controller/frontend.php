@@ -76,6 +76,9 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 			Request::instance()->redirect('account/login');
 		}
 		
+		// Run the before events.
+		Event::run('before', $this);
+		
 	}
 	
 	public function after()

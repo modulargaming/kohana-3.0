@@ -78,12 +78,21 @@ Kohana::$config->attach(new Kohana_Config_File);
  */
 Kohana::modules(array(
 	
-	'modulargaming' => MODPATH.'modulargaming',
+	// Modular Gaming modules
+	// 'blog'  => MODPATH.'blog', // Blog
+	'forum' => MODPATH.'forum', // Offical forum module
+	'message' => MODPATH.'message',
+	'facebook' => MODPATH.'facebook',
+	
+	'modulargaming' => MODPATH.'modulargaming', // Modular Gaming core
+	
+	// Event system
+	'event' => MODPATH.'event',
 	
 	// Database
 	'jelly'    => MODPATH.'jelly',
 	'sprig'    => MODPATH.'sprig',
-	'database' => MODPATH.'database',   // Database access
+	'database' => MODPATH.'database', // Database access
 	
 	// Auth
 	'a1'    => MODPATH.'A1',
@@ -93,15 +102,7 @@ Kohana::modules(array(
 	// Misc modules
 	'pagination' => MODPATH.'pagination', // Paging of results
 	'captcha'    => MODPATH.'captcha',
-	'image'      => MODPATH.'image',	
-
-	'blog'  => MODPATH.'blog', // Blog
-	'forum' => MODPATH.'forum', // Offical forum module
-
-	'message' => MODPATH.'message',
-
-	'facebook' => MODPATH.'facebook',
-	
+	'image'      => MODPATH.'image',
 ));
 
 /**
