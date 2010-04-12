@@ -188,7 +188,9 @@ INSERT INTO `items` (`id`, `class`, `image`, `description`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
   `to` int(6) NOT NULL,
+  `to_status` varchar(10) NOT NULL,
   `from` int(6) NOT NULL,
+  `from_status` varchar(10) NOT NULL,
   `status` varchar(10) NOT NULL,
   `title` varchar(25) NOT NULL,
   `message` text NOT NULL,
@@ -389,6 +391,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `logins` int(10) DEFAULT NULL,
   `last_login` int(10) DEFAULT NULL,
   `role` varchar(50) NOT NULL,
+  `language` varchar(3) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
