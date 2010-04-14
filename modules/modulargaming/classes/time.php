@@ -5,7 +5,7 @@
  * @package    Modular Gaming
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
+ * @license    http://www.modulargaming.com/license
  */
 
 class Time {	
