@@ -55,5 +55,7 @@ Make sure the `application/cache` and `application/logs` directories are world w
 
 Now browse to `yourdomain.com` and you should see the **Home Page**.
 
-> You will need to set your user to have the role 'Admin'.
+> You will need to set your user to have the role 'admin'.
+
+> You will need to update the .htaccess to refer to the correct location of the folder containing Modular Gaming. 
 
