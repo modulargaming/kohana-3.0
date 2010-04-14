@@ -284,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `npc_quests` (
   `npc_id` int(6) NOT NULL,
   `title` varchar(25) NOT NULL,
   `description` varchar(100) NOT NULL,
-  `type` varchar(20) NOT NULL,
+  `type` enum('item','kill','travel') NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -293,8 +293,7 @@ CREATE TABLE IF NOT EXISTS `npc_quests` (
 --
 
 INSERT INTO `npc_quests` (`id`, `npc_id`, `title`, `description`, `type`) VALUES
-(1, 1, 'Test quest', 'Test quest', 'General');
-
+(1, 1, 'Test quest', 'Test quest', 'item');
 
 -- --------------------------------------------------------
 
