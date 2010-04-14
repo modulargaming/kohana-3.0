@@ -1,9 +1,6 @@
 <?php echo Message::render() ?>
 
 <h2>Post</h2>
-<?php foreach ($errors as $v): ?>
-<?php echo $v; ?><br />
-<?php endforeach; ?>
 <?php echo form::open( NULL, array( 'class' => 'forum' ) ); ?>
 <fieldset>
 	<dl>
