@@ -262,13 +262,16 @@ INSERT INTO `npcs` (`id`, `zone_id`, `name`, `message`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `npc_messages` (
-  `npc_id` int(6) NOT NULL
+  `id` int(6) NOT NULL,
+  `npc_id` int(6) NOT NULL,
+  `title` varchar(25) NOT NULL,
+  `message` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `npc_messages`
 --
-
 
 -- --------------------------------------------------------
 
@@ -279,12 +282,18 @@ CREATE TABLE IF NOT EXISTS `npc_messages` (
 CREATE TABLE IF NOT EXISTS `npc_quests` (
   `id` int(6) NOT NULL,
   `npc_id` int(6) NOT NULL,
+  `title` varchar(25) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `npc_quests`
 --
+
+INSERT INTO `npc_quests` (`id`, `npc_id`, `title`, `description`, `type`) VALUES
+(1, 1, 'Test quest', 'Test quest', 'General');
 
 
 -- --------------------------------------------------------
