@@ -22,8 +22,12 @@ class Controller_Inventory extends Controller_Frontend {
 		
 	}
 	
-	public function action_view()
+	public function action_view($id)
 	{
+		$item = Model_User::get_item( $this->user->id, $id );
+		
+		$this->template->content = View::factory( 'inventory/view' )
+			->set( 'item', $item );
 		
 		
 		
