@@ -1,10 +1,6 @@
 <?php echo html::anchor( 'admin/users', 'Go back' ); ?>
 
-<?php foreach ($errors as $v): ?>
-
-	<?php echo $v; ?><br />
-
-<?php endforeach; ?>
+<?php echo Message::render() ?>
 
 <?php echo form::open(); ?>
 

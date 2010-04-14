@@ -63,13 +63,15 @@ class Controller_Admin_Users extends Controller_Backend {
 		if ( !$this->a2->allowed( 'admin', 'users_add' ) )
 			$this->request->redirect('');		
 		
-		$sprig = Sprig::factory('user');
+		$user = Jelly::factory('user');
 		
 		// Check if we have a post request
 		$post = Validate::factory($_POST)
 			->filter(TRUE, 'trim')
-			->rules('username', $sprig->field('username')->rules)
-			->rules('email', $sprig->field('email')->rules)
+			->rule('username', 'not_empty')
+			->rule('username', 'alpha_numeric')
+			->rule('email', 'not_empty')
+			->rule('email', 'email')
 			->rule('password', 'min_length', array(6))
 			->rule('password', 'max_length', array(20))
 			->rule('password_confirm', 'matches', array('password'))
@@ -80,15 +82,20 @@ class Controller_Admin_Users extends Controller_Backend {
 		if ( $post->check() )
 		{
 			
-			// Assign the validated data to the sprig object
-			$sprig->values( $post->as_array());
+			$values = array(
+				'username' => $post['username'],
+				'password' => $this->a1->hash_password($post['password']),
+				'email' => $post['email'],
+				'role' => $post['role'],
+			);
 			
-			// Hash the password
-			$sprig->password = $this->a1->hash_password( $post['password'] );
+			// Assign the validated data to the sprig object
+			$user->set($values);
+			
 			try
 			{
 				// Create the new user
-				$sprig->create();
+				$user->save();
 				
 				// Redirect the user to the login page
 				$this->request->redirect( 'admin/users' );
@@ -105,6 +112,9 @@ class Controller_Admin_Users extends Controller_Backend {
 			$this->errors = $post->errors('register');
 		}
 		
+		if ( ! empty($this->errors))
+			Message::set(Message::ERROR, $this->errors);
+		
 		$t = Kohana::config('a2');
 		$t = $t['roles'];
 		
@@ -115,9 +125,8 @@ class Controller_Admin_Users extends Controller_Backend {
 		}
 		
 		$this->template->content = View::factory('admin/users/add')
-			->set( 'errors', $this->errors     )
-			->set( 'post',   $post->as_array() )
-			->set( 'roles',  $roles            );
+			->set('post', $post->as_array())
+			->set('roles', $roles);
 			
 	}
 	
@@ -131,12 +140,14 @@ class Controller_Admin_Users extends Controller_Backend {
 			die('Error, not integer');
 		}
 		
-		$sprig = Sprig::factory( 'user', array( 'id' => $id ) )->load();
+		$user = Jelly::select('user')
+			->where('id', '=', $id)
+			->load();
 		
 		// Check if no post request was made, and load the user
-		if ( $_POST == array() )
+		if ($_POST == array())
 		{
-			$post = $sprig;
+			$post = $user;
 		}
 		else
 		{
@@ -144,19 +155,27 @@ class Controller_Admin_Users extends Controller_Backend {
 			// Check if we have a post request
 			$post = Validate::factory( $_POST )
 				->filter( TRUE, 'trim' )
-				->rules( 'username',         $sprig->field('username')->rules )
-				->rules( 'email',            $sprig->field('email')->rules    )
-				->rule ( 'password',         'max_length', array( 20 )        )
-				->rule ( 'password_confirm', 'matches', array('password')     )
-				->rule ( 'role',             'not_empty'                      );
+				->rule('username', 'not_empty')
+				->rule('username', 'alpha_numeric')
+				->rule('email', 'not_empty')
+				->rule('email', 'email')
+				->rule('password', 'max_length', array( 20 ))
+				->rule('password_confirm', 'matches', array('password'))
+				->rule('role', 'not_empty');
 			
 			$this->errors = array();
 			
 			if ( $post->check() )
 			{
 				
+				$values = array(
+					'username' => $post['username'],
+					'email' => $post['email'],
+					'role' => $post['role'],
+				);
+				
 				// Assign the validated data to the sprig object
-				$sprig->values( $post->as_array());
+				$user->set($values);
 				
 				// Hash the password
 				if ( $post['password'] != '' )
@@ -167,7 +186,7 @@ class Controller_Admin_Users extends Controller_Backend {
 				try
 				{
 					// Create the new user
-					$sprig->update();
+					$user->save();
 					
 					// Redirect the user to the login page
 					$this->request->redirect( 'admin/users' );
@@ -186,6 +205,9 @@ class Controller_Admin_Users extends Controller_Backend {
 			
 		}
 		
+		if ( ! empty($this->errors))
+			Message::set(Message::ERROR, $this->errors);
+		
 		$t = Kohana::config('a2');
 		$t = $t['roles'];
 		
@@ -196,9 +218,8 @@ class Controller_Admin_Users extends Controller_Backend {
 		}
 		
 		$this->template->content = View::factory('admin/users/edit')
-			//->set( 'errors', $this->errors     )
-			->set( 'post',   $post->as_array() )
-			->set( 'roles',  $roles            );
+			->set('post', $post->as_array())
+			->set('roles', $roles);
 		
 	}
 	
