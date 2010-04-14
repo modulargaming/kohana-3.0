@@ -13,7 +13,11 @@ class Time {
 	public static $offset = 0;
 	public static $display = 'Y-m-d  H:i';
 	
-	public static function render($timestamp)
+	/**
+	 * Return the timestamp with the user's timezone and his display options.
+	 * @param integer $timestamp
+	 */
+	public static function date($timestamp)
 	{
 		
 		$timestamp += Time::$offset * 3600;
