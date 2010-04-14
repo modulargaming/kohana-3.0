@@ -9,7 +9,7 @@
 </div>
 
 <div>
-Created by: 
+<?php echo __('Created by:') ?>
 <?php echo $post->user->username ?> 
 <?php echo MG::Ago($post->created) ?>
 <?php if ($user->id == $post->user->id): ?>
