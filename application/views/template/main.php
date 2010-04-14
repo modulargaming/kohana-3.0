@@ -10,8 +10,8 @@
 	<script type="text/javascript">
 		path = "<?php echo url::base(); ?>";
 	</script>
-<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />	
+<link rel="icon" href="<?php echo url::base(); ?>/assets/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo url::base(); ?>/assets/favicon.ico" type="image/x-icon" />	
 	<title>Modular Gaming - <?php echo $title; ?></title>
 </head>
 <body>
