@@ -73,7 +73,14 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 			Message::set(Message::ERROR, __('This is not your message.'));
 			$this->request->redirect('message');
 		}
-			
+		
+		
+		if ($message->to_status == 'new' && $message->to->id == $this->user->id)
+		{
+			$message->to_status = 'read';
+			$message->save();
+		}
+		
 		
 		$this->template->content = View::factory('message/view')
 			->set('sidebar', $this->sidebar)

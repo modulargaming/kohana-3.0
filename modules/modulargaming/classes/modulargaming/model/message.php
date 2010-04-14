@@ -37,8 +37,12 @@ class Modulargaming_Model_Message extends Jelly_Model {
 				'pretty_format' => 'Y-m-d H:i',
 			)),
 			
-			'to_status' => new Field_String,
-			'from_status' => new Field_String,
+			'to_status' => new Field_String(array(
+				'default' => 'new',
+			)),
+			'from_status' => new Field_String(array(
+				'default' => 'read',
+			)),
 		);
 		
 	}

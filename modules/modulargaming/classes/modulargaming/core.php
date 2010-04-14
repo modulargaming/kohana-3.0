@@ -89,23 +89,4 @@ class Modulargaming_Core {
 	}
 	
 	
-	
-	// Detect how long ago it has been since the timestamp was created
-	static public function ago($timestamp){
-		
-		$difference = time() - $timestamp;
-		$periods = array( 'second', 'minute', 'hour', 'day', 'week', 'month', 'year' );
-		$lengths = array( '60', '60', '24', '7', '4.35', '12', '100' );
-		
-		for( $j = 0; $difference >= $lengths[$j]; $j++ )
-			$difference /= $lengths[$j];
-		
-		$difference = round($difference);
-		if($difference != 1) $periods[$j].= "s";
-			$text = "$difference $periods[$j] ago";
-		
-		return $text;
-		
-	}
-	
 }

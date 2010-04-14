@@ -13,6 +13,25 @@
 return array(
 	
 	/**
+	 * Time
+	 */
+	'ago' => 'sedan',
+	
+	'second' => 'sekund',
+	'seconds' => 'sekunder',
+	
+	'minute' => 'minut',
+	'minutes' => 'minuter',
+	
+	'hour' => 'timme',
+	'hours' => 'timmar',
+
+	'day' => 'dag',
+	'days' => 'dagar',
+		
+	
+
+	/**
 	 * Account
 	 */
 	'Username:' => 'Användarnamn:',

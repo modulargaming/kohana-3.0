@@ -60,6 +60,9 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 			{
 				I18n::lang($this->user->language);
 			}
+			
+			//Time::$offset = '';
+			//Time::$display = '';
 		}
 		//I18n::lang('en');
 		
