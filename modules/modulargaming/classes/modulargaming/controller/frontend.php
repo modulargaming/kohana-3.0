@@ -14,7 +14,6 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 	public $template = 'template/main';
 	
 	public $protected = FALSE;
-	public $load_city = FALSE;
 	
 	public $title = 'Undefined';
 	public $auto_render = TRUE;
