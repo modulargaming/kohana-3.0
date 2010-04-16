@@ -8,7 +8,7 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Controller_Battle extends Controller_Frontend {
+class Modulargaming_Controller_Battle extends Controller_Frontend {
 	
 	public $protected = TRUE;
 	public $load_character = TRUE;

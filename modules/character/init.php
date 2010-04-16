@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 /**
- * 
+ * Holds the events and rout specific stuffs for character module.
  *
  * @package    Modular Gaming
  * @author     Oscar Hinton
