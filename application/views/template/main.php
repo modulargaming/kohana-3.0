@@ -75,7 +75,7 @@
 	</form>
 </div>
 <?php
-	if( Kohana::$environment == 'development' )
+	if(Kohana::$environment == Kohana::DEVELOPMENT)
 		echo View::factory('profiler/stats');
 ?>
 <?php

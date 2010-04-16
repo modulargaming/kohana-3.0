@@ -19,9 +19,8 @@ date_default_timezone_set('Europe/London');
 setlocale(LC_ALL, 'en_GB.utf-8');
 
 /**
- * Set the production status by the ip address.
+ * Set the environment mode.
  */
-define('IN_PRODUCTION', $_SERVER['SERVER_ADDR'] !== '127.0.0.1');
 Kohana::$environment = Kohana::DEVELOPMENT;
 //Kohana::$environment = Kohana::PRODUCTION;
 
@@ -57,10 +56,10 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 Kohana::init(array(
-	'base_url'   => str_replace( basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME'] ),
+	'base_url' => str_replace( basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME'] ),
 	'index_file' => '',
-	'profiling'  => !IN_PRODUCTION,
-	'caching'    => IN_PRODUCTION
+	'profiling' => Kohana::$environment == Kohana::DEVELOPMENT OR Kohana::$environment == Kohana::TESTING,
+	'caching' => Kohana::$environment != Kohana::DEVELOPMENT AND Kohana::$environment == Kohana::TESTING,
 ));
 
 /**
@@ -149,7 +148,7 @@ try
 catch (Exception $e)
 {
 	
-	if ( ! IN_PRODUCTION)
+	if (Kohana::$environment == Kohana::DEVELOPMENT)
 	{
 		throw $e;
 	}
