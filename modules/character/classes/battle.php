@@ -49,6 +49,13 @@ class Battle {
 		
 		// Set the characters health
 		$character->hp = $character->hp - $monster_dmg;
+		
+		// Make sure hp won't go below 0.
+		if ($character->hp < 0)
+		{
+			$character->hp = 0;
+		}
+		
 		$character->save();
 		
 		// Check how much damage the character should do on the monster.
