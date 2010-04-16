@@ -10,6 +10,7 @@
 
 abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 	
+	/*
 	public $load_character = FALSE;
 	public $require_character = FALSE;
 	
@@ -57,5 +58,5 @@ abstract class Controller_Frontend extends Modulargaming_Controller_Frontend {
 		}
 		
 	}
-	
+	*/
 } // End Frontend

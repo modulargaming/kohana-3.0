@@ -78,10 +78,9 @@ Kohana::$config->attach(new Kohana_Config_File);
 Kohana::modules(array(
 	
 	// Modular Gaming modules
-	// 'blog'  => MODPATH.'blog', // Blog
 	'forum' => MODPATH.'forum', // Offical forum module
-	'message' => MODPATH.'message',
-	'facebook' => MODPATH.'facebook',
+	'message' => MODPATH.'message', // Official messages module
+	'character' => MODPATH.'character', // Official character module
 	
 	'modulargaming' => MODPATH.'modulargaming', // Modular Gaming core
 	
@@ -89,8 +88,7 @@ Kohana::modules(array(
 	'event' => MODPATH.'event',
 	
 	// Database
-	'jelly'    => MODPATH.'jelly',
-	'sprig'    => MODPATH.'sprig',
+	'jelly'    => MODPATH.'jelly', // Jelly ORM
 	'database' => MODPATH.'database', // Database access
 	
 	// Auth

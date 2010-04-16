@@ -3,9 +3,9 @@
  * 
  *
  * @package    Modular Gaming
- * @author     Copy112
- * @copyright  (c) 2010 Copy112
- * @license    http://copy112.com/mg/license
+ * @author     Oscar Hinton
+ * @copyright  (c) 2010 Oscar Hinton
+ * @license    http://www.modulargaming.com/license
  */
 
 class Character {
@@ -18,7 +18,6 @@ class Character {
 	{
 		$this->char = $char;
 	}
-	
 	
 	public function get_alignments()
 	{

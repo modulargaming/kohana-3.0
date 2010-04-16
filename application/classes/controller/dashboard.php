@@ -12,13 +12,14 @@ class Controller_Dashboard extends Controller_Frontend {
 	
 	public $title = 'Dashboard';
 	public $protected = TRUE;
-	public $load_character = TRUE;
 	
 	public function action_index()
 	{
 		
+		/*
 		// Initialize the character class, and set the players character as the default.
 		$char = new Character( $this->character );
+		*/
 		
 		// Load the users history, limit with 10
 		$history = Jelly::select( 'user_history' )
@@ -26,10 +27,12 @@ class Controller_Dashboard extends Controller_Frontend {
 			->limit( 10 )
 			->execute();
 		
+		$this->left = '';
+		Event::run('dashboard-left', $this);
+		
 		$this->template->content = View::factory('dashboard/index')
-			->set( 'character', $this->character )
-			->set( 'char', $char )
-			->set( 'history', $history );
+			->set('left', $this->left)
+			->set('history', $history);
 		
 	}
 	
