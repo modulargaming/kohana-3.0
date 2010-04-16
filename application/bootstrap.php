@@ -22,8 +22,8 @@ setlocale(LC_ALL, 'en_GB.utf-8');
  * Set the production status by the ip address.
  */
 define('IN_PRODUCTION', $_SERVER['SERVER_ADDR'] !== '127.0.0.1');
-Kohana::$environment = 'development';
-//Kohana::$environment = 'deploy';
+Kohana::$environment = Kohana::DEVELOPMENT;
+//Kohana::$environment = Kohana::PRODUCTION;
 
 /**
  * Enable the Kohana auto-loader.
