@@ -11,7 +11,7 @@
 	
 	<p>Content: <?php echo $message->message ?></p>
 
-	<p>Date: <?php echo Time::date($m->created) ?></p>
+	<p>Date: <?php echo Time::date($message->created) ?></p>
 	
 	<p><?php echo html::anchor('message/delete/'.$message->id, 'Delete') ?></p>
 </div>
