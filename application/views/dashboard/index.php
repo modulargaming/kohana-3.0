@@ -38,7 +38,7 @@
 	<ul class="no-bullets history">
 		<?php foreach ( $history as $h ): ?>
 		
-		<li><span><?php echo MG::Ago( $h->time ) ?>:</span> <?php echo $h->history ?> </li>
+		<li><span><?php echo Time::date($h->time, NULL) ?>:</span> <?php echo $h->history ?> </li>
 		
 		<?php endforeach;?>
 	</ul>

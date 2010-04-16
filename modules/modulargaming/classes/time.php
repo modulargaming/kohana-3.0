@@ -21,7 +21,8 @@ class Time {
 	public static function date($timestamp, $ago_days = 2)
 	{
 		
-		if ($timestamp < time() + (Date::DAY * $ago_days))
+		// Check if $ago_days is null, or if timestamp is more then time - $ago_days.
+		if ( ! $ago_days OR $timestamp > time() - (Date::DAY * $ago_days))
 		{
 			return Time::ago($timestamp);
 		}
