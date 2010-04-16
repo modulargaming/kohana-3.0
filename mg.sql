@@ -399,7 +399,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `logins` int(10) DEFAULT NULL,
   `last_login` int(10) DEFAULT NULL,
   `role` varchar(50) NOT NULL,
-  language` varchar(3) DEFAULT 'en',
+  `language` varchar(3) DEFAULT 'en',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
