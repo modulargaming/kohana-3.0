@@ -25,6 +25,8 @@ Step 2: Initial Structure
 
 Next the submodules must be initialized:
 
+	cd modulargaming (or whatever you named it)
+
 	$ git submodule init
 	
 Now that the submodules are added, update them:
