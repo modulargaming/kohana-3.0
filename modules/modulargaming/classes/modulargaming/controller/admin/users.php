@@ -8,7 +8,7 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Controller_Admin_Users extends Controller_Backend {
+class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 	
 	public $title = 'Admin - Users';
 	private $users_per_page = 10;

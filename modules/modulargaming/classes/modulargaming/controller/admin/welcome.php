@@ -1,16 +1,16 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * 
+ * Admin dashboard controller
  *
  * @package    Modular Gaming
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
+ * @license    http://www.modulargaming.com/license
  */
 
-class Controller_Admin_Welcome extends Controller_Backend {
+class Modulargaming_Controller_Admin_Welcome extends Controller_Backend {
 
-	public $title = 'Admin - Index';
+	public $title = 'Dashboard';
 	public $active_time = 259200; // Time since last login to be called active. (3days)
 
 	public function action_index()
