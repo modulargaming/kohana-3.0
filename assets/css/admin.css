@@ -85,6 +85,7 @@ nav ul li.current a {
 }
 #content .left {
 	float: left;
+	width: 100%;
 }
 #content .right {
 	float: right;
@@ -118,10 +119,12 @@ footer {
 	background: #262626;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	padding: 10px 320px 10px 10px;
 	width: 100%;
 	float: left;
 	color: #fff;
+}
+footer p {
+	padding: 10px;
 }
 
 

@@ -79,7 +79,7 @@
 	</div>
 	
 	<footer>
-		Copyright © 2010 Modular Gaming.
+		<p>Copyright © 2010 Modular Gaming.</p>
 	</footer>
 	
 </div>
