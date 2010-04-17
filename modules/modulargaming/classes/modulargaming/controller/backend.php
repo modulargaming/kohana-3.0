@@ -1,17 +1,20 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * 
+ * Controller for providing the base of backend controllers.
  *
  * @package    Modular Gaming
+ * @subpackage Core
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
+ * @license    http://www.modulargaming.com/license
  */
 
-abstract class Controller_Backend extends Controller {
+abstract class Modulargaming_Controller_Backend extends Controller {
 	
 	public $template = 'template/admin';
+	
 	public $protected = TRUE; // All admin pages requires the user to be loged in.
+	
 	public $title = 'Undefined';
 	public $auto_render = TRUE;
 	public $js = array('files' => array(), 'scripts' => array());
@@ -38,18 +41,31 @@ abstract class Controller_Backend extends Controller {
 		
 		$this->add_css('assets/css/admin.css');
 		
-		$this->add_js('assets/js/jquery-1.3.2.min.js');
-		$this->add_js('assets/js/jquery-ui-1.7.2.custom.min.js');
+		$this->add_js('assets/js/jquery.js'); // Jquery
+		$this->add_js('assets/js/jquery.validate.js'); // Form Validation
+		$this->add_js('assets/js/jquery-ui.js');
 		$this->add_js('assets/js/main.js');
 		
 		
 		$this->a2 = A2::instance();
 		$this->a1 = $this->a2->a1;
-		
 		$this->user = $this->a2->get_user();
 		
-		View::set_global( 'user', $this->user );
-		View::bind_global( 'errors', $this->errors );
+		// Setup the user specific settings
+		if ($this->user)
+		{
+			if ($this->user->language)
+			{
+				I18n::lang($this->user->language);
+			}
+			
+			//Time::$offset = '';
+			//Time::$display = '';
+		}
+		//I18n::lang('en');
+		
+		View::set_global('user', $this->user);
+		View::bind_global('errors', $this->errors);
 		
 		if ($this->auto_render === TRUE && !Request::$is_ajax )
 		{
@@ -71,10 +87,13 @@ abstract class Controller_Backend extends Controller {
 	
 	public function after()
 	{
+		
+		View::set_global('title', __($this->title));
+		
 		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
 			// Assign the template as the request response and render it
 			$this->request->response = $this->template;
 		}
 	}	
-} // End Frontend
+} // End Backend
