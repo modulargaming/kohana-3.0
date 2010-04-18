@@ -167,7 +167,7 @@ class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 			
 			$this->errors = array();
 			
-			if ( $post->check() )
+			if ($post->check())
 			{
 				
 				$values = array(
@@ -215,7 +215,7 @@ class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 		
 		$roles = array();
 		
-		foreach ( $t as $k => $v ){
+		foreach ($t as $k => $v){
 			$roles[$k] = $k;
 		}
 		

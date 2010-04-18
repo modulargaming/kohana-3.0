@@ -1,42 +1,50 @@
-<?php echo html::anchor( 'admin/users', 'Go back' ); ?>
-
-<?php echo Message::render() ?>
-
-<?php echo form::open(); ?>
-
-<fieldset>
-	<dl>
-		<dt>
-			<?php echo form::label('username', 'Username:'); ?><br />
-			<span>Length must be between 3 and 20 characters.</span>
-		</dt>
-		<dd><?php echo form::input( 'username', $post['username'] ); ?></dd>
-	</dl>
+<section id="block-new">
+	<header>
+		<nav>
+			<ul>
+				<li><?php echo html::anchor('admin/users', 'View') ?></li>
+				<li><?php echo html::anchor('admin/users/new', 'Add new') ?></li>
+				<li class="current"><?php echo html::anchor('#', 'Edit') ?></li>
+			</ul>
+		</nav>
+	</header>
 	
-	<dl>
-		<dt><?php echo form::label('email', 'E-mail adress:'); ?></dt>
-		<dd><?php echo form::input( 'email', $post['email'] ); ?></dd>
-	</dl>
+	<div class="content">
+		
+		<?php echo form::open() ?>
+		
+		<div class="group">
+			<?php echo form::label('username', 'Username:') ?>
+			<?php echo form::input('username', $post['username']) ?>
+			<span class="description">Length must be between 3 and 20 characters.</span>
+		</div>
+		
+		<div class="group">
+			<?php echo form::label('email', 'E-mail adress:') ?>
+			<?php echo form::input('email', $post['email']) ?>
+		</div>
+		
+		<div class="group">
+			<?php echo form::label('password', 'New password:') ?>
+			<?php echo form::input('password') ?>
+			<span class="description">Only required if changing.<br />Length must be between 6 and 20 characters.</span>
+		</div>
+		
+		<div class="group">
+			<?php echo form::label('password_confirm', 'Confirm password:') ?>
+			<?php echo form::input('password_confirm') ?>
+		</div>
+		
+		<div class="group">
+			<?php echo form::label('role', 'Role:') ?>
+			<?php echo form::select('role', $roles, $post['role']) ?>
+		</div>
+		
+		<div class="buttons">
+			<?php echo form::submit('add', 'Add') ?>
+		</div>
+		
+		<?php echo form::close() ?>
 	
-	<dl>
-		<dt>
-			<?php echo form::label( 'password', 'Password:' ); ?><br />
-			<span>Must be between 6 and 20 characters.</span>
-		</dt>
-		<dd>
-			<?php echo form::password( 'password' ); ?>
-		</dd>
-	</dl>
-	<dl>
-		<dt><?php echo form::label('password_confirm', 'Confirm Password:'); ?></dt>
-		<dd><?php echo form::password( 'password_confirm' ); ?></dd>
-	</dl>
-	
-	<dl>
-		<dt><?php echo form::label('role', 'Role:'); ?></dt>
-		<dd><?php echo form::select( 'role', $roles, $post['role'] ); ?></dd>
-	</dl>
-	
-	<?php echo form::submit('add', 'Add'); ?>
-</fieldset>
-<?php echo form::close(); ?>
+	</div>
+</section>
