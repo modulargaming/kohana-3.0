@@ -36,6 +36,7 @@ h2 {
 }
 p {
 	line-height: 150%;
+	margin: 0 0 10px 0;
 }
 .cleafix {
 	clear: both;
@@ -121,6 +122,9 @@ header#header h1 {
 }
 #content header nav {
 	
+}
+#content > .right header h3 {
+	padding: 0 0 0 15px;
 }
 #content nav ul {
 	list-style: none;

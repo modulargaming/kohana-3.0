@@ -44,15 +44,38 @@
 	
 	<div class="right">
 		
-		<aside class="news">
-			<header>
-				<h3>News</h3>
-			</header>
-			<div class="content">
-			
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-			</div>
-		</aside>
+		<?php if ($latest_version > Modulargaming::VERSION): ?>
+			<aside class="version">
+				<header>
+					<h3>New version avaible</h3>
+				</header>
+				<div class="content">
+					<p>We have detected that a new version of Modular Gaming is avaible, <b>it is highly recomented to update!</b></p>
+					<p>You are using version <b><?php echo Modulargaming::VERSION ?></b> and the latest is <b><?php echo $latest_version ?></b></p>
+					<p><a href="http://modulargaming.com/">Go to download site</a></p>
+				</div>
+			</aside>
+		<?php endif ?>
+		
+		<?php if ( ! empty($news)): ?>
+			<aside class="news">
+				<header>
+					<h3>News</h3>
+				</header>
+				<div class="content">
+					<?php foreach ($news as $n): ?>
+						
+						<article>
+							<?php echo html::anchor($n['link'], '<h2>'.$n['title'].'</h2>') ?>
+							<?php echo $n['description'] ?>
+						</article>
+						
+					<?php endforeach ?>
+				</div>
+			</aside>
+		<?php endif ?>
+		
+		
 		
 	</div>
 	
@@ -64,7 +87,7 @@
 	
 <?php
 if (Kohana::$environment == Kohana::DEVELOPMENT)
-	echo '<div id="debug">'.View::factory('profiler/stats').'</div>';
+	//echo '<div id="debug">'.View::factory('profiler/stats').'</div>';
 ?>
 
 <?php

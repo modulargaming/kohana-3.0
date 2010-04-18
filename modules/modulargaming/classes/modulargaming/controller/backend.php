@@ -81,7 +81,9 @@ abstract class Modulargaming_Controller_Backend extends Controller {
 			// Load the template
 			$this->template = View::factory($this->template)
 				->bind('js',  $this->js)
-				->bind('css', $this->css);
+				->bind('css', $this->css)
+				->set('latest_version', $this->latest_version())
+				->set('news', $this->get_news());
 			
 			$this->template->errors = array();
 		}
@@ -91,6 +93,49 @@ abstract class Modulargaming_Controller_Backend extends Controller {
 			// Redirect the user to login page
 			Request::instance()->redirect('account/login');
 		}
+		
+	}
+	
+	/**
+	 * Compare the current version with the latest avaible.
+	 */
+	public function latest_version()
+	{
+		
+		$latest = Kohana::cache('mg_latest_version');
+		
+		// If we can't retrive it from cache, grab it from the url defined in Modulargaming class.
+		if ( ! $latest)
+		{
+			$latest = Remote::get(Modulargaming::VERSION_URL);
+			
+			// Cache it.
+			Kohana::cache('mg_latest_version', $latest, Modulargaming::VERSION_CACHE_TIME);
+		}
+		
+		// Return the latest avaible version.
+		return $latest;
+		
+	}
+	
+	/**
+	 * Grab news from Modular gaming site.
+	 */
+	public function get_news()
+	{
+		
+		$news = Kohana::cache('mg_news');
+		
+		// If we can't retrive it from cache, grab it from modulargaming.com
+		if ( ! $news)
+		{
+			$news = Feed::parse('http://modulargaming.com/rss.xml', 5);
+			
+			// Cache it.
+			Kohana::cache('mg_news', $news, Modulargaming::VERSION_CACHE_TIME);
+		}
+		
+		return $news;
 		
 	}
 	

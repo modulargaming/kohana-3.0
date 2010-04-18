@@ -9,6 +9,10 @@
  */
 class Modulargaming_Core {
 	
+	const VERSION = 0.50;
+	const VERSION_URL = 'http://localhost/version.txt';
+	const VERSION_CACHE_TIME = 3600;
+	
 	public function __construct( $user )
 	{
 		$this->user = $user;
