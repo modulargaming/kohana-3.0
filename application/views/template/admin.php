@@ -36,32 +36,6 @@
 	
 	<div class="left">
 		<?php echo $content ?>
-		
-		<!--
-		<section>
-			<header>
-				<h3>News</h3>
-			</header>
-			
-			<div class="content">
-				<h2>Test</h2>
-			
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-			</div>
-		</section>
-		
-		<section>
-			<header>
-				<h3>News</h3>
-			</header>
-			
-			<div class="content">
-				<h2>Test</h2>
-			
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-			</div>
-		</section>
-		-->
 	</div>
 	
 	<div class="right">
@@ -87,6 +61,15 @@
 <?php
 if (Kohana::$environment == Kohana::DEVELOPMENT)
 	echo '<div id="debug">'.View::factory('profiler/stats').'</div>';
+?>
+
+<?php
+	foreach ($js['files'] as $script):
+		echo html::script($script);
+	endforeach;
+	foreach ($js['scripts'] as $script):
+		echo '<script type="text/javascript">'.$script.'</script>';
+	endforeach;
 ?>
 
 </body>

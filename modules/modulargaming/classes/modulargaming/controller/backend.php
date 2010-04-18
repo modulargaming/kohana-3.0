@@ -39,17 +39,25 @@ abstract class Modulargaming_Controller_Backend extends Controller {
 	public function before()
 	{
 		
+		$this->internal = TRUE;
+		if ($this->request === Request::instance()) {
+			$this->internal = FALSE;
+		}
+		
 		$this->add_css('assets/css/admin.css');
 		
-		$this->add_js('assets/js/jquery.js'); // Jquery
-		$this->add_js('assets/js/jquery.validate.js'); // Form Validation
-		$this->add_js('assets/js/jquery-ui.js');
-		$this->add_js('assets/js/main.js');
+		$this->add_js('assets/js/jquery.js'); // jQuery
+		$this->add_js('assets/js/jquery-ui.js'); // jQuery UI
+		$this->add_js('assets/js/admin/jquery.scrollTo.js'); // jQuery scrollTo
+		$this->add_js('assets/js/admin/jquery.localscroll.js'); // jQuery localscroll
+		//$this->add_js('assets/js/jquery.validate.js'); // Form Validation
+		$this->add_js('assets/js/admin/main.js');
 		
 		
 		$this->a2 = A2::instance();
 		$this->a1 = $this->a2->a1;
 		$this->user = $this->a2->get_user();
+		
 		
 		// Setup the user specific settings
 		if ($this->user)
@@ -83,6 +91,7 @@ abstract class Modulargaming_Controller_Backend extends Controller {
 			// Redirect the user to login page
 			Request::instance()->redirect('account/login');
 		}
+		
 	}
 	
 	public function after()
@@ -90,7 +99,7 @@ abstract class Modulargaming_Controller_Backend extends Controller {
 		
 		View::set_global('title', __($this->title));
 		
-		if ($this->auto_render === TRUE && !Request::$is_ajax)
+		if ($this->auto_render === TRUE AND ! Request::$is_ajax AND ! $this->internal)
 		{
 			// Assign the template as the request response and render it
 			$this->request->response = $this->template;

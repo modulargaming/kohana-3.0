@@ -10,18 +10,19 @@
 
 class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 	
-	public $title = 'Admin - Users';
+	public $title = 'Users';
 	private $users_per_page = 10;
 
 	public function before()
 	{
-		//$this->request->action = 'index';
 		parent::before();
+		$this->add_js('assets/js/admin/users.js');
 	}
 	
 	
 	public function action_index($page = 1)
 	{
+		
 		// Check if the user got permission to view all users
 		if ( !$this->a2->allowed('admin', 'users_view'))
 			$this->request->redirect('');
@@ -59,6 +60,7 @@ class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 	
 	public function action_add()
 	{
+		
 		// Check if the user got permission to add new users
 		if ( !$this->a2->allowed( 'admin', 'users_add' ) )
 			$this->request->redirect('');		
@@ -127,7 +129,11 @@ class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 		$this->template->content = View::factory('admin/users/add')
 			->set('post', $post->as_array())
 			->set('roles', $roles);
-			
+		
+		if ($this->internal) {
+			$this->request->response = $this->template->content;
+		}
+		
 	}
 	
 	public function action_edit( $id = '' )
