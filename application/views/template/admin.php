@@ -3,6 +3,7 @@
 <head>
 	<!-- Inspired by http://github.com/pilu/web-app-theme -->
 	<title>Modular Gaming - <?php echo $title ?></title>
+	<meta charset="utf-8" />
 	
 	<?php
 	foreach ($css as $style):
@@ -35,6 +36,9 @@
 <div id="content">
 	
 	<div class="left">
+		
+		<?php echo Message::render() ?>
+		
 		<?php echo $content ?>
 	</div>
 	

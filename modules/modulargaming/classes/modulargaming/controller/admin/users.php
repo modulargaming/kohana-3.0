@@ -58,7 +58,7 @@ class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 		
 	}
 	
-	public function action_add()
+	public function action_new()
 	{
 		
 		// Check if the user got permission to add new users
@@ -129,10 +129,6 @@ class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 		$this->template->content = View::factory('admin/users/add')
 			->set('post', $post->as_array())
 			->set('roles', $roles);
-		
-		if ($this->internal) {
-			$this->request->response = $this->template->content;
-		}
 		
 	}
 	

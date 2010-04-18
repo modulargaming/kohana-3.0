@@ -7,6 +7,10 @@ table, thead, tbody, tr, td, th {
 	font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; text-decoration: none; vertical-align: baseline;
 }
 
+label, input, button {
+	margin: 0;
+}
+
 /* Set html5 elements to block */
 header, nav, section, article, aside, footer {
 	display: block;
@@ -16,7 +20,7 @@ body {
 	font-family: helvetica, arial, sans-serif;
 	font-size: 13px;
 	background: #CCC;
-	min-width: 600px;
+	min-width: 760px;
 	color: #222222;
 }
 
@@ -135,7 +139,7 @@ header#header h1 {
 #content nav ul li a:hover {
 	background: #666666;
 }
-#content nav ul li a.current {
+#content nav ul li.current a {
 	background: #1A1A1A;
 }
 #content nav ul li:first-child a {
@@ -218,5 +222,47 @@ tbody tr:nth-child(even) {
 .pagination a:hover {
 	border-color: #666666;
 }
+
+/* Messages */
+ul.error {
+	background: #FFDDDD;
+	border: 1px solid #FFBBBB;
+	display: block;
+	list-style: none;
+	margin: 0 0 10px 0;
+	padding: 5px 0;
+	font-style: italic;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+ul.error li {
+	margin: 2px 10px;
+}
+
+
+/* Form */
+form {
+	
+}
+form .group {
+	margin: 10px 0;
+}
+form .description {
+	font-size: 11px;
+	color: #666;
+}
+label {
+	display: block;
+	font-weight: bold;
+	font-size: 14px;
+	color: #666;
+}
+input[type="text"] {
+	display: block;
+	width: 50%;
+	max-width: 250px;
+}
+
+
 	
 	

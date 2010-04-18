@@ -2,8 +2,8 @@
 	<header>
 		<nav>
 			<ul>
-				<li><a href="#block-view" class="current">View</a></li>
-				<li><a href="#block-new">Add new</a></li>
+				<li class="current"><?php echo html::anchor('admin/users', 'View') ?></li>
+				<li><?php echo html::anchor('admin/users/new', 'Add new') ?></li>
 			</ul>
 		</nav>
 	</header>
@@ -37,22 +37,5 @@
 		
 		<?php echo $pagination; ?>
 		
-	</div>
-</section>
-
-<section id="block-new">
-	<header>
-		<nav>
-			<ul>
-				<li><a href="#block-view">View</a></li>
-				<li><a href="#block-new" class="current">Add new</a></li>
-			</ul>
-		</nav>
-	</header>
-	
-	<div class="content">
-		
-		<?php echo Request::factory('admin/users/add')->execute()->response ?>
-	
 	</div>
 </section>
