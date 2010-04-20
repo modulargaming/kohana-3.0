@@ -11,7 +11,7 @@
 <div>
 <?php echo __('Created by:') ?>
 <?php echo $post->user->username ?> 
-<?php echo MG::Ago($post->created) ?>
+<?php echo Time::Ago($post->created) ?>
 <?php if ($user->id == $post->user->id): ?>
 	<?php echo html::anchor( 'forum/post/'.$post->id.'/edit', 'Edit' ) ?>
 	<?php echo html::anchor( 'forum/post/'.$post->id.'/delete', 'Delete' ) ?>

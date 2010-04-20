@@ -7,7 +7,7 @@
 	<br />
 	<?php echo __('Created by:') ?>
 	<b><?php echo $t->user->username ?></b>
-	<i><?php echo MG::Ago($t->created) ?></i>
+	<i><?php echo Time::Ago($t->created) ?></i>
 </div>
 
 <?php endforeach;?>

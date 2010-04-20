@@ -13,7 +13,7 @@
 <div>
 	<?php echo __('Created by:') ?> 
 	<b><?php echo $p->user->username ?></b>
-	<i><?php echo MG::Ago($p->created) ?></i>
+	<i><?php echo Time::Ago($p->created) ?></i>
 	
 	<?php if ($user->id == $p->user->id): ?>
 		<?php echo html::anchor( 'forum/post/'.$p->id.'/edit', 'Edit' ) ?>
