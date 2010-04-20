@@ -50,6 +50,8 @@ Open `application/bootstrap.php` and make the following changes:
 
 * Set the default [timezone](http://php.net/timezones) for your application
 
+* You may need to set the base_url manually if auto detection does not work.
+
 Make sure the `application/cache` and `application/logs` directories are world writable with:
 
  `chmod 0777 application/{cache,logs}`
