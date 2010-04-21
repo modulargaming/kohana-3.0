@@ -2,7 +2,7 @@
 	<?php if ( $character->loaded() ): ?>
 
 	<h2><?php echo $character->name; ?></h2>
-	<p style="margin-top: -8px;"> Level: <?php echo $character->level; ?> <?php echo $character->race->name; ?> <?php echo $character->class; ?></p>
+	<p style="margin-top: -8px;"> Level: <?php echo $character->level; ?> <?php echo $character->race->name; ?> <?php echo $character->class->name; ?></p>
 
 	<span class="bar hp">
 		<?php echo '<span style="width: ' . $char->percent_hp() . '%"></span>'; ?>

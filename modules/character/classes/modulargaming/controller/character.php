@@ -98,7 +98,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 			->rule('gender', 'not_empty')
 			->rule('race', 'not_empty')
 			->rule('class', 'not_empty')
-			->callback('class', array($this, 'valid_class')),
+			->callback('class', array($this, 'valid_class'))
 			->callback('race', array($this, 'valid_race'));
 		
 		if ($post->check())
@@ -111,10 +111,14 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 					'name' => $post['name'],
 					'gender' => $post['gender'],
 					'race' => $post['race'],
+					'class' => $post['class'],
 					'user' => $this->user->id,
 					'money' => 1000,
 					'hp' => 100,
 					'max_hp' => 100,
+					'strength' => 10,
+					'defence' => 10,
+					'agility' => 10,
 					'level' => 1,
 					'xp' => 0,
 					'energy' => 100,
@@ -146,10 +150,14 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 		
 		// Get the races the user can choose from.
 		$races = $this->getRaces();
+
+		$classes = $this->getClasses();
 		
 		$this->template->content = View::factory('character/create')
 			->set( 'post', $post )
-			->set( 'races', $races );
+			->set( 'races', $races )
+			->set( 'classes', $classes );
+
 	}
 	
 	// Function to verify if it is a valid race and that the player can use it.
@@ -177,6 +185,38 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 		$t = array();
 		
 		foreach ($races as $v)
+		{
+			$t[$v->id] = $v->name;
+		}
+		
+		return $t;
+	}
+	
+	// Function to verify if it is a valid race and that the player can use it.
+	function valid_class( $form, $field )
+	{
+		
+		$class = Jelly::select( 'class' )
+			->where( 'id', '=', $form[$field] )
+			->load();
+		
+		if ( $class->loaded() )
+		{
+			return true;
+		}
+		
+		$form->error($field, 'class_not_valid');
+
+	}
+	
+	// Retrieve all races from the database and assign them to an array
+	function getClasses()
+	{
+		$classes = Jelly::select( 'class' )->execute();
+		
+		$t = array();
+		
+		foreach ($classes as $v)
 		{
 			$t[$v->id] = $v->name;
 		}

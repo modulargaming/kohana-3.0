@@ -28,6 +28,13 @@
 		<dd><?php echo form::select( 'race', $races, $post['race'] ); ?></dd>
 	</dl>
 	<dl>
+		<dt>
+			<?php echo form::label( 'class_id', 'Class:' ); ?><br />
+			<span><a href="#">Summary about the classes</a></span>
+		</dt>
+		<dd><?php echo form::select( 'class', $classes, $post['class'] ); ?></dd>
+	</dl>
+	<dl>
 		<?php echo form::submit('create', 'Create Character'); ?>
 	</dl>
 </fieldset>

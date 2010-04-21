@@ -106,10 +106,24 @@ CREATE TABLE IF NOT EXISTS `characters` (
 
 CREATE TABLE IF NOT EXISTS `classes` (
   `id` int(6) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
+INSERT INTO `mg`.`classes` (
+`id` ,
+`name`
+)
+VALUES 
+(
+'1', 'Warrior'
+);
+(
+'2', 'Magican'
+),
+(
+'3', 'Medic'
+);
 
 --
 -- Table structure for table `forum_categories`
