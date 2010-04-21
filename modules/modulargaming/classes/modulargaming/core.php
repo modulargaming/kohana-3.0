@@ -9,8 +9,8 @@
  */
 class Modulargaming_Core {
 	
-	const VERSION = 0.50;
-	const VERSION_URL = 'http://localhost/version.txt';
+	const VERSION = 0.5.0;
+	const VERSION_URL = 'http://development.modulargaming.com/projects/modulargaming/repository/revisions/master/raw/version.txt';
 	const VERSION_CACHE_TIME = 3600;
 	
 	public function __construct( $user )
