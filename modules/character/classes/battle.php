@@ -43,7 +43,7 @@ class Battle {
 		$c_dmg = $character->strength * $character->agility;
 		$c_dmg = round($c_dmg /100);
 		
-		$c_defense = $character->defense;
+		$c_defence = $character->defense;
 		
 		$monster = $battle->monster;
 		
