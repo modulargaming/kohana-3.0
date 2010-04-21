@@ -37,7 +37,7 @@
 			} else {
 				
 				echo '<li class="no-border">' . html::anchor( '', 'Home' )    . '</li>';
-				echo '<li>' . html::anchor( 'account/login', 'Login' ) . '</li>';
+				echo '<li class="login">' . html::anchor( 'account/login', 'Login' ) . '</li>';
 				echo '<li class="no-border">' . html::anchor( 'account/register', 'Register' ) . '</li>';
 				
 			}
