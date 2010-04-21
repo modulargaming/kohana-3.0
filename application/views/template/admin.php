@@ -87,7 +87,7 @@
 	
 <?php
 if (Kohana::$environment == Kohana::DEVELOPMENT)
-	//echo '<div id="debug">'.View::factory('profiler/stats').'</div>';
+	echo '<div id="debug">'.View::factory('profiler/stats').'</div>';
 ?>
 
 <?php
