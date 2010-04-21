@@ -18,7 +18,7 @@
 	
 	<ul class="right">
 		<li>Strength <span><?php echo $character->strength; ?></span></li>
-		<li>Defense <span><?php echo $character->defense; ?></span></li>
+		<li>Defense <span><?php echo $character->defence; ?></span></li>
 		<li>Agility <span><?php echo $character->agility; ?></span></li>
 	</ul>
 	
