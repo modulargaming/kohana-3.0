@@ -16,51 +16,41 @@
 </head>
 <body>
 
-<div id="logo"></div>
-
-
-<div id="nav">
-<div class="left"></div>
-
-<ul>
+<div class="header">
+	<?php echo html::anchor('', 'ModularGaming', array('class' => 'logo')); ?>
+	
+	<ul class="nav">
 		<?php
 			
 			if ( $user ) {
 				
-				echo '<li class="no-border">' . html::anchor( 'dashboard', 'Dashboard' )    . '</li>';
+				echo '<li class="first">' . html::anchor( 'dashboard', 'Dashboard' )    . '</li>';
 				echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
 				echo '<li>' . html::anchor( 'forum', 'Forum' ) . '</li>';
 				echo '<li>' . html::anchor( 'message', 'Messages' ) . '</li>';
 				echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
-				echo '<li class="no-border">' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
+				echo '<li class="last">' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
 				
 			} else {
 				
-				echo '<li class="no-border">' . html::anchor( '', 'Home' )    . '</li>';
-				echo '<li>' . html::anchor( 'account/login', 'Login' ) . '</li>';
-				echo '<li class="no-border">' . html::anchor( 'account/register', 'Register' ) . '</li>';
+				echo '<li class="first">' . html::anchor( '', 'Home' )    . '</li>';
+				echo '<li class="login">' . html::anchor( 'account/login', 'Login' ) . '</li>';
+				echo '<li class="last">' . html::anchor( 'account/register', 'Register' ) . '</li>';
 				
 			}
 		?>
-</ul>
-
-<div class="right"></div>
+	</ul>
 </div>
 
-<div id="side">
 <div class="content">
-Side menu
+	<?php echo $content; ?>
 </div>
+
+<div class="footer">
+	<div class="wrapper">
+		<p class="copyright">&copy; 2010 the Modular Gaming Team.</p>
+	</div>
 </div>
-
-<div id="wrapper">
-<div class="content">
-<?php echo $content; ?>
-</div></div>
-
-<div id="footer">&copy;<?php echo date('Y'); ?> Modular Gaming</div>
-
-	
 
 <div id="login-dialog" title="Login" class="hidden">
 	<ul class="errors"></ul>
