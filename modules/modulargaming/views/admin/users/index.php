@@ -1,4 +1,4 @@
-<section id="block-view">
+<section>
 	<header>
 		<nav>
 			<ul>
@@ -29,7 +29,9 @@
 						<td><?php echo $v->email ?></td>
 						<td><?php echo $v->last_login ?></td>
 						<td><?php echo $v->role ?></td>
-						<td><?php echo html::anchor( 'admin/users/edit/' . $v->id, 'Edit') ?> Delete</td>
+						<td>
+							<?php echo html::anchor('admin/users/edit/'.$v->id, 'Edit') ?>
+							<?php echo html::anchor('admin/users/delete/'.$v->id, 'Delete') ?></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>

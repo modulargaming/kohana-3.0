@@ -227,8 +227,23 @@ class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 	
 	public function action_delete( $id = '' )
 	{
+		// Check if the user got permission to edit users
+		if ( !$this->a2->allowed( 'admin', 'users_edit' ) )
+			$this->request->redirect('');
 		
+		$user = Jelly::select('user')
+			->where('id', '=', $id)
+			->load();
 		
+		if ( ! $user->loaded())
+		{
+			Message::set(Message::ERROR, 'Unable to find the user!');
+			$this->request->redirect('admin/users');
+		}
+		
+		$user->delete();
+		
+		$this->request->redirect('admin/users');
 		
 	}
 

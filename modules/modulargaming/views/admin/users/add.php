@@ -1,4 +1,4 @@
-<section id="block-new">
+<section>
 	<header>
 		<nav>
 			<ul>

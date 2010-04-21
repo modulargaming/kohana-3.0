@@ -1,6 +1,10 @@
 <section>
 	<header>
-		<h3>Welcome</h3>
+		<nav>
+			<ul>
+				<li class="current"><?php echo html::anchor('admin/', 'Dashboard') ?></li>
+			</ul>
+		</nav>
 	</header>
 	
 	<div class="content">

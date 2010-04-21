@@ -68,14 +68,15 @@ body {
 	min-height: 400px;
 	background: #ffffff;
 	-moz-border-radius: 0px 0px 15px 15px;
+	-webkit-border-radius: 0px 0px 15px 15px;
 	color: #333;
 	padding-left: 2px;
 	padding-right: 2px;
 	padding-top: 1px;
 }
 .content {
-	margin: 10px 222px 10px 22px;
-	width: 100%;
+	padding: 10px 222px 10px 22px;
+	display: block;
 }
 #side {
 	position: absolute;
