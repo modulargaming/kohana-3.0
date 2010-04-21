@@ -61,4 +61,18 @@ class Modulargaming_Character_Event {
 			->set('char', new Character($t->character));
 	}
 	
+
+	public static function sidebar()
+	{
+
+		$s = Event::$data;
+
+		Character_Event::load_character($s);
+
+		$s->sidebar = View::factory('character/sidebar')
+				->set('character', $s->character)
+				->set('char', new Character($s->character));
+
+
+	}
 }

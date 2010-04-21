@@ -90,6 +90,9 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		// Run the before events.
 		Event::run('before', $this);
 		
+		$this->sidebar = '';
+		Event::run('sidebar', $this);
+
 	}
 	
 	public function after()

@@ -11,3 +11,4 @@
 // Add our events
 Event::add('before', 'Character_Event::before');
 Event::add('dashboard-left', 'Character_Event::dashboard');
+Event::add('sidebar', 'Character_Event::sidebar');

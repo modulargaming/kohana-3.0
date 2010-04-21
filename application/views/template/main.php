@@ -49,7 +49,7 @@
 
 <div id="side">
 <div class="content">
-Side menu
+<?php echo $sidebar;?>
 </div>
 </div>
 
