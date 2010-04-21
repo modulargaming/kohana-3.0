@@ -117,7 +117,7 @@ INSERT INTO `mg`.`classes` (
 VALUES 
 (
 '1', 'Warrior'
-);
+),
 (
 '2', 'Magican'
 ),
