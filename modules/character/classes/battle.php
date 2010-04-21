@@ -37,9 +37,13 @@ class Battle {
 	{
 		
 		// TODO: Replace the temp variables with a correct math system to calculate them.
-		$c_defence = 30;
-		$c_dmg = 5;
+//		$c_defence = 30;
+//		$c_dmg = 5;
 		
+		$c_dmg = $character->strength * $character->agility;
+		$c_dmg = round($c_dmg /100);
+		
+		$c_defense = $character->defense;
 		
 		$monster = $battle->monster;
 		
