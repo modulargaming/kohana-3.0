@@ -19,6 +19,17 @@ class Modulargaming_Character {
 		$this->char = $char;
 	}
 	
+	public function get_classes()
+	{
+		
+		$alignments = Jelly::select( 'class' )
+			->execute( );
+		
+		return $classes;
+		
+	}
+
+
 	public function get_alignments()
 	{
 		

@@ -97,6 +97,8 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 			->rule('name', 'max_length', array(20))
 			->rule('gender', 'not_empty')
 			->rule('race', 'not_empty')
+			->rule('class', 'not_empty')
+			->callback('class', array($this, 'valid_class')),
 			->callback('race', array($this, 'valid_race'));
 		
 		if ($post->check())

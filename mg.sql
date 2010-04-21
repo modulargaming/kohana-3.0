@@ -84,16 +84,31 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `name` varchar(255) NOT NULL,
   `gender` enum('male','female') NOT NULL,
   `race_id` int(6) NOT NULL,
+  `class_id` int(6) NOT NULL,
   `alignment` int(4) NOT NULL,
   `hp` int(6) NOT NULL,
   `max_hp` int(6) NOT NULL,
+  `strength` int(6) NOT NULL,
+  `defence` int(6) NOT NULL,
+  `agility` int(6) NOT NULL,
   `money` int(6) NOT NULL,
   `level` int(6) NOT NULL,
   `xp` int(6) DEFAULT NULL,
   `energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE IF NOT EXISTS `classes` (
+  `id` int(6) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
 
 --

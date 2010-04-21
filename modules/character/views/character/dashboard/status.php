@@ -2,7 +2,7 @@
 	<?php if ( $character->loaded() ): ?>
 
 	<h2><?php echo $character->name; ?></h2>
-	<p style="margin-top: -8px;">Level 1 <?php echo $character->race->name; ?> Warrior</p>
+	<p style="margin-top: -8px;"> Level: <?php echo $character->level; ?> <?php echo $character->race->name; ?> <?php echo $character->class; ?></p>
 
 	<span class="bar hp">
 		<?php echo '<span style="width: ' . $char->percent_hp() . '%"></span>'; ?>
@@ -11,12 +11,15 @@
 	
 	<ul class="left">
 		<li>Alignment <span><?php echo $char->alignment( ); ?></span></li>
-		<li>Gold <span><?php echo $character->money; ?></span></li>
+		<li>Money <span><?php echo $character->money; ?></span></li>
+		<li>Energy <span><?php echo $character->energy; ?></span></li>
+
 	</ul>
 	
 	<ul class="right">
-		<li>Energy <span><?php echo $character->energy; ?></span></li>
-		<li>Gold <span>2135</span></li>
+		<li>Strength <span><?php echo $character->strength; ?></span></li>
+		<li>Defense <span><?php echo $character->defense; ?></span></li>
+		<li>Agility <span><?php echo $character->agility; ?></span></li>
 	</ul>
 	
 	<h2 style="text-align: left">Actions</h2>
