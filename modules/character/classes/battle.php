@@ -40,8 +40,10 @@ class Battle {
 //		$c_defence = 30;
 //		$c_dmg = 5;
 		
+
+		$c_random = rand(10,40);
 		$c_dmg = $character->strength * $character->agility;
-		$c_dmg = round($c_dmg /100);
+		$c_dmg = round($c_dmg / $c_random);
 		
 		$c_defence = $character->defense;
 		
