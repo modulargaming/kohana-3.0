@@ -1,5 +1,7 @@
         <?php if ( $character->loaded() ): ?>
 
+<?php foreach ($character as $c): ?>
+
         <h2><?php echo $character->name; ?></h2>
         <p style="margin-top: -8px;"> Level: <?php echo $character->level; ?> <?php echo $character->race->name; ?> <?php echo $character->class->name; ?></p>
 
@@ -12,5 +14,10 @@
 
         <p>You do not have a character yet, <?php echo html::anchor( 'character', 'create one?' ) ?>.</p>
 
+
+<?php endforeach; ?>
+
         <?php endif ?>
+
+
 

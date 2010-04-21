@@ -69,7 +69,7 @@ class Modulargaming_Character_Event {
 
 		Character_Event::load_character($s);
 
-		$s->sidebar = View::factory('character/sidebar')
+		$s->sidebar[] = View::factory('character/sidebar')
 				->set('character', $s->character)
 				->set('char', new Character($s->character));
 
