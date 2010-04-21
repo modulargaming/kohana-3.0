@@ -1,5 +1,4 @@
-        <?php if ( $character->loaded() ): ?>
-
+<?php if ( $character->loaded() ): ?>
 <?php foreach ($character as $c): ?>
 
         <h2><?php echo $character->name; ?></h2>
@@ -16,8 +15,7 @@
 
 
 <?php endforeach; ?>
-
-        <?php endif ?>
+<?php endif; ?>
 
 
 
