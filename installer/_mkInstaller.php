@@ -148,4 +148,11 @@ $myopt=array (
   'nam' => 'mkI4bd0a4ed006cd',
   'tpl' => 'en-mg.html',
 );
+$svbufs=array (
+  'mg.php' => 
+  array (
+    'p' => true,
+  ),
+);
+
 ?>
