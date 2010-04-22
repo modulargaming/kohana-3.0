@@ -183,42 +183,35 @@ span.bar {
 	height: 27px;
 	width: 280px;
 	display: block;
-	argin: 5px 60px 15px 60px;
+	margin: 5px 60px 15px 60px;
 }
-
 span.hp {
-	background:url(../images/layout/bar/hp_bg.png) no-repeat;
+	background:url(../images/bar/hp_bg.png) no-repeat;
 }
-
 span.bar span {
-        height: 25px;
-        max-width: 278px;
+	height: 25px;
+	max-width: 278px;
 }
-
 span.hp span {
-        background:url(../images/layout/bar/hp.png) repeat-x;
-        display: block;
-        margin-left: 1px;
-        margin-top: 1px;
-        float: left;
+	background:url(../images/bar/hp.png) repeat-x;
+	display: block;
+	margin-left: 1px;
+	margin-top: 1px;
+	float: left;
 }
-
 span.hp p {
-        position: relative;
-        top: -23px;
-        color: #fff;
-        text-shadow: 0.1em 0.1em 1px #133b03;
-        text-align: center;
-        clear: both;
+	position: relative;
+	top: -23px;
+	color: #fff;
+	text-shadow: 0.1em 0.1em 1px #133b03;
+	text-align: center;
+	clear: both;
 }
-
-
 span.bar.small {
-        width: 180px;
+	width: 180px;
 }
-
 span.bar.small span {
-        max-width: 178px;
+	max-width: 178px;
 }
 
 div .right {
