@@ -27,18 +27,18 @@
 			
 			if ( $user ) {
 				
-				echo '<li class="no-border">' . html::anchor( 'dashboard', 'Dashboard' )    . '</li>';
+				echo '<li>' . html::anchor( 'dashboard', 'Dashboard' )    . '</li>';
 				echo '<li>' . html::anchor( 'inventory', 'Inventory' ) . '</li>';
 				echo '<li>' . html::anchor( 'forum', 'Forum' ) . '</li>';
 				echo '<li>' . html::anchor( 'message', 'Messages' ) . '</li>';
 				echo '<li>' . html::anchor( 'account', 'Settings' ) . '</li>';
-				echo '<li class="no-border">' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
+				echo '<li>' . html::anchor( 'account/logout', 'Logout' ) . '</li>';
 				
 			} else {
 				
-				echo '<li class="no-border">' . html::anchor( '', 'Home' )    . '</li>';
+				echo '<li>' . html::anchor( '', 'Home' )    . '</li>';
 				echo '<li class="login">' . html::anchor( 'account/login', 'Login' ) . '</li>';
-				echo '<li class="no-border">' . html::anchor( 'account/register', 'Register' ) . '</li>';
+				echo '<li>' . html::anchor( 'account/register', 'Register' ) . '</li>';
 				
 			}
 		?>
