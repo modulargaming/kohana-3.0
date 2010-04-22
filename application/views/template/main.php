@@ -46,10 +46,13 @@
 
 <div class="right"></div>
 </div>
-
 <div id="side">
 <div class="content">
-<?php echo $sidebar;?>
+<?php
+	foreach($sidebar as $s) {
+		echo $s;
+	}
+?>
 </div>
 </div>
 

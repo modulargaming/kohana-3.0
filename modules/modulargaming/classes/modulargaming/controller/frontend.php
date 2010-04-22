@@ -74,7 +74,7 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
 			
-		$this->sidebar = '';
+		$this->sidebar = array();
 		Event::run('sidebar', $this);
 
 
