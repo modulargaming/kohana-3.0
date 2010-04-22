@@ -38,7 +38,7 @@ class Modulargaming_Character_Event {
 	 */
 	public static function load_character($t)
 	{
-		if ( ! isset($t->character))
+		if ($t->user && ! isset($t->character))
 		{
 			$t->character = Jelly::select('character')
 				->where('user', '=', $t->user->id)
@@ -64,8 +64,12 @@ class Modulargaming_Character_Event {
 
 	public static function sidebar()
 	{
-
 		$s = Event::$data;
+		
+		if ( ! $s->user)
+		{
+			return false;
+		}
 
 		Character_Event::load_character($s);
 
