@@ -110,20 +110,10 @@ CREATE TABLE IF NOT EXISTS `classes` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
-INSERT INTO `mg`.`classes` (
-`id` ,
-`name`
-)
-VALUES 
-(
-'1', 'Warrior'
-),
-(
-'2', 'Magican'
-),
-(
-'3', 'Medic'
-);
+INSERT INTO `classes` (`id`, `name`) VALUES 
+(1, 'Warrior'),
+(2, 'Magican'),
+(3, 'Medic');
 
 --
 -- Table structure for table `forum_categories`
