@@ -9,5 +9,5 @@
 	</span>
 	
 <?php else: ?>
-<p>You do not have a character yet, <?php echo html::anchor( 'character', 'create one?' ) ?>.</p>
+<p>No Characters</p>
 <?php endif; ?>
