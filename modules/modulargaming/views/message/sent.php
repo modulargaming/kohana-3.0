@@ -1,9 +1,5 @@
 <h2><?php echo __('Messages').' - '.__('Sent') ?></h2>
 
-<div class="left w150"><?php echo $sidebar ?></div>
-
-<div class="right w500">
-
 	<?php echo Message::render() ?>
 	
 	<table>

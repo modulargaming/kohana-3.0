@@ -1,9 +1,5 @@
 <h2><?php echo __('Messages').' - '.__('Write a new message') ?></h2>
 
-<div class="left w150"><?php echo $sidebar ?></div>
-
-<div class="right w500" id="new_pm">
-	
 	<?php echo Message::render() ?>
 	
 	<?php echo form::open() ?>
@@ -28,4 +24,3 @@
 	</fieldset>
 	<?php echo form::close() ?>
 
-</div>
