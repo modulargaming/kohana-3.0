@@ -18,7 +18,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 	{
 		parent::before();
 		
-		$this->sidebar = View::factory('message/sidebar');
+		$this->sidebar[] = View::factory('message/sidebar');
 	}
 	
 	/**
