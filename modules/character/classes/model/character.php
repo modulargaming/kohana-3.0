@@ -19,10 +19,14 @@ class Model_Character extends Jelly_Model {
 			'id' => new Field_Primary,
 			'user' => new Field_BelongsTo,
 			'race' => new Field_BelongsTo(array(
-				'model' => 'character_race',
+                                'column'  => 'race_id',
+                                'foreign' => 'character_race.id',
+
 			)),
 			'class'   => new Field_BelongsTo(array(
-				'model' => 'character_class',
+                                'column'  => 'class_id',
+                                'foreign' => 'character_class.id',
+
 			)),
 			'name' => new Field_String,
 			'gender' => new Field_Enum(array(
