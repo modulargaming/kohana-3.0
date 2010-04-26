@@ -110,6 +110,8 @@ class Modulargaming_Controller_Battle extends Controller_Frontend {
 			$character->xp == $character->xp - 100;
 			$character->level == $character->level++;
 			$character->save();
+
+			Message::set( Message::SUCCESS, 'Your character has gained an level.' );
 			}
 		}
 		else
