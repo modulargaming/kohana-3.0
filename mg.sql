@@ -95,6 +95,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `level` int(6) NOT NULL,
   `xp` int(6) DEFAULT NULL,
   `energy` int(6) NOT NULL,
+  `max_energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

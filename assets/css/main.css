@@ -194,6 +194,9 @@ span.bar {
 span.hp {
 	background:url(../images/bar/hp_bg.png) no-repeat;
 }
+span.energy {
+	background:url(../images/bar/hp_bg.png) no-repeat;
+}
 span.bar span {
 	height: 25px;
 	max-width: 278px;
@@ -206,6 +209,21 @@ span.hp span {
 	float: left;
 }
 span.hp p {
+	position: relative;
+	top: -23px;
+	color: #fff;
+	text-shadow: 0.1em 0.1em 1px #133b03;
+	text-align: center;
+	clear: both;
+}
+span.energy span {
+	background:url(../images/bar/hp.png) repeat-x;
+	display: block;
+	margin-left: 1px;
+	margin-top: 1px;
+	float: left;
+}
+span.energy p {
 	position: relative;
 	top: -23px;
 	color: #fff;

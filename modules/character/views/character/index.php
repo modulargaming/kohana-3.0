@@ -1,7 +1,7 @@
 <div class="stats">
 
 	<h2><?php echo $character->name; ?></h2>
-	<p style="margin-top: -8px;">Level 1 <?php echo $character->race->name; ?> Warrior</p>
+	<p style="margin-top: -8px;">Level: <?php echo $character->level; ?> <?php echo $character->race->name; ?><?php echo $character->class->name; ?></p>
 
 	<span class="bar hp">
 		<?php echo '<span style="width: ' . $char->percent_hp() . '%"></span>'; ?>
@@ -20,6 +20,7 @@
 	
 	<?php echo html::anchor( 'battle', 'Attack a Monster' ); ?><br />
 	<?php echo html::anchor( 'character/heal', 'Heal' ); ?><br />
+	<?php echo html::anchor( 'character/train', 'Train' ); ?><br />
 	<?php echo html::anchor( 'travel', 'Travel' ); ?><br />
 	
 	

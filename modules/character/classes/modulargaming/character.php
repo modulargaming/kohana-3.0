@@ -84,5 +84,17 @@ class Modulargaming_Character {
 		return round( ( $hp / $maxhp ) * 100 );
 		
 	}
+
+	public function percent_energy( $energy = NULL, $maxenergy = NULL ) {
+		
+		if ( !isset ( $energy ) )
+			$energy = $this->char->energy;
+		
+		if ( !isset ( $maxenergy ) )
+			$maxenergy = $this->char->max_energy;
+		
+		return round( ( $energy / $maxenergy ) * 100 );
+		
+	}
 	
 }

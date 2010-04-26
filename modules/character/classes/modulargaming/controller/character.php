@@ -15,6 +15,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	public $load_character = TRUE;
 	public $title = 'Character';
 	public $heal_cost = 2;
+	public $train_cost = 2;
 	
 	
 	public function action_index()
@@ -80,6 +81,59 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 			->set( 'post', $post );
 		
 	}
+
+	public function action_train()
+	{
+		// Check if the user has a character already.
+		if ( !$this->character->loaded() )
+			$this->request->redirect( 'character/create' );
+		
+		$character = $this->character;
+		
+		// Initialize the character class, and set the players character as the default.
+		$char = new Character( $character );
+		
+		$post = Validate::factory($_POST)
+			->filter(TRUE,'trim')
+			->rule( 'amount', 'not_empty' )
+			->rule( 'amount', 'digit' )
+			->callback( 'amount', array( $this, 'can_train' ));
+		
+		if ($post->check())
+		{
+			
+			try
+			{
+				$character->strength = $character->strength + $post['amount'];
+				$character->energy = $character->energy - ( $post['amount'] * $this->train_cost );
+				
+				$character->save();
+				$this->request->redirect( 'character' );
+				
+				
+			}
+			catch (Validate_Exception $e)
+			{
+				
+				// Get the errors using the Validate::errors() method
+				$this->errors = $e->array->errors('register');
+			}
+			
+		}
+		else
+		{
+			$this->errors = $post->errors('character/create');
+		}
+		
+		if ( !empty($this->errors) )
+			Message::set( Message::ERROR, $this->errors );
+		
+		$this->template->content = View::factory('character/train')
+			->set( 'character', $character )
+			->set( 'char', $char )
+			->set( 'post', $post );
+		
+	}
 	
 	public function action_create()
 	{
@@ -122,6 +176,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 					'level' => 1,
 					'xp' => 0,
 					'energy' => 100,
+					'max_energy' => 100,
 					'alignment' => 5000,
 					'zone' => 1,
 				);
@@ -228,13 +283,23 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	function can_heal( $form, $field )
 	{
 		
-		$ammount = $form[$field];
+		$amount = $form[$field];
 		
-		if ( $ammount * $this->heal_cost > $this->character->money )
-			$form->error($field, 'not_enought_money');
+		if ( $amount * $this->heal_cost > $this->character->money )
+			$form->error($field, 'not_enough_money');
 		
-		if ( $ammount >= ( $this->character->max_hp - $this->character->hp ) )
+		if ( $amount >= ( $this->character->max_hp - $this->character->hp ) )
 			$form[$field] = $this->character->max_hp - $this->character->hp;
+		
+	}
+
+	function can_train( $form, $field )
+	{
+		
+		$amount = $form[$field];
+		
+		if ( $amount * $this->heal_cost > $this->character->energy )
+			$form->error($field, 'not_enough_energy');
 		
 	}
 	
