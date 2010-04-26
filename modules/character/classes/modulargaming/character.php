@@ -22,7 +22,7 @@ class Modulargaming_Character {
 	public function get_classes()
 	{
 		
-		$alignments = Jelly::select( 'class' )
+		$alignments = Jelly::select( 'character_class' )
 			->execute( );
 		
 		return $classes;

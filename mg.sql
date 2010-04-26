@@ -101,19 +101,43 @@ CREATE TABLE IF NOT EXISTS `characters` (
 
 
 --
--- Table structure for table `classes`
+-- Table structure for table `character_classes`
 --
 
-CREATE TABLE IF NOT EXISTS `classes` (
+CREATE TABLE IF NOT EXISTS `character_classes` (
   `id` int(6) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `description` longtext NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
-INSERT INTO `classes` (`id`, `name`) VALUES 
-(1, 'Warrior'),
-(2, 'Magican'),
-(3, 'Medic');
+INSERT INTO `character_classes` (`id`, `name`, `description`) VALUES 
+(1, 'Warrior', 'Warriors are strong'),
+(2, 'Magican', 'Magicans are fast'),
+(3, 'Medic',   'Medics have a lot of health');
+
+--
+-- Table structure for table `character_races`
+--
+
+CREATE TABLE IF NOT EXISTS `character_races` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `starting_zone` int(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `character_races`
+--
+
+INSERT INTO `character_races` (`id`, `name`, `description`, `starting_zone`) VALUES
+(1, 'Human', 'The human race. ', 1),
+(2, 'Alien', 'Aliens that have migrated to Earth.', 1);
+
+-- --------------------------------------------------------
+
 
 --
 -- Table structure for table `forum_categories`
@@ -313,28 +337,6 @@ CREATE TABLE IF NOT EXISTS `npc_quests` (
 
 INSERT INTO `npc_quests` (`id`, `npc_id`, `title`, `description`, `type`) VALUES
 (1, 1, 'Test quest', 'Test quest', 'item');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `races`
---
-
-CREATE TABLE IF NOT EXISTS `races` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
-  `starting_zone` int(6) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `races`
---
-
-INSERT INTO `races` (`id`, `name`, `description`, `starting_zone`) VALUES
-(1, 'Human', 'The human race. ', 1),
-(2, 'Alien', 'Aliens that have migrated to Earth.', 1);
 
 -- --------------------------------------------------------
 

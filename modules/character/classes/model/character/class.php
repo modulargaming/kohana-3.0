@@ -8,13 +8,14 @@
  * @license    http://copy112.com/mg/license
  */
 
-class Model_Race extends Jelly_Model {
+class Model_Character_Class extends Jelly_Model {
 	
 	public static function initialize(Jelly_Meta $meta)
 	{
 		$meta->fields += array(
 			'id' => new Field_Primary,
 			'name' => new Field_String,
+			'description' => new Field_String,
 		);
 	}
 	

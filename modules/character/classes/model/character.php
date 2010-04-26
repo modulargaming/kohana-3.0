@@ -18,8 +18,12 @@ class Model_Character extends Jelly_Model {
 		$meta->fields += array(
 			'id' => new Field_Primary,
 			'user' => new Field_BelongsTo,
-			'race' => new Field_BelongsTo,
-			'class'   => new Field_BelongsTo,
+			'race' => new Field_BelongsTo(array(
+				'model' => 'character_race',
+			)),
+			'class'   => new Field_BelongsTo(array(
+				'model' => 'character_class',
+			)),
 			'name' => new Field_String,
 			'gender' => new Field_Enum(array(
 				'choices' => array('male' => 'Male', 'female' => 'Female'),

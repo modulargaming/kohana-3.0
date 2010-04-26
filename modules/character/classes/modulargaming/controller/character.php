@@ -164,7 +164,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	function valid_race( $form, $field )
 	{
 		
-		$race = Jelly::select( 'race' )
+		$race = Jelly::select( 'character_race' )
 			->where( 'id', '=', $form[$field] )
 			->load();
 		
@@ -180,7 +180,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	// Retrieve all races from the database and assign them to an array
 	function getRaces()
 	{
-		$races = Jelly::select( 'race' )->execute();
+		$races = Jelly::select( 'character_race' )->execute();
 		
 		$t = array();
 		
@@ -192,11 +192,11 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 		return $t;
 	}
 	
-	// Function to verify if it is a valid race and that the player can use it.
+	// Function to verify if it is a valid class and that the player can use it.
 	function valid_class( $form, $field )
 	{
 		
-		$class = Jelly::select( 'class' )
+		$class = Jelly::select( 'character_class' )
 			->where( 'id', '=', $form[$field] )
 			->load();
 		
@@ -212,7 +212,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	// Retrieve all races from the database and assign them to an array
 	function getClasses()
 	{
-		$classes = Jelly::select( 'class' )->execute();
+		$classes = Jelly::select( 'character_class' )->execute();
 		
 		$t = array();
 		

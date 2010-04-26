@@ -75,7 +75,7 @@ return array(
 	'From' => 'Från',
 	'Date' => 'Datum',
 	
-	'Reciver:' => 'Mottagare:',
+	'Receiver:' => 'Mottagare:',
 	'Title:' => 'Ämne:',
 	'Message:' => 'Medelande:',
 	'Send' => 'Skicka',
@@ -83,5 +83,5 @@ return array(
 	'This is not your message.' => 'Du kan endast komma åt dina egna meddelande',
 
 	'You deleted the message!' => 'Meddelandet är nu raderat!',
-	'You sent away the message to :to!' => 'Meddelandet har skickats iväg till :to!',
+	'You sent the message to :to!' => 'Meddelandet har skickats iväg till :to!',
 );
