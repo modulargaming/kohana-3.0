@@ -5,7 +5,7 @@
 	<?php echo form::open() ?>
 	<fieldset>
 		<dl>
-			<dt><?php echo form::label('to', 'Reciver:'); ?></dt>
+			<dt><?php echo form::label('to', 'Reciever:'); ?></dt>
 			<dd><?php echo form::input('to', $post['to']); ?></dd>
 		</dl>
 		<dl>
