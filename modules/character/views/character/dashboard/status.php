@@ -17,7 +17,7 @@
 	<ul class="left">
 		<li>Alignment <span><?php echo $char->alignment( ); ?></span></li>
 		<li>Money <span><?php echo $character->money; ?></span></li>
-		<li>Energy <span><?php echo $character->energy; ?></span></li>
+		<li>Experience <span><?php echo $character->xp; ?></span></li>
 
 	</ul>
 	

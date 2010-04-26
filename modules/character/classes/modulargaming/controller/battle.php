@@ -103,8 +103,14 @@ class Modulargaming_Controller_Battle extends Controller_Frontend {
 			
 			$character->money = $character->money + $battle->monster->money;
 			$character->xp = $character->xp + $monster->xp;
-			
 			$character->save();
+
+			if($character->xp >= 100)
+			{
+			$character->xp == $character->xp - 100;
+			$character->level == $character->level++;
+			$character->save();
+			}
 		}
 		else
 		{
