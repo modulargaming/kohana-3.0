@@ -12,7 +12,7 @@
 
 <div>
 	<?php echo __('Created by:') ?> 
-	<b><?php echo $p->user->username ?></b>
+	<b><?php echo html::anchor('profile/view/'.$p->user->id, $p->user->username ) ?></b>
 	<i><?php echo Time::Ago($p->created) ?></i>
 	
 	<?php if ($user->id == $p->user->id): ?>

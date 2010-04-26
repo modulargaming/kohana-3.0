@@ -10,7 +10,7 @@
 
 <div>
 <?php echo __('Created by:') ?>
-<?php echo $post->user->username ?> 
+        <b><?php echo html::anchor('profile/view/'.$post->user->id, $post->user->username ) ?></b>
 <?php echo Time::Ago($post->created) ?>
 <?php if ($user->id == $post->user->id): ?>
 	<?php echo html::anchor( 'forum/post/'.$post->id.'/edit', 'Edit' ) ?>
