@@ -102,8 +102,18 @@ class Controller_Shop extends Controller_Frontend {
 				->where('shop_id', '=', $this->shop_id)
 				->and_where( 'item_id', '=', $id )
 				->execute();
+
 			
 			$item->amount = $item->amount - $post['amount'];
+
+		        $char = Jelly::select('character')
+                        ->where('id', '=', $this->character->id)
+                        ->load();
+
+			$char->money = ($char->money - $item->price * $post['amount']);
+			$char->save();
+
+
 			
 			Message::set( Message::SUCCESS, 'You bought ' . $post['amount'] . ' ' . $item->name );
 			
