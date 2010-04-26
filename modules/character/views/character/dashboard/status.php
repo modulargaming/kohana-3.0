@@ -9,6 +9,11 @@
 		<p><?php echo $character->hp . ' / '. $character->max_hp; ?></p>
 	</span>
 	
+	<span class="bar energy">
+		<?php echo '<span style="width: ' . $char->percent_energy() . '%"></span>'; ?>
+		<p><?php echo $character->energy . ' / '. $character->max_energy; ?></p>
+	</span>
+	
 	<ul class="left">
 		<li>Alignment <span><?php echo $char->alignment( ); ?></span></li>
 		<li>Money <span><?php echo $character->money; ?></span></li>
@@ -26,6 +31,7 @@
 	
 	<?php echo html::anchor( 'battle', 'Attack a Monster' ); ?><br />
 	<?php echo html::anchor( 'character/heal', 'Heal' ); ?><br />
+	<?php echo html::anchor( 'character/train', 'Train' ); ?><br />
 	<?php echo html::anchor( 'travel', 'Travel' ); ?><br />
 	<?php echo html::anchor( 'zone', 'Zone info' ); ?><br />
 	
