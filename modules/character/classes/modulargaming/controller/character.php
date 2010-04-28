@@ -16,7 +16,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	public $title = 'Character';
 	public $heal_cost = 2;
 	public $train_cost = 2;
-	
+	public $stats = array('strength','defence','agility');
 	
 	public function action_index()
 	{
@@ -97,14 +97,15 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 			->filter(TRUE,'trim')
 			->rule( 'amount', 'not_empty' )
 			->rule( 'amount', 'digit' )
-			->callback( 'amount', array( $this, 'can_train' ));
+			->callback( 'amount', array( $this, 'can_train' ))
+			->callback('stat', array($this, 'valid_stat'));
 		
 		if ($post->check())
 		{
 			
 			try
 			{
-				$character->strength = $character->strength + $post['amount'];
+				$character->$post['stat'] = $character->$post['stat'] + $post['amount'];
 				$character->energy = $character->energy - ( $post['amount'] * $this->train_cost );
 				
 				$character->save();
@@ -131,6 +132,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 		$this->template->content = View::factory('character/train')
 			->set( 'character', $character )
 			->set( 'char', $char )
+			->set( 'stats', $this->stats )
 			->set( 'post', $post );
 		
 	}
@@ -212,6 +214,19 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 			->set( 'post', $post )
 			->set( 'races', $races )
 			->set( 'classes', $classes );
+
+	}
+	// Function to verify if it is a valid stat and that the player can use it.
+	function valid_stat( $form, $field )
+	{
+				
+
+		if ( $form[$field] == 'strength' OR $form[$field] == 'defence' OR $form[$field] == 'agility' )
+		{
+			return true;
+		}
+		
+		$form->error($field, 'stat_not_valid');
 
 	}
 	
