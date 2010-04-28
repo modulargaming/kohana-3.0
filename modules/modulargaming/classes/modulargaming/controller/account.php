@@ -167,8 +167,12 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 				// Create the new user
 				$user->save();
 				
-				// Redirect the user to the login page
-				$this->request->redirect('account/login');
+				// Auto login
+				$this->a1->force_login( $post['username'] );
+
+				// Redirect the user to the dashboard
+				 $this->request->redirect('dashboard');
+
 			}
 			catch (Validate_Exception $e)
 			{
