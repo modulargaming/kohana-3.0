@@ -13,11 +13,15 @@
 		<?php echo '<span style="width: ' . $char->percent_energy() . '%"></span>'; ?>
 		<p><?php echo $character->energy . ' / '. $character->max_energy; ?></p>
 	</span>
+
+	<span class="bar xp">
+		<?php echo '<span style="width: ' . $char->percent_xp() . '%"></span>'; ?>
+		<p><?php echo $character->xp . ' / '. $character->max_xp; ?></p>
+	</span>
 	
 	<ul class="left">
 		<li>Alignment <span><?php echo $char->alignment( ); ?></span></li>
 		<li>Money <span><?php echo $character->money; ?></span></li>
-		<li>Experience <span><?php echo $character->xp; ?></span></li>
 
 	</ul>
 	

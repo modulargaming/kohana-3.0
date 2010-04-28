@@ -41,6 +41,7 @@ class Model_Character extends Jelly_Model {
 			'money'  => new Field_Integer,
 			'level' => new Field_Integer,
 			'xp' => new Field_Integer,
+			'max_xp' => new Field_Integer,
 			'energy' => new Field_Integer,
 			'max_energy' => new Field_Integer,
 			'zone'   => new Field_BelongsTo,

@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `money` int(6) NOT NULL,
   `level` int(6) NOT NULL,
   `xp` int(6) DEFAULT NULL,
+  `max_xp` int(6) DEFAULT NULL,
   `energy` int(6) NOT NULL,
   `max_energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,

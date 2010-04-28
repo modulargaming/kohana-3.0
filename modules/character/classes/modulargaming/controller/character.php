@@ -109,7 +109,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 				$character->energy = $character->energy - ( $post['amount'] * $this->train_cost );
 				
 				$character->save();
-				$this->request->redirect( 'character' );
+				$this->request->redirect( 'character/train' );
 				
 				
 			}
@@ -177,6 +177,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 					'agility' => 10,
 					'level' => 1,
 					'xp' => 0,
+					'max_xp' => 100,
 					'energy' => 100,
 					'max_energy' => 100,
 					'alignment' => 5000,

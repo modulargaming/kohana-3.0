@@ -185,6 +185,28 @@ fieldset.small dt {
 Custom
 **/
 
+div.red {
+	color: #FF0000;
+	}
+
+div.green {
+	color: #00FF00;
+
+	}
+
+div.blue {
+
+	color: #0000FF;
+
+	}
+
+div.yellow {
+
+	color: #FFFF00;
+
+	}
+
+
 span.bar {
 	height: 27px;
 	width: 280px;
@@ -195,6 +217,9 @@ span.hp {
 	background:url(../images/bar/hp_bg.png) no-repeat;
 }
 span.energy {
+	background:url(../images/bar/hp_bg.png) no-repeat;
+}
+span.xp {
 	background:url(../images/bar/hp_bg.png) no-repeat;
 }
 span.bar span {
@@ -224,6 +249,21 @@ span.energy span {
 	float: left;
 }
 span.energy p {
+	position: relative;
+	top: -23px;
+	color: #fff;
+	text-shadow: 0.1em 0.1em 1px #133b03;
+	text-align: center;
+	clear: both;
+}
+span.xp span {
+	background:url(../images/bar/hp.png) repeat-x;
+	display: block;
+	margin-left: 1px;
+	margin-top: 1px;
+	float: left;
+}
+span.xp p {
 	position: relative;
 	top: -23px;
 	color: #fff;

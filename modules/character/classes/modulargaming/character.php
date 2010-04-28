@@ -96,5 +96,17 @@ class Modulargaming_Character {
 		return round( ( $energy / $maxenergy ) * 100 );
 		
 	}
+
+	public function percent_xp( $xp = NULL, $maxxp = NULL ) {
+		
+		if ( !isset ( $xp ) )
+			$xp = $this->char->xp;
+		
+		if ( !isset ( $maxxp ) )
+			$maxxp = $this->char->max_xp;
+		
+		return round( ( $xp / $maxxp ) * 100 );
+		
+	}
 	
 }
