@@ -9,7 +9,7 @@
  */
 class Modulargaming_Core {
 	
-	const VERSION = 0.5;
+	const VERSION = 0.55;
 	const VERSION_URL = 'http://development.modulargaming.com/projects/modulargaming/repository/revisions/master/raw/version.txt';
 	const VERSION_CACHE_TIME = 3600;
 	
