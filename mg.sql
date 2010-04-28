@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS `alignments` (
 INSERT INTO `alignments` (`id`, `name`, `min`, `max`) VALUES
 (1, 'Angel', 81, 100),
 (2, 'Good', 60, 80),
-(3, 'Neutral', 59, 41),
-(4, 'Evil', 40, 20),
-(5, 'Devil', 19, 0);
+(3, 'Neutral', 41, 59),
+(4, 'Evil', 20, 40),
+(5, 'Devil', 0, 19);
 
 -- --------------------------------------------------------
 

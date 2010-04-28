@@ -59,7 +59,7 @@ class Modulargaming_Character {
 		foreach ( $this->get_alignments() as $k => $v )
 		{
 			
-			if ( $ali <= $v->min && $ali >= $v->max )
+				if ( $ali >= $v->min && $ali <= $v->max )
 				return $v->name;
 				
 		}
