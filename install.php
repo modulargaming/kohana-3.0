@@ -6,7 +6,7 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Kohana Installation</title>
+	<title>Modular Gaming Installation</title>
 
 	<style type="text/css">
 	body { width: 42em; margin: 0 auto; font-family: sans-serif; background: #fff; font-size: 1em; }
@@ -31,8 +31,8 @@
 	<h1>Environment Tests</h1>
 
 	<p>
-		The following tests have been run to determine if <a href="http://kohanaphp.com/">Kohana</a> will work in your environment.
-		If any of the tests have failed, consult the <a href="http://docs.kohanaphp.com/installation">documentation</a>
+		The following tests have been run to determine if <a href="http://modulargaming.com/">Modular Gaming</a> will work in your environment.
+		If any of the tests have failed, consult the <a href="http://modulargaming.com/documentation/installation">documentation</a>
 		for more information on how to correct the problem.
 	</p>
 
@@ -44,7 +44,7 @@
 			<?php if (version_compare(PHP_VERSION, '5.2.3', '>=')): ?>
 				<td class="pass"><?php echo PHP_VERSION ?></td>
 			<?php else: $failed = TRUE ?>
-				<td class="fail">Kohana requires PHP 5.2.3 or newer, this version is <?php echo PHP_VERSION ?>.</td>
+				<td class="fail">Modular Gaming requires PHP 5.2.3 or newer, this version is <?php echo PHP_VERSION ?>.</td>
 			<?php endif ?>
 		</tr>
 		<tr>
@@ -142,7 +142,7 @@
 	</table>
 
 	<?php if ($failed === TRUE): ?>
-		<p id="results" class="fail">✘ Kohana may not work correctly with your environment.</p>
+		<p id="results" class="fail">✘ Modular Gaming may not work correctly with your environment.</p>
 	<?php else: ?>
 		<p id="results" class="pass">✔ Your environment passed all requirements.<br />
 			Remove or rename the <code>install<?php echo EXT ?></code> file now.</p>
@@ -151,7 +151,7 @@
 	<h1>Optional Tests</h1>
 
 	<p>
-		The following extensions are not required to run the Kohana core, but if enabled can provide access to additional classes.
+		The following extensions are not required to run the Modular Gaming core, but if enabled can provide access to additional classes.
 	</p>
 
 	<table cellspacing="0">
@@ -160,7 +160,7 @@
 			<?php if (extension_loaded('curl')): ?>
 				<td class="pass">Pass</td>
 			<?php else: ?>
-				<td class="fail">Kohana requires <a href="http://php.net/curl">cURL</a> for the Remote class.</td>
+				<td class="fail">Modular Gaming requires <a href="http://php.net/curl">cURL</a> for the Remote class.</td>
 			<?php endif ?>
 		</tr>
 		<tr>
@@ -168,7 +168,7 @@
 			<?php if (extension_loaded('mcrypt')): ?>
 				<td class="pass">Pass</td>
 			<?php else: ?>
-				<td class="fail">Kohana requires <a href="http://php.net/mcrypt">mcrypt</a> for the Encrypt class.</td>
+				<td class="fail">Modular Gaming requires <a href="http://php.net/mcrypt">mcrypt</a> for the Encrypt class.</td>
 			<?php endif ?>
 		</tr>
 		<tr>
@@ -176,7 +176,7 @@
 			<?php if (function_exists('gd_info')): ?>
 				<td class="pass">Pass</td>
 			<?php else: ?>
-				<td class="fail">Kohana requires <a href="http://php.net/gd">GD</a> v2 for the Image class.</td>
+				<td class="fail">Modular Gaming requires <a href="http://php.net/gd">GD</a> v2 for the Image class.</td>
 			<?php endif ?>
 		</tr>
 		<tr>
@@ -184,7 +184,7 @@
 			<?php if (class_exists('PDO')): ?>
 				<td class="pass">Pass</td>
 			<?php else: ?>
-				<td class="fail">Kohana can use <a href="http://php.net/pdo">PDO</a> to support additional databases.</td>
+				<td class="fail">Modular Gaming can use <a href="http://php.net/pdo">PDO</a> to support additional databases.</td>
 			<?php endif ?>
 		</tr>
 	</table>
