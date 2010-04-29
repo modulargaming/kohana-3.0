@@ -85,7 +85,6 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	public function action_train($skill = NULL)
 	{
 
-		echo $skill;
 		// Check if the user has a character already.
 		if ( !$this->character->loaded() )
 			$this->request->redirect( 'character/create' );
