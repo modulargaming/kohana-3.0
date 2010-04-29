@@ -16,7 +16,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	public $title = 'Character';
 	public $heal_cost = 2;
 	public $train_cost = 2;
-	public $stats = array('strength','defence','agility');
+	public $skills = array('strength','defence','agility');
 	
 	public function action_index()
 	{
@@ -82,8 +82,9 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 		
 	}
 
-	public function action_train()
+	public function action_train($skill = NULL)
 	{
+
 		// Check if the user has a character already.
 		if ( !$this->character->loaded() )
 			$this->request->redirect( 'character/create' );
@@ -93,20 +94,18 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 		// Initialize the character class, and set the players character as the default.
 		$char = new Character( $character );
 		
-		$post = Validate::factory($_POST)
-			->filter(TRUE,'trim')
-			->rule( 'amount', 'not_empty' )
-			->rule( 'amount', 'digit' )
-			->callback( 'amount', array( $this, 'can_train' ))
-			->callback('stat', array($this, 'valid_stat'));
-		
-		if ($post->check())
+		if (!in_array($skill, $this->skills))
+		{
+		                Message::set( Message::ERROR, 'Invalid skill' );
+		}
+
+		else
 		{
 			
 			try
 			{
-				$character->$post['stat'] = $character->$post['stat'] + $post['amount'];
-				$character->energy = $character->energy - ( $post['amount'] * $this->train_cost );
+				$character->$skill = $character->$skill++;
+				$character->energy = $character->energy - $this->train_cost;
 				
 				$character->save();
 				$this->request->redirect( 'character/train' );
@@ -121,10 +120,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 			}
 			
 		}
-		else
-		{
-			$this->errors = $post->errors('character/create');
-		}
+
 		
 		if ( !empty($this->errors) )
 			Message::set( Message::ERROR, $this->errors );
@@ -132,8 +128,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 		$this->template->content = View::factory('character/train')
 			->set( 'character', $character )
 			->set( 'char', $char )
-			->set( 'stats', $this->stats )
-			->set( 'post', $post );
+			->set( 'skills', $this->skills );
 		
 	}
 	
@@ -215,19 +210,6 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 			->set( 'post', $post )
 			->set( 'races', $races )
 			->set( 'classes', $classes );
-
-	}
-	// Function to verify if it is a valid stat and that the player can use it.
-	function valid_stat( $form, $field )
-	{
-				
-
-		if ( $form[$field] == 'strength' OR $form[$field] == 'defence' OR $form[$field] == 'agility' )
-		{
-			return true;
-		}
-		
-		$form->error($field, 'stat_not_valid');
 
 	}
 	
