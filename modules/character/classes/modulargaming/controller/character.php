@@ -85,6 +85,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 	public function action_train($skill = NULL)
 	{
 
+		echo $skill;
 		// Check if the user has a character already.
 		if ( !$this->character->loaded() )
 			$this->request->redirect( 'character/create' );
@@ -94,21 +95,36 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 		// Initialize the character class, and set the players character as the default.
 		$char = new Character( $character );
 		
+
+		if ($skill != NULL)
+
+		{
+
 		if (!in_array($skill, $this->skills))
 		{
 		                Message::set( Message::ERROR, 'Invalid skill' );
+				$this->request->redirect('character/train' );
+
+		}
+
+		if ($character->energy < $this->train_cost)
+		{
+		                Message::set( Message::ERROR, 'Not enough energy' );
+				$this->request->redirect('character/train' );
+
 		}
 
 		else
 		{
+
 			
 			try
 			{
-				$character->$skill = $character->$skill++;
+				$character->$skill = $character->$skill+1;
 				$character->energy = $character->energy - $this->train_cost;
 				
 				$character->save();
-				$this->request->redirect( 'character/train' );
+//				$this->request->redirect( 'character/train' );
 				
 				
 			}
@@ -121,7 +137,7 @@ class Modulargaming_Controller_Character extends Controller_Frontend {
 			
 		}
 
-		
+}		
 		if ( !empty($this->errors) )
 			Message::set( Message::ERROR, $this->errors );
 		
