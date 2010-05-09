@@ -24,7 +24,7 @@ class Modulargaming_Model_Navigation extends Jelly_Model {
 			)),
 			'position' => new Field_Integer,
 			'title' => new Field_String,
-			'slug' => new Field_Text,
+			'slug' => new Field_String,
 		);
 		
 	}
