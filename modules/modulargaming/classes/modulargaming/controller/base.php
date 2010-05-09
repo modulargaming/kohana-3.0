@@ -9,29 +9,17 @@
  * @license    http://www.modulargaming.com/license
  */
 
-abstract class Modulargaming_Controller_Frontend extends Controller {
+abstract class Modulargaming_Controller_Base extends Controller {
 	
 	// Settings.
 	public $title = 'Undefined'; // Title of the page
 	public $template = 'template/main';
 	public $auto_render = TRUE; // Render the template
-	
 	public $protected = FALSE; // Require user to login.
-	
 	public $errors = array();
 	
 	public function before()
 	{
-		
-		Asset::add('assets/css/main.css', 'css');
-		Asset::add('assets/css/redmond/jquery-ui.css', 'css');
-		
-		Asset::add('assets/js/jquery.js', 'js');
-		Asset::add('assets/js/jquery.validate', 'js');
-		Asset::add('assets/js/jquery-ui', 'js');
-		Asset::add('assets/js/main.js', 'js');
-		
-		//echo Asset::render('css');
 		
 		// Initialize the Auth System
 		$this->a2 = A2::instance();
@@ -51,18 +39,14 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		}
 		//I18n::lang('en');
 		
-		View::set_global('user', $this->user);
-		View::bind_global('errors', $this->errors);
-		
+		View::set_global('user', $this->user);		
 		
 		$this->MG = new ModularGaming($this->user);
 		
 		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
-			
-		$this->sidebar = array();
-		Event::run('sidebar', $this);
-
+			//$this->sidebar = array();
+			//Event::run('sidebar', $this);
 
 			// Load the template
 			$this->template = View::factory($this->template)
@@ -79,14 +63,6 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		// Run the before events.
 		Event::run('before', $this);
 		
-		//Kohana::config("group_name")->myconfigkey = "hiii"; 
-		//echo Kohana::config("group_name.myconfigkey");
-		//echo Kohana::config("group_name.myconfigkey2");
-		//print_r(Kohana::config('modulargaming.test'));
-		
-		//Kohana::config('modulargaming')->test = array('lol' => 'hi');
-		
-		
 	}
 	
 	public function after()
@@ -94,11 +70,10 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		
 		View::set_global('title', __($this->title));
 		
-
 		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
 			// Assign the template as the request response and render it
 			$this->request->response = $this->template;
 		}
 	}	
-} // End Frontend
+} // End Base

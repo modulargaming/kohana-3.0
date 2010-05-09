@@ -16,7 +16,7 @@ class Modulargaming_Controller_Admin_Users extends Controller_Backend {
 	public function before()
 	{
 		parent::before();
-		$this->add_js('assets/js/admin/users.js');
+		Asset::add('assets/js/admin/users.js', 'js');
 	}
 	
 	

@@ -127,11 +127,11 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 	public function action_register()
 	{
 		// If the user is already logged in, send them to their settings.
-		if ( $this->user )
-			$this->request->redirect( 'account' );
+		if ($this->user)
+			$this->request->redirect('account');
 		
 		$this->title = 'Register';
-		$this->add_js('assets/js/register.js');
+		Asset::add('assets/js/register.js', 'js');
 		
 		$user = Jelly::factory('user');
 		
@@ -168,10 +168,10 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 				$user->save();
 				
 				// Auto login
-				$this->a1->force_login( $post['username'] );
+				$this->a1->force_login($post['username']);
 
 				// Redirect the user to the dashboard
-				 $this->request->redirect('dashboard');
+				$this->request->redirect('dashboard');
 
 			}
 			catch (Validate_Exception $e)

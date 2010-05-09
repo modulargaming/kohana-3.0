@@ -9,72 +9,33 @@
  * @license    http://www.modulargaming.com/license
  */
 
-abstract class Modulargaming_Controller_Backend extends Controller {
+abstract class Modulargaming_Controller_Backend extends Controller_Base {
 	
-	public $template = 'template/admin';
+	public $template = 'admin/template';
 	
-	public $protected = TRUE; // All admin pages requires the user to be loged in.
-	
-	public $title = 'Undefined';
-	public $auto_render = TRUE;
-	public $js = array('files' => array(), 'scripts' => array());
-	public $css = array();
 	public $errors = array();
 	
-	public function add_js($js, $file = TRUE)
-	{
-		if ($file) {
-			$this->js['files'][] = $js;
-		} else {
-			$this->js['scripts'][] = $js;
-		}
-		$this->js[] = $js;
-	}
-	
-	public function add_css($css)
-	{
-		$this->css[] = $css;
-	}
+	public $protected = TRUE; // Require user to login.
 	
 	public function before()
 	{
 		
-		$this->internal = TRUE;
-		if ($this->request === Request::instance()) {
-			$this->internal = FALSE;
-		}
+		parent::before();
 		
-		$this->add_css('assets/css/admin.css');
+		Asset::add('assets/css/admin.css', 'css');
 		
-		$this->add_js('assets/js/jquery.js'); // jQuery
-		$this->add_js('assets/js/jquery-ui.js'); // jQuery UI
-		$this->add_js('assets/js/admin/jquery.scrollTo.js'); // jQuery scrollTo
-		$this->add_js('assets/js/admin/jquery.localscroll.js'); // jQuery localscroll
-		//$this->add_js('assets/js/jquery.validate.js'); // Form Validation
-		$this->add_js('assets/js/admin/main.js');
+		Asset::add('assets/js/jquery.js', 'js'); // jQuery
+		Asset::add('assets/js/jquery-ui.js', 'js'); // jQuery UI
+		Asset::add('assets/js/jquery.scrollTo.js', 'js'); // jQuery scrollTo
+		Asset::add('assets/js/jquery.localscroll.js', 'js'); // jQuery localscroll
+		Asset::add('assets/js/jquery.validate.js', 'js'); // Form Validation
+		Asset::add('assets/js/admin/main.js', 'js');
 		
 		
-		$this->a2 = A2::instance();
-		$this->a1 = $this->a2->a1;
-		$this->user = $this->a2->get_user();
+		$this->template->latest_version = $this->latest_version();
+		$this->template->news = $this->get_news();
 		
-		
-		// Setup the user specific settings
-		if ($this->user)
-		{
-			if ($this->user->language)
-			{
-				I18n::lang($this->user->language);
-			}
-			
-			//Time::$offset = '';
-			//Time::$display = '';
-		}
-		//I18n::lang('en');
-		
-		View::set_global('user', $this->user);
-		View::bind_global('errors', $this->errors);
-		
+		/*
 		if ($this->auto_render === TRUE && !Request::$is_ajax )
 		{
 			
@@ -86,13 +47,7 @@ abstract class Modulargaming_Controller_Backend extends Controller {
 				->set('news', $this->get_news());
 			
 			$this->template->errors = array();
-		}
-		
-		// Check if the page is protected and if the user is not logged in
-		if ($this->protected && !$this->user) {
-			// Redirect the user to login page
-			Request::instance()->redirect('account/login');
-		}
+		}*/
 		
 	}
 	
@@ -139,15 +94,4 @@ abstract class Modulargaming_Controller_Backend extends Controller {
 		
 	}
 	
-	public function after()
-	{
-		
-		View::set_global('title', __($this->title));
-		
-		if ($this->auto_render === TRUE AND ! Request::$is_ajax AND ! $this->internal)
-		{
-			// Assign the template as the request response and render it
-			$this->request->response = $this->template;
-		}
-	}	
 } // End Backend
