@@ -527,3 +527,13 @@ INSERT INTO `zone_monster` (`zone_id`, `monster_id`) VALUES
 (3, 9),
 (3, 10);
 
+
+CREATE TABLE IF NOT EXISTS `navigations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` varchar(255) NOT NULL,
+  `position` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
