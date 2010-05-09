@@ -3,14 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2010 at 11:51 PM
--- Server version: 5.1.37
--- PHP Version: 5.2.10-2ubuntu6.4
+-- Generation Time: May 09, 2010 at 11:23 AM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.2-1ubuntu4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
 --
--- Database: `mg`
+-- Database: `modulargaming`
 --
 
 -- --------------------------------------------------------
@@ -280,6 +279,22 @@ INSERT INTO `monsters` (`id`, `name`, `level`, `max_hp`, `defence`, `min_dmg`, `
 (10, 'Nu', 0, 400, 10, 15, 20, 1000, 2500, 'virus/virus10.png');
 
 -- --------------------------------------------------------
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `navigations`
+--
+
+CREATE TABLE IF NOT EXISTS `navigations` (
+  `id` int(6) NOT NULL,
+  `group_id` int(6) NOT NULL,
+  `position` int(6) NOT NULL,
+  `title` varchar(25) NOT NULL,
+  `slug` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 --
 -- Table structure for table `npcs`

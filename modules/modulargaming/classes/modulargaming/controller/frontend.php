@@ -27,8 +27,8 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		Asset::add('assets/css/redmond/jquery-ui.css', 'css');
 		
 		Asset::add('assets/js/jquery.js', 'js');
-		Asset::add('assets/js/jquery.validate', 'js');
-		Asset::add('assets/js/jquery-ui', 'js');
+		Asset::add('assets/js/jquery.validate.js', 'js');
+		Asset::add('assets/js/jquery-ui.js', 'js');
 		Asset::add('assets/js/main.js', 'js');
 		
 		//echo Asset::render('css');
