@@ -30,6 +30,7 @@ h5,h6 { font-size: 1em; line-height:1.3;   font-weight:700; } /* 13px */
 	position: absolute;
 	left: 4%;
 	top: 23px;
+	text-indent: -9000px;
 }
 #nav {
 	background: url('../images/layout/nav.png');

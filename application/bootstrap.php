@@ -103,6 +103,11 @@ Kohana::modules(array(
 ));
 
 /**
+ * Setup the database config driver.
+ */
+Kohana::$config->attach(new Kohana_Config_Database, FALSE);
+
+/**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */

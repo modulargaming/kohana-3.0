@@ -5,11 +5,7 @@
 	<title>Modular Gaming - <?php echo $title ?></title>
 	<meta charset="utf-8" />
 	
-	<?php
-	foreach ($css as $style):
-		echo html::style($style);
-	endforeach;
-	?>
+	<?php echo Asset::render('css') ?>
 	
 	<script type="text/javascript">
 		path = "<?php echo url::base(); ?>";
@@ -26,8 +22,9 @@
 	<nav>
 		<ul>
 		<?php
-			echo '<li class="current">'.html::anchor('admin', 'Dashboard')    . '</li>';
-			echo '<li>'.html::anchor('admin/users', 'Users' ) . '</li>';
+			echo '<li class="current">'.html::anchor('admin', 'Dashboard').'</li>';
+			echo '<li>'.html::anchor('admin/users', 'Users' ).'</li>';
+			echo '<li>'.html::anchor('admin/navigation', 'Navigation' ).'</li>';
 		?>
 		</ul>
 	</nav>
@@ -75,8 +72,6 @@
 			</aside>
 		<?php endif ?>
 		
-		
-		
 	</div>
 	
 	<footer>
@@ -90,14 +85,7 @@ if (Kohana::$environment == Kohana::DEVELOPMENT)
 	echo '<div id="debug">'.View::factory('profiler/stats').'</div>';
 ?>
 
-<?php
-	foreach ($js['files'] as $script):
-		echo html::script($script);
-	endforeach;
-	foreach ($js['scripts'] as $script):
-		echo '<script type="text/javascript">'.$script.'</script>';
-	endforeach;
-?>
+<?php echo Asset::render('js') ?>
 
 </body>
 </html>

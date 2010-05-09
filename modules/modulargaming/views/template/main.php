@@ -2,11 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<?php
-	foreach ($css as $style):
-		echo html::style($style);
-	endforeach;
-	?>
+	<?php echo Asset::render('css') ?>
 	<script type="text/javascript">
 		path = "<?php echo url::base(); ?>";
 	</script>
@@ -16,15 +12,14 @@
 </head>
 <body>
 
-<div id="logo"></div>
-
+<?php echo html::anchor('', 'Home', array('id' => 'logo')) ?>
 
 <div id="nav">
-<div class="left"></div>
+	<div class="left"></div>
 
-<ul>
+	<ul>
 		<?php
-			
+		/*	
 			if ( $user ) {
 				
 				echo '<li>' . html::anchor( 'dashboard', 'Dashboard' )    . '</li>';
@@ -41,12 +36,14 @@
 				echo '<li>' . html::anchor( 'account/register', 'Register' ) . '</li>';
 				
 			}
+		*/
+			echo Navigation::render('main', 'navigation/main');
 		?>
-</ul>
+	</ul>
 
-
-<div class="right"></div>
+	<div class="right"></div>
 </div>
+
 <div id="side">
 <div class="content">
 <?php
@@ -92,13 +89,6 @@
 	if(Kohana::$environment == Kohana::DEVELOPMENT)
 		echo View::factory('profiler/stats');
 ?>
-<?php
-	foreach ($js['files'] as $script):
-		echo html::script($script);
-	endforeach;
-	foreach ($js['scripts'] as $script):
-		echo '<script type="text/javascript">'.$script.'</script>';
-	endforeach;
-?>
+<?php echo Asset::render('js') ?>
 </body>
 </html>
