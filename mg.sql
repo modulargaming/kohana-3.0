@@ -295,6 +295,20 @@ CREATE TABLE IF NOT EXISTS `navigations` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `navigations`
+--
+
+INSERT INTO `navigations` (`id`, `group_id`, `position`, `title`, `slug`) VALUES
+(1, 0, 1, 'Home', ''),
+(2, 0, 2, 'Register', 'account/register'),
+(3, 0, 3, 'Login', 'account/login'),
+(4, 1, 1, 'Dashboard', 'dashboard'),
+(5, 1, 2, 'Inventory', 'inventory'),
+(6, 1, 3, 'Forum', 'forum'),
+(7, 1, 4, 'Messages', 'message'),
+(8, 1, 5, 'Settings', 'account'),
+(9, 1, 6, 'Logout', 'account/logout');
 
 --
 -- Table structure for table `npcs`
