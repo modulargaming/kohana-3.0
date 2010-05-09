@@ -37,7 +37,13 @@
 				
 			}
 		*/
-			echo Navigation::render('main', 'navigation/main');
+			if ( $user ) {
+			echo Navigation::render('1', 'navigation/main');
+
+			}
+			else {
+			echo Navigation::render('0','navigation/main');
+			}
 		?>
 	</ul>
 
