@@ -56,7 +56,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 Kohana::init(array(
-	'base_url' => str_replace( basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME'] ),
+	'base_url' => dirname($_SERVER['SCRIPT_NAME']),
 	'index_file' => '',
 	'profiling' => Kohana::$environment == Kohana::DEVELOPMENT OR Kohana::$environment == Kohana::TESTING,
 	'caching' => Kohana::$environment != Kohana::DEVELOPMENT AND Kohana::$environment == Kohana::TESTING,
