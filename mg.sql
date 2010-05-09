@@ -288,7 +288,7 @@ INSERT INTO `monsters` (`id`, `name`, `level`, `max_hp`, `defence`, `min_dmg`, `
 
 CREATE TABLE IF NOT EXISTS `navigations` (
   `id` int(6) NOT NULL,
-  `group` int(6) NOT NULL,
+  `group_id` int(6) NOT NULL,
   `position` int(6) NOT NULL,
   `title` varchar(25) NOT NULL,
   `slug` text NOT NULL,
