@@ -16,7 +16,6 @@ class Modulargaming_Model_Pet_Race extends Jelly_Model {
 			'id' => new Field_Primary,
 			'name' => new Field_String,
 			'description' => new Field_String,
-                        )),
 		);
 	}
 	
