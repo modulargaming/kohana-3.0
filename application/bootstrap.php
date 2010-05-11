@@ -81,7 +81,7 @@ Kohana::modules(array(
 	'forum' => MODPATH.'forum', // Offical forum module
 	'message' => MODPATH.'message', // Official messages module
 	'character' => MODPATH.'character', // Official character module
-	'pet' => MODPATH.'pet', // Official pet module
+//	'pet' => MODPATH.'pet', // Official pet module
 	
 	'modulargaming' => MODPATH.'modulargaming', // Modular Gaming core
 	
