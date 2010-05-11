@@ -5,7 +5,7 @@
  * @package    Modular Gaming
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
+ * @license    http://modulargaming.com/license
  */
 
 class Controller_Battle extends Modulargaming_Controller_Battle { }

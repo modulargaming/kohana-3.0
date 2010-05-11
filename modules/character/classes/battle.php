@@ -5,7 +5,7 @@
  * @package    Modular Gaming
  * @author     Copy112
  * @copyright  (c) 2010 Copy112
- * @license    http://copy112.com/mg/license
+ * @license    http://modulargaming.com/license
  */
 
 class Battle {	

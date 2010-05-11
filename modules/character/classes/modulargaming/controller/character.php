@@ -5,7 +5,7 @@
  * @package    Modular Gaming
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
- * @license    http://copy112.com/mg/license
+ * @license    http://modulargaming.com/license
  */
 
 class Modulargaming_Controller_Character extends Controller_Frontend {
