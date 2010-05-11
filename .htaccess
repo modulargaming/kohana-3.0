@@ -32,16 +32,16 @@ RewriteRule .* index.php/$0 [PT]
 # URL, either WITH or WITHOUT the 'www.' prefix. Choose ONLY one option:
 #
 # To redirect all users to access the site WITH the 'www.' prefix,
-# (http://yourdomain.com/... will be redirected to http://www.yourdomain.com/...)
+# (http://example.com/... will be redirected to http://www.example.com/...)
 # adapt and uncomment the following:
-# RewriteCond %{HTTP_HOST} ^yourdomain\.com$ [NC]
-# RewriteRule ^(.*)$ http://www.yourdomain.com/$1 [L,R=301]
+# RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
+# RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301]
 #
 # To redirect all users to access the site WITHOUT the 'www.' prefix,
-# (http://www.yourdomain.com/... will be redirected to http://yourdomain.com/...)
+# (http://www.example.com/... will be redirected to http://example.com/...)
 # uncomment and adapt the following:
-#RewriteCond %{HTTP_HOST} ^www\.yourdomain\.com$ [NC]
-#RewriteRule ^(.*)$ http://yourdomain.com/$1 [L,R=301]
+#RewriteCond %{HTTP_HOST} ^www\.example\.com$ [NC]
+#RewriteRule ^(.*)$ http://example.com/$1 [L,R=301]
 
 </IfModule>
 
