@@ -23,7 +23,7 @@ class Modulargaming_Model_Pet extends Jelly_Model {
 
 			)),
 			'colour'   => new Field_BelongsTo(array(
-                                'column'  => 'class_id',
+                                'column'  => 'colour_id',
                                 'foreign' => 'pet_colour.id',
 
 			)),

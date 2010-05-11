@@ -37,7 +37,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		$pet = $this->pet;
 		
 		// Initialize the pet class, and set the players pet as the default.
-		$pet = new Pet( $Pet );
+		$pet = new Pet( $pet );
 		
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
@@ -163,8 +163,8 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 			->rule('name', 'max_length', array(20))
 			->rule('gender', 'not_empty')
 			->rule('race', 'not_empty')
-			->rule('class', 'not_empty')
-			->callback('class', array($this, 'valid_class'))
+			->rule('colour', 'not_empty')
+			->callback('colour', array($this, 'valid_colour'))
 			->callback('race', array($this, 'valid_race'));
 		
 		if ($post->check())
@@ -177,7 +177,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 					'name' => $post['name'],
 					'gender' => $post['gender'],
 					'race' => $post['race'],
-					'class' => $post['class'],
+					'colour' => $post['colour'],
 					'user' => $this->user->id,
 					'money' => 1000,
 					'hp' => 100,
