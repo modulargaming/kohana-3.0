@@ -372,6 +372,78 @@ INSERT INTO `npc_quests` (`id`, `npc_id`, `title`, `description`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pets`
+--
+
+CREATE TABLE IF NOT EXISTS `pets` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `user_id` int(6) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `gender` enum('male','female') NOT NULL,
+  `race_id` int(6) NOT NULL,
+  `colour_id` int(6) NOT NULL,
+  `alignment` int(4) NOT NULL,
+  `hp` int(6) NOT NULL,
+  `max_hp` int(6) NOT NULL,
+  `strength` int(6) NOT NULL,
+  `defence` int(6) NOT NULL,
+  `agility` int(6) NOT NULL,
+  `money` int(6) NOT NULL,
+  `level` int(6) NOT NULL,
+  `xp` int(6) DEFAULT NULL,
+  `max_xp` int(6) DEFAULT NULL,
+  `energy` int(6) NOT NULL,
+  `max_energy` int(6) NOT NULL,
+  `zone_id` int(6) NOT NULL,
+  PRIMARY KEY (`id`)
+
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+--
+-- Table structure for table `pet_colours`
+--
+
+CREATE TABLE IF NOT EXISTS `pet_colours` (
+  `id` int(6) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+
+INSERT INTO `pet_colours` (`id`, `name`, `description`) VALUES
+(1, 'Black', 'Black colour'),
+(2, 'Blue', 'Blue colour'),
+(3, 'Green', 'Green colour'),
+(4, 'Red', 'Red colour'),
+(5, 'White', 'White colour'),
+(6, 'Yellow', 'Yellow colour');
+
+--
+-- Table structure for table `pet_races`
+--
+
+CREATE TABLE IF NOT EXISTS `pet_races` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `starting_zone` int(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `pet_races`
+--
+
+INSERT INTO `pet_races` (`id`, `name`, `description`, `starting_zone`) VALUES
+(1, 'Koorai', 'The Koorai ', 1),
+(2, 'Zedro', 'The Zedro.', 1);
+
+-- --------------------------------------------------------
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
