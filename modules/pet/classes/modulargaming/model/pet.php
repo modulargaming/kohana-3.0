@@ -37,6 +37,7 @@ class Modulargaming_Model_Pet extends Jelly_Model {
 			'strength' => new Field_Integer,
 			'defence' => new Field_Integer,
 			'agility' => new Field_Integer,
+			'money' => new Field_Integer,
 			'level' => new Field_Integer,
 			'xp' => new Field_Integer,
 			'max_xp' => new Field_Integer,

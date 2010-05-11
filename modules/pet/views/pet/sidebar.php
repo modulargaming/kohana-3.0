@@ -1,12 +1,12 @@
-<?php if ( $pet->loaded() ): ?>
+<?php if ( $user_pet->loaded() ): ?>
 
-	<h2><?php echo $pet->name; ?></h2>
+	<h2><?php echo $user_pet->name; ?></h2>
 <div>
-<?php echo $pet->race->name; ?> 
-<?php echo $pet->class->name; ?> <br />
-<div class=red><?php  echo $pet->hp.'/'.$pet->max_hp ?></div>
-<div class=green><?php  echo $pet->energy.'/'.$pet->max_energy ?></div>
-<div class=blue><?php  echo $pet->xp.'/'.$pet->max_xp ?></div>
+<?php echo $user_pet->race->name; ?> 
+<?php echo $user_pet->class->name; ?> <br />
+<div class=red><?php  echo $user_pet->hp.'/'.$user_pet->max_hp ?></div>
+<div class=green><?php  echo $user_pet->energy.'/'.$user_pet->max_energy ?></div>
+<div class=blue><?php  echo $user_pet->xp.'/'.$user_pet->max_xp ?></div>
 </div>
 	
 	

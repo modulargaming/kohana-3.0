@@ -37,7 +37,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		$pet = $this->pet;
 		
 		// Initialize the pet class, and set the players pet as the default.
-		$pet = new Pet( $pet );
+		$user_pet = new Pet( $pet );
 		
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
@@ -77,7 +77,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		
 		$this->template->content = View::factory('pet/heal')
 			->set( 'pet', $pet )
-			->set( 'pet', $pet )
+			->set( 'user_pet', $user_pet )
 			->set( 'post', $post );
 		
 	}
@@ -92,7 +92,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		$pet = $this->pet;
 		
 		// Initialize the pet class, and set the players pet as the default.
-		$pet = new Pet( $pet );
+		$user_pet = new Pet( $pet );
 		
 
 		if ($skill != NULL)
@@ -142,7 +142,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		
 		$this->template->content = View::factory('pet/train')
 			->set( 'pet', $pet )
-			->set( 'pet', $pet )
+			->set( 'user_pet', $user_pet )
 			->set( 'skills', $this->skills );
 		
 	}
@@ -277,7 +277,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 
 	}
 	
-	// Retrieve all colours from the database and assign them to an array
+	// Retrieve all races from the database and assign them to an array
 	function getColours()
 	{
 		$colours = Jelly::select( 'pet_colour' )->execute();

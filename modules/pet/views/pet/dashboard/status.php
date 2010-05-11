@@ -1,28 +1,28 @@
 <div class="stats">
-	<?php if ( $pet->loaded() ): ?>
+	<?php if ( $user_pet->loaded() ): ?>
 
-	<h2><?php echo $pet->name; ?></h2>
-	<p style="margin-top: -8px;"> Level: <?php echo $pet->level; ?> <?php echo $pet->colour->name; ?> <?php echo $pet->race->name; ?></p>
+	<h2><?php echo $user_pet->name; ?></h2>
+	<p style="margin-top: -8px;"> Level: <?php echo $user_pet->level; ?> <?php echo $user_pet->colour->name; ?> <?php echo $user_pet->race->name; ?></p>
 
 	<span class="bar hp">
-		<?php echo '<span style="width: ' . $pet->percent_hp() . '%"></span>'; ?>
-		<p><?php echo $pet->hp . ' / '. $pet->max_hp; ?></p>
+		<?php echo '<span style="width: ' . $user_pet->percent_hp() . '%"></span>'; ?>
+		<p><?php echo $user_pet->hp . ' / '. $user_pet->max_hp; ?></p>
 	</span>
 	
 	<span class="bar energy">
-		<?php echo '<span style="width: ' . $pet->percent_energy() . '%"></span>'; ?>
-		<p><?php echo $pet->energy . ' / '. $pet->max_energy; ?></p>
+		<?php echo '<span style="width: ' . $user_pet->percent_energy() . '%"></span>'; ?>
+		<p><?php echo $user_pet->energy . ' / '. $user_pet->max_energy; ?></p>
 	</span>
 
 	<span class="bar xp">
-		<?php echo '<span style="width: ' . $pet->percent_xp() . '%"></span>'; ?>
-		<p><?php echo $pet->xp . ' / '. $pet->max_xp; ?></p>
+		<?php echo '<span style="width: ' . $user_pet->percent_xp() . '%"></span>'; ?>
+		<p><?php echo $user_pet->xp . ' / '. $user_pet->max_xp; ?></p>
 	</span>
 	
 	<ul class="right">
-		<li>Strength <span><?php echo $pet->strength; ?></span></li>
-		<li>Defense <span><?php echo $pet->defence; ?></span></li>
-		<li>Agility <span><?php echo $pet->agility; ?></span></li>
+		<li>Strength <span><?php echo $user_pet->strength; ?></span></li>
+		<li>Defense <span><?php echo $user_pet->defence; ?></span></li>
+		<li>Agility <span><?php echo $user_pet->agility; ?></span></li>
 	</ul>
 	
 	<h2 style="text-align: left">Actions</h2>

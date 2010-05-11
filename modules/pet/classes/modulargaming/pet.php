@@ -22,20 +22,20 @@ class Modulargaming_Pet {
 	public function get_races()
 	{
 		
-		$alignments = Jelly::select( 'pet_race' )
+		$races = Jelly::select( 'pet_race' )
 			->execute( );
 		
-		return $classes;
+		return $races;
 		
 	}
 
-	public function get_colour()
+	public function get_colours()
 	{
 		
-		$alignments = Jelly::select( 'pet_colour' )
+		$colours = Jelly::select( 'pet_colour' )
 			->execute( );
 		
-		return $classes;
+		return $colours;
 		
 	}
 
