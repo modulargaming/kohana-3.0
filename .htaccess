@@ -1,14 +1,21 @@
-# Turn on URL rewriting
-RewriteEngine On
-
-# Installation directory
-RewriteBase /modulargaming/
-
 # Protect hidden files from being viewed
 <Files .*>
 	Order Deny,Allow
 	Deny From All
 </Files>
+
+
+# Disable directory listing
+Options -Indexes 
+
+
+<IfModule mod_rewrite.c>
+
+# Turn on URL rewriting
+RewriteEngine On
+
+# Installation directory
+RewriteBase /modulargaming/
 
 # Protect application and system files from being viewed
 RewriteRule ^(?:application|modules|system)\b - [F,L]
@@ -20,5 +27,30 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Rewrite all other URLs to index.php/URL
 RewriteRule .* index.php/$0 [PT]
 
-# Disable directory listing
-Options -Indexes 
+# If your site can be accessed both with and without the 'www.' prefix, you
+# can use one of the following settings to redirect users to your preferred
+# URL, either WITH or WITHOUT the 'www.' prefix. Choose ONLY one option:
+#
+# To redirect all users to access the site WITH the 'www.' prefix,
+# (http://yourdomain.com/... will be redirected to http://www.yourdomain.com/...)
+# adapt and uncomment the following:
+# RewriteCond %{HTTP_HOST} ^yourdomain\.com$ [NC]
+# RewriteRule ^(.*)$ http://www.yourdomain.com/$1 [L,R=301]
+#
+# To redirect all users to access the site WITHOUT the 'www.' prefix,
+# (http://www.yourdomain.com/... will be redirected to http://yourdomain.com/...)
+# uncomment and adapt the following:
+#RewriteCond %{HTTP_HOST} ^www\.yourdomain\.com$ [NC]
+#RewriteRule ^(.*)$ http://yourdomain.com/$1 [L,R=301]
+
+</IfModule>
+
+<IfModule mod_php5.c>
+  php_value magic_quotes_gpc                0
+  php_value register_globals                0
+  php_value session.auto_start              0
+  php_value mbstring.http_input             pass
+  php_value mbstring.http_output            pass
+  php_value mbstring.encoding_translation   0
+</IfModule>
+
