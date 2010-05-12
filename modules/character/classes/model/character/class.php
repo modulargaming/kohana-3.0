@@ -8,5 +8,5 @@
  * @license    http://www.modulargaming.com/license
  */ 
 
-class Model_Character_Class extends Modulargaming_Model_Class { }
+class Model_Character_Class extends Modulargaming_Model_Character_Class { }
 

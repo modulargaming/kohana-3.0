@@ -3,8 +3,8 @@
  * 
  *
  * @package    Modular Gaming
- * @author     Curtis Delicata
- * @copyright  (c) 2010 Curtis Delicata
+ * @author     Oscar Hinton
+ * @copyright  (c) 2010 Oscar Hinton
  * @license    http://modulargaming.com/license
  */
 
@@ -34,10 +34,10 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		if ( !$this->pet->loaded() )
 			$this->request->redirect( 'pet/create' );
 		
-		$pet = $this->pet;
+		$tep = $this->pet;
 		
 		// Initialize the pet class, and set the players pet as the default.
-		$user_pet = new Pet( $pet );
+		$pet = new Pet( $tep );
 		
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
@@ -51,10 +51,10 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 			try
 			{
 				
-				$pet->hp = $pet->hp + $post['amount'];
-				$pet->money = $pet->money - ( $post['amount'] * $this->heal_cost );
+				$tep->hp = $tep->hp + $post['amount'];
+				$tep->money = $tep->money - ( $post['amount'] * $this->heal_cost );
 				
-				$pet->save();
+				$tep->save();
 				$this->request->redirect( 'pet' );
 				
 				
@@ -76,8 +76,8 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 			Message::set( Message::ERROR, $this->errors );
 		
 		$this->template->content = View::factory('pet/heal')
+			->set( 'tep', $tep )
 			->set( 'pet', $pet )
-			->set( 'user_pet', $user_pet )
 			->set( 'post', $post );
 		
 	}
@@ -89,10 +89,10 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		if ( !$this->pet->loaded() )
 			$this->request->redirect( 'pet/create' );
 		
-		$pet = $this->pet;
+		$tep = $this->pet;
 		
 		// Initialize the pet class, and set the players pet as the default.
-		$user_pet = new Pet( $pet );
+		$pet = new Pet( $tep );
 		
 
 		if ($skill != NULL)
@@ -106,7 +106,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 
 		}
 
-		if ($pet->energy < $this->train_cost)
+		if ($tep->energy < $this->train_cost)
 		{
 		                Message::set( Message::ERROR, 'Not enough energy' );
 				$this->request->redirect('pet/train' );
@@ -119,10 +119,10 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 			
 			try
 			{
-				$pet->$skill = $pet->$skill+1;
-				$pet->energy = $pet->energy - $this->train_cost;
+				$tep->$skill = $tep->$skill+1;
+				$tep->energy = $tep->energy - $this->train_cost;
 				
-				$pet->save();
+				$tep->save();
 //				$this->request->redirect( 'pet/train' );
 				
 				
@@ -141,8 +141,8 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 			Message::set( Message::ERROR, $this->errors );
 		
 		$this->template->content = View::factory('pet/train')
+			->set( 'tep', $tep )
 			->set( 'pet', $pet )
-			->set( 'user_pet', $user_pet )
 			->set( 'skills', $this->skills );
 		
 	}
@@ -154,7 +154,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		if ( $this->pet->loaded() )
 			$this->request->redirect( 'pet/create' );
 				
-		$pet = Jelly::factory('pet');
+		$tep = Jelly::factory('pet');
 		
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
@@ -194,9 +194,9 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 					'zone' => 1,
 				);
 				
-				$pet->set($values);
+				$tep->set($values);
 				
-				$pet->save();
+				$tep->save();
 				
 				$this->MG->add_history( 'Created the pet: ' . $post['name'] );
 				
@@ -316,4 +316,4 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		
 	}
 	
-} // End pet
+} // End Pet

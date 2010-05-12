@@ -32,7 +32,7 @@
 			<?php echo form::label( 'colour_id', 'Colour:' ); ?><br />
 			<span><a href="#">Summary about the colours</a></span>
 		</dt>
-		<dd><?php echo form::select( 'class', $colours, $post['colour'] ); ?></dd>
+		<dd><?php echo form::select( 'colour', $colours, $post['colour'] ); ?></dd>
 	</dl>
 	<dl>
 		<?php echo form::submit('create', 'Create Pet'); ?>

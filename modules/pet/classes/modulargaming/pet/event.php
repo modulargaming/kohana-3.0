@@ -57,7 +57,7 @@ class Modulargaming_Pet_Event {
 		Pet_Event::load_pet($t);
 	
 		$t->left = View::factory('pet/dashboard/status')
-			->set('pets', $t->pet)
+			->set('tep', $t->pet)
 			->set('pet', new Pet($t->pet));
 	}
 	
@@ -74,7 +74,7 @@ class Modulargaming_Pet_Event {
 		Pet_Event::load_pet($s);
 		
 		$s->sidebar[] = View::factory('pet/sidebar')
-				->set('pets', $s->pet)
+				->set('tep', $s->pet)
 				->set('pet', new Pet($s->pet));
 
 
