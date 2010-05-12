@@ -18,7 +18,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 	{
 		parent::before();
 		
-		$this->sidebar[] = View::factory('message/sidebar');
+		$this->sidebar_left[] = View::factory('message/sidebar');
 	}
 	
 	/**
@@ -33,7 +33,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 			->execute();
 		
 		$this->template->content = View::factory('message/index')
-			->set('sidebar', $this->sidebar)
+			->set('sidebar_left', $this->sidebar_left)
 			->set('messages', $messages);
 	}
 	
@@ -49,7 +49,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 			->execute();
 		
 		$this->template->content = View::factory('message/sent')
-			->set('sidebar', $this->sidebar)
+			->set('sidebar_left', $this->sidebar_left)
 			->set('messages', $messages);
 	}
 	
@@ -83,7 +83,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 		
 		
 		$this->template->content = View::factory('message/view')
-			->set('sidebar', $this->sidebar)
+			->set('sidebar_left', $this->sidebar_left)
 			->set('message', $message);
 	}
 	
@@ -185,7 +185,7 @@ class Modulargaming_Controller_Message extends Controller_Frontend {
 			Message::set(Message::ERROR, $this->errors);
 		
 		$this->template->content = View::factory('message/create')
-			->set('sidebar', $this->sidebar)
+			->set('sidebar_left', $this->sidebar_left)
 			->set('post', $post->as_array());
 		
 	}

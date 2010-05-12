@@ -52,12 +52,10 @@
 
 <div id="side-left">
 <div class="content">
-Test<br />
-Test<br />
 <?php
-//	foreach($sidebar_left as $s) {
-//		echo $s;
-//	}
+	foreach($sidebar_left as $s) {
+		echo $s;
+	}
 ?>
 </div>
 </div>

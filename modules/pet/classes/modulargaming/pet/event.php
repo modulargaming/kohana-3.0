@@ -59,6 +59,8 @@ class Modulargaming_Pet_Event {
 		$t->left = View::factory('pet/dashboard/status')
 			->set('tep', $t->pet)
 			->set('pet', new Pet($t->pet));
+
+		$t->sidebar_left[] = View::factory('pet/dashboard/sidebar');
 	}
 	
 

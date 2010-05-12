@@ -31,14 +31,6 @@
 		<li>Agility <span><?php echo $character->agility; ?></span></li>
 	</ul>
 	
-	<h2 style="text-align: left">Actions</h2>
-	
-	<?php echo html::anchor( 'battle', 'Attack a Monster' ); ?><br />
-	<?php echo html::anchor( 'character/heal', 'Heal' ); ?><br />
-	<?php echo html::anchor( 'character/train', 'Train' ); ?><br />
-	<?php echo html::anchor( 'travel', 'Travel' ); ?><br />
-	<?php echo html::anchor( 'zone', 'Explore' ); ?><br />
-	
 	<?php else: ?>
 	
 	<p>You do not have a character yet, <?php echo html::anchor( 'character', 'create one?' ) ?>.</p>
