@@ -21,12 +21,6 @@ class Controller_Dashboard extends Controller_Frontend {
 		$char = new Character( $this->character );
 		*/
 		
-		// Load the users history, limit with 10
-		$history = Jelly::select( 'user_history' )
-			->where(':primary_key', '=', $this->user->id)
-			->limit( 10 )
-			->execute();
-		
 		$this->left = '';
 		Event::run('dashboard_left', $this);
 
@@ -35,8 +29,7 @@ class Controller_Dashboard extends Controller_Frontend {
 		
 		$this->template->content = View::factory('dashboard/index')
 			->set('left', $this->left)
-			->set('right', $this->right)
-			->set('history', $history);
+			->set('right', $this->right);
 		
 	}
 	

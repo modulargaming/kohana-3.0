@@ -307,8 +307,9 @@ INSERT INTO `navigations` (`id`, `group_id`, `position`, `title`, `slug`) VALUES
 (5, 1, 2, 'Inventory', 'inventory'),
 (6, 1, 3, 'Forum', 'forum'),
 (7, 1, 4, 'Messages', 'message'),
-(8, 1, 5, 'Settings', 'account'),
-(9, 1, 6, 'Logout', 'account/logout');
+(8, 1, 5, 'History', 'history'),
+(9, 1, 6, 'Settings', 'account'),
+(10, 1, 7, 'Logout', 'account/logout');
 
 --
 -- Table structure for table `npcs`
