@@ -34,13 +34,13 @@
 		<?php echo '('.$char->percent_xp() . '%)'; ?>
 		</li>
 		</div>
+
+                <li>Strength <span><?php echo $character->strength; ?></span></li>
+                <li>Defense <span><?php echo $character->defence; ?></span></li>
+                <li>Agility <span><?php echo $character->agility; ?></span></li>
+
+
 	
-	</ul>
-	
-	<ul class="right">
-		<li>Strength <span><?php echo $character->strength; ?></span></li>
-		<li>Defense <span><?php echo $character->defence; ?></span></li>
-		<li>Agility <span><?php echo $character->agility; ?></span></li>
 	</ul>
 	
 	<?php else: ?>

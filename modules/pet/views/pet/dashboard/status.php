@@ -38,13 +38,13 @@ echo html::image($image);
 		</li>
 		</div>
 	
+                <li>Strength <span><?php echo $user_pet->strength; ?></span></li>
+                <li>Defense <span><?php echo $user_pet->defence; ?></span></li>
+                <li>Agility <span><?php echo $user_pet->agility; ?></span></li>
+
+
 	</ul>
 	
-	<ul class="right">
-		<li>Strength <span><?php echo $user_pet->strength; ?></span></li>
-		<li>Defense <span><?php echo $user_pet->defence; ?></span></li>
-		<li>Agility <span><?php echo $user_pet->agility; ?></span></li>
-	</ul>
 	
 	<?php else: ?>
 	
