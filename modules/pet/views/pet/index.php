@@ -1,20 +1,20 @@
 <div class="stats">
 
-	<h2><?php echo $tep->name; ?></h2>
-	<p style="margin-top: -8px;">Level: <?php echo $tep->level; ?> <?php echo $tep->race->name; ?><?php echo $tep->class->name; ?></p>
+	<h2><?php echo $user_pet->name; ?></h2>
+	<p style="margin-top: -8px;">Level: <?php echo $user_pet->level; ?> <?php echo $user_pet->race->name; ?><?php echo $user_pet->class->name; ?></p>
 
 	<span class="bar hp">
 		<?php echo '<span style="width: ' . $char->percent_hp() . '%"></span>'; ?>
-		<p><?php echo $tep->hp . ' / '. $tep->max_hp; ?></p>
+		<p><?php echo $user_pet->hp . ' / '. $user_pet->max_hp; ?></p>
 	</span>
 	
 	<ul class="left">
 		<li>Alignment <span><?php echo $char->alignment( ); ?></span></li>
-		<li>Gold <span><?php echo $tep->money; ?></span></li>
+		<li>Gold <span><?php echo $user_pet->money; ?></span></li>
 	</ul>
 	
 	<ul class="right">
-		<li>Energy <span><?php echo $tep->energy; ?></span></li>
+		<li>Energy <span><?php echo $user_pet->energy; ?></span></li>
 		<li>Gold <span>2135</span></li>
 	</ul>
 	
