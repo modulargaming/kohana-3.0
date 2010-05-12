@@ -1,4 +1,4 @@
-        <h2 style="text-align: left">Actions</h2>
+        <h2 style="text-align: left">Character</h2>
 
         <?php echo html::anchor( 'battle', 'Attack a Monster' ); ?><br />
         <?php echo html::anchor( 'character/heal', 'Heal' ); ?><br />

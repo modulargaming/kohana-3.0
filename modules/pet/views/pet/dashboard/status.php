@@ -9,9 +9,12 @@
 <?php echo $user_pet->race->name; ?> 
 	(&pound;<?php echo $user_pet->money; ?>)
 
-	</p>
-	
-
+<?php 
+$image = 'assets/images/pets/' . $user_pet->race->name.'/'.$user_pet->colour->name.'.png';
+$image = strtolower($image);
+echo html::image($image);
+?>
+</p>
 
 	<ul class="left">
 		<div class="red">

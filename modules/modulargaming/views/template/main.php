@@ -75,7 +75,9 @@
 <div id="wrapper">
 <div class="content">
 <?php echo $content; ?>
-</div></div>
+</div>
+<br clear="all" />
+</div>
 
 <div id="footer">&copy;<?php echo date('Y'); ?> Modular Gaming</div>
 
