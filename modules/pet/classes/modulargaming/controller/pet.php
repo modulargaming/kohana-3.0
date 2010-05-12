@@ -34,10 +34,10 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		if ( !$this->pet->loaded() )
 			$this->request->redirect( 'pet/create' );
 		
-		$user_pet = $this->pet;
+		$pet = $this->pet;
 		
 		// Initialize the pet class, and set the players pet as the default.
-		$pet = new Pet( $user_pet );
+		$user_pet = new Pet( $pet );
 		
 		$post = Validate::factory($_POST)
 			->filter(TRUE,'trim')
@@ -89,10 +89,10 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 		if ( !$this->pet->loaded() )
 			$this->request->redirect( 'pet/create' );
 		
-		$user_pet = $this->pet;
+		$pet = $this->pet;
 		
 		// Initialize the pet class, and set the players pet as the default.
-		$pet = new Pet( $user_pet );
+		$user_pet = new Pet( $pet );
 		
 
 		if ($skill != NULL)

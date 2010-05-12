@@ -50,7 +50,7 @@ class Modulargaming_Character_Event {
 	/**
 	 * Hook into the dasboard display system, and assign the character stats view.
 	 */
-	public static function dashboard()
+	public static function dashboard_left()
 	{
 		$t = Event::$data;
 	

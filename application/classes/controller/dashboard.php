@@ -28,10 +28,14 @@ class Controller_Dashboard extends Controller_Frontend {
 			->execute();
 		
 		$this->left = '';
-		Event::run('dashboard-left', $this);
+		Event::run('dashboard_left', $this);
+
+		$this->right = '';
+		Event::run('dashboard_right', $this);
 		
 		$this->template->content = View::factory('dashboard/index')
 			->set('left', $this->left)
+			->set('right', $this->right)
 			->set('history', $history);
 		
 	}

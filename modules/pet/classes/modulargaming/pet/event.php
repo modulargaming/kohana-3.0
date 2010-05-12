@@ -50,13 +50,13 @@ class Modulargaming_Pet_Event {
 	/**
 	 * Hook into the dasboard display system, and assign the pet stats view.
 	 */
-	public static function dashboard()
+	public static function dashboard_right()
 	{
 		$t = Event::$data;
 	
 		Pet_Event::load_pet($t);
 	
-		$t->left[] = View::factory('pet/dashboard/status')
+		$t->right[] = View::factory('pet/dashboard/status')
 			->set('user_pet', $t->pet)
 			->set('pet', new Pet($t->pet));
 
