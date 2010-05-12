@@ -1,5 +1,7 @@
 <div class="left">
-	<?php echo $left ?>
+<?php foreach ($left as $l): ?>
+	<?php echo $l ?>
+<?php endforeach; ?>
 </div>
 
 <div class="right">

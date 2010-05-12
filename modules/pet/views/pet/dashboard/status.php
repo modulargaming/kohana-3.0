@@ -2,27 +2,39 @@
 	<?php if ( $user_pet->loaded() ): ?>
 
 	<h2><?php echo $user_pet->name; ?></h2>
-	<p style="margin-top: -8px;"> Level: <?php echo $user_pet->level; ?> <?php echo $user_pet->race->name; ?> <?php echo $user_pet->colour->name; ?></p>
+	<p style="margin-top: -8px;">
+ Level: <?php echo $user_pet->level; ?> 
+<?php echo $pet->alignment( ); ?> 
+<?php echo $user_pet->colour->name; ?> 
+<?php echo $user_pet->race->name; ?> 
+	(&pound;<?php echo $user_pet->money; ?>)
 
-	<span class="bar hp">
-		<?php echo '<span style="width: ' . $pet->percent_hp() . '%"></span>'; ?>
-		<p><?php echo $user_pet->hp . ' / '. $user_pet->max_hp; ?></p>
-	</span>
+	</p>
 	
-	<span class="bar energy">
-		<?php echo '<span style="width: ' . $pet->percent_energy() . '%"></span>'; ?>
-		<p><?php echo $user_pet->energy . ' / '. $user_pet->max_energy; ?></p>
-	</span>
 
-	<span class="bar xp">
-		<?php echo '<span style="width: ' . $pet->percent_xp() . '%"></span>'; ?>
-		<p><?php echo $user_pet->xp . ' / '. $user_pet->max_xp; ?></p>
-	</span>
-	
+
 	<ul class="left">
-		<li>Alignment <span><?php echo $pet->alignment( ); ?></span></li>
-		<li>Money <span><?php echo $user_pet->money; ?></span></li>
+		<div class="red">
+		<li>
+		<?php echo 'Health: '.$user_pet->hp . ' / '. $user_pet->max_hp; ?>
+		<?php echo '('.$pet->percent_hp() . '%)'; ?>
+		</li>
+		</div>
 
+		<div class="green">
+		<li>
+		<?php echo 'Energy: '.$user_pet->energy . ' / '. $user_pet->max_energy; ?>
+		<?php echo '('.$pet->percent_energy() . '%)'; ?>
+		</li>
+		</div>
+
+		<div class="blue">
+		<li>
+		<?php echo 'Experience: '.$user_pet->xp . ' / '. $user_pet->max_xp; ?>
+		<?php echo '('.$pet->percent_xp() . '%)'; ?>
+		</li>
+		</div>
+	
 	</ul>
 	
 	<ul class="right">

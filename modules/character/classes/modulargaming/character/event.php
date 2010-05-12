@@ -56,7 +56,7 @@ class Modulargaming_Character_Event {
 	
 		Character_Event::load_character($t);
 	
-		$t->left = View::factory('character/dashboard/status')
+		$t->left[] = View::factory('character/dashboard/status')
 			->set('character', $t->character)
 			->set('char', new Character($t->character));
 
