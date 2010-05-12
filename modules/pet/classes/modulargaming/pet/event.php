@@ -62,7 +62,7 @@ class Modulargaming_Pet_Event {
 	}
 	
 
-	public static function sidebar()
+	public static function sidebar_right()
 	{
 		$s = Event::$data;
 		
@@ -73,7 +73,7 @@ class Modulargaming_Pet_Event {
 
 		Pet_Event::load_pet($s);
 		
-		$s->sidebar[] = View::factory('pet/sidebar')
+		$s->sidebar_right[] = View::factory('pet/sidebar')
 				->set('tep', $s->pet)
 				->set('pet', new Pet($s->pet));
 

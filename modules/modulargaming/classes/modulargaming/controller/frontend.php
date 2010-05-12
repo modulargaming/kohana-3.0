@@ -60,13 +60,16 @@ abstract class Modulargaming_Controller_Frontend extends Controller {
 		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
 			
-		$this->sidebar = array();
-		Event::run('sidebar', $this);
+		$this->sidebar_left = array();
+		Event::run('sidebar_left', $this);
+		$this->sidebar_right = array();
+		Event::run('sidebar_right', $this);
 
 
 			// Load the template
 			$this->template = View::factory($this->template)
-				->bind('sidebar', $this->sidebar);
+				->bind('sidebar_left', $this->sidebar_left)
+				->bind('sidebar_right', $this->sidebar_right);
 
 		}
 		

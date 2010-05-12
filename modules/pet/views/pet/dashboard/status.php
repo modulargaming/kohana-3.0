@@ -2,7 +2,7 @@
 	<?php if ( $tep->loaded() ): ?>
 
 	<h2><?php echo $tep->name; ?></h2>
-	<p style="margin-top: -8px;"> Level: <?php echo $tep->level; ?> <?php echo $tep->colour->name; ?> <?php echo $tep->race->name; ?></p>
+	<p style="margin-top: -8px;"> Level: <?php echo $tep->level; ?> <?php echo $tep->race->name; ?> <?php echo $tep->colour->name; ?></p>
 
 	<span class="bar hp">
 		<?php echo '<span style="width: ' . $pet->percent_hp() . '%"></span>'; ?>
@@ -18,6 +18,12 @@
 		<?php echo '<span style="width: ' . $pet->percent_xp() . '%"></span>'; ?>
 		<p><?php echo $tep->xp . ' / '. $tep->max_xp; ?></p>
 	</span>
+	
+	<ul class="left">
+		<li>Alignment <span><?php echo $pet->alignment( ); ?></span></li>
+		<li>Money <span><?php echo $tep->money; ?></span></li>
+
+	</ul>
 	
 	<ul class="right">
 		<li>Strength <span><?php echo $tep->strength; ?></span></li>

@@ -50,10 +50,24 @@
 	<div class="right"></div>
 </div>
 
+<div id="side-left">
+<div class="content">
+Test<br />
+Test<br />
+<?php
+//	foreach($sidebar_left as $s) {
+//		echo $s;
+//	}
+?>
+</div>
+</div>
+
+
+
 <div id="side">
 <div class="content">
 <?php
-	foreach($sidebar as $s) {
+	foreach($sidebar_right as $s) {
 		echo $s;
 	}
 ?>

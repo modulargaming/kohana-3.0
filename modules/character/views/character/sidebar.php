@@ -2,11 +2,11 @@
 
 	<h2><?php echo $character->name; ?></h2>
 <div>
-<?php echo $character->race->name; ?> 
-<?php echo $character->class->name; ?> <br />
-<div class=red><?php  echo $character->hp.'/'.$character->max_hp ?></div>
-<div class=green><?php  echo $character->energy.'/'.$character->max_energy ?></div>
-<div class=blue><?php  echo $character->xp.'/'.$character->max_xp ?></div>
+<?php echo $character->race->name; ?>&nbsp;
+<?php echo $character->class->name; ?><br />
+<div class="red">Health: <?php  echo $character->hp.'/'.$character->max_hp ?></div>
+<div class="green">Energy: <?php  echo $character->energy.'/'.$character->max_energy ?></div>
+<div class="blue">Experience: <?php  echo $character->xp.'/'.$character->max_xp ?></div>
 </div>
 	
 	
