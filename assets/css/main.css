@@ -305,18 +305,19 @@ span.bar.small span {
 div .left {
         float: left;
 	width: 200px;
+	text-align: left;
 }
 div .right {
         float: right;
 	width: 200px;
-	margin-right: 100px;
+
 }
 
 
 
 
 .stats {
-        width: 400px;
+        min-width: 200px;
         float: left;
         margin-right: 40px;
 }

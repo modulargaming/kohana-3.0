@@ -3,14 +3,16 @@
 
 	<h2><?php echo $character->name; ?></h2>
 	<p style="margin-top: -8px;">
- Level: <?php echo $character->level; ?> 
 <?php echo $char->alignment( ); ?> 
 <?php echo $character->race->name; ?> 
 <?php echo $character->class->name; ?> 
-	(&pound;<?php echo $character->money; ?>)
-
+<br />
 	</p>
-	
+<?php
+$image = 'assets/images/characters/' . $character->race->name.'/'.$character->class->name.'.png';
+$image = strtolower($image);
+echo html::image($image);
+?>	
 
 
 	<ul class="left">
@@ -35,9 +37,12 @@
 		</li>
 		</div>
 
-                <li>Strength <span><?php echo $character->strength; ?></span></li>
-                <li>Defense <span><?php echo $character->defence; ?></span></li>
-                <li>Agility <span><?php echo $character->agility; ?></span></li>
+
+                <li>Level: <span><?php echo $character->level; ?></span></li>
+                <li>Strength: <span><?php echo $character->strength; ?></span></li>
+                <li>Defense: <span><?php echo $character->defence; ?></span></li>
+                <li>Agility: <span><?php echo $character->agility; ?></span></li>
+                <li>Money: <span><?php echo $character->money; ?></span></li>
 
 
 	

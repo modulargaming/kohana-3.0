@@ -3,12 +3,10 @@
 
 	<h2><?php echo $user_pet->name; ?></h2>
 	<p style="margin-top: -8px;">
- Level: <?php echo $user_pet->level; ?> 
 <?php echo $pet->alignment( ); ?> 
 <?php echo $user_pet->colour->name; ?> 
 <?php echo $user_pet->race->name; ?> 
-	(&pound;<?php echo $user_pet->money; ?>)
-
+<br />
 <?php 
 $image = 'assets/images/pets/' . $user_pet->race->name.'/'.$user_pet->colour->name.'.png';
 $image = strtolower($image);
@@ -37,10 +35,11 @@ echo html::image($image);
 		<?php echo '('.$pet->percent_xp() . '%)'; ?>
 		</li>
 		</div>
-	
-                <li>Strength <span><?php echo $user_pet->strength; ?></span></li>
-                <li>Defense <span><?php echo $user_pet->defence; ?></span></li>
-                <li>Agility <span><?php echo $user_pet->agility; ?></span></li>
+                <li>Level: <span><?php echo $user_pet->level; ?></span></li>	
+                <li>Strength: <span><?php echo $user_pet->strength; ?></span></li>
+                <li>Defense: <span><?php echo $user_pet->defence; ?></span></li>
+                <li>Agility: <span><?php echo $user_pet->agility; ?></span></li>
+                <li>Money: <span><?php echo $user_pet->money; ?></span></li>
 
 
 	</ul>
