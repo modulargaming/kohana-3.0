@@ -16,7 +16,7 @@ echo html::image($image);
 ?>
 </p>
 
-	<ul class="left">
+	<ul class="right">
 		<div class="red">
 		<li>
 		<?php echo 'Health: '.$user_pet->hp . ' / '. $user_pet->max_hp; ?>

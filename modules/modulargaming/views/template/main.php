@@ -47,7 +47,7 @@
 		?>
 	</ul>
 
-	<div class="right"></div>
+	<div class="nav-right"></div>
 </div>
 
 <div id="side-left">
