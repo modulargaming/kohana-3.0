@@ -6,6 +6,11 @@
 	<div class="left">
 		<h3>You:</h3>
 		
+<?php
+$image = 'assets/images/characters/' . $character->race->name.'/'.$character->class->name.'.png';
+$image = strtolower($image);
+echo html::image($image);
+?>
 		<span class="bar hp">
 			<?php echo '<span style="width: ' . $char->percent_hp() . '%"></span>'; ?>
 			<p><?php echo $character->hp . ' / '. $character->max_hp; ?></p>
