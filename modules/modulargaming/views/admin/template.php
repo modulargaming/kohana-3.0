@@ -22,9 +22,19 @@
 	<nav>
 		<ul>
 		<?php
-			echo '<li class="current">'.html::anchor('admin', 'Dashboard').'</li>';
-			echo '<li>'.html::anchor('admin/users', 'Users' ).'</li>';
-			echo '<li>'.html::anchor('admin/navigation', 'Navigation' ).'</li>';
+                        if ( $user ) {
+                        echo Navigation::render('2', 'navigation/main');
+
+                        }
+                        else {
+                        echo Navigation::render('0','navigation/main');
+                        }
+
+		?>
+		<?php
+			//echo '<li class="current">'.html::anchor('admin', 'Dashboard').'</li>';
+			//echo '<li>'.html::anchor('admin/users', 'Users' ).'</li>';
+			//echo '<li>'.html::anchor('admin/navigation', 'Navigation' ).'</li>';
 		?>
 		</ul>
 	</nav>
