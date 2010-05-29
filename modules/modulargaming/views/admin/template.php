@@ -22,19 +22,11 @@
 	<nav>
 		<ul>
 		<?php
-                        if ( $user ) {
-                        echo Navigation::render('2', 'navigation/main');
-
-                        }
-                        else {
-                        echo Navigation::render('0','navigation/main');
-                        }
-
-		?>
-		<?php
-			//echo '<li class="current">'.html::anchor('admin', 'Dashboard').'</li>';
-			//echo '<li>'.html::anchor('admin/users', 'Users' ).'</li>';
-			//echo '<li>'.html::anchor('admin/navigation', 'Navigation' ).'</li>';
+			if ($user) {
+				echo Navigation::render('2', 'navigation/main');
+			} else {
+				echo Navigation::render('0','navigation/main');
+			}
 		?>
 		</ul>
 	</nav>
@@ -92,7 +84,7 @@
 	
 <?php
 if (Kohana::$environment == Kohana::DEVELOPMENT)
-	echo '<div id="debug">'.View::factory('profiler/stats').'</div>';
+	echo '<div style="clear: both"></div><div id="debug">'.View::factory('profiler/stats').'</div>';
 ?>
 
 <?php echo Asset::render('js') ?>
