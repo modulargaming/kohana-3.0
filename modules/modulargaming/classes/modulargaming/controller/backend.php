@@ -84,7 +84,7 @@ abstract class Modulargaming_Controller_Backend extends Controller_Base {
 		// If we can't retrive it from cache, grab it from modulargaming.com
 		if ( ! $news)
 		{
-			$news = Feed::parse('http://modulargaming.com/rss.xml', 5);
+			$news = Feed::parse('http://modulargaming.com/rss.xml', 2);
 			
 			// Cache it.
 			Kohana::cache('mg_news', $news, Modulargaming::VERSION_CACHE_TIME);
