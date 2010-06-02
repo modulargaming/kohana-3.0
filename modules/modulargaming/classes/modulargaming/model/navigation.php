@@ -3,6 +3,7 @@
  * 
  *
  * @package    Modular Gaming
+ * @category   Models
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
  * @license    http://www.modulargaming.com/license

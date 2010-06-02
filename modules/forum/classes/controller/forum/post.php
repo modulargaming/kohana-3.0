@@ -2,10 +2,11 @@
 /**
  *
  *
- * @package    Modular Gaming
- * @author     Curtis Delicata
- * @copyright  (c) 2010 Curtis Delicata
- * @license    BSD - http://www.modulargaming.com/license
+ * @package   Modular Gaming
+ * @category  Controllers
+ * @author    Curtis Delicata
+ * @copyright (c) 2010 Curtis Delicata
+ * @license   http://www.modulargaming.com/license
  */
 
 class Controller_Forum_Post extends Controller_Frontend {

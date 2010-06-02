@@ -3,6 +3,7 @@
  *
  *
  * @package   Modular Gaming
+ * @category  Controllers
  * @author    Curtis Delicata & Oscar Hinton
  * @copyright (c) 2010 Curtis Delicata & Oscar Hinton
  * @license   BSD - http://www.modulargaming.com/license

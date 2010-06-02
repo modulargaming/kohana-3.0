@@ -27,6 +27,12 @@
 			} else {
 				echo Navigation::render('0','navigation/main');
 			}
+
+		?>
+		<?php
+			//echo '<li class="current">'.html::anchor('admin', 'Dashboard').'</li>';
+			//echo '<li>'.html::anchor('admin/users', 'Users' ).'</li>';
+			//echo '<li>'.html::anchor('admin/navigation', 'Navigation' ).'</li>';
 		?>
 		</ul>
 	</nav>
@@ -84,7 +90,7 @@
 	
 <?php
 if (Kohana::$environment == Kohana::DEVELOPMENT)
-	echo '<div style="clear: both"></div><div id="debug">'.View::factory('profiler/stats').'</div>';
+	echo '<div id="debug">'.View::factory('profiler/stats').'</div>';
 ?>
 
 <?php echo Asset::render('js') ?>

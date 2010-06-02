@@ -3,7 +3,7 @@
  * Controller for managing the basic user actions (register, login, logout)
  *
  * @package    Modular Gaming
- * @subpackage Core
+ * @category   Controllers
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
  * @license    http://www.modulargaming.com/license

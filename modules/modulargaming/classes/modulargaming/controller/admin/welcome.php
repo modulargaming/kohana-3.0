@@ -3,6 +3,7 @@
  * Admin dashboard controller
  *
  * @package    Modular Gaming
+ * @category   Controllers
  * @author     Oscar Hinton
  * @copyright  (c) 2010 Oscar Hinton
  * @license    http://www.modulargaming.com/license

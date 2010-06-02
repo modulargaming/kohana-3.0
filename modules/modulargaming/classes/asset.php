@@ -12,9 +12,10 @@ class Asset {
 	protected static $data = array();
 	
 	/**
-	 * 
-	 * @param $path
-	 * @param $type
+	 * Add the path into the type's array to later be loaded
+	 * @param  string  $path
+	 * @param  string  $type
+	 * @return boolean
 	 */
 	public static function add($path, $type)
 	{
@@ -35,8 +36,8 @@ class Asset {
 	}
 	
 	/**
-	 * 
-	 * @param $type
+	 * Render the array of paths
+	 * @param  string $type
 	 * @return string
 	 */
 	public static function render($type)

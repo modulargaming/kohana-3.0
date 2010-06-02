@@ -3,7 +3,7 @@
  * 
  *
  * @package    Modular Gaming
- * @subpackage Core
+ * @category   Controllers
  * @author     Curtis Delicata
  * @copyright  (c) 2010 Curtis Delicata
  * @license    http://www.modulargaming.com/license
