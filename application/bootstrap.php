@@ -101,6 +101,7 @@ Kohana::modules(array(
 	'pagination' => MODPATH.'pagination', // Paging of results
 	'captcha'    => MODPATH.'captcha',
 	'image'      => MODPATH.'image',
+	'userguide'      => MODPATH.'userguide',
 ));
 
 /**
