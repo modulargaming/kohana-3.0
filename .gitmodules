@@ -30,4 +30,4 @@
 	url = git://github.com/modulargaming/event.git
 [submodule "modules/userguide"]
 	path = modules/userguide
-	url = http://github.com/kohana/userguide.git
+	url = http://github.com/modulargaming/userguide.git
