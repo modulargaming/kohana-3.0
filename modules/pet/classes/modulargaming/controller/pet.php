@@ -106,7 +106,7 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 
 		}
 
-		if ($user_pet->energy < $this->train_cost)
+		if ($pet->energy < $this->train_cost)
 		{
 		                Message::set( Message::ERROR, 'Not enough energy' );
 				$this->request->redirect('pet/train' );
@@ -119,10 +119,10 @@ class Modulargaming_Controller_Pet extends Controller_Frontend {
 			
 			try
 			{
-				$user_pet->$skill = $user_pet->$skill+1;
-				$user_pet->energy = $user_pet->energy - $this->train_cost;
+				$pet->$skill = $pet->$skill+1;
+				$pet->energy = $pet->energy - $this->train_cost;
 				
-				$user_pet->save();
+				$pet->save();
 //				$this->request->redirect( 'pet/train' );
 				
 				

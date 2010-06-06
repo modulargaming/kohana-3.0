@@ -12,5 +12,5 @@ Energy:<br />
 </span>
 <?php foreach ($skills as $s): ?>
 <?php echo $s.' '.$pet->$s.' ';?>
-<?php echo html::anchor("character/train/$s","Increase"); ?><br />
+<?php echo html::anchor("pet/train/$s","Increase"); ?><br />
 <?php endforeach; ?>
