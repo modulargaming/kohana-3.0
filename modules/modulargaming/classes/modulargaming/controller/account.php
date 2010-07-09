@@ -70,8 +70,8 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 	public function action_login()
 	{
 		// If the user is already logged in, send them to their settings.
-		if ( $this->user )
-			$this->request->redirect( 'account' );
+		if ($this->user)
+			$this->request->redirect('account');
 		
 		$this->title = 'Login';
 		
@@ -86,7 +86,7 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 		// Check if the validation passed and try to log them in.
 		if ( $post->check() )
 		{
-			if ($this->a1->login($post['username'],$post['password'], isset($_POST['remember']) ? (bool) $_POST['remember'] : FALSE))
+			if ($this->auth->login($post['username'],$post['password'], isset($_POST['remember']) ? (bool) $_POST['remember'] : FALSE))
 			{
 			
 				// If it is an ajax request, output 1 to verify the user has been logged in.
@@ -95,7 +95,7 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 					die('1');
 				}
 				
-				$this->request->redirect( '' );
+				$this->request->redirect('');
 			}
 			else
 			{
@@ -143,8 +143,8 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 			->rule('email', 'not_empty')
 			->rule('email', 'email')
 			->rule('email_confirm', 'matches', array('email'))
-			->rule('password', 'min_length', array ( 6 ) )
-			->rule('password', 'max_length', array( 20 ) )
+			->rule('password', 'min_length', array(6))
+			->rule('password', 'max_length', array(50))
 			->rule('password_confirm', 'matches', array('password'))
 			->rule ('tos', 'not_empty')
 			->callback('captcha', array($this, 'captcha_valid'));
@@ -154,13 +154,15 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 			
 			$values = array(
 				'username' => $post['username'],
-				'password' => $this->a1->hash_password($post['password']),
+				'password' => $post['password'],
 				'email' => $post['email'],
-				'role' => 'user',
 			);
 			
 			// Assign the validated data to the sprig object
 			$user->set($values);
+			
+			// Add the 'login' role to the user model
+			$user->add('roles', 1);
 			
 			try
 			{
@@ -168,8 +170,8 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 				$user->save();
 				
 				// Auto login
-				$this->a1->force_login($post['username']);
-
+				$this->auth->login($post['username'], $post['password']);
+				
 				// Redirect the user to the dashboard
 				$this->request->redirect('dashboard');
 
@@ -199,7 +201,7 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 	public function action_logout()
 	{
 		if ($this->user)
-			$this->a1->logout();
+			$this->auth->logout();
 		
 		$this->request->redirect( '' );
 	}

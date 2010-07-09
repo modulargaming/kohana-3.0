@@ -21,12 +21,18 @@ abstract class Modulargaming_Controller_Base extends Controller {
 	public function before()
 	{
 		
+		$this->session = Session::instance();
+		
 		// Initialize the Auth System
+		$this->auth = Auth::instance();
+		$this->user = $this->auth->get_user();
+		
+		
 		// $this->a2 = A2::instance();
 		// $this->a1 = $this->a2->a1;
 		// $this->user = $this->a2->get_user();
 		
-		$this->user = false;
+		//$this->user = false;
 		
 		// Setup the user specific settings
 		if ($this->user)

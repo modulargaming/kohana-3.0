@@ -88,14 +88,14 @@ Kohana::modules(array(
 	// Event system
 	'event' => MODPATH.'event',
 	
+	// Auth
+	'aacl'       => MODPATH.'aacl',
+	'Jelly-Auth' => MODPATH.'jelly-auth',
+	'Auth'       => MODPATH.'auth',
+	
 	// Database
 	'jelly'    => MODPATH.'jelly', // Jelly ORM
 	'database' => MODPATH.'database', // Database access
-	
-	// Auth
-	'a1'    => MODPATH.'A1',
-	'a2'    => MODPATH.'A2',
-	'acl'   => MODPATH.'ACL',
 	
 	// Misc modules
 	'pagination' => MODPATH.'pagination', // Paging of results

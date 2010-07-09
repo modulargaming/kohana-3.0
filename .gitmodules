@@ -22,3 +22,12 @@
 [submodule "modules/userguide"]
 	path = modules/userguide
 	url = http://github.com/modulargaming/userguide.git
+[submodule "modules/auth"]
+	path = modules/auth
+	url = git://github.com/kohana/auth.git
+[submodule "modules/aacl"]
+	path = modules/aacl
+	url = git://github.com/banks/aacl.git
+[submodule "modules/jelly-auth"]
+	path = modules/jelly-auth
+	url = git://github.com/raeldc/jelly-auth.git
