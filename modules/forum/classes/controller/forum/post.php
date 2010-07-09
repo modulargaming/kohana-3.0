@@ -40,25 +40,26 @@ class Controller_Forum_Post extends Controller_Frontend {
 	public function action_edit($id)
 	{
 		$message = Jelly::select('forum_post')
-                        ->where('id', '=', $id)
-                        ->load();
+			->where('id', '=', $id)
+			->load();
+		
+		// Check if the user got permission to update the post.
+		AACL::check($message, 'update');
 
-                // Make sure the post exists
-                if ( ! $message->loaded())
-                {
-                        Message::set( Message::ERROR, 'Post does not exist' );
-                        $this->request->redirect('forum');
-                }
+		// Make sure the post exists
+		if ( ! $message->loaded())
+		{
+			Message::set(Message::ERROR, 'Post does not exist');
+			$this->request->redirect('forum');
+		}
 
 		if ($this->user->id != $message->user->id)
                 {
-                        Message::set(Message::ERROR, 'You are not the author of this post.');
+                       // Message::set(Message::ERROR, 'You are not the author of this post.');
 
-                        $this->request->redirect('forum');
+                        //$this->request->redirect('forum');
                 }
-
-		else
-		{
+		
 		$this->title = 'Forum - Edit '.$message->title;
 
                 // Validate the form input
@@ -95,8 +96,6 @@ class Controller_Forum_Post extends Controller_Frontend {
                         ->set('message', $message)
                         ->set('post', $post);
 
-
-	}
 
 	}
 

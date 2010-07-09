@@ -17,7 +17,9 @@ class Controller_Forum_Topic extends Controller_Frontend {
 	
 	public function action_index($id)
 	{
+		
 
+		
 		$topic = Jelly::select('forum_topic')
 			->where('id', '=', $id)
 			->load();

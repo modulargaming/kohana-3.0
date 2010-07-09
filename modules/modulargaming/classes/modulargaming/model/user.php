@@ -46,56 +46,7 @@ class Modulargaming_Model_User extends Jelly_Model {
 			'roles' => new Field_ManyToMany
 		));
     }
-	
-    /*
-	public static function initialize(Jelly_Meta $meta)
-	{
-		
-		$meta->table = 'users';
-		$meta->fields += array(
-			'id' => new Field_Primary,
-			
-			'username' => new Field_String(array(
-				'empty'  => FALSE,
-				'unique' => TRUE,
-				'min_length' => 3,
-				'max_length' => 20,
-			)),
-			
-			'email' => new Field_Email(array(
-				'empty' => FALSE,
-			)),
-			
-			'password' => new Field_String(array(
-				'empty' => FALSE,
-			)),
-			
-			'token' => new Field_String(array(
-				'empty' => TRUE,
-			)),
-			
-			'last_login' => new Field_Timestamp(array(
-				'empty'  => TRUE,
-				'pretty_format' => 'Y-m-d H:i',
-			)),
-			
-			// Do not remove this rule, it is a junk value I needed to avoid an error.
-			'logins' => new Field_Float(array(
-				 'empty' => TRUE,
-				 'rules' => array(
-				 	'numeric' => array(),
-				 )
-			)),
-			
-			'role' => new Field_String(array(
-				 'empty' => TRUE,
-			)),
-			
-			'language' => new Field_String,
-			
-		);
-	}
-	*/
+
 	
 	/**
 	 * Validate callback wrapper for checking password match

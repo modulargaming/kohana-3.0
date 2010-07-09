@@ -78,10 +78,10 @@ Kohana::$config->attach(new Kohana_Config_File);
 Kohana::modules(array(
 	
 	// Modular Gaming modules
-	'forum' => MODPATH.'forum', // Offical forum module
-	'message' => MODPATH.'message', // Official messages module
+	'forum' =>     MODPATH.'forum', // Offical forum module
+	'message' =>   MODPATH.'message', // Official messages module
 	'character' => MODPATH.'character', // Official character module
-	'pet' => MODPATH.'pet', // Official pet module
+	'pet' =>       MODPATH.'pet', // Official pet module
 	
 	'modulargaming' => MODPATH.'modulargaming', // Modular Gaming core
 	
@@ -89,6 +89,7 @@ Kohana::modules(array(
 	'event' => MODPATH.'event',
 	
 	// Auth
+	'Jelly-aacl' => MODPATH.'jelly-aacl',
 	'aacl'       => MODPATH.'aacl',
 	'Jelly-Auth' => MODPATH.'jelly-auth',
 	'Auth'       => MODPATH.'auth',
@@ -101,7 +102,7 @@ Kohana::modules(array(
 	'pagination' => MODPATH.'pagination', // Paging of results
 	'captcha'    => MODPATH.'captcha',
 	'image'      => MODPATH.'image',
-	'userguide'      => MODPATH.'userguide',
+	'userguide'  => MODPATH.'userguide',
 ));
 
 /**
@@ -149,6 +150,16 @@ try
 {
 	// Attempt to execute the response
 	$request->execute();
+}
+catch (AACL_Exception_401 $e)
+{
+	// Send them to login
+	Request::instance()->redirect('account/login');
+}
+catch (AACL_Exception_403 $e)
+{
+	// TODO: Some fancy access denied page.
+	die('403');
 }
 catch (Exception $e)
 {
