@@ -13,7 +13,7 @@ abstract class Modulargaming_Controller_Base extends Controller {
 	
 	// Settings.
 	public $title = 'Undefined'; // Title of the page
-	public $template = 'template/main';
+	public $template = 'template/base';
 	public $auto_render = TRUE; // Render the template
 	public $protected = FALSE; // Require user to login.
 	public $errors = array();
@@ -45,12 +45,9 @@ abstract class Modulargaming_Controller_Base extends Controller {
 		
 		if ($this->auto_render === TRUE && !Request::$is_ajax)
 		{
-			//$this->sidebar = array();
-			//Event::run('sidebar', $this);
 
 			// Load the template
-			$this->template = View::factory($this->template)
-				->bind('sidebar', $this->sidebar);
+			$this->template = View::factory($this->template);
 
 		}
 		
@@ -61,7 +58,7 @@ abstract class Modulargaming_Controller_Base extends Controller {
 		}
 		
 		// Run the before events.
-		Event::run('before', $this);
+		// Event::run('before', $this);
 		
 	}
 	

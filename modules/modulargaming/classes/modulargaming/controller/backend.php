@@ -12,9 +12,6 @@
 abstract class Modulargaming_Controller_Backend extends Controller_Base {
 	
 	public $template = 'admin/template';
-	
-	public $errors = array();
-	
 	public $protected = TRUE; // Require user to login.
 	
 	public function before()
