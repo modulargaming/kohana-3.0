@@ -77,7 +77,7 @@ abstract class Modulargaming_Controller_Base extends Controller implements AACL_
 	
 	
 	
-/**
+	/**
 	 * AACL_Resource::acl_id() implementation
 	 * 
 	 * @return	string 

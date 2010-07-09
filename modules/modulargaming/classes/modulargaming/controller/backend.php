@@ -19,6 +19,9 @@ abstract class Modulargaming_Controller_Backend extends Controller_Base {
 		
 		parent::before();
 		
+		// Check if the user got access to the page.
+		AACL::check($this);
+		
 		Asset::add('assets/css/admin.css', 'css');
 		
 		Asset::add('assets/js/jquery.js', 'js'); // jQuery
@@ -89,6 +92,18 @@ abstract class Modulargaming_Controller_Backend extends Controller_Base {
 		
 		return $news;
 		
+	}
+	
+	
+	/**
+	 * AACL_Resource::acl_id() implementation
+	 * 
+	 * @return	string 
+	 */
+	public function acl_id()
+	{
+		// Controller namespace, controller name
+		return 'a:c:'.strtolower($this->request->controller);
 	}
 	
 } // End Backend

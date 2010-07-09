@@ -34,11 +34,6 @@
 			<?php echo form::input('password_confirm', $post['password_confirm']) ?>
 		</div>
 		
-		<div class="group">
-			<?php echo form::label('role', 'Role:') ?>
-			<?php echo form::select('role', $roles, $post['role']) ?>
-		</div>
-		
 		<div class="buttons">
 			<?php echo form::submit('add', 'Add') ?>
 		</div>
