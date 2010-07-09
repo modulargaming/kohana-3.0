@@ -22,9 +22,11 @@ abstract class Modulargaming_Controller_Base extends Controller {
 	{
 		
 		// Initialize the Auth System
-		$this->a2 = A2::instance();
-		$this->a1 = $this->a2->a1;
-		$this->user = $this->a2->get_user();
+		// $this->a2 = A2::instance();
+		// $this->a1 = $this->a2->a1;
+		// $this->user = $this->a2->get_user();
+		
+		$this->user = false;
 		
 		// Setup the user specific settings
 		if ($this->user)
