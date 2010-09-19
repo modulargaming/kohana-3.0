@@ -19,7 +19,7 @@ return array
 			 */
 			'hostname'   => '127.0.0.1',
 			'username'   => 'root',
-			'password'   => '',
+			'password'   => 'password',
 			'persistent' => FALSE,
 			'database'   => 'modulargaming',
 		),

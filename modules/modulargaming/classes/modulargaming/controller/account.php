@@ -43,7 +43,7 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 			
 			// If confirm_email is entered, the user wants a new email.
 			if ($post['password'] != '')
-				$this->user->password = $this->a1->hash_password($post['password']);
+				$this->user->password = $this->auth->hash_password($post['password']);
 			
 			
 			$this->user->save();
@@ -158,7 +158,7 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 				'email' => $post['email'],
 			);
 			
-			// Assign the validated data to the sprig object
+			// Assign the validated data to the jelly object
 			$user->set($values);
 			
 			// Add the 'login' role to the user model
@@ -268,9 +268,9 @@ class Modulargaming_Controller_Account extends Controller_Frontend {
 	public function settings_password(Validate $array, $field)
 	{
 		
-		$salt = $this->a1->find_salt($this->user->password);
+		$salt = $this->auth->find_salt($this->user->password);
 		
-		if ( $this->a1->hash_password($array[$field], $salt) != $this->user->password)
+		if ( $this->auth->hash_password($array[$field], $salt) != $this->user->password)
 		{
 			$array->error($field, 'invalid');
 			return;

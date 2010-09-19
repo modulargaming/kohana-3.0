@@ -1,13 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.3.7deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 09, 2010 at 11:23 AM
--- Server version: 5.1.41
--- PHP Version: 5.3.2-1ubuntu4
+-- Generation Time: Sep 19, 2010 at 12:51 PM
+-- Server version: 5.1.49
+-- PHP Version: 5.3.3-1ubuntu8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
 -- Database: `modulargaming`
 --
@@ -49,7 +56,12 @@ CREATE TABLE IF NOT EXISTS `battles` (
   `monster_id` int(6) NOT NULL,
   `hp` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `battles`
+--
+
 
 -- --------------------------------------------------------
 
@@ -64,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `author` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `blog_posts`
@@ -98,8 +110,14 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `max_energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `characters`
+--
+
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `character_classes`
@@ -110,12 +128,18 @@ CREATE TABLE IF NOT EXISTS `character_classes` (
   `name` varchar(50) NOT NULL,
   `description` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO `character_classes` (`id`, `name`, `description`) VALUES 
+--
+-- Dumping data for table `character_classes`
+--
+
+INSERT INTO `character_classes` (`id`, `name`, `description`) VALUES
 (1, 'Warrior', 'Warriors are strong'),
 (2, 'Magican', 'Magicans are fast'),
-(3, 'Medic',   'Medics have a lot of health');
+(3, 'Medic', 'Medics have a lot of health');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `character_races`
@@ -138,7 +162,6 @@ INSERT INTO `character_races` (`id`, `name`, `description`, `starting_zone`) VAL
 (2, 'Alien', 'Aliens that have migrated to Earth.', 1);
 
 -- --------------------------------------------------------
-
 
 --
 -- Table structure for table `forum_categories`
@@ -174,7 +197,12 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
   `content` varchar(500) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `forum_posts`
+--
+
 
 -- --------------------------------------------------------
 
@@ -191,7 +219,12 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
   `posts` int(6) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `forum_topics`
+--
+
 
 -- --------------------------------------------------------
 
@@ -206,12 +239,11 @@ CREATE TABLE IF NOT EXISTS `items` (
   `description` text NOT NULL,
   `name` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `items`
 --
-
 
 INSERT INTO `items` (`id`, `class`, `image`, `description`, `name`) VALUES
 (1, 'food', 'food/apple.png', 'A very delicate apple, replenishes some health on use.', 'Apple'),
@@ -238,9 +270,14 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `status` varchar(10) NOT NULL,
   `title` varchar(25) NOT NULL,
   `message` text NOT NULL,
-  `created` int(10),
+  `created` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `messages`
+--
+
 
 -- --------------------------------------------------------
 
@@ -280,8 +317,6 @@ INSERT INTO `monsters` (`id`, `name`, `level`, `max_hp`, `defence`, `min_dmg`, `
 
 -- --------------------------------------------------------
 
--- --------------------------------------------------------
-
 --
 -- Table structure for table `navigations`
 --
@@ -312,6 +347,8 @@ INSERT INTO `navigations` (`id`, `group_id`, `position`, `title`, `slug`) VALUES
 (10, 1, 8, 'Logout', 'account/logout'),
 (11, 2, 9, 'Dashboard', 'admin'),
 (12, 2, 10, 'Users', 'admin/users');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `npcs`
@@ -349,6 +386,7 @@ CREATE TABLE IF NOT EXISTS `npc_messages` (
 --
 -- Dumping data for table `npc_messages`
 --
+
 
 -- --------------------------------------------------------
 
@@ -399,9 +437,14 @@ CREATE TABLE IF NOT EXISTS `pets` (
   `max_energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+--
+-- Dumping data for table `pets`
+--
 
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `pet_colours`
@@ -412,7 +455,11 @@ CREATE TABLE IF NOT EXISTS `pet_colours` (
   `name` varchar(50) NOT NULL,
   `description` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pet_colours`
+--
 
 INSERT INTO `pet_colours` (`id`, `name`, `description`) VALUES
 (1, 'Black', 'Black colour'),
@@ -421,6 +468,8 @@ INSERT INTO `pet_colours` (`id`, `name`, `description`) VALUES
 (4, 'Red', 'Red colour'),
 (5, 'White', 'White colour'),
 (6, 'Yellow', 'Yellow colour');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `pet_races`
@@ -443,6 +492,46 @@ INSERT INTO `pet_races` (`id`, `name`, `description`, `starting_zone`) VALUES
 (2, 'Zedro', 'The Zedro.', 1);
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `description`) VALUES
+(1, 'login', 'Login privileges, granted after account confirmation'),
+(2, 'admin', 'Administrative user, has access to everything.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles_users`
+--
+
+CREATE TABLE IF NOT EXISTS `roles_users` (
+  `user_id` int(11) unsigned NOT NULL,
+  `role_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`),
+  KEY `fk_role_id` (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `roles_users`
+--
+
+INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -518,17 +607,26 @@ INSERT INTO `shop_items` (`shop_id`, `item_id`, `amount`, `price`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(30) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(64) DEFAULT NULL,
-  `token` varchar(255) DEFAULT NULL,
-  `logins` int(10) DEFAULT NULL,
-  `last_login` int(10) DEFAULT NULL,
-  `role` varchar(50) NOT NULL,
-  `language` varchar(3) DEFAULT 'en',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(127) NOT NULL,
+  `username` varchar(32) NOT NULL DEFAULT '',
+  `password` char(50) NOT NULL,
+  `logins` int(10) unsigned NOT NULL DEFAULT '0',
+  `last_login` int(10) unsigned DEFAULT NULL,
+  `language` varchar(4) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_username` (`username`),
+  UNIQUE KEY `uniq_email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `username`, `password`, `logins`, `last_login`, `language`) VALUES
+(1, 'curtis@delicata.eu', 'curtis', '3e19c7894598d8a5ff7b2fc8943c3f7bea8ff836450afaaae1', 1, 1284897034, '');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `user_facebook`
@@ -557,6 +655,11 @@ CREATE TABLE IF NOT EXISTS `user_histories` (
   `history` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `user_histories`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -571,6 +674,29 @@ CREATE TABLE IF NOT EXISTS `user_items` (
 
 --
 -- Dumping data for table `user_items`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_tokens`
+--
+
+CREATE TABLE IF NOT EXISTS `user_tokens` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
+  `user_agent` varchar(40) NOT NULL,
+  `token` varchar(32) NOT NULL,
+  `created` int(10) unsigned NOT NULL,
+  `expires` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_token` (`token`),
+  KEY `fk_user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `user_tokens`
 --
 
 
@@ -630,3 +756,20 @@ INSERT INTO `zone_monster` (`zone_id`, `monster_id`) VALUES
 (3, 8),
 (3, 9),
 (3, 10);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `roles_users`
+--
+ALTER TABLE `roles_users`
+  ADD CONSTRAINT `roles_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `roles_users_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_tokens`
+--
+ALTER TABLE `user_tokens`
+  ADD CONSTRAINT `user_tokens_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
