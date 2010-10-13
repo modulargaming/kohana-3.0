@@ -10,7 +10,7 @@
 <?php foreach ( $group_users as $u ): ?>
 <ul>
 
-<li><?php echo html::anchor( 'profile/view/'.$u->group->user->username, $u->group->user->username); ?></li>
+<li><?php echo html::anchor( 'profile/view/'.$u->group->user->username, $u->group->user->username); echo '('.$u->title.')'; ?></li>
 </ul>
 <?php endforeach;?>
 
