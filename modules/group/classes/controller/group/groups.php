@@ -49,7 +49,7 @@ class Controller_Group_Groups extends Controller_Frontend {
 	/**
 	 * Display a specified group
 	 */
-	public function action_view()
+	public function action_view($id)
 	{
 			
 		$group = Jelly::select('group')
