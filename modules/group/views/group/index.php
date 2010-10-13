@@ -1,8 +1,8 @@
 <?php echo Message::render() ?>
 
 <?php foreach ( $groups as $g ): ?>
-<div class=group-category>
-<?php echo html::anchor( 'group/list/'.$g->id, $g->name ); ?>
+<div class=group-list>
+<?php echo html::anchor( 'group/view/'.$g->id, $g->name ); ?>
 <br />
 <?php echo $g->description ?>
 

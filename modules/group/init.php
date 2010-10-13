@@ -5,6 +5,6 @@ Route::set('group', 'group(/<controller>(/<id>(/<action>)))', array(
 ))
 	->defaults(array(
 		'directory'  => 'group',
-		'controller' => 'group',
-		'action'     => 'index',
+		'controller' => 'groups',
+		'action'     => 'view',
 	));

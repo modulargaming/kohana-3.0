@@ -9,7 +9,7 @@
  * @license   BSD - http://www.modulargaming.com/license
  */
 
-class Controller_Group_Group extends Controller_Frontend {
+class Controller_Group_Groups extends Controller_Frontend {
 	
 	public $protected = TRUE;
 	public $title = 'Group';
@@ -31,10 +31,10 @@ class Controller_Group_Group extends Controller_Frontend {
 	public function action_index()
 	{
 		
-		$groups = Jelly::select('groups')
+		$groups = Jelly::select('group')
 			->execute();
 	
-		// Check if no groups were found.
+		// Check if no group were found.
 		if ($groups->count() == 0)
 		{
 			// Set an error message.
@@ -52,7 +52,7 @@ class Controller_Group_Group extends Controller_Frontend {
 	public function action_view()
 	{
 			
-		$group = Jelly::select('groups')
+		$group = Jelly::select('group')
 			->where('id', '=', $this->group_id)
 			->load();
 	
@@ -64,7 +64,7 @@ class Controller_Group_Group extends Controller_Frontend {
 		
 		$this->title = 'Group - '.$group->title;
 		
-		$group_users = Jelly::select('user_group')
+		$group_users = Jelly::select('group_user')
 			->where('group_id', '=', $this->group_id)
 			->execute();
 	
@@ -105,12 +105,13 @@ class Controller_Group_Group extends Controller_Frontend {
 			
 			$group_values = array(
 				'name' => $post['name'],
+				'description' => $post['description'],
 				'user' => $this->user->id,
 				'status' => 'open',
 			);
 			
 			
-			$group = Jelly::factory('groups');
+			$group = Jelly::factory('group');
 			
 			// Assign the validated data to the jelly object
 			$group->set($group_values);
@@ -121,7 +122,7 @@ class Controller_Group_Group extends Controller_Frontend {
 			
 			Message::set(Message::SUCCESS, 'You created a group.');
 			
-			$this->request->redirect('group/list/'.$id);
+			$this->request->redirect('group/view/'.$group_id);
 			
 		}
 		else
