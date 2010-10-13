@@ -120,9 +120,24 @@ class Controller_Group_Groups extends Controller_Frontend {
 			$group_id = $group->id;
 			
 			
+			$group_user_values = array(
+				'user' => $this->user->id,
+				'group' => $group_id,
+				'title' => 'owner'
+			);
+			
+			
+			$group_user = Jelly::factory('group_user');
+			
+			// Assign the validated data to the jelly object
+			$group_user->set($group_user_values);
+			$group_user->save();
+
+
+
 			Message::set(Message::SUCCESS, 'You created a group.');
 			
-			$this->request->redirect('group/view/'.$group_id);
+			$this->request->redirect('group/'.$group_id).'/view';
 			
 		}
 		else
@@ -139,4 +154,4 @@ class Controller_Group_Groups extends Controller_Frontend {
 	}
 
 	
-} // End Group_List
+} // End Group_Groups

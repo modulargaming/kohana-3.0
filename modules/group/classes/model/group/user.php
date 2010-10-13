@@ -27,6 +27,8 @@ class Model_Group_User extends Jelly_Model {
                                 'foreign' => 'users.id',
                         )),
 
+			'title' => new Field_String,
+
 			
                 );
 }
