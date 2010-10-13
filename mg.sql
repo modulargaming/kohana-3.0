@@ -62,27 +62,6 @@ CREATE TABLE IF NOT EXISTS `battles` (
 -- Dumping data for table `battles`
 --
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `blog_posts`
---
-
-CREATE TABLE IF NOT EXISTS `blog_posts` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `content` text NOT NULL,
-  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `author` int(6) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `blog_posts`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -248,15 +227,6 @@ CREATE TABLE IF NOT EXISTS `groups` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`id`, `name`, `description`, `user_id`, `created`, `status`) VALUES
-(1, 'Test', 'Testss', 1, 1286968800, 'open'),
-(2, 'Test', 'Testss', 1, 1286968825, 'open'),
-(3, 'test2', 'this is a test', 1, 1286970697, 'open');
-
 -- --------------------------------------------------------
 
 --
@@ -270,13 +240,6 @@ CREATE TABLE IF NOT EXISTS `group_users` (
   `title` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `group_users`
---
-
-INSERT INTO `group_users` (`id`, `group_id`, `user_id`, `title`) VALUES
-(0, 3, 1, 'owner');
 
 -- --------------------------------------------------------
 
@@ -672,13 +635,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `uniq_username` (`username`),
   UNIQUE KEY `uniq_email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `email`, `username`, `password`, `logins`, `last_login`, `language`) VALUES
-(1, 'curtis@delicata.eu', 'curtis', '3e19c7894598d8a5ff7b2fc8943c3f7bea8ff836450afaaae1', 3, 1286965279, '');
 
 -- --------------------------------------------------------
 
