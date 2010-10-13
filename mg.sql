@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 19, 2010 at 12:51 PM
+-- Generation Time: Oct 13, 2010 at 01:10 PM
 -- Server version: 5.1.49
--- PHP Version: 5.3.3-1ubuntu8
+-- PHP Version: 5.3.3-1ubuntu9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `battles` (
   `monster_id` int(6) NOT NULL,
   `hp` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `battles`
@@ -110,12 +110,14 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `max_energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `characters`
 --
 
+INSERT INTO `characters` (`id`, `user_id`, `name`, `gender`, `race_id`, `class_id`, `alignment`, `hp`, `max_hp`, `strength`, `defence`, `agility`, `money`, `level`, `xp`, `max_xp`, `energy`, `max_energy`, `zone_id`) VALUES
+(1, 1, 'curtis', 'male', 1, 1, 5000, 0, 100, 10, 10, 10, 1000, 1, 0, 100, 100, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -197,12 +199,14 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
   `content` varchar(500) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `forum_posts`
 --
 
+INSERT INTO `forum_posts` (`id`, `topic_id`, `user_id`, `title`, `content`, `created`) VALUES
+(1, 1, 1, 'Test', 'Testa', 1284897264);
 
 -- --------------------------------------------------------
 
@@ -219,12 +223,60 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
   `posts` int(6) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `forum_topics`
 --
 
+INSERT INTO `forum_topics` (`id`, `category_id`, `user_id`, `title`, `status`, `posts`, `created`) VALUES
+(1, 1, 1, 'Test', 'open', 1, 1284897264);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groups`
+--
+
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `user_id` int(6) NOT NULL,
+  `created` int(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`id`, `name`, `description`, `user_id`, `created`, `status`) VALUES
+(1, 'Test', 'Testss', 1, 1286968800, 'open'),
+(2, 'Test', 'Testss', 1, 1286968825, 'open'),
+(3, 'test2', 'this is a test', 1, 1286970697, 'open');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group_users`
+--
+
+CREATE TABLE IF NOT EXISTS `group_users` (
+  `id` int(6) NOT NULL,
+  `group_id` int(6) NOT NULL,
+  `user_id` int(6) NOT NULL,
+  `title` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `group_users`
+--
+
+INSERT INTO `group_users` (`id`, `group_id`, `user_id`, `title`) VALUES
+(0, 3, 1, 'owner');
 
 -- --------------------------------------------------------
 
@@ -437,12 +489,14 @@ CREATE TABLE IF NOT EXISTS `pets` (
   `max_energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `pets`
 --
 
+INSERT INTO `pets` (`id`, `user_id`, `name`, `gender`, `race_id`, `colour_id`, `alignment`, `hp`, `max_hp`, `strength`, `defence`, `agility`, `money`, `level`, `xp`, `max_xp`, `energy`, `max_energy`, `zone_id`) VALUES
+(1, 1, 'Curtis', 'male', 1, 1, 5000, 100, 100, 10, 10, 10, 1000, 1, 0, 100, 100, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -624,7 +678,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `logins`, `last_login`, `language`) VALUES
-(1, 'curtis@delicata.eu', 'curtis', '3e19c7894598d8a5ff7b2fc8943c3f7bea8ff836450afaaae1', 1, 1284897034, '');
+(1, 'curtis@delicata.eu', 'curtis', '3e19c7894598d8a5ff7b2fc8943c3f7bea8ff836450afaaae1', 3, 1286965279, '');
 
 -- --------------------------------------------------------
 
@@ -659,6 +713,10 @@ CREATE TABLE IF NOT EXISTS `user_histories` (
 -- Dumping data for table `user_histories`
 --
 
+INSERT INTO `user_histories` (`user_id`, `time`, `history`) VALUES
+(1, 1286904347, 'Created the character: curtis'),
+(1, 1286904463, 'Created the pet: Curtis'),
+(1, 1286905672, 'Started a new battle against Delta');
 
 -- --------------------------------------------------------
 
