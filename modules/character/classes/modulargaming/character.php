@@ -22,8 +22,17 @@ class Modulargaming_Character {
 	public function get_classes()
 	{
 		
-		$alignments = Jelly::select( 'character_class' )
+$classes = Kohana::cache('character_classes');
+
+if ( ! $classes)
+                {
+		$classes = Jelly::select( 'character_class' )
 			->execute( );
+       
+		   // Cache it.
+                        Kohana::cache('character_classes', $classes, 3600);
+                }
+
 		
 		return $classes;
 		
@@ -33,8 +42,17 @@ class Modulargaming_Character {
 	public function get_alignments()
 	{
 		
+$alignments = Kohana::cache('character_alignment');
+
+if ( ! $alignments)
+                {
 		$alignments = Jelly::select( 'alignment' )
 			->execute( );
+       
+		   // Cache it.
+                        Kohana::cache('character_alignments', $alignments, 3600);
+                }
+
 		
 		return $alignments;
 		
