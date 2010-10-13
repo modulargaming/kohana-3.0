@@ -3,8 +3,8 @@ return array
 (
 	'title' => array(
 		'not_empty' => 'Title cannot be empty',
-		'min_length' => 'Content needs to be longer than 3 characters.',
-		'max_length' => 'Content needs to be less than 20 characters.',
+		'min_length' => 'Title needs to be longer than 3 characters.',
+		'max_length' => 'Title needs to be less than 20 characters.',
 
 	),
 	'content' => array(
