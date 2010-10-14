@@ -2,7 +2,7 @@
 
 <?php foreach ( $groups as $g ): ?>
 <div class=group-list>
-<?php echo html::anchor( 'group/groups'.$g->id, $g->name ); ?>
+<?php echo html::anchor( 'group/groups/'.$g->id, $g->name ); ?>
 <br />
 <?php echo $g->description ?>
 
