@@ -18,73 +18,25 @@ class Navigation {
 	 */
 	public static function render($group, $view)
 	{
-		
-		
 
-// Logged out navigation
 
-if ($group == 0){
-
-$data = Kohana::cache('navigation_logged_out');
+$data = Kohana::cache("navigation_$group");
 
 if ( ! $data)
                 {
 
-		
-		$data = Jelly::select('navigation')
-			->where('group', '=', $group)
-			->execute();
-		
+
+                $data = Jelly::select('navigation')
+                        ->where('group', '=', $group)
+                        ->execute();
+
 
                         // Cache it.
-                        Kohana::cache('navigation_logged_out', $data, 3600);
+                        Kohana::cache("navigation_$group", $data, 3600);
                 }
 
-}
-
-// Logged in navigation
-
-if ($group == 1){
-
-$data = Kohana::cache('navigation_logged_in');
-
-if ( ! $data)
-                {
-
 		
-		$data = Jelly::select('navigation')
-			->where('group', '=', $group)
-			->execute();
 		
-
-                        // Cache it.
-                        Kohana::cache('navigation_logged_in', $data, 3600);
-                }
-
-}
-
-// Admin navigation
-
-if ($group == 2){
-
-$data = Kohana::cache('navigation_admin');
-
-if ( ! $data)
-                {
-
-		
-		$data = Jelly::select('navigation')
-			->where('group', '=', $group)
-			->execute();
-		
-
-                        // Cache it.
-                        Kohana::cache('navigation_admin', $data, 3600);
-                }
-
-}
-
-
 		
 		return View::factory($view)
 			->set('data', $data);
