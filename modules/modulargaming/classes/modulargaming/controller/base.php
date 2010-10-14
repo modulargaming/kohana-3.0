@@ -49,7 +49,6 @@ abstract class Modulargaming_Controller_Base extends Controller implements AACL_
 
 			// Load the template
 			$this->template = View::factory($this->template);
-
 		}
 		
 		// Check if the page is protected and if the user is not logged in

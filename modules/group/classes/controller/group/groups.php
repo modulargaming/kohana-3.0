@@ -137,7 +137,7 @@ class Controller_Group_Groups extends Controller_Frontend {
 
 			Message::set(Message::SUCCESS, 'You created a group.');
 			
-			$this->request->redirect('group/'.$group_id).'/view';
+			$this->request->redirect('group/groups/'.$group_id);
 			
 		}
 		else

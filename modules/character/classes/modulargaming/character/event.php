@@ -59,11 +59,18 @@ class Modulargaming_Character_Event {
 		$t->left[] = View::factory('character/dashboard/status')
 			->set('character', $t->character)
 			->set('char', new Character($t->character));
-
 		$t->sidebar_left[] = View::factory('character/dashboard/sidebar');
 
 	}
+
+	public static function sidebar_left()
+	{
+		$t = Event::$data;
 	
+		Character_Event::load_character($t);
+	
+
+	}	
 
 	public static function sidebar_right()
 	{
