@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `alignments` (
   `min` int(6) NOT NULL,
   `max` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `alignments`
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `battles` (
   `monster_id` int(6) NOT NULL,
   `hp` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `battles`
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `author` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `blog_posts`
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `max_energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `characters`
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `character_classes` (
   `name` varchar(50) NOT NULL,
   `description` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `character_classes`
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `character_races` (
   `description` longtext NOT NULL,
   `starting_zone` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `character_races`
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
   `title` varchar(30) NOT NULL,
   `description` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `forum_categories`
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
   `content` varchar(500) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `forum_posts`
@@ -219,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
   `posts` int(6) NOT NULL,
   `created` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `forum_topics`
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `description` text NOT NULL,
   `name` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `items`
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `message` text NOT NULL,
   `created` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `messages`
@@ -297,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `monsters` (
   `xp` int(6) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `monsters`
@@ -328,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `navigations` (
   `title` varchar(25) NOT NULL,
   `slug` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `navigations`
@@ -360,7 +360,7 @@ CREATE TABLE IF NOT EXISTS `npcs` (
   `name` varchar(255) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `npcs`
@@ -381,7 +381,7 @@ CREATE TABLE IF NOT EXISTS `npc_messages` (
   `title` varchar(25) NOT NULL,
   `message` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `npc_messages`
@@ -401,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `npc_quests` (
   `description` varchar(100) NOT NULL,
   `type` enum('item','kill','travel') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `npc_quests`
@@ -437,7 +437,7 @@ CREATE TABLE IF NOT EXISTS `pets` (
   `max_energy` int(6) NOT NULL,
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `pets`
@@ -455,7 +455,7 @@ CREATE TABLE IF NOT EXISTS `pet_colours` (
   `name` varchar(50) NOT NULL,
   `description` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pet_colours`
@@ -481,7 +481,7 @@ CREATE TABLE IF NOT EXISTS `pet_races` (
   `description` longtext NOT NULL,
   `starting_zone` int(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `pet_races`
@@ -531,7 +531,8 @@ CREATE TABLE IF NOT EXISTS `roles_users` (
 --
 
 INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
-(1, 1);
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -544,7 +545,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `last_activity` int(10) unsigned NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sessions`
@@ -563,7 +564,7 @@ CREATE TABLE IF NOT EXISTS `shops` (
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `shops`
@@ -584,7 +585,7 @@ CREATE TABLE IF NOT EXISTS `shop_items` (
   `item_id` int(6) NOT NULL,
   `amount` int(6) NOT NULL,
   `price` int(6) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `shop_items`
@@ -617,14 +618,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_username` (`username`),
   UNIQUE KEY `uniq_email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `users`
 --
-
-INSERT INTO `users` (`id`, `email`, `username`, `password`, `logins`, `last_login`, `language`) VALUES
-(1, 'curtis@delicata.eu', 'curtis', '3e19c7894598d8a5ff7b2fc8943c3f7bea8ff836450afaaae1', 1, 1284897034, '');
 
 -- --------------------------------------------------------
 
@@ -636,7 +634,7 @@ CREATE TABLE IF NOT EXISTS `user_facebook` (
   `facebook_id` int(6) NOT NULL,
   `user_id` int(6) NOT NULL,
   UNIQUE KEY `facebook_id` (`facebook_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_facebook`
@@ -653,7 +651,7 @@ CREATE TABLE IF NOT EXISTS `user_histories` (
   `user_id` int(6) NOT NULL,
   `time` int(10) NOT NULL,
   `history` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_histories`
@@ -670,7 +668,7 @@ CREATE TABLE IF NOT EXISTS `user_items` (
   `item_id` int(6) NOT NULL,
   `user_id` int(6) NOT NULL,
   `amount` int(6) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_items`
@@ -714,7 +712,7 @@ CREATE TABLE IF NOT EXISTS `zones` (
   `x` int(2) NOT NULL,
   `y` int(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `zones`
@@ -734,7 +732,7 @@ INSERT INTO `zones` (`id`, `name`, `description`, `energy`, `x`, `y`) VALUES
 CREATE TABLE IF NOT EXISTS `zone_monster` (
   `zone_id` int(6) NOT NULL,
   `monster_id` int(6) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `zone_monster`
