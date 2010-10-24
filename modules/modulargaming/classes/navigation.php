@@ -18,10 +18,24 @@ class Navigation {
 	 */
 	public static function render($group, $view)
 	{
+
+
+$data = Kohana::cache("navigation_$group");
+
+if ( ! $data)
+                {
+
+
+                $data = Jelly::select('navigation')
+                        ->where('group', '=', $group)
+                        ->execute();
+
+
+                        // Cache it.
+                        Kohana::cache("navigation_$group", $data, 3600);
+                }
+
 		
-		$data = Jelly::select('navigation')
-			->where('group', '=', $group)
-			->execute();
 		
 		
 		return View::factory($view)

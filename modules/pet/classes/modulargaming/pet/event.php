@@ -62,6 +62,13 @@ class Modulargaming_Pet_Event {
 
 		$t->sidebar_left[] = View::factory('pet/dashboard/sidebar');
 	}
+
+	public static function sidebar_left()
+	{
+		$t = Event::$data;
+	
+		$t->sidebar_left[] = View::factory('pet/dashboard/sidebar');
+	}
 	
 
 	public static function sidebar_right()

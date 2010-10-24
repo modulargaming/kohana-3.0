@@ -39,18 +39,12 @@ abstract class Modulargaming_Controller_Frontend extends Controller_Base {
 			// Load the template
 			$this->template->sidebar_left = $this->sidebar_left;
 			$this->template->sidebar_right = $this->sidebar_right;
+		
 
-		}
+}
 		
 		// Run the before events.
 		Event::run('before', $this);
-		
-		//Kohana::config("group_name")->myconfigkey = "hiii"; 
-		//echo Kohana::config("group_name.myconfigkey");
-		//echo Kohana::config("group_name.myconfigkey2");
-		//print_r(Kohana::config('modulargaming.test'));
-		
-		//Kohana::config('modulargaming')->test = array('lol' => 'hi');
 		
 		
 	}

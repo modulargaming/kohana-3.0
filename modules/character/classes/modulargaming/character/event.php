@@ -8,6 +8,7 @@
  * @license    http://www.modulargaming.com/license
  */
 
+
 class Modulargaming_Character_Event {
 	
 	/**
@@ -60,10 +61,16 @@ class Modulargaming_Character_Event {
 			->set('character', $t->character)
 			->set('char', new Character($t->character));
 
-		$t->sidebar_left[] = View::factory('character/dashboard/sidebar');
-
 	}
+
+	public static function sidebar_left()
+	{
+		$t = Event::$data;
 	
+		Character_Event::load_character($t);
+	
+		$t->sidebar_left[] = View::factory('character/dashboard/sidebar');
+	}	
 
 	public static function sidebar_right()
 	{

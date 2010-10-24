@@ -11,4 +11,5 @@
 // Add our events
 Event::add('before', 'Pet_Event::before');
 Event::add('dashboard_right', 'Pet_Event::dashboard_right');
+Event::add('sidebar_right', 'Pet_Event::sidebar_left');
 Event::add('sidebar_right', 'Pet_Event::sidebar_right');

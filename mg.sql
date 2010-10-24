@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 19, 2010 at 12:51 PM
+-- Generation Time: Oct 13, 2010 at 01:10 PM
 -- Server version: 5.1.49
--- PHP Version: 5.3.3-1ubuntu8
+-- PHP Version: 5.3.3-1ubuntu9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -83,6 +83,8 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
 --
 
 
+=======
+>>>>>>> f0c5d2b7f4369eee4048da141999ed7e12c8ce50
 -- --------------------------------------------------------
 
 --
@@ -111,13 +113,6 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `zone_id` int(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `characters`
---
-
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `character_classes`
@@ -199,11 +194,6 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `forum_posts`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -222,9 +212,32 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `forum_topics`
+-- Table structure for table `groups`
 --
 
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `user_id` int(6) NOT NULL,
+  `created` int(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group_users`
+--
+
+CREATE TABLE IF NOT EXISTS `group_users` (
+  `id` int(6) NOT NULL,
+  `group_id` int(6) NOT NULL,
+  `user_id` int(6) NOT NULL,
+  `title` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -439,11 +452,6 @@ CREATE TABLE IF NOT EXISTS `pets` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `pets`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -657,6 +665,10 @@ CREATE TABLE IF NOT EXISTS `user_histories` (
 -- Dumping data for table `user_histories`
 --
 
+INSERT INTO `user_histories` (`user_id`, `time`, `history`) VALUES
+(1, 1286904347, 'Created the character: curtis'),
+(1, 1286904463, 'Created the pet: Curtis'),
+(1, 1286905672, 'Started a new battle against Delta');
 
 -- --------------------------------------------------------
 
