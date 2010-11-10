@@ -82,9 +82,6 @@ CREATE TABLE IF NOT EXISTS `blog_posts` (
 -- Dumping data for table `blog_posts`
 --
 
-
-=======
->>>>>>> f0c5d2b7f4369eee4048da141999ed7e12c8ce50
 -- --------------------------------------------------------
 
 --
