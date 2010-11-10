@@ -19,7 +19,7 @@ Using your console, to get it from git execute the following command in the root
 
 And watch the git magic...
 
-Of course you can always download the code from the [github project](http://github.com/modulargaming/modulargaming) as an archive. (But be aware that this will not download the submodules)
+Of course you can always download the code from the http://development.modulargaming.com
 
 Step 2: Initial Structure
 
