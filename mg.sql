@@ -535,9 +535,6 @@ CREATE TABLE IF NOT EXISTS `roles_users` (
 -- Dumping data for table `roles_users`
 --
 
-INSERT INTO `roles_users` (`user_id`, `role_id`) VALUES
-(1, 1),
-(1, 2);
 
 -- --------------------------------------------------------
 
