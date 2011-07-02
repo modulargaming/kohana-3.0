@@ -45,7 +45,26 @@ echo html::image($image);
 	
 	<div style="clear:both;"></div>
 	
-	<?php echo html::anchor( 'battle/attack', 'Attack' ); ?><br />
+	<?php
+	$atk_names = array(
+			'0' => "Red flux",
+			'1' => "Transplant blast",
+			'2' => "Dissolver",
+			'3' => "Held Cutter",
+			'4' => "Heated blast",
+			'5' => "Inflated orb",
+			'6' => "Energy mesh",
+			'7' => "Energy kinesis",
+			'8' => "Layered flux",
+			'9' => "Delayed detonations"
+		);
+
+	foreach($atk_names as $atk_name){
+		$r = rand(0, 255);
+		$g = rand(0, 255);
+		$b = rand(0, 255);
+		echo html::anchor( 'battle/attack', ' '.$atk_name.' ', array('style' => "color: rgb(".$r.",".$g.",".$b.");")); 
+	} ?><br />
 	<?php echo html::anchor( 'battle/run', 'Try to run away' ); ?><br />
 	
 </div>
