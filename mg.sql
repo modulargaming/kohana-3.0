@@ -47,6 +47,79 @@ INSERT INTO `alignments` (`id`, `name`, `min`, `max`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `attacks`
+--
+
+CREATE TABLE IF NOT EXISTS `attacks` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `atk_an` varchar(255) NOT NULL,
+  `atk_name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `type` int(6) NOT NULL,
+  `hps` int(6) NOT NULL,
+  `lvl` int(6) NOT NULL,
+  `phs` int(6) NOT NULL,
+  `spl` int(6) NOT NULL,
+  `agl` int(6) NOT NULL,
+  `dfs` int(6) NOT NULL,
+  `sdfs` int(6) NOT NULL,
+  `rng` int(6) NOT NULL,
+  `st_lft` int(6) NOT NULL,
+  `lt_lft` int(6) NOT NULL,
+  `drt` int(6) NOT NULL,
+  `prp` int(6) NOT NULL,
+  `reqs` int(6) NOT NULL,
+  `xtn_abl` int(6) NOT NULL,
+  `xtr_pro` int(6) NOT NULL,
+  `xtr_con` int(6) NOT NULL,
+  `eft` int(6) NOT NULL,
+  `produce` int(6) NOT NULL,
+  `total_points` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `attacks`
+--
+
+INSERT INTO `attacks` (
+	`atk_an`,
+	`atk_name`,
+	`description`,
+	`type`,
+	`hps`,
+	`lvl`,
+	`phs`,
+	`spl`,
+	`agl`,
+	`dfs`,
+	`sdfs`,
+	`rng`,
+	`st_lft`,
+	`lt_lft`,
+	`drt`,
+	`prp`,
+	`reqs`,
+	`xtn_abl`,
+	`xtr_pro`,
+	`xtr_con`,
+	`eft`,
+	`produce`,
+    `total_points`) VALUES
+('red-flux', 'Red flux', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('transplant-blast', 'Transplant blast', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('dissolver', 'Dissolver', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('held-cutter', 'Held Cutter', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('heated-blast', 'Heated blast', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('inflated-orb', 'Inflated orb', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('energy-mesh', 'Energy mesh', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('energy-kinesis', 'Energy kinesis', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('layered-flux', 'Layered flux', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190),
+('delayed-detonations', 'Delayed detonations', 'To be edited', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 190);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `battles`
 --
 
