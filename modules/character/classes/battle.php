@@ -71,11 +71,14 @@ class Battle {
 		$battle->hp = $battle->hp - $character_dmg;
 		$battle->save();
 		
+		// load attack names for user and foe
+		$character_atk = "ATTACK NAME";
+		$monster_atk = "ATTACK NAME";
 		
 		// Set an array of messages.
 		$message = array(
-			'You did '.$character_dmg.' damage.',
-			'The foe did '.$monster_dmg.' damage',
+			'You '.$character_atk.' which did '.$character_dmg.' damage.',
+			'The foe used '.$monster_atk.' which did '.$monster_dmg.' damage',
 		);
 		
 		Message::set( Message::SUCCESS, $message );
