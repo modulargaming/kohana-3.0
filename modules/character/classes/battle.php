@@ -71,9 +71,22 @@ class Battle {
 		$battle->hp = $battle->hp - $character_dmg;
 		$battle->save();
 		
+		$atk_names = array(
+			'0' => "Red flux",
+			'1' => "Transplant blast",
+			'2' => "Dissolver",
+			'3' => "Held Cutter",
+			'4' => "Heated blast",
+			'5' => "Inflated orb",
+			'6' => "Energy mesh",
+			'7' => "Energy kinesis",
+			'8' => "Layered flux",
+			'9' => "Delayed detonations"
+		);
+		
 		// load attack names for user and foe
-		$character_atk = "ATTACK NAME";
-		$monster_atk = "ATTACK NAME";
+		$character_atk = $atk_names[rand(0, count($atk_names) - 1)];
+		$monster_atk = $atk_names[rand(0, count($atk_names) - 1)];
 		
 		// Set an array of messages.
 		$message = array(
