@@ -69,7 +69,6 @@ class Battle {
 		
 		// Set the monsters health
 		$battle->hp = $battle->hp - $character_dmg;
-		$battle->save();
 		
 		$atk_names = array(
 			'0' => "Red flux",
@@ -85,10 +84,18 @@ class Battle {
 		);
 		
 		// load attack names for user and foe
-		/* $character_atk = $atk_names[rand(0, count($atk_names) - 1)]; RANDOMIZED ATTACKS */
-		/* $monster_atk = $atk_names[rand(0, count($atk_names) - 1)]; RANDOMIZED ATTACKS */
-		$character_atk = $atk_names[$battle->character_atk];
-		$monster_atk = $atk_names[$battle->monster_atk];
+		if(intval($_GET['chr_atk']) <= count($atk_names) - 1){
+			$character_atk = $atk_names[intval($_GET['chr_atk'])];
+			$battle->character_atk = intval($_GET['chr_atk']);
+		}
+		else{
+			$character_atk = $battle->character_atk; // previous attack
+		}
+		$mon_atk_id = rand(0, count($atk_names) - 1); // randomized attack for foe
+		$monster_atk = $atk_names[$mon_atk_id]; 
+		$battle->monster_atk = $mon_atk_id;
+		
+		$battle->save();
 		
 		// Set an array of messages.
 		$message = array(
