@@ -63,7 +63,10 @@ echo html::image($image);
 		$r = rand(0, 255);
 		$g = rand(0, 255);
 		$b = rand(0, 255);
-		echo html::anchor( 'battle/attack', ' '.$atk_name.' ', array('style' => "color: rgb(".$r.",".$g.",".$b.");")); 
+		$ri = 255 - $r;
+		$gi = 255 - $g;
+		$bi = 255 - $b;
+		echo html::anchor( 'battle/attack', ' '.$atk_name.' ', array('style' => "color: rgb(".$r.",".$g.",".$b."); background-color: rgb(".$ri.",".$gi.",".$bi."); border: 1px solid black; padding: 5px;")); 
 	} ?><br />
 	<?php echo html::anchor( 'battle/run', 'Try to run away' ); ?><br />
 	
