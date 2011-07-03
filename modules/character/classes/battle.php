@@ -85,8 +85,10 @@ class Battle {
 		);
 		
 		// load attack names for user and foe
-		$character_atk = $atk_names[rand(0, count($atk_names) - 1)];
-		$monster_atk = $atk_names[rand(0, count($atk_names) - 1)];
+		/* $character_atk = $atk_names[rand(0, count($atk_names) - 1)]; RANDOMIZED ATTACKS */
+		/* $monster_atk = $atk_names[rand(0, count($atk_names) - 1)]; RANDOMIZED ATTACKS */
+		$character_atk = $atk_names[$battle->character_atk];
+		$monster_atk = $atk_names[$battle->monster_atk];
 		
 		// Set an array of messages.
 		$message = array(
