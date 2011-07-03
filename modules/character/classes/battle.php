@@ -90,8 +90,8 @@ class Battle {
 		
 		// Set an array of messages.
 		$message = array(
-			'You '.$character_atk.' which did '.$character_dmg.' damage.',
-			'The '.$monster->name.' used '.$monster_atk.' which did '.$monster_dmg.' damage',
+			'You used '.$character_atk.' which did '.$character_dmg.' damage to '.$monster->name,
+			'The '.$monster->name.' used '.$monster_atk.' which did '.$monster_dmg.' damage to you',
 		);
 		
 		Message::set( Message::SUCCESS, $message );
