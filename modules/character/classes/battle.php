@@ -69,13 +69,38 @@ class Battle {
 		
 		// Set the monsters health
 		$battle->hp = $battle->hp - $character_dmg;
-		$battle->save();
 		
+		$atk_names = array(
+			'0' => "Red flux",
+			'1' => "Transplant blast",
+			'2' => "Dissolver",
+			'3' => "Held Cutter",
+			'4' => "Heated blast",
+			'5' => "Inflated orb",
+			'6' => "Energy mesh",
+			'7' => "Energy kinesis",
+			'8' => "Layered flux",
+			'9' => "Delayed detonations"
+		);
+		
+		// load attack names for user and foe
+		if(intval($_GET['chr_atk']) <= count($atk_names) - 1){
+			$character_atk = $atk_names[intval($_GET['chr_atk'])];
+			$battle->character_atk = intval($_GET['chr_atk']);
+		}
+		else{
+			$character_atk = $battle->character_atk; // previous attack
+		}
+		$mon_atk_id = rand(0, count($atk_names) - 1); // randomized attack for foe
+		$monster_atk = $atk_names[$mon_atk_id]; 
+		$battle->monster_atk = $mon_atk_id;
+		
+		$battle->save();
 		
 		// Set an array of messages.
 		$message = array(
-			'You did '.$character_dmg.' damage.',
-			'The foe did '.$monster_dmg.' damage',
+			'You used '.$character_atk.' which did '.$character_dmg.' damage to '.$monster->name,
+			'The '.$monster->name.' used '.$monster_atk.' which did '.$monster_dmg.' damage to you',
 		);
 		
 		Message::set( Message::SUCCESS, $message );

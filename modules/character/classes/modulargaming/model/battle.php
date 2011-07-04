@@ -20,6 +20,8 @@ class Modulargaming_Model_Battle extends Jelly_Model {
 			'monster' => new Field_BelongsTo,
 			
 			'hp' => new Field_Integer,
+			'character_atk' => new Field_Integer,
+			'monster_atk' => new Field_Integer,
 		);
 		
 	}
