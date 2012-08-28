@@ -3,31 +3,4 @@
 	url = git://github.com/modulargaming/core.git
 [submodule "modules/database"]
 	path = modules/database
-	url = git://github.com/modulargaming/database.git
-[submodule "modules/message"]
-	path = modules/message
-	url = git://github.com/modulargaming/message.git
-[submodule "modules/jelly"]
-	path = modules/jelly
-	url = git://github.com/modulargaming/jelly.git
-[submodule "modules/captcha"]
-	path = modules/captcha
-	url = git://github.com/modulargaming/captcha.git
-[submodule "modules/pagination"]
-	path = modules/pagination
-	url = git://github.com/modulargaming/pagination.git
-[submodule "modules/event"]
-	path = modules/event
-	url = git://github.com/modulargaming/event.git
-[submodule "modules/userguide"]
-	path = modules/userguide
-	url = http://github.com/modulargaming/userguide.git
-[submodule "modules/auth"]
-	path = modules/auth
-	url = git://github.com/kohana/auth.git
-[submodule "modules/aacl"]
-	path = modules/aacl
-	url = git://github.com/banks/aacl.git
-[submodule "modules/jelly-auth"]
-	path = modules/jelly-auth
-	url = git://github.com/raeldc/jelly-auth.git
+	url = git://github.com/modulargaming/database
