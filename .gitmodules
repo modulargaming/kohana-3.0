@@ -1,6 +1,6 @@
 [submodule "system"]
 	path = system
-	url = git://github.com/modulargaming/core
+	url = git://github.com/modulargaming/core.git
 [submodule "modules/database"]
 	path = modules/database
 	url = git://github.com/modulargaming/database
