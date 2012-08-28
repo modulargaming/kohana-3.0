@@ -13,3 +13,21 @@
 [submodule "modules/captcha"]
 	path = modules/captcha
 	url = git://github.com/modulargaming/captcha.git
+[submodule "modules/pagination"]
+	path = modules/pagination
+	url = git://github.com/modulargaming/pagination.git
+[submodule "modules/event"]
+	path = modules/event
+	url = git://github.com/modulargaming/event.git
+[submodule "modules/userguide"]
+	path = modules/userguide
+	url = git://github.com/modulargaming/userguide.git
+[submodule "modules/auth"]
+	path = modules/auth
+	url = git://github.com/modulargaming/auth
+[submodule "modules/aacl"]
+	path = modules/aacl
+	url = git://github.com/modulargaming/aacl.git
+[submodule "modules/jelly-auth"]
+	path = modules/jelly-auth
+	url = git://github.com/modulargaming/jelly-auth.git
