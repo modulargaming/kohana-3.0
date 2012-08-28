@@ -10,3 +10,6 @@
 [submodule "modules/jelly"]
 	path = modules/jelly
 	url = git://github.com/modulargaming/jelly.git
+[submodule "modules/captcha"]
+	path = modules/captcha
+	url = git://github.com/modulargaming/captcha.git
