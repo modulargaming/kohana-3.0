@@ -99,6 +99,34 @@ Kohana::$config->attach(new Config_File);
 * Enable modules. Modules are referenced by a relative or absolute path.
 */
 Kohana::modules(array(
+// Modular Gaming modules
+	'forum' =>     MODPATH.'forum', // Offical forum module
+	'group' =>     MODPATH.'group', // Offical group module
+	'message' =>   MODPATH.'message', // Official messages module
+	'character' => MODPATH.'character', // Official character module
+	'pet' =>       MODPATH.'pet', // Official pet module
+	
+	'modulargaming' => MODPATH.'modulargaming', // Modular Gaming core
+	
+	// Event system
+	'event' => MODPATH.'event',
+	
+	// Auth
+	'Jelly-aacl' => MODPATH.'jelly-aacl',
+	'aacl'       => MODPATH.'aacl',
+	'Jelly-Auth' => MODPATH.'jelly-auth',
+	'Auth'       => MODPATH.'auth',
+	
+	// Database
+	'jelly'    => MODPATH.'jelly', // Jelly ORM
+	'database' => MODPATH.'database', // Database access
+	
+	// Misc modules
+	'pagination' => MODPATH.'pagination', // Paging of results
+	'captcha'    => MODPATH.'captcha',
+	'image'      => MODPATH.'image',
+	'userguide'  => MODPATH.'userguide',
+
 // 'auth' => MODPATH.'auth', // Basic authentication
 // 'cache' => MODPATH.'cache', // Caching with multiple backends
 // 'codebench' => MODPATH.'codebench', // Benchmarking tool
@@ -113,8 +141,69 @@ Kohana::modules(array(
 * Set the routes. Each route must have a minimum of a name, a URI and a set of
 * defaults for the URI.
 */
+
+Route::set('admin', 'admin(/<controller>(/<action>(/<id>)))')
+	->defaults(array(
+		'directory'  => 'admin',
+		'controller' => 'welcome',
+		'action'     => 'index',
+	));
+	
+Route::set('shop', 'shop(/<shop>(/<action>(/<item>)))')
+	->defaults(array(
+		'controller' => 'shop',
+		'action'     => 'index',
+	));
+
+Route::set('npc', 'npc(/<npc>(/<action>(/<method>)))')
+	->defaults(array(
+		'controller' => 'npc',
+		'action'     => 'index',
+	));
+
 Route::set('default', '(<controller>(/<action>(/<id>)))')
-->defaults(array(
-'controller' => 'welcome',
-'action' => 'index',
-));
+	->defaults(array(
+		'controller' => 'welcome',
+		'action'     => 'index',
+	));
+
+/**
+ * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+ * If no source is specified, the URI will be automatically detected.
+ */
+$request = Request::instance();
+
+try
+{
+	// Attempt to execute the response
+	$request->execute();
+}
+catch (AACL_Exception_401 $e)
+{
+	// Send them to login
+	Request::instance()->redirect('account/login');
+}
+catch (AACL_Exception_403 $e)
+{
+	// TODO: Some fancy access denied page.
+	die('403');
+}
+catch (Exception $e)
+{
+	
+	if (Kohana::$environment == Kohana::DEVELOPMENT)
+	{
+		throw $e;
+	}
+	
+	// Log the error
+	Kohana::$log->add(Kohana::ERROR, Kohana::exception_text($e));
+	
+	$request = Request::factory('errors/404')->execute();
+
+}
+
+/**
+* Display the request response.
+*/
+echo $request->send_headers()->response;
