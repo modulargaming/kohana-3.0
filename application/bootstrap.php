@@ -55,6 +55,14 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 */
 I18n::lang('en-gb');
 
+
+/**
+* Set the cookie security
+**/
+
+Cookie::$salt = 'Your-Salt-Goes-Here';
+
+
 /**
 * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
 *
