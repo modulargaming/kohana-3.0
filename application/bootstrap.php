@@ -82,7 +82,7 @@ Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 * - boolean expose set the X-Powered-By header FALSE
 */
 Kohana::init(array(
-'base_url' => '/',
+'base_url' => dirname($_SERVER['SCRIPT_NAME']),
 ));
 
 /**
