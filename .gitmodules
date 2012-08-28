@@ -31,3 +31,6 @@
 [submodule "modules/jelly-auth"]
 	path = modules/jelly-auth
 	url = git://github.com/modulargaming/jelly-auth.git
+[submodule "modules/image"]
+	path = modules/image
+	url = git://github.com/modulargaming/image.git
