@@ -27,7 +27,7 @@ abstract class Modulargaming_Controller_Frontend extends Controller_Base {
 		Asset::add('assets/js/jquery-ui.js', 'js');
 		Asset::add('assets/js/main.js', 'js');		
 		
-                if ($this->auto_render === TRUE && $this->request->is_ajax() === FALSE)
+		if ($this->auto_render === TRUE && $this->request->is_ajax() === FALSE)
 		{
 			
 			$this->sidebar_left = array();
@@ -41,11 +41,10 @@ abstract class Modulargaming_Controller_Frontend extends Controller_Base {
 			$this->template->sidebar_right = $this->sidebar_right;
 		
 
-}
+		}
 		
 		// Run the before events.
 		Event::run('before', $this);
-		
 		
 	}
 	
@@ -55,10 +54,10 @@ abstract class Modulargaming_Controller_Frontend extends Controller_Base {
 		View::set_global('title', __($this->title));
 		
 
-                if ($this->auto_render === TRUE && $this->request->is_ajax() === FALSE)
+		if ($this->auto_render === TRUE && $this->request->is_ajax() === FALSE)
 		{
 			// Assign the template as the request response and render it
-			$this->request->response = $this->template;
+			$this->response->body($this->template);
 		}
 	}	
 } // End Frontend

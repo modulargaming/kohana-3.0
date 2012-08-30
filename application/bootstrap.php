@@ -109,7 +109,7 @@ Kohana::$config->attach(new Config_File);
 * Enable modules. Modules are referenced by a relative or absolute path.
 */
 Kohana::modules(array(
-// Modular Gaming modules
+	// Modular Gaming modules
 	'forum' =>     MODPATH.'forum', // Offical forum module
 	'group' =>     MODPATH.'group', // Offical group module
 	'message' =>   MODPATH.'message', // Official messages module
