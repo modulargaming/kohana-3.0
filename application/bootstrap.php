@@ -103,6 +103,7 @@ Kohana::$log->attach(new Log_File(APPPATH.'logs'));
 */
 Kohana::$config->attach(new Config_File);
 
+
 /**
 * Enable modules. Modules are referenced by a relative or absolute path.
 */
@@ -179,17 +180,17 @@ Route::set('default', '(<controller>(/<action>(/<id>)))')
  * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
  * If no source is specified, the URI will be automatically detected.
  */
-$request = Request::instance();
+$response = Request::current();
 
 try
 {
 	// Attempt to execute the response
-	$request->execute();
+	$response->client(new Request_Client_Stream)->execute();
 }
 catch (AACL_Exception_401 $e)
 {
 	// Send them to login
-	Request::instance()->redirect('account/login');
+	Request::current()->redirect('account/login');
 }
 catch (AACL_Exception_403 $e)
 {
@@ -207,11 +208,14 @@ catch (Exception $e)
 	// Log the error
 	Kohana::$log->add(Kohana::ERROR, Kohana::exception_text($e));
 	
-	$request = Request::factory('errors/404')->execute();
+	$response = Request::factory('errors/404')->client(new Request_Client_Stream)->execute();
 
 }
 
 /**
 * Display the request response.
 */
-echo $request->send_headers()->response;
+//echo $response->send_headers()->response;
+$response = Request::factory()
+    ->client(new Request_Client_Stream)
+    ->execute();
