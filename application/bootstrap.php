@@ -91,6 +91,7 @@ Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 */
 Kohana::init(array(
 'base_url' => dirname($_SERVER['SCRIPT_NAME']),
+'index_file' => 'index.php',
 ));
 
 /**

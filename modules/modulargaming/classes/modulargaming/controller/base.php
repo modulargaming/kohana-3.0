@@ -44,8 +44,8 @@ abstract class Modulargaming_Controller_Base extends Controller implements AACL_
 		
 		$this->MG = new ModularGaming($this->user);
 		
-		if ($this->auto_render === TRUE && !Request::$is_ajax)
-		{
+	
+		if ($this->auto_render === TRUE && $this->request->is_ajax() === FALSE) {
 
 			// Load the template
 			$this->template = View::factory($this->template);
