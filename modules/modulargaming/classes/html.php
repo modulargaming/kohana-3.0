@@ -12,7 +12,7 @@ class HTML extends Kohana_HTML {
 	 * @param   string  use a specific protocol
 	 * @return  string
 	 */
-	public static function anchor($uri, $title = NULL, array $attributes = NULL, $protocol = NULL)
+	public static function anchor($uri, $title = NULL, array $attributes = NULL, $protocol = NULL, $index = TRUE)
 	{
 		if ($title === NULL)
 		{
@@ -41,7 +41,7 @@ class HTML extends Kohana_HTML {
 			elseif ($uri[0] !== '#')
 			{
 				// Make the URI absolute for non-id anchors
-				$uri = URL::site($uri, $protocol);
+				$uri = URL::site($uri, $protocol, $index);
 			}
 		}
 
